@@ -10,6 +10,7 @@
 <body>
 	<div align="center">
 		<!-- Insert to your webpage where you want to display the slider -->
+		<div class="slider-wrapper">
 	    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1000px;margin:0px auto 56px;">
 	        <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
 	            <ul class="amazingslider-slides" style="display:none;">
@@ -36,12 +37,27 @@
 	                <li><img src="images/dKrVegVI0Us-tn.jpg" alt="Marvel&apos;s Captain America: Civil War" title="Marvel&apos;s Captain America: Civil War" /></li>
 	                <li><img src="images/JAUoeqvedMo-tn.jpg" alt="Marvel&apos;s Avengers: Age of Ultron" title="Marvel&apos;s Avengers: Age of Ultron" /></li>
 	            </ul>
-	        <div class="amazingslider-engine"><a href="http://amazingslider.com" title="Slider jQuery">Slider jQuery</a></div>
+	        <div class="amazingslider-engine"><a href="http://amazingslider.com" title="Responsive jQuery Content Slider">Responsive jQuery Content Slider</a></div>
+	        </div>
 	        </div>
 	    </div>
 	    <!-- End of body section HTML codes -->
-	    <div id="poster-wrapper">
-	    	<	
+	    <div id="posterSlider-wrapper">
+	    	<a href="main.do?page=${curPage>1 ? curPage-1 : curPage }">
+	    		<img src="sliderengine\lightbox-navprev.png" class="prev_btn">
+	    	</a>
+	    	<ul>
+	    	<c:forEach var="poster" items="${plist }">
+	    		<li>
+	    			<a>
+	    				<img src="${poster }">
+	    			</a>
+	    		</li>
+	    	</c:forEach>
+	    	</ul>	
+	    	<a href="main.do?page=${curPage<totalPage ? curPage+1 : curPage }">
+	    		<img src="sliderengine\lightbox-navnext.png" class="next_btn">
+	    	</a>
 	    </div>
 	</div>
 </body>

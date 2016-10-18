@@ -4,7 +4,6 @@ public class MainVO {
 	private String poster;
 	private String trailer;
 	private int rank;
-	private int movieLike;
 	
 	public String getPoster() {
 		return poster;
@@ -24,10 +23,4 @@ public class MainVO {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	public int getMovieLike() {
-		return movieLike;
-	}
-	public void setMovieLike(int movieLike) {
-		this.movieLike = movieLike;
-	}	
 }

@@ -32,7 +32,13 @@ public class DispatcherServlet extends HttpServlet{
 		String cmd=request.getRequestURI();
 		//==> http://localhost:8080/MVCLoginLab/login.do
 		cmd=cmd.substring(request.getContextPath().length()+1);
-		//==> /MVCLoginLab/login.do
+		//==> login.do
+		
+		//?파라미터 값 구분
+		String temp=cmd.substring(cmd.lastIndexOf(".")+1);
+		if(!temp.equals("do") && !temp.equals("jsp")){
+			cmd=cmd.substring(0, cmd.lastIndexOf("?"));
+		}
 		
 		try{
 			for(String strCls : clsList){
