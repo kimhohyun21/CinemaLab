@@ -12,6 +12,8 @@ import java.util.*;
 public class ReserveModel {
 	@RequestMapping("reserve.do")
 	public String main(HttpServletRequest request){
+		
+		//날짜 계산
 		int i,j,a;
 		int[] day7={0,0,0,0,0,0,0};
 		String[] strWeek2={"","","","","","",""};
@@ -44,19 +46,10 @@ public class ReserveModel {
 				i=0;
 			}
 		}
-		/*for(int b=0; b<=6; b++){
-			System.out.println(strWeek2[b]);
-		
-		}*/
-		
 		for(j=0; j<=6; j++){
 			day7[j]=day;
 			day++;
 		}
-		for(int x=0; x<=6; x++){
-			System.out.println(day7[x]);
-		}
-		
 		int total=(year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;
 		
 		if((year%4==0 && year%100!=0)||(year%400==0))
@@ -71,6 +64,34 @@ public class ReserveModel {
 		
 		int week=total%7;
 		int z=0;
+		
+		//극장 선택
+		String local=request.getParameter("local");
+		String[] aList={"신도림","영등포","홍대입구"};
+		String[] bList={"수원","안산","용인"};
+		String[] cList={"검단","부평","인천"};
+		String[] dList={"상인","성서","율하"};
+		String[] eList={"부산","서면","해운대"};
+		if(local==null){
+			local="서울";
+		}
+		if(local.equals("서울")){
+			request.setAttribute("aList", aList);
+		}
+		else if(local.equals("경기")){
+			request.setAttribute("bList", bList);
+		}
+		else if(local.equals("인천")){
+			request.setAttribute("cList", cList);
+		}
+		else if(local.equals("대구")){
+			request.setAttribute("dList", dList);
+		}
+		else if(local.equals("부산")){
+			request.setAttribute("eList", eList);
+		}
+
+		
 		request.setAttribute("z", z);
 		request.setAttribute("strWeek2", strWeek2);
 		request.setAttribute("day7", day7);

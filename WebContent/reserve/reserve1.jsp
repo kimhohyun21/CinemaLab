@@ -10,16 +10,16 @@
 <body>
 	<center>
 		<h2>예매</h2>
-		<form action="reserve1.jsp" method="post" name="frm">
-			<table width="700" height="500" border="1">
-				<tr>
+		<form action="reserve.do" method="post" name="frm">
+			<table width="1000" height="500" border="1">
+				<tr height="40">
 					<td>날짜</td>
 					<td>극장</td>
 					<td>영화</td>
 					<td>시간</td>
 				</tr>
 				<tr>
-					<td align="left">
+					<td width="25%">
 						<p>${year }</p>
 						<p>${month }</p>
 						<c:forEach var="c" begin="0" end="6" step="1" items="${strWeek2 }">
@@ -27,17 +27,45 @@
 							<c:set var="z" value="${z=z+1 }"></c:set>
 						</c:forEach>
 					</td>
+					<td width="25%">
+						<table>
+							<tr>
+								<td>
+									<a href="reserve.do?local=서울">서울</a><br>
+									<a href="reserve.do?local=경기">경기</a><br>
+									<a href="reserve.do?local=인천">인천</a><br>
+									<a href="reserve.do?local=대구">대구</a><br>
+									<a href="reserve.do?local=부산">부산</a><br>
+								</td>
+								<td>
+									<jsp:include page="theater.jsp"/>
+								</td>
+							</tr>
+						</table>
+					</td> 
 					<td>
-						<ul>
-							<li>
-								<span><a><h4>서울</h4></a></span>
-							</li>
-						</ul>
+						
 					</td>
 				</tr>
 			</table>
-		</form>
-		
+		</form>	
 	</center>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
