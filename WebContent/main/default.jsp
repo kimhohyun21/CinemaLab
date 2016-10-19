@@ -6,11 +6,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Main Page</title>
+	<!-- Responsive Slider Library -->
+    <script src="sliderengine/jquery.js"></script>
+    <script src="sliderengine/amazingslider.js"></script>
+    <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
+    <script src="sliderengine/initslider-1.js"></script>
+    <!-- End of Responsive Slider -->
 </head>
 <body>
 	<div align="center">
 		<!-- Insert to your webpage where you want to display the slider -->
-		<div class="slider-wrapper">
 	    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1000px;margin:0px auto 56px;">
 	        <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
 	            <ul class="amazingslider-slides" style="display:none;">
@@ -39,63 +44,11 @@
 	            </ul>
 	        <div class="amazingslider-engine"><a href="http://amazingslider.com" title="Responsive jQuery Content Slider">Responsive jQuery Content Slider</a></div>
 	        </div>
-	        </div>
-	    </div>
-	    <!-- End of body section HTML codes -->
-	    <!-- Insert to your webpage where you want to display the carousel -->
-		<div id="amazingcarousel-container-1">
-		    <div id="amazingcarousel-1" style="display:none;position:relative;width:100%;max-width:1200px;margin:0px auto 0px;">
-		        <div class="amazingcarousel-list-container">
-		            <ul class="amazingcarousel-list">
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10608_103_1-lightbox.jpg" title="10608_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10608_103_1.jpg"  alt="10608_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10611_103_1-lightbox.jpg" title="10611_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10611_103_1.jpg"  alt="10611_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10663_103_1-lightbox.jpg" title="10663_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10663_103_1.jpg"  alt="10663_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10664_103_1-lightbox.jpg" title="10664_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10664_103_1.jpg"  alt="10664_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10668_103_1-lightbox.jpg" title="10668_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10668_103_1.jpg"  alt="10668_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10671_103_1-lightbox.jpg" title="10671_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10671_103_1.jpg"  alt="10671_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10681_103_1-lightbox.jpg" title="10681_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10681_103_1.jpg"  alt="10681_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10707_103_1-lightbox.jpg" title="10707_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10707_103_1.jpg"  alt="10707_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10801_103_1-lightbox.jpg" title="10801_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10801_103_1.jpg"  alt="10801_103_1" /></a></div>                    </div>
-		                </li>
-		                <li class="amazingcarousel-item">
-		                    <div class="amazingcarousel-item-container">
-		<div class="amazingcarousel-image"><a href="images/10804_103_1-lightbox.jpg" title="10804_103_1"  class="html5lightbox" data-group="amazingcarousel-1"><img src="images/10804_103_1.jpg"  alt="10804_103_1" /></a></div>                    </div>
-		                </li>
-		            </ul>
-		            <div class="amazingcarousel-prev"></div>
-		            <div class="amazingcarousel-next"></div>
-		        </div>
-		        <div class="amazingcarousel-nav"></div>
-		        <div class="amazingcarousel-engine"><a href="http://amazingcarousel.com">jQuery Scroller</a></div>
-		    </div>
-		</div>
-		<!-- End of body section HTML codes -->
-	</div>
+        </div>
+    </div>
+    <!-- End of body section HTML codes -->
+   	<div id="vertical-slider">
+   		<jsp:include page="slider.jsp"></jsp:include>
+   	</div>
 </body>
 </html>
