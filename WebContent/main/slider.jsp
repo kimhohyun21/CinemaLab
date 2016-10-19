@@ -28,7 +28,7 @@
 										<script type="text/javascript">
 											$(function(){
 												var $no=$('div.amazingcarousel-image').attr('id');
-												$('div#'+$no).click(function(){													
+												$('div#'+$no+' div.amazingcarousel-hover-effect').click(function(){													
 													location.href="reserve1.do?no="+$no;
 												});
 											});
