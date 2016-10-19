@@ -39,15 +39,22 @@ img.logo{
 #nav ul{
 	list-style: none outside none;
 	position: relative;
-	width: 350px;
+	width: 500px;
 }
 #nav ul li{
 	display: block;
 	float: left;
-	padding: 11px 31px 11px 31px;
+	padding: 11px 51px 11px 51px;
+}
+#nav ul li.noeffect{
+	color: white;
+	padding: 11px 0px 11px 0px;
 }
 #nav ul li:HOVER{
 	background-color: #163fc9;
+}
+#nav ul li.noeffect:HOVER{
+	background-color: #050e2c;
 }
 #nav ul li a{
 	color: white;
@@ -57,6 +64,12 @@ img.logo{
 #article{
 	min-height: 630px;
 	background-color: #dbf0ff;
+}
+#posterSlider-wrapper{
+	display: block;
+}
+#posterSlider-wrapper ul li{
+	float: left;
 }
 #footer{
 	height: 70px;

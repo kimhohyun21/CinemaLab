@@ -11,6 +11,12 @@
     <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
     <script src="sliderengine/initslider-1.js"></script>
     <!-- End of Responsive Slider -->
+    <!-- Insert to your webpage before the </head> -->
+    <script src="carouselengine/jquery.js"></script>
+    <script src="carouselengine/amazingcarousel.js"></script>
+    <link rel="stylesheet" type="text/css" href="carouselengine/initcarousel-1.css">
+    <script src="carouselengine/initcarousel-1.js"></script>
+    <!-- End of head section HTML codes -->
 	<link rel="stylesheet" type="text/css" href="main/style1.css">
 	<script type="text/javascript">
 
@@ -32,7 +38,9 @@
 		<div id="nav">
 			<ul>
 				<li><a href="reserve.do">예매</a></li>
+				<li class="noeffect">|</li>
 				<li><a href="movieList.do">영화</a></li>
+				<li class="noeffect">|</li>
 				<li><a href="theater.do">영화관</a></li>
 			</ul>
 		</div>
