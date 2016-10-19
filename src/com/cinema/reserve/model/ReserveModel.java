@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
+import com.cinema.reserve.dao.*;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -90,7 +91,11 @@ public class ReserveModel {
 		else if(local.equals("부산")){
 			request.setAttribute("eList", eList);
 		}
-
+		
+		//영화 선택
+		String tname=request.getParameter("tname");
+		if(tname==null) tname="";
+		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
 		request.setAttribute("z", z);
 		request.setAttribute("strWeek2", strWeek2);
@@ -101,6 +106,7 @@ public class ReserveModel {
 		request.setAttribute("day", day);
 		request.setAttribute("total", total);
 		request.setAttribute("week", week);
+		request.setAttribute("movieList", movieList);
 	
 		return "reserve/reserve1.jsp";
 	}

@@ -44,6 +44,9 @@
 						</table>
 					</td> 
 					<td>
+						<jsp:include page="movieList.jsp"/>
+					</td>
+					<td>
 						
 					</td>
 				</tr>

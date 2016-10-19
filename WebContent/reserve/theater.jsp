@@ -9,24 +9,19 @@
 </head>
 <body>
 	<c:forEach var="a" items="${aList }">
-		<button type="button" name="${a}" value="${a}">${a}</button>
-		<jsp:include page="movieList.jsp"></jsp:include>
+		<button type="button" name="tname" value="${a}">${a}</button>
 	</c:forEach>
 	<c:forEach var="b" items="${bList }">
-		<button type="button" name="${b}" value="${b}">${b}</button>
-		<jsp:include page="movieList.jsp"></jsp:include>
+		<button type="button" name="tname" value="${b}">${b}</button>
 	</c:forEach>
 	<c:forEach var="c" items="${cList }">
-		<button type="button" name="${c}" value="${c}">${c}</button>
-		<jsp:include page="movieList.jsp"></jsp:include>
+		<button type="button" name="tname" value="${c}">${c}</button>
 	</c:forEach>
 	<c:forEach var="d" items="${dList }">
-		<button type="button" name="${d}" value="${d}">${d}</button>
-		<jsp:include page="movieList.jsp"></jsp:include>
+		<button type="button" name="tname" value="${d}">${d}</button>
 	</c:forEach>
 	<c:forEach var="e" items="${eList }">
-		<button type="button" name="${e}" value="${e}">${e}</button>
-		<jsp:include page="movieList.jsp"></jsp:include>
+		<button type="button" name="tname" value="${e}">${e}</button>
 	</c:forEach>
 </body>
 </html>
