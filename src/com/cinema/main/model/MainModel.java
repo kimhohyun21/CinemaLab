@@ -37,6 +37,8 @@ public class MainModel {
 		request.setAttribute("plist", plist);
 		request.setAttribute("jsp", "default.jsp");
 		
+		request.setAttribute("jsp", "default.jsp");
+		
 		return "main/main.jsp";
 	}
 }
