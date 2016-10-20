@@ -12,7 +12,8 @@
      
      <!-- VO 등록 -->
      <typeAliases>
-        <typeAlias type="com.cinema.main.dao.mainVO" alias="main"/>
+        <typeAlias type="com.cinema.main.dao.MainVO" alias="main"/>
+        <typeAlias type="com.cinema.movieList.dao.MovieVO" alias="movie"/>
      </typeAliases>
      
      <!-- 환경설정 JDBC,DBCP -->
@@ -35,5 +36,6 @@
      <mappers>
         <!-- include -->
         <mapper resource="com/cinema/main/dao/main-mapper.xml"/>
+        <mapper resource="com/cinema/movieList/dao/list-mapper.xml"/>
      </mappers>
   </configuration>

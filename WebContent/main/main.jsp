@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 		<div id="article">
-		
+			<jsp:include page="${jsp }"></jsp:include>
 		</div>
 		<div id="footer">
 			<span>&copy; Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan</span>
