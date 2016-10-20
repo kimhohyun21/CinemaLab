@@ -9,19 +9,22 @@
 </head>
 <body>
 	<c:forEach var="a" items="${aList }">
-		<button type="button" name="tname" value="${a}">${a}</button>
+		<%-- <button type="submit" name="tname" value="${a}">${a}</button> --%>
+		<%-- <input type="hidden" name="tname" value="${a}">
+		<input type="submit" value="${a}"> --%>
+		<a href="reserve.do?local=${local }&tname=${a}">${a}</a>
 	</c:forEach>
 	<c:forEach var="b" items="${bList }">
-		<button type="button" name="tname" value="${b}">${b}</button>
+		<a href="reserve.do?local=${local }&tname=${b}">${b}</a>
 	</c:forEach>
 	<c:forEach var="c" items="${cList }">
-		<button type="button" name="tname" value="${c}">${c}</button>
+		<a href="reserve.do?local=${local }&tname=${c}">${c}</a>
 	</c:forEach>
 	<c:forEach var="d" items="${dList }">
-		<button type="button" name="tname" value="${d}">${d}</button>
+		<a href="reserve.do?local=${local }&tname=${d}">${d}</a>
 	</c:forEach>
 	<c:forEach var="e" items="${eList }">
-		<button type="button" name="tname" value="${e}">${e}</button>
+		<a href="reserve.do?local=${local }&tname=${e}">${a}</a>
 	</c:forEach>
 </body>
 </html>

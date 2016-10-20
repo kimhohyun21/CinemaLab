@@ -94,10 +94,28 @@ public class ReserveModel {
 		
 		//영화 선택
 		String tname=request.getParameter("tname");
-		if(tname==null) tname="";
+		if(tname==null) tname=" ";
+		System.out.println("1."+tname);
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
+		/*for(ReserveVO vo:movieList){
+			System.out.println("4."+vo.getTitle());
+		}*/
 		
+		//영화 상영 시간
+		String title=request.getParameter("title");
+		if(title==null) title=" ";
+		System.out.println("2."+title);
+		List<ReserveVO> timeList=ReserveDAO.timeData(title);
+		System.out.println(timeList==null);
+		for(ReserveVO vo:timeList){
+			System.out.println("4."+vo.getMovietime());
+		}
+		
+	
 		request.setAttribute("z", z);
+		request.setAttribute("local", local);
+		request.setAttribute("tname", tname);
+		request.setAttribute("title", title);
 		request.setAttribute("strWeek2", strWeek2);
 		request.setAttribute("day7", day7);
 		request.setAttribute("lastDay", lastDay);
@@ -107,6 +125,7 @@ public class ReserveModel {
 		request.setAttribute("total", total);
 		request.setAttribute("week", week);
 		request.setAttribute("movieList", movieList);
+		request.setAttribute("timeList", timeList);
 	
 		return "reserve/reserve1.jsp";
 	}

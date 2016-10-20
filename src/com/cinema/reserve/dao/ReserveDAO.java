@@ -14,10 +14,19 @@ public class ReserveDAO {
 		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
-	public static List<ReserveVO> movieData(String name){
+	public static List<ReserveVO> movieData(String tname){
 		SqlSession session=ssf.openSession();
-		List<ReserveVO> movieList=session.selectOne("movieData", name);
+		List<ReserveVO> movieList=session.selectList("movieData", tname);
+		//System.out.println(tname);
 		session.close();
 		return movieList;
+	}
+	
+	public static List<ReserveVO> timeData(String title){
+		SqlSession session=ssf.openSession();
+		List<ReserveVO> timeList=session.selectList("timeData", title);
+		System.out.println("3."+title);
+		session.close();
+		return timeList;
 	}
 }

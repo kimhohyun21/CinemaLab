@@ -4,6 +4,8 @@ public class ReserveVO {
 	private int mNo;
 	private String grade;
 	private String title;
+	private String theaterNo;
+	private String movietime;
 	
 	public int getmNo() {
 		return mNo;
@@ -23,6 +25,17 @@ public class ReserveVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+	public String getTheaterNo() {
+		return theaterNo;
+	}
+	public void setTheaterNo(String theaterNo) {
+		this.theaterNo = theaterNo;
+	}
+	public String getMovietime() {
+		return movietime;
+	}
+	public void setMovietime(String movietime) {
+		this.movietime = movietime;
+	}
 	
 }

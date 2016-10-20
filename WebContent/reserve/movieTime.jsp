@@ -10,8 +10,8 @@
 </head>
 <body>
 	<center>
-		<c:forEach var="vo" items="${movieList }">
-			<span>${vo.grade}</span><a href="reserve.do?local=${local }&tname=${tname}&title=${vo.title}">${vo.title}</a>
+		<c:forEach var="vo" items="${timeList }">
+			<span>${vo.theaterNo }</span><a>${vo.movietime }</a>
 		</c:forEach>
 	</center>
 </body>

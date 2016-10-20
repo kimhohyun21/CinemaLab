@@ -11,7 +11,7 @@
 	<center>
 		<h2>예매</h2>
 		<form action="reserve.do" method="post" name="frm">
-			<table width="1000" height="500" border="1">
+			<table width="1200" height="500" border="1">
 				<tr height="40">
 					<td>날짜</td>
 					<td>극장</td>
@@ -47,7 +47,7 @@
 						<jsp:include page="movieList.jsp"/>
 					</td>
 					<td>
-						
+						<jsp:include page="movieTime.jsp"/>
 					</td>
 				</tr>
 			</table>
