@@ -12,7 +12,8 @@
      
      <!-- VO 등록 -->
      <typeAliases>
-        <typeAlias type="com.cinema.main.dao.mainVO" alias="main"/>
+        <typeAlias type="com.cinema.main.dao.MainVO" alias="Main"/>
+        <typeAlias type="com.cinema.main.dao.ReserveVO" alias="Reserve"/>
      </typeAliases>
      
      <!-- 환경설정 JDBC,DBCP -->

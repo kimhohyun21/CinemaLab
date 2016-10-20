@@ -15,9 +15,9 @@ public class MainDAO {
 	}
 	
 	//기능 추가 ==> 메인 페이지에 필요한 영화 정보 가져오기
-	public static List<MainVO> getListData(Map map){
+	public static List<MainVO> getListData(){
 		SqlSession session=ssf.openSession();
-		List<MainVO> list=session.selectList("getListData", map);
+		List<MainVO> list=session.selectList("getListData");
 		session.close();
 		
 		return list;
