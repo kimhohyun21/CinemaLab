@@ -21,7 +21,9 @@
 				</ul>
 			</div>
 			<br/>		
-			<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
+				<a href="main.do">
+					<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
+				</a>
 		</div>
 		<div id="nav">
 			<ul>
