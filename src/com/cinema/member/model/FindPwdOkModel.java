@@ -16,7 +16,6 @@ public class FindPwdOkModel {
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		MemberDAO dao=new MemberDAO();
 		MemberVO vo=new MemberVO();
 		
 		String name=request.getParameter("name");
@@ -25,7 +24,7 @@ public class FindPwdOkModel {
 		vo.setName(name);
 		vo.setId(id);
 		
-		String pwd=dao.memberFindPwd(vo);
+		String pwd=MemberDAO.memberFindPwd(vo);
 		request.setAttribute("id", "ÆÐ½º");
 		request.setAttribute("pwd", pwd);
 		
