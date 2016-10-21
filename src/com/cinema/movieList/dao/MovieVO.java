@@ -1,26 +1,17 @@
-package com.cinema.main.dao;
+package com.cinema.movieList.dao;
 
-import java.util.*;
+import java.util.Date;
 
-public class MainVO {
-	private int mNo;
+public class MovieVO {
 	private String poster;
 	private String title;
-	private Date openDate;
+	private Date opendate;
 	private String grade;
 	private String content;
 	private String trailer;
 	private int type;
-	private int rank;
+	private String rank;
 	private int movieLike;
-	private int cNo;
-	
-	public int getmNo() {
-		return mNo;
-	}
-	public void setmNo(int mNo) {
-		this.mNo = mNo;
-	}
 	public String getPoster() {
 		return poster;
 	}
@@ -33,11 +24,11 @@ public class MainVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getOpenDate() {
-		return openDate;
+	public Date getOpendate() {
+		return opendate;
 	}
-	public void setOpenDate(Date openDate) {
-		this.openDate = openDate;
+	public void setOpendate(Date opendate) {
+		this.opendate = opendate;
 	}
 	public String getGrade() {
 		return grade;
@@ -63,10 +54,10 @@ public class MainVO {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getRank() {
+	public String getRank() {
 		return rank;
 	}
-	public void setRank(int rank) {
+	public void setRank(String rank) {
 		this.rank = rank;
 	}
 	public int getMovieLike() {
@@ -75,13 +66,6 @@ public class MainVO {
 	public void setMovieLike(int movieLike) {
 		this.movieLike = movieLike;
 	}
-	public int getcNo() {
-		return cNo;
-	}
-	public void setcNo(int cNo) {
-		this.cNo = cNo;
-	}	
 	
 	
 }
-
