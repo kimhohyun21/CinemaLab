@@ -27,6 +27,8 @@ img.logo{
 	display: block;
 	margin: 10px;
 	float: left;
+	color: #ffffff;
+	font-weight: bold;
 }
 #mini_nav ul li a{
 	color: #ffffff;
