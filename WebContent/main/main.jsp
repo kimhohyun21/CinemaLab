@@ -21,7 +21,7 @@
 				</ul>
 			</div>
 			<br/>		
-			<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
+			<a href="main.do"><img alt="logo" class="logo" src="image/marvel_cinema_logo.png"></a>
 		</div>
 		<div id="nav">
 			<ul>
@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 		<div id="article">
-		
+			<jsp:include page="${jsp }"></jsp:include>
 		</div>
 		<div id="footer">
 			<span>&copy; Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan</span>

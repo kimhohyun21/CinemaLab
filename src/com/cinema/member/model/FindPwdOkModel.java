@@ -1,0 +1,35 @@
+package com.cinema.member.model;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.cinema.controller.Controller;
+import com.cinema.controller.RequestMapping;
+import com.cinema.member.dao.MemberDAO;
+import com.cinema.member.dao.MemberVO;
+
+@Controller
+public class FindPwdOkModel {
+	@RequestMapping("find_pwd_ok.do")
+	public String memberJoin(HttpServletRequest request){
+		try{
+			request.setCharacterEncoding("EUC-KR");
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		MemberDAO dao=new MemberDAO();
+		MemberVO vo=new MemberVO();
+		
+		String name=request.getParameter("name");
+		String id=request.getParameter("id");
+	
+		vo.setName(name);
+		vo.setId(id);
+		
+		String pwd=dao.memberFindPwd(vo);
+		request.setAttribute("id", "ÆÐ½º");
+		request.setAttribute("pwd", pwd);
+		
+		request.setAttribute("jsp", "../login/giveimpo.jsp");
+		return "main/main.jsp";
+	}
+}
