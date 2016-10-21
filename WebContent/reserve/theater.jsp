@@ -9,10 +9,7 @@
 </head>
 <body>
 	<c:forEach var="a" items="${aList }">
-		<%-- <button type="submit" name="tname" value="${a}">${a}</button> --%>
-		<%-- <input type="hidden" name="tname" value="${a}">
-		<input type="submit" value="${a}"> --%>
-		<a href="reserve.do?local=${local }&tname=${a}">${a}</a>
+		<a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${a}">${a}</a>
 	</c:forEach>
 	<c:forEach var="b" items="${bList }">
 		<a href="reserve.do?local=${local }&tname=${b}">${b}</a>

@@ -11,7 +11,8 @@
 <body>
 	<center>
 		<c:forEach var="vo" items="${timeList }">
-			<span>${vo.theaterNo }</span><a>${vo.movietime }</a>
+			<span>${vo.theaterNo }  </span>
+			<a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${vo.theaterNo}&movietime=${vo.movietime}">${vo.movietime }</a>
 		</c:forEach>
 	</center>
 </body>

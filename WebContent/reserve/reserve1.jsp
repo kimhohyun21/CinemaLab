@@ -10,7 +10,6 @@
 <body>
 	<center>
 		<h2>예매</h2>
-		<form action="reserve.do" method="post" name="frm">
 			<table width="1200" height="500" border="1">
 				<tr height="40">
 					<td>날짜</td>
@@ -23,7 +22,20 @@
 						<p>${year }</p>
 						<p>${month }</p>
 						<c:forEach var="c" begin="0" end="6" step="1" items="${strWeek2 }">
-							<p><input type="radio" name="day" value="${day7[z] }" style="display:none">${c } ${day7[z] }</p>
+							<c:choose>
+								<c:when test="${day7[z]==1}">	<!-- 다음달로 넘어가게 되면 다음달 표기 -->
+									<p>${month+1 }</p>
+									<p><a href="reserve.do?checkedDay=${day7[z]}&checkedDay2=${c}">${c } ${day7[z] }</a></p>
+								</c:when>
+								<c:when test="${month==12 }&${day7[z]==31 }"> <!-- 12월 31일이면 다음년도, 1월로 표기 -->
+									<p>${year+1 }</p>
+									<p>1</p>
+									<p><a href="reserve.do?checkedDay=${day7[z]}&checkedDay2=${c}">${c } ${day7[z] }</a></p>
+								</c:when>	
+								<c:otherwise>
+									<p><a href="reserve.do?checkedDay=${day7[z]}&checkedDay2=${c}">${c } ${day7[z] }</a></p>
+								</c:otherwise>
+							</c:choose>
 							<c:set var="z" value="${z=z+1 }"></c:set>
 						</c:forEach>
 					</td>
@@ -51,10 +63,32 @@
 					</td>
 				</tr>
 			</table>
-		</form>	
+			<table width="1200" border="1">
+				<tr>
+					<td>
+						포스터 이미지
+						영화 : ${grade } / ${title } 
+					</td>
+					<td>
+						일시 : ${year }.${month }.${checkedDay }.${checkedDay2 }
+					</td>
+					<td>
+						극장 : ${tname } / ${theaterNo } 관 / ${movietime }
+					</td>
+					
+				</tr>
+			</table>
+			<input type="button" value="취소">
+			<input type="submit" value="결제">
 	</center>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

@@ -15,7 +15,7 @@ public class ReserveModel {
 	public String main(HttpServletRequest request){
 		
 		//날짜 계산
-		int i,j,a;
+		int i,j,a,b;
 		int[] day7={0,0,0,0,0,0,0};
 		String[] strWeek2={"","","","","","",""};
 		Date date=new Date();
@@ -29,42 +29,53 @@ public class ReserveModel {
 		String ss=st.nextToken();
 		
 		int[] lastDay={31,28,31,30,31,30,31,31,30,31,30,31};
+		int lastDay2;
 		
 		int year=Integer.parseInt(sy);
 		int month=Integer.parseInt(sm);
 		int day=Integer.parseInt(sd);
+		int day2=day;
 		
+		//오늘의 요일부터 7일까지만 다른 배열에 넣어주기
 		String[] strWeek={"일","월","화","수","목","금","토"};
 		for(i=0; i<=6; i++){
 			if(ss.equals(strWeek[i])){
 				break;
 			}	
 		}
-		for(int b=0; b<=6; b++){
+		
+		for(b=0; b<=6; b++){
 			strWeek2[b]=strWeek[i];
 			i++;
 			if(i==7){
 				i=0;
 			}
 		}
-		for(j=0; j<=6; j++){
-			day7[j]=day;
-			day++;
-		}
-		int total=(year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;
 		
+		//오늘의 일부터 7일까지만 다른 배열에 따로 넣어주기
 		if((year%4==0 && year%100!=0)||(year%400==0))
 			lastDay[1]=29;
 		else
 			lastDay[1]=28;
 		
-		for(a=0; a<month-1; a++){
-			total+=lastDay[a];
+		a=0;
+		while(a==month-1){
+			a++;
 		}
-		total++;
+		lastDay2=lastDay[a];
 		
-		int week=total%7;
+		for(j=0; j<=6; j++){
+			day7[j]=day2;
+			day2++;
+			if(day2>lastDay2) day2=1;
+		}
+		
+		//int total=(year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;
+	
 		int z=0;
+		
+		String checkedDay=request.getParameter("checkedDay");
+		String checkedDay2=request.getParameter("checkedDay2");
 		
 		//극장 선택
 		String local=request.getParameter("local");
@@ -95,35 +106,35 @@ public class ReserveModel {
 		//영화 선택
 		String tname=request.getParameter("tname");
 		if(tname==null) tname=" ";
-		System.out.println("1."+tname);
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
-		/*for(ReserveVO vo:movieList){
-			System.out.println("4."+vo.getTitle());
-		}*/
 		
 		//영화 상영 시간
 		String title=request.getParameter("title");
 		if(title==null) title=" ";
-		System.out.println("2."+title);
-		List<ReserveVO> timeList=ReserveDAO.timeData(title);
-		System.out.println(timeList==null);
-		for(ReserveVO vo:timeList){
-			System.out.println("4."+vo.getMovietime());
-		}
 		
-	
-		request.setAttribute("z", z);
-		request.setAttribute("local", local);
-		request.setAttribute("tname", tname);
+		Map map=new HashMap();
+		map.put("tname", tname);
+		map.put("title", title);
+		List<ReserveVO> timeList=ReserveDAO.timeData(map);
+		
+		String grade=request.getParameter("grade");
+		String theaterNo=request.getParameter("theaterNo");
+		String movietime=request.getParameter("movietime");
+		
+		request.setAttribute("grade", grade);
 		request.setAttribute("title", title);
-		request.setAttribute("strWeek2", strWeek2);
-		request.setAttribute("day7", day7);
-		request.setAttribute("lastDay", lastDay);
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
+		request.setAttribute("checkedDay", checkedDay);
+		request.setAttribute("checkedDay2", checkedDay2);
+		request.setAttribute("movietime", movietime);
+		request.setAttribute("tname", tname);
+		request.setAttribute("theaterNo", theaterNo);
+		request.setAttribute("z", z);
+		request.setAttribute("local", local);
+		request.setAttribute("strWeek2", strWeek2);
+		request.setAttribute("day7", day7);
 		request.setAttribute("day", day);
-		request.setAttribute("total", total);
-		request.setAttribute("week", week);
 		request.setAttribute("movieList", movieList);
 		request.setAttribute("timeList", timeList);
 	
