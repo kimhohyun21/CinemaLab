@@ -19,21 +19,18 @@
 			<tr>
 				<td>
 					<a href="movieList.do?type=0">
-						<button class="past_btn">
-							<img src="">
-							<span class="past">상영 종료 영화</span>
+						<button class="list_btn">
+							<span class="list">상영 종료 영화</span>
 						</button>
 					</a>
 					<a href="movieList.do?type=1">
-						<button class="present_btn">
-							<img src="">
-							<span class="present">현재 상영 영화</span>
+						<button class="list_btn">
+							<span class="list">현재 상영 영화</span>
 						</button>
 					</a>
 					<a href="movieList.do?type=2">
-						<button class="future_btn">
-							<img src="">
-							<span class="future">상영 예정 영화</span>
+						<button class="list_btn">
+							<span class="list">상영 예정 영화</span>
 						</button>
 					</a>
 				</td>
@@ -48,7 +45,7 @@
 			<tr>
 		</c:if>
 				<td>
-					<table>
+					<table border="1">
 						<tr>
 							<td colspan="2">
 								<a href="movie_detail.do?no=cno">
@@ -57,21 +54,33 @@
 							</td>
 						</tr>
 						<tr>	
-							<td align="center" colspan="2">
-							<span class="grade">${vo.grade }</span>
-								${vo.title }
+							<td align="center" colspan="2" class="title">
+							<c:if test="${vo.grade=='0'}">
+							<img src="image/bg_grade_all.png" width="18px">
+							</c:if>
+							<c:if test="${vo.grade=='12'}">
+							<img src="image/bg_grade_12.png" width="18px">
+							</c:if>
+							<c:if test="${vo.grade=='15'}">
+							<img src="image/bg_grade_15.png" width="18px">
+							</c:if>
+							<c:if test="${vo.grade=='18'}">
+							<img src="image/bg_grade_18.png" width="18px">
+							</c:if>
+							${vo.title }
 							</td>
 						</tr>
 						<tr>
 							<td align="center">
-								${vo.rank }
+								예매율 ${vo.rank }%
 							</td>
 							<td align="center">
-								${vo.movieLike }
+								관람 평점 ${vo.movieLike }
 							</td>
 						</tr>
 					</table>
 				</td>
+				<div style="height:7px;">&nbsp;</div>
 		<c:set var="i" value="${i+1}" />
 		<c:if test="${i==j+1}">
 			</tr>
