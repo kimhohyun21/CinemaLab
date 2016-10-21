@@ -21,12 +21,16 @@
 				</ul>
 			</div>
 			<br/>		
-			<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
+				<a href="main.do">
+					<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
+				</a>
 		</div>
 		<div id="nav">
 			<ul>
 				<li><a href="reserve.do">예매</a></li>
+				<li class="noeffect">|</li>
 				<li><a href="movieList.do">영화</a></li>
+				<li class="noeffect">|</li>
 				<li><a href="theater.do">영화관</a></li>
 			</ul>
 		</div>
@@ -34,7 +38,7 @@
 			<jsp:include page="${jsp }"></jsp:include>
 		</div>
 		<div id="footer">
-			<span>&copy; Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan</span>
+			<span>&copy;2016 Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan</span>
 		</div>
 	</div>
 </body>
