@@ -38,53 +38,47 @@
 				</td>
 			</tr>
 		</table>
-		<table border="0">
-			<c:set var="loop" value="false"/>
-			<c:set var="a" value="0"/>
-			<c:set var="b" value="${(fn:length(list))/3 }"/>
-			<c:if test="${(fn:length(list))%3!=0}">
-				<c:set var="b" value="${b+1 }"/>
-			</c:if>
-			<c:forEach var="vo" items="${list }">			
-			<c:forEach var="i" begin="1" end="${b }" step="1">
-				<tr>
-				<c:if test="${not loop }">
-				<c:forEach var="j" begin="1" end="4" step="1" >
-					<td align="center" class="link">
-						<table border="0">
-							<tr>
-								<td colspan="2">
-									<a href="movie_detail.do?no=cno">
-										<img src="${list[a].poster}" width="200" height="270">
-									</a>
-								</td>
-							</tr>
-							<tr>	
-								<td align="center" colspan="2">
-								<span class="grade">${list[a].grade }</span>
-									${list[a].title }
-								</td>
-							</tr>
-							<tr>
-								<td align="center">
-									${list[a].rank }
-								</td>
-								<td align="center">
-									${list[a].movieLike }
-								</td>
-							</tr>
-						</table>
-					</td>
-					<c:set var="a" value="${a+1 }"/>
-				</c:forEach>
-				<c:if test="${a>(fn:length(list))-1 }">
-					<c:set var="loop" value="true"/>
-				</c:if>	
-				</c:if>			
-				</tr>				
-			</c:forEach>		
-			</c:forEach>
-		</table>		
+	<c:set var="i" value="1"/>
+	<c:set var="j" value="4" />
+	<c:if test="${list!=null }">
+		<table>
+	<c:forEach var="vo" items="${list }">
+		<c:if test="${i==1}">
+			<tr>
+		</c:if>
+				<td>
+					<table>
+						<tr>
+							<td colspan="2">
+								<a href="movie_detail.do?no=cno">
+									<img src="${vo.poster}" width="200" height="270">
+								</a>
+							</td>
+						</tr>
+						<tr>	
+							<td align="center" colspan="2">
+							<span class="grade">${vo.grade }</span>
+								${vo.title }
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								${vo.rank }
+							</td>
+							<td align="center">
+								${vo.movieLike }
+							</td>
+						</tr>
+					</table>
+				</td>
+		<c:set var="i" value="${i+1}" />
+		<c:if test="${i==j}">
+			</tr>
+		<c:set var="i" value="1" />
+		</c:if>
+	</c:forEach>
+		</table>
+	</c:if>
 	</div>
 </body>
 </html>
