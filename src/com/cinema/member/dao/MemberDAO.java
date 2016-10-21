@@ -11,16 +11,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.cinema.dao.CreateSqlSessionFactory;
 
 public class MemberDAO {
-private static SqlSessionFactory ssf;
+	private static SqlSessionFactory ssf; //생성하면 db connection
 	
 	static{
-		try{
-			//SqlSessionBuilder를 사용해서 SqlSession 객체 생성
-			Reader reader=Resources.getResourceAsReader("config.xml");
-			ssf=new SqlSessionFactoryBuilder().build(reader);
-		}catch(Exception ex){
-			System.out.println(ex.getMessage());
-		}
+		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
 	public static void memberInsert(MemberVO vo){
