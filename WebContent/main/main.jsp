@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,8 +16,15 @@
 		<div id="header">
 			<div id="mini_nav">
 				<ul>
+				<c:if test="${vo.id==null }">
 					<li><a href="login.do">로그인</a></li>
 					<li><a href="member.do">회원가입</a></li>
+				</c:if>
+				<c:if test="${vo.id!=null }">
+					<li>${vo.name }님 반갑습니다!</li>
+					<li><a href="logout.do">로그아웃</a></li>
+					<li><a href="mypage.do">마이페이지</a></li>
+				</c:if>					
 					<li><a href="customer.do">고객센터</a></li>
 				</ul>
 			</div>
