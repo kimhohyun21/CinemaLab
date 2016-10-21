@@ -3,7 +3,7 @@
 	PUBLIC "-//myBatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="com.cinema.memeber.dao.member-mapper">
+<mapper namespace="com.cinema.member.dao.member-mapper">
 	<insert id="memberInsert" parameterType="member">
 		INSERT INTO member(no,id,pwd,name,phone,birth)
 		VALUES((SELECT NVL(MAX(no)+1,1) FROM member),
@@ -28,7 +28,7 @@
 		UPDATE member SET id=#{id} pwd=#{pwd} name=#{name} phone=#{phone} birth=#{birth}
 		WHERE no=#{no]
 	</update>
-	<!-- <select id="memberOverlab" resultType="member">
+	<select id="memberOverlab" resultType="member">
 		SELECT id FROM member
-	</select> -->
+	</select>
 </mapper>
