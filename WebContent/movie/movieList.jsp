@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<a href="main.do"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
@@ -19,7 +20,7 @@
 					<a href="movieList.do?type=0">
 						<button class="past_btn">
 							<img src="">
-							<span class="past">마블 대표 영화</span>
+							<span class="past">상영 종료 영화</span>
 						</button>
 					</a>&nbsp;&nbsp;
 					<a href="movieList.do?type=1">
@@ -58,10 +59,10 @@
 							</tr>
 							<tr>
 								<td align="center">
-									${vo.rank }
+									예매율 ${vo.rank }%
 								</td>
 								<td align="center">
-									${vo.movieLike }
+									관람 평점 ${vo.movieLike }
 								</td>
 							</tr>
 						</table>
