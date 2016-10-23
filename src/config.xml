@@ -37,7 +37,7 @@
      <mappers>
         <!-- include -->
         <mapper resource="com/cinema/main/dao/main-mapper.xml"/>
-         <mapper resource="com/cinema/reserve/dao/reserve-mapper.xml"/>
+        <mapper resource="com/cinema/reserve/dao/reserve-mapper.xml"/>
         <mapper resource="com/cinema/movieList/dao/list-mapper.xml"/>
      </mappers>
   </configuration>
