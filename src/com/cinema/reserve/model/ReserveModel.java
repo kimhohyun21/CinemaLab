@@ -103,6 +103,7 @@ public class ReserveModel {
 			request.setAttribute("eList", eList);
 		}
 		
+		System.out.println(local);
 		//영화 선택
 		String tname=request.getParameter("tname");
 		if(tname==null) tname=" ";
@@ -137,7 +138,8 @@ public class ReserveModel {
 		request.setAttribute("day", day);
 		request.setAttribute("movieList", movieList);
 		request.setAttribute("timeList", timeList);
+		request.setAttribute("jsp", "../reserve/reserve1.jsp");
 	
-		return "reserve/reserve1.jsp";
+		return "main/main.jsp";
 	}
 }
