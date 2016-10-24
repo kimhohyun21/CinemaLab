@@ -31,6 +31,12 @@ function send(){
 		alert("아이디를 입력하세요");
 		f.id.focus();
 		return;
+	}return;	
+	var number = /[^0-9]/;
+	 if (f.phone.value.search(number)!=-1 || f.phone.value.length == 0 || f.phone.value.length != 11){
+	        alert("전화번호를 제대로 입력해주세요. \n전화번호는 숫자만 입력하실 수 있습니다 \n ex)01015771577");
+	        f.phone.focus();
+	        return;
 	}
 	f.submit();  
 }
@@ -48,6 +54,11 @@ function send(){
 				<tr>
 					<td align="center">
 						<input type="text" placeholder="아이디" name="id">
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<input type="text" placeholder="전화번호" name="phone">
 					</td>
 				</tr>
 			</table>
