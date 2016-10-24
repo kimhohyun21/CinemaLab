@@ -3,7 +3,7 @@
 	PUBLIC "-//myBatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
 <mapper namespace="com.cinema.member.dao.member-mapper">
-	<!-- <insert id="memberInsert" parameterType="Member">
+	<insert id="memberInsert" parameterType="Member">
 		INSERT INTO member(no,id,pwd,name,phone,birth)
 		VALUES((SELECT NVL(MAX(no)+1,1) FROM member),
 		#{id},#{pwd},#{name},#{phone},#{birth})
@@ -11,7 +11,7 @@
 	<select id="memberIdCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM member WHERE id=#{id}
 	</select>
-	<select id="memberImfor" parameterType="String" resultType="Member">
+	<select id="memberGetImfor" parameterType="String" resultType="Member">
 		SELECT id,pwd,name,phone,birth,no FROM member WHERE id=#{id} 
 	</select>
 	<select id="memberFindId" parameterType="Member" resultType="String">
@@ -23,11 +23,11 @@
 	<delete id="memberDelete" parameterType="Member">
 		DELETE member WHERE no=#{no}
 	</delete>
-	<update id="memberModify" parameterMap="Member">
+	<!-- <update id="memberModify" parameterMap="Member">
 		UPDATE member SET id=#{id} pwd=#{pwd} name=#{name} phone=#{phone} birth=#{birth}
 		WHERE no=#{no]
-	</update>
+	</update> -->
 	<select id="memberOverlab" resultType="Member">
 		SELECT id FROM member
-	</select> -->
+	</select>
 </mapper>
