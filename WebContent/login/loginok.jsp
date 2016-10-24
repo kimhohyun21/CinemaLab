@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:if test="${check=='ok' }">
-	<c:redirect url="main.do"/>	
+	<c:redirect url="main.do"/>
 </c:if>
 <c:if test="${check=='pwdnot' }">
 	<script type="text/javascript">

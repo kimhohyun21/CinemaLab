@@ -16,12 +16,12 @@
 		<div id="header">
 			<div id="mini_nav">
 				<ul>
-				<c:if test="${vo.id==null }">
+				<c:if test="${mvo.id==null }">
 					<li><a href="login.do">로그인</a></li>
 					<li><a href="member.do">회원가입</a></li>
 				</c:if>
-				<c:if test="${vo.id!=null }">
-					<li>${vo.name }님 반갑습니다!</li>
+				<c:if test="${mvo.id!=null }">
+					<li>${mvo.name }님 반갑습니다!</li>
 					<li><a href="logout.do">로그아웃</a></li>
 					<li><a href="mypage.do">마이페이지</a></li>
 				</c:if>					

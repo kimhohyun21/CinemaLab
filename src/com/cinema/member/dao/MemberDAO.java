@@ -67,10 +67,5 @@ public class MemberDAO {
 		session.close();
 		return id;
 	}
-	
-	public static void memberModify(MemberVO vo){
-		
-		
-	}
 
 }
