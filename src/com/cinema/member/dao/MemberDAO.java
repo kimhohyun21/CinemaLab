@@ -73,10 +73,5 @@ private static SqlSessionFactory ssf;
 		session.close();
 		return id;
 	}
-	
-	public static void memberModify(MemberVO vo){
-		
-		
-	}
 
 }
