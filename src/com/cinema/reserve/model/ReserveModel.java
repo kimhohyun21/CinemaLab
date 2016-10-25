@@ -69,47 +69,25 @@ public class ReserveModel {
 			day2++;
 			if(day2>lastDay2) day2=1;
 		}
-		
-		//int total=(year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;
-	
 		int z=0;
 		
 		String checkedDay=request.getParameter("checkedDay");
 		String checkedDay2=request.getParameter("checkedDay2");
 		
-		//극장 선택
+		//지역 선택
 		String local=request.getParameter("local");
-		String[] aList={"신도림","영등포","홍대입구"};
-		String[] bList={"수원","안산","용인"};
-		String[] cList={"검단","부평","인천"};
-		String[] dList={"상인","성서","율하"};
-		String[] eList={"부산","서면","해운대"};
-		if(local==null){
-			local="서울";
-		}
-		if(local.equals("서울")){
-			request.setAttribute("aList", aList);
-		}
-		else if(local.equals("경기")){
-			request.setAttribute("bList", bList);
-		}
-		else if(local.equals("인천")){
-			request.setAttribute("cList", cList);
-		}
-		else if(local.equals("대구")){
-			request.setAttribute("dList", dList);
-		}
-		else if(local.equals("부산")){
-			request.setAttribute("eList", eList);
-		}
+		if(local==null) local=" ";
+		List<ReserveVO> localList=ReserveDAO.localData();
 		
-		System.out.println(local);
+		//극장 선택
+		List<ReserveVO> theaterList=ReserveDAO.theaterData(local);
+			
 		//영화 선택
 		String tname=request.getParameter("tname");
 		if(tname==null) tname=" ";
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
-		//영화 상영 시간
+		//영화 상영 시간 선택
 		String title=request.getParameter("title");
 		if(title==null) title=" ";
 		
@@ -138,6 +116,8 @@ public class ReserveModel {
 		request.setAttribute("day", day);
 		request.setAttribute("movieList", movieList);
 		request.setAttribute("timeList", timeList);
+		request.setAttribute("localList", localList);
+		request.setAttribute("theaterList", theaterList);
 		request.setAttribute("jsp", "../reserve/reserve1.jsp");
 	
 		return "main/main.jsp";
