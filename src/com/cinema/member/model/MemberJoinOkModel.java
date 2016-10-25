@@ -11,6 +11,7 @@ public class MemberJoinOkModel {
 	
 	@RequestMapping("join_ok.do") //회원등록
 	public String memberJoinOk(HttpServletRequest request){
+		int countid=0;
 		try{
 			request.setCharacterEncoding("EUC-KR");
 			String id=request.getParameter("id");
@@ -21,7 +22,7 @@ public class MemberJoinOkModel {
 			
 			phone=phone.substring(0, 3)+"-"+phone.substring(3,7)+"-"+phone.substring(7,11);
 			birth=birth.substring(0, 4)+"-"+birth.substring(4,6)+"-"+birth.substring(6,8);
-			
+						
 			MemberVO vo=new MemberVO();
 			vo.setId(id);
 			vo.setPwd(pwd);
@@ -34,7 +35,7 @@ public class MemberJoinOkModel {
 			System.out.println(ex.getMessage());
 		}
 		request.setAttribute("join", "가입성공");
-		request.setAttribute("jsp", "../login/login.jsp");
+		request.setAttribute("jsp", "../login/loginok.jsp");
 
 		return "main/main.jsp";
 	}

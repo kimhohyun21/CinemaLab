@@ -61,11 +61,11 @@ public class MemberDAO {
 		session.close();	
 	}
 	
-	public static List<MemberVO> memberOverlab(){
+	public static int memberOverlab(String id){
 		SqlSession session=ssf.openSession();
-		List<MemberVO> id=session.selectList("memberOverlab");
+		int countid=session.selectOne("memberOverlab", id);
 		session.close();
-		return id;
+		return countid;
 	}
 
 }
