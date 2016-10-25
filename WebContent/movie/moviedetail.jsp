@@ -8,7 +8,8 @@
 </head>
 <body>
 	<div align="center">
-		${vo.title }
+		${vo.title }<br/>
+		<iframe width="640" height="360" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen/>
 	</div>
 </body>
 </html>

@@ -1,11 +1,18 @@
 @CHARSET "EUC-KR";
 
 div.seat{
+	text-align: center;
+	width:100%;
 }
-div.seat ul{
+div.seat div.line{
+	height: 20px;
+}
+div.seat div.line ul{
 	margin: 0px;
+	height: 20px;
+	padding: 0px;
 }
-div.seat ul li{
+div.seat div.line ul li{
 	list-style: none;
 	float: left;
 	height: 20px;
@@ -16,5 +23,6 @@ div.seat ul li{
 	margin: 1px 5px 1px 5px;
 	padding: 1px;
 	font-size: 9pt;
-	position:relative;
+	position: relative;
+	left: 30%;
 }
