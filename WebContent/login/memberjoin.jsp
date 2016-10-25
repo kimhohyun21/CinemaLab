@@ -22,8 +22,14 @@
 <script type="text/javascript">
 function send(){
 	 var f=document.frm;
+	 alert("PP\n ${ok}")
 	 /*var pwd=f.pwd.value;
 	var pwdCheck=f.pwd_check.value;
+	 if(f.id.value==""){
+		alert("ID를 입력하세요 \n ID는 영어만 입력가능합니다");
+		f.id.focus();
+		return;
+	}
 	if(f.name.value==""){
 		alert("이름을 입력하세요");
 		f.name.focus();
@@ -48,7 +54,7 @@ function send(){
 		alert("비밀번호가 맞지 않습니다");
 		return;
 	}}*/
-	var number = /[^0-9]/;
+	/* var number = /[^0-9]/;
 	 if (f.birth.value.search(number)!=-1 || f.birth.value.length != 8 || f.birth.value==""){
 	        alert("생년월일은 숫자만 8자리를 입력해 주시기 바랍니다 "
 	        		+"\n ex)20161018");	        
@@ -59,10 +65,28 @@ function send(){
 	        alert("전화번호를 제대로 입력해주세요. \n전화번호는 숫자만 입력하실 수 있습니다 \n ex)01015771577");
 	        f.phone.focus();
 	        return;
-	   }
-	f.submit();  
+	   } */
+	var $ok="${ok }";
+	   console.log($ok);
+	 if($ok != 'ok'){
+	 		alert("중복체크를 해주세요") 
+	 		return;
+	  }
+	f.submit();
 }
-</script>
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+function checkID(){
+	var f=document.frm;
+	var id=f.id.value;
+	if(id==""){
+		alert("ID를 입력해주세요");
+		f.id.focus();
+	}
+	location.href="overlab.do?id="+id;
+	/* window.open("login/checkid.jsp?id=${id }","중복첵","width=400 height=150"); */
+	
+}
+</script>	
 </head>
 <body>
 	<center>
@@ -75,7 +99,8 @@ function send(){
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="아이디" name="id">
+						<input type="text" placeholder="아이디" name="id" style="ime-mode:disabled" value="${checkid }">
+						<input type="button" value="중복확인" onclick="checkID()">
 					</td>
 				</tr>
 				<tr>
@@ -95,13 +120,13 @@ function send(){
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone">
+						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone">			
 					</td>
 				</tr>
 			</table>
 		</form>
 		
-		<input id="button" type="button" value="회원가입" onclick="send()" width="300"><br/>
+		<input id="button" type="button" value="회원가입" onclick="send()" width="300"><br/>					
 		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
 	</center>
 </body>

@@ -19,16 +19,16 @@
 		SELECT id FROM member WHERE name=#{name} and phone=#{phone} and birth=#{birth}
 	</select>
 	<select id="memberFindPwd" parameterType="member" resultType="String">
-		SELECT pwd FROM member WHERE name=#{name} and id=#{id}  
+		SELECT pwd FROM member WHERE name=#{name} AND id=#{id} AND phone=#{phone}  
 	</select>
 	<delete id="memberDelete" parameterType="member">
 		DELETE member WHERE no=#{no}
 	</delete>
+	<select id="memberOverlab" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM member WHERE id=#{id} 
+	</select>
 	<!-- <update id="memberModify" parameterMap="member">	
 		UPDATE member SET id=#{id} pwd=#{pwd} name=#{name} phone=#{phone} birth=#{birth}
 		WHERE no=#{no]
 	</update> -->
-	<select id="memberOverlab" resultType="member">
-		SELECT id FROM member
-	</select>
 </mapper>
