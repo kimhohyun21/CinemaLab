@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div align="center">
-		
+		${vo.title }
 	</div>
 </body>
 </html>
