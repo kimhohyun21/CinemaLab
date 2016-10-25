@@ -20,4 +20,12 @@ public class MovieDAO {
 		return list;
 	}
 	
+	public static MovieVO getmoviedetail(int a){
+		SqlSession session = ssf.openSession();
+		System.out.println(a+"¿ä±â");
+		MovieVO vo = session.selectOne("caca2",a);
+		session.close();
+		
+		return vo;
+	}
 }

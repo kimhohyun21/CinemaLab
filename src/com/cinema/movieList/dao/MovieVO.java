@@ -3,6 +3,7 @@ package com.cinema.movieList.dao;
 import java.util.Date;
 
 public class MovieVO {
+	private int mNo;
 	private String poster;
 	private String title;
 	private Date opendate;
@@ -12,6 +13,13 @@ public class MovieVO {
 	private int type;
 	private String rank;
 	private int movieLike;
+	
+	public int getmNo() {
+		return mNo;
+	}
+	public void setmNo(int mNo) {
+		this.mNo = mNo;
+	}
 	public String getPoster() {
 		return poster;
 	}

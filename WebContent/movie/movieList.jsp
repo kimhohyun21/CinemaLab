@@ -47,7 +47,7 @@
 					<table border="1">
 						<tr>
 							<td colspan="2">
-								<a href="movie_detail.do?no=cno">
+								<a href="moviedetail.do?no=${vo.mNo }">
 									<img src="${vo.poster}" width="200" height="270">
 								</a>
 							</td>
