@@ -1,0 +1,72 @@
+@CHARSET "EUC-KR";
+
+.year{
+	font-size: 20px;
+}
+
+.month{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.day2{
+	font-size: 20px;
+}
+
+.menu{
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+#theater_table{
+	margin-left: 20px;
+}
+
+#local{
+	border: solid thin;
+    margin-bottom: 5px;
+    width: 90px;
+    height: 4px;
+    text-align: center;
+    padding: 17px 0px 34px 0px;
+}
+
+#theater{
+	border: solid thin;
+    margin-bottom: 5px;
+    width: 70px;
+    height: 0px;
+    text-align: center;
+    padding: 13px 0px 34px 0px;
+    margin-left: 30px;
+    border-collapse: collapse;
+}
+
+#movieList{
+	margin-left: 90px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
