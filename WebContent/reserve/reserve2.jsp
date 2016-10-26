@@ -35,19 +35,23 @@
 				</select>
 			</form>
 		</div>
+		<div class=screen>
+			<Strong class=screen-title>
+				SCREEN
+			</strong>
+		</div>
 		<div class="seat" align="center">
 		    <c:forEach var="sa" begin="0" end="10" items="a,b,c,d,e,f,g,h,i,j">
 		    	<div class="line" align="center">
 			  		<ul>
-			  		<li style="border: 0px; font: 10pt normal bold">${sa }</li>		  		
+			  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		
 					<c:forEach var="b" begin="1" end="20">
 						<li><a href="reserve2.do?sa=${sa }&sn=${b }">${b }</a></li>
-					</c:forEach>
-					<c:if test="${b == 10}">
-						<li style="border: 0px;"></li>
-						<li style="border: 0px;"></li>	
-						<li style="border: 0px;"></li>	
+					<c:if test="${b==4 || b==16}">
+						<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>
+						<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>		
 					</c:if>
+					</c:forEach>
 					</ul>
 				</div>
 				<br/>
