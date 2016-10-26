@@ -5,8 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script src="sliderengine/jquery.js"></script>
+<script type="text/javascript">
+function send(){
+	var f = document.frm;
+	if(f.pwd.value==""){
+		alert("비밀번호를 입력해주세요");
+		return;
+	}
+	
+	f.submit();
+}
+</script>
 </head>
 <body>
-삭제폼
+	<center>
+		<form name="frm" method="post" action="delete_ok.do">
+			비밀번호 : <input type="password" name="pwd"><br/>
+			<input type="button" onclick="send()" value="삭제"><br/>			
+		</form>
+	</center>
 </body>
 </html>

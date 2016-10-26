@@ -26,17 +26,17 @@ function send(){
 	 var f=document.frm;	 
 	 var pwd=f.pwd.value;
 	var pwdCheck=f.pwd_check.value;
-	 /*
-	 if(f.id.value==""){
-		alert("ID를 입력하세요");
-		f.id.focus();
-		return;
-	}
  	var eng=/^[0-9 a-z A-Z]*$/;
 	 if (!eng.test(f.id.value) ){
 	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
 	     f.id.focus();
 	     return;
+	}
+	 /*
+	 if(f.id.value==""){
+		alert("ID를 입력하세요");
+		f.id.focus();
+		return;
 	}
 	if(f.name.value==""){
 		alert("이름을 입력하세요");
@@ -109,15 +109,16 @@ function checkID(){
 			<table id="join_table" width="450" height="500">
 				<tr>
 					<td align="center">
+						<input type="text" class="id" placeholder="아이디" name="id" value="${overCheckId }">
+						<input type="button" value="중복확인" onclick="checkID()"><br/>
+						${ok }										
+					</td>
+				</tr>				
+				<tr>
+					<td align="center">
 						<input type="text" placeholder="이름" name="name">										
 					</td>
 				</tr>
-				<tr>
-					<td align="center">
-						<input type="text" class="id" placeholder="아이디" name="id" value="${overCheckId }">
-						<input type="button" value="중복확인" onclick="checkID()"><br/>											
-					</td>
-				</tr>				
 				<tr>
 					<td align="center">
 						<input type="password" placeholder="비밀번호" name="pwd">
