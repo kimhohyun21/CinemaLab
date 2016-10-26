@@ -10,4 +10,12 @@
 	<select id="timeData" parameterType="java.util.Map" resultType="Reserve">
 		SELECT theaterNo, movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
 	</select>
+	
+	<select id="localData" resultType="Reserve">
+		SELECT tNo,local FROM theaterList WHERE tNo=1 OR tNo=82 OR tNo=163 OR tNo=244 OR tNo=352 ORDER BY tNo ASC
+	</select>
+	
+	<select id="theaterData" parameterType="String" resultType="Reserve">
+		SELECT DISTINCT theater FROM theaterList WHERE local=#{local}
+	</select>
 </mapper>

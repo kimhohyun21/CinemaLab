@@ -27,5 +27,19 @@ public class ReserveDAO {
 		session.close();
 		return timeList;
 	}
+	
+	public static List<ReserveVO> localData(){
+		SqlSession session=ssf.openSession();
+		List<ReserveVO> localList=session.selectList("localData");
+		session.close();
+		return localList;
+	}
+	
+	public static List<ReserveVO> theaterData(String local){
+		SqlSession session=ssf.openSession();
+		List<ReserveVO> theaterList=session.selectList("theaterData",local);
+		session.close();
+		return theaterList;
+	}
 }
 

@@ -15,7 +15,11 @@ public class MoviedetailModel {
 		int a=Integer.parseInt(no);
 		
 		MovieVO vo=MovieDAO.getmoviedetail(a);
-		
+		String url=vo.getTrailer();
+		System.out.println(url);
+		url=url.substring(url.lastIndexOf("/")+1);
+		System.out.println(url);
+		request.setAttribute("url", url);
 		request.setAttribute("vo", vo);
 		request.setAttribute("jsp", "../movie/moviedetail.jsp");
 		return "main/main.jsp";

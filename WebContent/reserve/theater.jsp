@@ -8,20 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="a" items="${aList }">
-		<a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${a}">${a}</a>
-	</c:forEach>
-	<c:forEach var="b" items="${bList }">
-		<a href="reserve.do?local=${local }&tname=${b}">${b}</a>
-	</c:forEach>
-	<c:forEach var="c" items="${cList }">
-		<a href="reserve.do?local=${local }&tname=${c}">${c}</a>
-	</c:forEach>
-	<c:forEach var="d" items="${dList }">
-		<a href="reserve.do?local=${local }&tname=${d}">${d}</a>
-	</c:forEach>
-	<c:forEach var="e" items="${eList }">
-		<a href="reserve.do?local=${local }&tname=${e}">${a}</a>
-	</c:forEach>
+	<center>
+		<c:forEach var="vo" items="${theaterList}">
+			<a id="theater" href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${vo.theater}&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}">${vo.theater}</a>
+		</c:forEach>
+	</center>
 </body>
 </html>

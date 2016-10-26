@@ -11,7 +11,8 @@
 <body>
 	<center>
 		<c:forEach var="vo" items="${movieList }">
-			<span>${vo.grade}</span><a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}">${vo.title}</a>
+			<span>${vo.grade}</span>
+			<a id="movieList" href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}&theaterNo=${theaterNo}&movietime=${movietime}">${vo.title}</a><br>
 		</c:forEach>
 	</center>
 </body>
