@@ -56,9 +56,10 @@ public class MemberDAO {
 	
 	public static void memberDelete(MemberVO vo){
 		SqlSession session=ssf.openSession();
-		session.selectOne("memberDelete",vo.getNo());
+		int i=session.delete("memberDelete",vo);
+		System.out.println(i);
 		session.commit();
-		session.close();	
+		session.close();
 	}
 	
 	public static int memberOverlab(String id){

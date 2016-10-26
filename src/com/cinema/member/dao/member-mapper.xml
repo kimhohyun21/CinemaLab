@@ -22,7 +22,7 @@
 		SELECT pwd FROM member WHERE name=#{name} AND id=#{id} AND phone=#{phone}  
 	</select>
 	<delete id="memberDelete" parameterType="member">
-		DELETE member WHERE no=#{no}
+		DELETE FROM member WHERE no=#{no}
 	</delete>
 	<select id="memberOverlab" resultType="int" parameterType="String">
 		SELECT COUNT(*) FROM member WHERE id=#{id} 

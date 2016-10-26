@@ -12,12 +12,9 @@ public class MemberJoinModel {
 	
 	@RequestMapping("member.do") //회원가입 뷰로~
 	public String memberJoin(HttpServletRequest request){
-		request.setAttribute("jsp", "../login/memberjoin.jsp");
-		request.setAttribute("okk", "please");
-		String check=(String) request.getAttribute("ok");
-		if(check != null){
-			request.setAttribute("ok", "ok");			
-		}
+		
+		
+		request.setAttribute("jsp", "../login/memberjoin.jsp");		
 		return "main/main.jsp";
 	}
 }
