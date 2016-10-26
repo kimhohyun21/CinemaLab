@@ -30,9 +30,10 @@ public class DispatcherServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd=request.getRequestURI();
-		//==> http://localhost:8080/MVCLoginLab/login.do
+		//==> http://localhost:8080/CinemaLab/login.do
 		System.out.println(cmd);
 		cmd=cmd.substring(request.getContextPath().length()+1);
+		//==> login.do
 		
 		//?파라미터 값 구분
 		String temp=cmd.substring(cmd.lastIndexOf(".")+1);
