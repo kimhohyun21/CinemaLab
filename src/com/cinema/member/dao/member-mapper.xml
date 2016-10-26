@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+
+<mapper namespace="com.cinema.member.dao.member-mapper">
+	<insert id="memberInsert" parameterType="member">
+		INSERT INTO member(no,id,pwd,name,phone,birth)
+		VALUES((SELECT NVL(MAX(no)+1,1) FROM member),
+		#{id},#{pwd},#{name},#{phone},#{birth})
+	</insert>
+	<select id="memberIdCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM member WHERE id=#{id}
+	</select>
+	<select id="memberImfor" parameterType="String" resultType="member">
+		SELECT id,pwd,name,phone,birth,no FROM member WHERE id=#{id} 
+	</select>
+	<select id="memberFindId" parameterType="member" resultType="String">
+		SELECT id FROM member WHERE name=#{name} and phone=#{phone} and birth=#{birth}
+	</select>
+	<select id="memberFindPwd" parameterType="member" resultType="String">
+		SELECT pwd FROM member WHERE name=#{name} AND id=#{id} AND phone=#{phone}  
+	</select>
+	<delete id="memberDelete" parameterType="member">
+		DELETE member WHERE no=#{no}
+	</delete>
+	<select id="memberOverlab" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM member WHERE id=#{id} 
+	</select>
+	<!-- <update id="memberModify" parameterMap="member">	
+		UPDATE member SET id=#{id} pwd=#{pwd} name=#{name} phone=#{phone} birth=#{birth}
+		WHERE no=#{no]
+	</update> -->
+</mapper>
