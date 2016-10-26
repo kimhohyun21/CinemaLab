@@ -8,7 +8,8 @@
 </head>
 <body>
 	<div align="center">
-		${vo.title }
+		<iframe width="640" height="360" src="${vo.trailer }" frameborder="0"></iframe>
+		
 	</div>
 </body>
 </html>

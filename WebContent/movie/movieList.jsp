@@ -36,9 +36,9 @@
 			</tr>
 		</table>
 	<c:set var="i" value="1"/>
-	<c:set var="j" value="3" />
+	<c:set var="j" value="4" />
 	<c:if test="${list!=null }">
-		<table>
+		<table class="tb">
 	<c:forEach var="vo" items="${list }">
 		<c:if test="${i==1}">
 			<tr>

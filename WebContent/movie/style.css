@@ -5,12 +5,16 @@
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
 }
-
 .list{
 	color: white;
-	font: 
 }
-
+.tb{
+	border-collapse: separate;
+    border-spacing: 35px;
+}
+.title{
+	font-size: 13px;
+}
 td{
 	max-width: none;
 }
