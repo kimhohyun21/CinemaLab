@@ -5,6 +5,12 @@
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
 }
+.reserve_btn{
+	width: 200px;
+    height: 42px;
+    background: url(../image/list_btn.gif) no-repeat center center;
+    background-size: cover;
+}
 .list{
 	color: white;
 }
@@ -17,4 +23,10 @@
 }
 td{
 	max-width: none;
+}
+.title_2{
+	font-size: 25px;
+}
+#cont span{
+	font-weight : bold;
 }
