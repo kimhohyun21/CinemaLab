@@ -56,21 +56,17 @@ public class MemberDAO {
 	
 	public static void memberDelete(MemberVO vo){
 		SqlSession session=ssf.openSession();
-		session.selectOne("memberDelete",vo.getNo());
+		int i=session.delete("memberDelete",vo);
+		System.out.println(i);
 		session.commit();
-		session.close();	
-	}
-	
-	public static List<MemberVO> memberOverlab(){
-		SqlSession session=ssf.openSession();
-		List<MemberVO> id=session.selectList("memberOverlab");
 		session.close();
-		return id;
 	}
 	
-	public static void memberModify(MemberVO vo){
-		
-		
+	public static int memberOverlab(String id){
+		SqlSession session=ssf.openSession();
+		int countid=session.selectOne("memberOverlab", id);
+		session.close();
+		return countid;
 	}
 
 }

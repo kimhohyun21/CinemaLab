@@ -14,11 +14,6 @@ public class MemberJoinModel {
 	public String memberJoin(HttpServletRequest request){
 		
 		
-		/*List<MemberVO> ss=new MemberDAO().memberOverlab();
-		
-		for(MemberVO s:ss){
-			System.out.println(s);
-		}*/
 		request.setAttribute("jsp", "../login/memberjoin.jsp");		
 		return "main/main.jsp";
 	}

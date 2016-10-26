@@ -20,7 +20,10 @@ public class FindPwdOkModel {
 		
 		String name=request.getParameter("name");
 		String id=request.getParameter("id");
-	
+		String phone=request.getParameter("phone");
+		phone=phone.substring(0, 3)+"-"+phone.substring(3,7)+"-"+phone.substring(7,11);
+		
+		vo.setPhone(phone);
 		vo.setName(name);
 		vo.setId(id);
 		

@@ -20,8 +20,11 @@ public class MovieListModel {
 		List<MovieVO> list=MovieDAO.getmovieList(a);
 		request.setAttribute("list", list);
 		
+		String url3="http://www.lottecinema.co.kr//LCHS/Image/Bg/bg_grade_15.png";
 		request.setAttribute("jsp", "../movie/movieList.jsp");
+		request.setAttribute("url3", url3);
 		
+	
 		return "main/main.jsp";
 	}
 }

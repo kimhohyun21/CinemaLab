@@ -45,9 +45,9 @@ public class MemberLoginOkModel {
 				check="pwdnot";
 			}
 		}
-		request.setAttribute("check", check);
-		request.setAttribute("jsp", "../login/loginok.jsp");
+		request.setAttribute("check", check);		
 		
-		return "main/main.jsp";		
+		
+		return "login/login_ok.jsp";		
 	}
 }
