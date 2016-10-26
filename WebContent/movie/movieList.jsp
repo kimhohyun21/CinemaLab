@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<a href="main.do"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
@@ -37,9 +36,9 @@
 			</tr>
 		</table>
 	<c:set var="i" value="1"/>
-	<c:set var="j" value="3" />
+	<c:set var="j" value="4" />
 	<c:if test="${list!=null }">
-		<table>
+		<table class="tb">
 	<c:forEach var="vo" items="${list }">
 		<c:if test="${i==1}">
 			<tr>
@@ -48,7 +47,7 @@
 					<table border="1">
 						<tr>
 							<td colspan="2">
-								<a href="movie_detail.do?no=cno">
+								<a href="moviedetail.do?no=${vo.mNo }">
 									<img src="${vo.poster}" width="200" height="270">
 								</a>
 							</td>

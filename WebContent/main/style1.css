@@ -15,18 +15,26 @@ a{
 img.logo{
 	width: 300px;
 	position: relative;
-	top: 50px;
-	left: 105px;
+	top: 40px;
+	left: -20px;
+}
+#mini_nav{
+	float:right;
+	width: 100%;
 }
 #mini_nav ul{
 	list-style: none outside none;
 	height: 30px;
-	float: right;
+	float:right;
+	position:relative;
+	left: 0%;
 }
 #mini_nav ul li{
 	display: block;
 	margin: 10px;
 	float: left;
+	color: #ffffff;
+	font-weight: bold;
 }
 #mini_nav ul li a{
 	color: #ffffff;
@@ -44,7 +52,7 @@ img.logo{
 #nav ul li{
 	display: block;
 	float: left;
-	padding: 11px 51px 11px 51px;
+	padding: 11.5px 51px 11.5px 51px;
 }
 #nav ul li.noeffect{
 	color: white;
@@ -64,6 +72,7 @@ img.logo{
 #article{
 	min-height: 630px;
 	background-color: #dbf0ff;
+	vertical-align: middle;
 }
 #posterSlider-wrapper{
 	display: block;

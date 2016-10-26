@@ -13,9 +13,6 @@ public class MainModel {
 	
 	@RequestMapping("main.do")
 	public String main(HttpServletRequest request){
-		String strPage=request.getParameter("page");
-		if(strPage==null)strPage="1";
-		int curPage=Integer.parseInt(strPage);
 		
 		String[] plist=new String[]{
 					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201610/10707_103_1.jpg", 
@@ -33,11 +30,9 @@ public class MainModel {
 		List<MainVO> plist=MainDAO.getListData();			 
 		 */
 		
-		request.setAttribute("curPage", curPage);
 		request.setAttribute("plist", plist);
 		request.setAttribute("jsp", "default.jsp");
-		
-		request.setAttribute("jsp", "default.jsp");
+
 		
 		return "main/main.jsp";
 	}
