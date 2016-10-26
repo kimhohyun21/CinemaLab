@@ -7,8 +7,7 @@
 	<title>Marvel Cinema</title>
 	<script type="text/javascript">
 		location.href="main.do";
-	</script>
-	
+	</script>	
 </head>
 <body>
 	
