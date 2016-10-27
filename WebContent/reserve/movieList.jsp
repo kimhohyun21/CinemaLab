@@ -9,11 +9,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
+	<div id="movieList">
 		<c:forEach var="vo" items="${movieList }">
-			<span>${vo.grade}</span>
-			<a id="movieList" href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}&theaterNo=${theaterNo}&movietime=${movietime}">${vo.title}</a><br>
+			<c:if test="${vo.grade=='0'}">
+				<img src="image/bg_grade_all.png" width="15px">
+			</c:if>
+			<c:if test="${vo.grade=='12'}">
+				<img src="image/bg_grade_12.png" width="15px">
+			</c:if>
+			<c:if test="${vo.grade=='15'}">
+				<img src="image/bg_grade_15.png" width="15px">
+			</c:if>
+			<c:if test="${vo.grade=='18'}">
+				<img src="image/bg_grade_18.png" width="15px">
+			</c:if>
+			<a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }
+			&tname=${tname}&grade=${vo.grade }&title=${vo.title}&theaterNo=${theaterNo}&movietime=${movietime}">${vo.title}</a><br>
 		</c:forEach>
-	</center>
+	</div>
 </body>
 </html>

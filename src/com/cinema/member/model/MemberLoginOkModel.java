@@ -48,6 +48,6 @@ public class MemberLoginOkModel {
 		request.setAttribute("check", check);		
 		
 		
-		return "login/loginok.jsp";		
+		return "login/login_ok.jsp";		
 	}
 }

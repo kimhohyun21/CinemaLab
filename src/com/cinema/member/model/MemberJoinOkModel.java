@@ -35,7 +35,7 @@ public class MemberJoinOkModel {
 			System.out.println(ex.getMessage());
 		}
 		request.setAttribute("join", "가입성공");
-		request.setAttribute("jsp", "../login/loginok.jsp");
+		request.setAttribute("jsp", "../login/login.jsp");
 
 		return "main/main.jsp";
 	}

@@ -1,0 +1,7 @@
+@CHARSET "EUC-KR";
+input[type="text"].id{
+	-webkit-ime-mode:disabled;
+	-moz-ime-mode:disabled;
+	-ms-ime-mode:disabled;
+	ime-mode:disabled;
+}

@@ -41,7 +41,7 @@
 								<span>상영 시간 :</span> ${vo.runtime }&nbsp;&nbsp;
 								<span>감독 :</span> ${vo.director }<br>
 								<span>출연 :</span> ${vo.cast }<br>
-								<span>줄거리 : </span>${vo.content }
+								<span>줄거리 : </span><pre>${vo.content }</pre>
 							</td>
 						</tr>
 					</table>
