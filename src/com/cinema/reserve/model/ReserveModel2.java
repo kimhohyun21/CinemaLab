@@ -12,7 +12,7 @@ import java.util.*;
 @Controller
 public class ReserveModel2 {
 	@RequestMapping("reserve2.do")
-	public String main(HttpServletRequest request){
+	public String reserve2(HttpServletRequest request){
 		String checkedDay=request.getParameter("checkedDay");
 		String checkedDay2=request.getParameter("checkedDay2");
 		String local=request.getParameter("local");

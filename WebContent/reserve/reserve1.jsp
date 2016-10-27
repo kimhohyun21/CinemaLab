@@ -4,27 +4,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="reserve/style.css">
-<script type="text/javascript">
-	/* $(function() {
-		$('#sendBtn').click(function () {
-			if($('#checkedDay').val()==""){
-				alert("날짜를 선택하세요");
-				$('#checkedDay').focus();
-				return;
-			}
-			var theater=$('#theater').val();
-			if(theater.trim()==""){
-				alert("영화관을 선택하세요");
-				$('#theater').focus();
-				return;
-			}
-			$('#frm').submit();
-		})
-	}); */
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>day and movie and theater</title>
+	<link rel="stylesheet" type="text/css" href="reserve/style.css">
+	<script type="text/javascript">
+		/* $(function() {
+			$('#sendBtn').click(function () {
+				if($('#checkedDay').val()==""){
+					alert("날짜를 선택하세요");
+					$('#checkedDay').focus();
+					return;
+				}
+				var theater=$('#theater').val();
+				if(theater.trim()==""){
+					alert("영화관을 선택하세요");
+					$('#theater').focus();
+					return;
+				}
+				$('#frm').submit();
+			})
+		}); */
+	</script>
 </head>
 <body>
 	<center>

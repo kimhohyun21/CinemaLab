@@ -12,7 +12,7 @@ import java.util.*;
 @Controller
 public class ReserveModel {
 	@RequestMapping("reserve.do")
-	public String main(HttpServletRequest request){
+	public String reserve(HttpServletRequest request){
 		
 		//날짜 계산
 		int i,j,a,b;

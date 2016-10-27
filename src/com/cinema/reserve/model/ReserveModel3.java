@@ -10,7 +10,7 @@ public class ReserveModel3 {
 	@RequestMapping("reserve3.do")
 	public String main(HttpServletRequest request){
 		
-		return "reserve/final.jsp";
+		return "reserve/reserve3.jsp";
 	}
 
 }
