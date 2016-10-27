@@ -11,9 +11,9 @@
 </head>
 <body>
 	<div align="center">
-		<table border="0" id="cont">
+		<table id="cont" align="center">
 						<tr>
-							<td width="250" align="center" rowspan="5">
+							<td align="center" rowspan="9" width="200">
 								<img src="${vo.poster}" width="200" height="270">
 								<a href="reserve.do?">
 									<button class="reserve_btn">
@@ -22,26 +22,54 @@
 								</a>
 							</td>
 							<td>
-								<span class="title_2">${vo.title }</span><br>
+								<span class="title_2">${vo.title }</span>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span>예매율 :</span> ${vo.rank }%&nbsp;&nbsp;
+								<span>예매율 :</span> ${vo.rank }
 							</td>
 							<td>
-								<span>등급 :</span> ${vo.grade }세이상 관람가능&nbsp;&nbsp;
+								<span>등급 :</span> ${vo.grade }세이상 관람가능
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span>관람 평점 :</span> ${vo.movieLike }&nbsp;&nbsp;
-								<span>개봉일 :</span><fmt:formatDate value="${vo.opendate }" pattern="yyyy-MM-dd"/><br>
+								<span>관람 평점 :</span> ${vo.movieLike }
+							</td>
+							<td>
+								<span>개봉일 :</span><fmt:formatDate value="${vo.opendate }" pattern="yyyy-MM-dd"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<span>장르 :</span> ${vo.genre }&nbsp;&nbsp;
+							</td>
+							<td>
 								<span>상영 시간 :</span> ${vo.runtime }&nbsp;&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<span>감독 :</span> ${vo.director }<br>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
 								<span>출연 :</span> ${vo.cast }<br>
+							</td>
+						</tr>
+					</table>
+					&nbsp;
+					<table id="cont">
+						<tr>
+							<td colspan="2" width="867">
 								<span>줄거리 : </span><pre>${vo.content }</pre>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								
 							</td>
 						</tr>
 					</table>
