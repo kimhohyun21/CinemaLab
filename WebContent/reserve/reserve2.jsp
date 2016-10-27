@@ -23,19 +23,19 @@
 				<input type="hidden" name="title" value="${title }">				
 				<input type="hidden" name="theaterNo" value="${theaterNo}">
 				<input type="hidden" name="movietime" value="${movietime}">					
-				어른 <select name="adult" onchange="send()">
+				어른 <select name="adult" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				청소년 <select name="junior" onchange="send()">
+				청소년 <select name="junior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				시니어 <select name="senior" onchange="send()">
+				시니어 <select name="senior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
@@ -66,14 +66,14 @@
 			</c:forEach>	
 		</div>
 		<div>
-			<table>
+			<table width="780px">
 				<tr>
-					<th>영화</th>
-					<th>예매 정보</th>
-					<th>총 결제 금액</th>					
+					<th width="33%">영화</th>
+					<th width="33%">예매 정보</th>
+					<th width="33%">총 결제 금액</th>					
 				</tr>
 				<tr>
-					<td>
+					<td width="33%">
 						<c:if test="${grade=='0'}">
 							<img src="image/bg_grade_all.png">
 						</c:if>
@@ -88,17 +88,38 @@
 						</c:if>
 						${title }			
 					</td>
-					<td>
-						상영일 : ${checkedDay } {checkedDay2 }
-						상영시간 : ${movietime}
-						상영관 : ${tname } ${theaterNo}
-						좌석 : ${seat }
+					<td width="33%">
+						상영일 : ${checkedDay } (${checkedDay2 })<br/>
+						상영시간 : ${movietime} <br/>
+						상영관 : ${tname } ${theaterNo} <br/>
+						좌석 : ${seat } <br/>
 					</td>
-					<td>
+					<td width="33%">
 						영화 예매 : ${payment }
 					</td>
 				</tr>
 			</table>
+			<form action="reserve3.do" method="post">
+				<input type="hidden" name="checkedDay" value="${checkedDay }">
+				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+				<input type="hidden" name="tname" value="${tname }">
+				<input type="hidden" name="grade" value="${grade }">
+				<input type="hidden" name="title" value="${title }">				
+				<input type="hidden" name="theaterNo" value="${theaterNo}">
+				<input type="hidden" name="movietime" value="${movietime}">
+				<input type="hidden" name="seat" value="${seat}">
+				<input type="hidden" name="payment" value="${payment}">			
+				<table width="780px">
+					<tr>
+						<td align="left">
+							<input type="button" value="이전페이지" onclick="javascript:history.back();">
+						</td>
+						<td align="right">
+							<input type="button" value="다음페이지" onclick="send()">
+						</td>
+					</tr>
+				</table>
+			</form>	
 		</div>
 	</div>
 </body>

@@ -76,7 +76,7 @@ public class ReserveModel {
 		
 		//지역 선택
 		String local=request.getParameter("local");
-		if(local==null) local=" ";
+		if(local==null) local="서울";
 		List<ReserveVO> localList=ReserveDAO.localData();
 		
 		//극장 선택
@@ -84,22 +84,22 @@ public class ReserveModel {
 			
 		//영화 선택
 		String tname=request.getParameter("tname");
-		if(tname==null) tname=" ";
+		if(tname==null) tname="신도림";
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
 		//영화 상영 시간 선택
 		String title=request.getParameter("title");
-		if(title==null) title=" ";
+		if(title==null) title="닥터 스트레인지";
 		
 		Map map=new HashMap();
 		map.put("tname", tname);
 		map.put("title", title);
 		List<ReserveVO> timeList=ReserveDAO.timeData(map);
 		
-		map=new HashMap();
+	/*	map=new HashMap();
 		map.put("tname", tname);
 		map.put("title", title);
-		int theaterNo2=ReserveDAO.theaterNoData(map);
+		int theaterNo2=ReserveDAO.theaterNoData(map);*/
 		
 		String grade=request.getParameter("grade");
 		String theaterNo=request.getParameter("theaterNo");
@@ -123,7 +123,7 @@ public class ReserveModel {
 		request.setAttribute("timeList", timeList);
 		request.setAttribute("localList", localList);
 		request.setAttribute("theaterList", theaterList);
-		request.setAttribute("theaterNo2", theaterNo2);
+		//request.setAttribute("theaterNo2", theaterNo2);
 		request.setAttribute("jsp", "../reserve/reserve1.jsp");
 	
 		return "main/main.jsp";

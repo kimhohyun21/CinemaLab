@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
 	<link rel="stylesheet" type="text/css" href="main/style1.css">
+	<script src="sliderengine/jquery.js"></script>
 	<script type="text/javascript">
 
 	</script>

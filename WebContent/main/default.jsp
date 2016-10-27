@@ -6,7 +6,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Main Page</title>
 	<!-- Responsive Slider Library -->
-    <script src="sliderengine/jquery.js"></script>
     <script src="sliderengine/amazingslider.js"></script>
     <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
     <link rel="stylesheet" type="text/css" href="main/style1.css">
