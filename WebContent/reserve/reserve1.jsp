@@ -28,18 +28,17 @@
 </head>
 <body>
 	<center>
-		<h2>예매</h2>
 		<form action="reserve/reserve3.jsp" method="post" id="frm">
-			<table width="1000" height="400" border="1">
+			<table width="1000" id="main_table">
 				<tr height="40">
-					<td align="center" class="menu" width="15%">날짜</td>
-					<td align="center" class="menu" width="25%">극장</td>
-					<td align="center" class="menu" width="45%">영화</td>
-					<td align="center" class="menu" width="15%">시간</td>
+					<th align="center" class="menu" width="15%">날짜</th>
+					<th align="center" class="menu" width="25%">극장</th>
+					<th align="center" class="menu" width="45%">영화</th>
+					<th align="center" class="menu" width="15%">시간</th>
 				</tr>
 				<tr>
 					<!-- 날짜설정 -->
-					<td width="15%" align="center">
+					<td width="15%" align="center" class="main_table_td">
 						<p class="year">${year }</p>
 						<p class="month">${month }</p><br>
 						<c:forEach var="c" begin="0" end="6" step="1" items="${strWeek2 }">
@@ -101,13 +100,13 @@
 					</td>
 					
 					<!-- 극장설정 -->
-					<td width="25%" align="left">
+					<td width="25%" align="left" class="main_table_td">
 						<table id="theater_table">
 							<tr>
 								<td>
 									<c:forEach var="vo" items="${localList }">
 										<a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${vo.local}
-										&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${vo.theaterNo}&movietime=${vo.movietime}">
+										&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}">
 											<p id="local">${vo.local }</p>
 										</a>
 									</c:forEach>
@@ -120,7 +119,7 @@
 					</td>
 					
 					<!-- 영화리스트설정 --> 
-					<td width="45%">
+					<td width="45%" class="main_table_td">
 						<jsp:include page="movieList.jsp"/>
 					</td>
 					
@@ -130,11 +129,23 @@
 					</td>
 				</tr>
 			</table>
-			<table width="1000" border="1">
+			<table width="1000" id="movieInfo_table">
 				<tr>
 					<td>
-						포스터 이미지
-						영화 : ${grade } / ${title } 
+						영화 :
+						<c:if test="${grade=='0'}">
+							<img src="image/bg_grade_all.png" width="15">
+						</c:if>
+						<c:if test="${grade=='12'}">
+							<img src="image/bg_grade_12.png" width="15">
+						</c:if>
+						<c:if test="${grade=='15'}">
+							<img src="image/bg_grade_15.png" width="15">
+						</c:if>
+						<c:if test="${grade=='18'}">
+							<img src="image/bg_grade_18.png" width="15">
+						</c:if>
+						${title } 
 					</td>
 					<td>
 						일시 : ${year }.${month }.${checkedDay }.${checkedDay2 }
@@ -142,11 +153,10 @@
 					<td>
 						극장 : ${tname } / ${theaterNo } 관 / ${movietime }
 					</td>
-					
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:history.back()">
-			<input type="button" value="좌석선택">
+			<input type="button" value="취소" id="back_button" onclick="javascript:history.back()">
+			
 		</form>
 	</center>
 </body>

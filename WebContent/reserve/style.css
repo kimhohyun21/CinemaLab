@@ -1,5 +1,10 @@
 @CHARSET "EUC-KR";
 
+center{
+	position: relative;
+	top: 30px;
+}
+
 .year{
 	font-size: 20px;
 }
@@ -45,14 +50,56 @@
 
 #movieList{
 	margin-left: 90px;
+	margin-top: 14px;
 }
 
+#movieList img{
+	width: 17px;
+}
 
+#movieList a{
+	font-size: 18px;
+}
 
+#theaterNo{
+	margin-bottom: 18px;	
+	font-size: 20px;
+	font-weight: bold;
+}
 
+#movietime{
+	margin-bottom: 20px;
+    font-size: 18px;
+    border: solid thin;
+    width: 50px;
+    height: 31px;
+}
 
+th{
+	background-color: #131555;
+}
 
+#main_table{
+	background-color: white;
+}
 
+.main_table_td{
+	border-right: solid thin;
+}
+
+#movieInfo_table{
+	margin-top: 10px;
+	height: 40px;
+	background-color: #131555;
+	color: white;
+}
+
+#back_button{
+	margin-top: 20px;
+	width: 30px;
+	border: none;
+	font-size: 18px;
+}
 
 
 
