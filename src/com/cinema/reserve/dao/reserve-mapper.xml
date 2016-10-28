@@ -7,10 +7,6 @@
 		SELECT DISTINCT grade,title FROM movieList NATURAL JOIN theaterList WHERE theater=#{tname } 
 	</select>
 	
-	<!-- <select id="timeData" parameterType="java.util.Map" resultType="Reserve">
-		SELECT theaterNo, movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
-	</select> -->
-	
 	<select id="timeData" parameterType="java.util.Map" resultType="Reserve">
 		SELECT movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
 	</select>
