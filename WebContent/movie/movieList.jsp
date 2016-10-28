@@ -9,11 +9,10 @@
 	<title>Marvel Cinema</title>
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
 	<script type="text/javascript">
-
 	</script>
 </head>
 <body>
-	<div align="center">
+	<br><br>
 		<table>
 			<tr>
 				<td>
@@ -79,7 +78,6 @@
 						</tr>
 					</table>
 				</td>
-				<div style="height:7px;">&nbsp;</div>
 		<c:set var="i" value="${i+1}" />
 		<c:if test="${i==j+1}">
 			</tr>
@@ -88,6 +86,5 @@
 	</c:forEach>
 		</table>
 	</c:if>
-	</div>
 </body>
 </html>

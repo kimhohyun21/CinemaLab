@@ -15,7 +15,7 @@
 						<tr>
 							<td align="center" rowspan="9" width="200">
 								<img src="${vo.poster}" width="200" height="270">
-								<a href="reserve.do?">
+								<a href="reserve.do?no=${vo.mNo }">
 									<button class="reserve_btn">
 										<span class="list">예매하기</span>
 									</button>
@@ -64,13 +64,22 @@
 					<table id="cont">
 						<tr>
 							<td colspan="2" width="867">
-								<span>줄거리 : </span><pre>${vo.content }</pre>
+								<span>줄거리 : </span><pre>${vo.content }</pre><br>
 							</td>
 						</tr>
 						<tr>
-							<td>
-								
-							</td>
+						<c:forEach items="${list }" var="cvo">
+								<td>
+									<img src="${cvo.img }"><br/>
+								</td>
+						</c:forEach>
+						</tr>
+						<tr>
+						<c:forEach items="${list }" var="cvo">
+								<td>
+									${cvo.cname }<br/>
+								</td>
+						</c:forEach>
 						</tr>
 					</table>
 		<iframe width="640" height="360" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen/>
