@@ -37,6 +37,11 @@ center{
     padding: 17px 0px 34px 0px;
 }
 
+p.click{
+	background-color: black;
+	color: white;
+}
+
 #theater{
 	border: solid thin;
     margin-bottom: 5px;

@@ -8,13 +8,32 @@
 	<title>ticket and seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
-		
+		function select(){
+			document.frm.submit();
+			// Ajax 통신으로 서버에 Data를 전송하고 Return 받습니다.
+		   /*  $.ajax({
+		        // type을 설정합니다.
+		        type : 'GET',
+		        url : "서버로 보낼 주소를 입력"
+		        // 사용자가 입력하여 id로 넘어온 값을 서버로 보냅니다.
+		        data : {"id" : id},
+		        // 성공적으로 값을 서버로 보냈을 경우 처리하는 코드입니다.
+		        success : function (data) {
+		            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
+		            if (data) {
+		                alert("사용할 수 없는 아이디 입니다."); 
+		            } else {
+		                alert("사용 가능한 아이디 입니다.");
+		            }             
+		        }
+		    }); */
+		};
 	</script>
 </head>
 <body>
 	<div align="center">
 		<div class="ticket">
-			<form action="reserv2.do" method="post">
+			<form action="reserve2.do" method="post" name="frm">
 				<input type="hidden" name="checkedDay" value="${checkedDay }">
 				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 				<input type="hidden" name="local" value="${local }">
@@ -91,7 +110,7 @@
 					<td width="33%">
 						상영일 : ${checkedDay } (${checkedDay2 })<br/>
 						상영시간 : ${movietime} <br/>
-						상영관 : ${tname } ${theaterNo} <br/>
+						상영관 : ${tname } ${theaterNo}관 <br/>
 						좌석 : ${seat } <br/>
 					</td>
 					<td width="33%">

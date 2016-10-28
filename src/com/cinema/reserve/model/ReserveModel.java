@@ -96,15 +96,14 @@ public class ReserveModel {
 		map.put("title", title);
 		List<ReserveVO> timeList=ReserveDAO.timeData(map);
 		
-	/*	map=new HashMap();
-		map.put("tname", tname);
-		map.put("title", title);
-		int theaterNo2=ReserveDAO.theaterNoData(map);*/
+		int theaterNo2=ReserveDAO.theaterNoData(map);
 		
 		String grade=request.getParameter("grade");
 		String theaterNo=request.getParameter("theaterNo");
 		String movietime=request.getParameter("movietime");
+		String click=request.getParameter("click");
 		
+		request.setAttribute("click", click);
 		request.setAttribute("grade", grade);
 		request.setAttribute("title", title);
 		request.setAttribute("year", year);
@@ -123,7 +122,7 @@ public class ReserveModel {
 		request.setAttribute("timeList", timeList);
 		request.setAttribute("localList", localList);
 		request.setAttribute("theaterList", theaterList);
-		//request.setAttribute("theaterNo2", theaterNo2);
+		request.setAttribute("theaterNo2", theaterNo2);
 		request.setAttribute("jsp", "../reserve/reserve1.jsp");
 	
 		return "main/main.jsp";

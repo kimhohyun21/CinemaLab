@@ -8,22 +8,7 @@
 	<title>day and movie and theater</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style.css">
 	<script type="text/javascript">
-		/* $(function() {
-			$('#sendBtn').click(function () {
-				if($('#checkedDay').val()==""){
-					alert("날짜를 선택하세요");
-					$('#checkedDay').focus();
-					return;
-				}
-				var theater=$('#theater').val();
-				if(theater.trim()==""){
-					alert("영화관을 선택하세요");
-					$('#theater').focus();
-					return;
-				}
-				$('#frm').submit();
-			})
-		}); */
+
 	</script>
 </head>
 <body>

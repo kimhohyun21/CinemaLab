@@ -79,7 +79,6 @@
 						</tr>
 					</table>
 				</td>
-				<div style="height:7px;">&nbsp;</div>
 		<c:set var="i" value="${i+1}" />
 		<c:if test="${i==j+1}">
 			</tr>
