@@ -9,31 +9,28 @@
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
 		function select(){
-			document.frm.submit();
-			// Ajax 통신으로 서버에 Data를 전송하고 Return 받습니다.
-		   /*  $.ajax({
-		        // type을 설정합니다.
-		        type : 'GET',
-		        url : "서버로 보낼 주소를 입력"
-		        // 사용자가 입력하여 id로 넘어온 값을 서버로 보냅니다.
-		        data : {"id" : id},
-		        // 성공적으로 값을 서버로 보냈을 경우 처리하는 코드입니다.
-		        success : function (data) {
-		            // 서버에서 Return된 값으로 중복 여부를 사용자에게 알려줍니다.
-		            if (data) {
-		                alert("사용할 수 없는 아이디 입니다."); 
-		            } else {
-		                alert("사용 가능한 아이디 입니다.");
-		            }             
-		        }
-		    }); */
+			$.ajax({
+				type: "POST",
+				url: "reserve2.do",
+				data:{
+					adult : $('#adult').val(),
+					senior : $('#senior').val(),
+					junior : $('#junior').val()
+				},
+				success:function(data){
+					alert("성공");
+				},
+				error:function(data){
+					alert("실패");
+				}
+			});
 		};
 	</script>
 </head>
 <body>
 	<div align="center">
 		<div class="ticket">
-			<form action="reserve2.do" method="post" name="frm">
+			<form action="reserve2.do" method="post" name="frm" id="frm">
 				<input type="hidden" name="checkedDay" value="${checkedDay }">
 				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 				<input type="hidden" name="local" value="${local }">
@@ -41,20 +38,20 @@
 				<input type="hidden" name="grade" value="${grade }">
 				<input type="hidden" name="title" value="${title }">				
 				<input type="hidden" name="theaterNo" value="${theaterNo}">
-				<input type="hidden" name="movietime" value="${movietime}">					
-				어른 <select name="adult" onchange="select()">
+				<input type="hidden" name="movietime" value="${movietime}">
+				어른 <select id="adult" name="adult" onchange="select()">
+					<option>0</option>
+				<c:forEach var="i" begin="1" end="8">
+					<option>${i}</option>
+				</c:forEach>					
+				</select>
+				청소년 <select id="junior" name="junior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				청소년 <select name="junior" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-				시니어 <select name="senior" onchange="select()">
+				시니어 <select id="senior" name="senior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
@@ -113,8 +110,9 @@
 						상영관 : ${tname } ${theaterNo}관 <br/>
 						좌석 : ${seat } <br/>
 					</td>
+					
 					<td width="33%">
-						영화 예매 : ${payment }
+						영화 예매 : ${adult*10000+junior*8000+senior*6000}
 					</td>
 				</tr>
 			</table>
