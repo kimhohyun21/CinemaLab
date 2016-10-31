@@ -44,3 +44,11 @@ div.seat div.line ul li{
 	padding: 1px;
 	font-size: 9pt;
 }
+form#frm{
+	margin: 0px 0px 18px 0px;
+}
+span.resetBtn{
+	width:30px;
+	height: 10px;
+	border: 1px solid black;
+}

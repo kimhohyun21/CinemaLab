@@ -89,7 +89,8 @@ public class ReserveModel {
 		
 		//영화 상영 시간 선택
 		String title=request.getParameter("title");
-		if(title==null) title="닥터 스트레인지";
+
+		if(title==null) title="데드풀 Deadpool";
 		
 		Map map=new HashMap();
 		map.put("tname", tname);

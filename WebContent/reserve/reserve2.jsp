@@ -11,14 +11,10 @@
 		function select(){
 			$.ajax({
 				type: "POST",
-				url: "reserve2.do",
-				data:{
-					adult : $('#adult').val(),
-					senior : $('#senior').val(),
-					junior : $('#junior').val()
-				},
+				url: "reserveSeat.do",
+				data:$('#frm').serialize(),
 				success:function(data){
-					alert("성공");
+					$('#result').html(data);
 				},
 				error:function(data){
 					alert("실패");
@@ -40,7 +36,7 @@
 				<input type="hidden" name="theaterNo" value="${theaterNo}">
 				<input type="hidden" name="movietime" value="${movietime}">
 				어른 <select id="adult" name="adult" onchange="select()">
-					<option>0</option>
+					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
@@ -58,86 +54,13 @@
 				</c:forEach>					
 				</select>
 			</form>
+			<a href="reserve2.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo2}&movietime=${vo.movietime}">
+				<span class="resetBtn">선택초기화</span>
+			</a>
 		</div>
-		<div class=screen>
-			<Strong class=screen-title>
-				SCREEN
-			</strong>
-		</div>
-		<div class="seat" align="center">
-		    <c:forEach var="sa" begin="0" end="10" items="a,b,c,d,e,f,g,h,i,j">
-		    	<div class="line" align="center">
-			  		<ul>
-			  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		
-					<c:forEach var="b" begin="1" end="20">
-						<li><a href="reserve2.do?seat=${sa }${b }">${b }</a></li>
-					<c:if test="${b==4 || b==16}">
-						<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>
-						<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>		
-					</c:if>
-					</c:forEach>
-					</ul>
-				</div>
-				<br/>
-			</c:forEach>	
-		</div>
-		<div>
-			<table width="780px">
-				<tr>
-					<th width="33%">영화</th>
-					<th width="33%">예매 정보</th>
-					<th width="33%">총 결제 금액</th>					
-				</tr>
-				<tr>
-					<td width="33%">
-						<c:if test="${grade=='0'}">
-							<img src="image/bg_grade_all.png">
-						</c:if>
-						<c:if test="${grade=='12'}">
-							<img src="image/bg_grade_12.png">
-						</c:if>
-						<c:if test="${grade=='15'}">
-							<img src="image/bg_grade_15.png">
-						</c:if>
-						<c:if test="${grade=='18'}">
-							<img src="image/bg_grade_18.png">
-						</c:if>
-						${title }			
-					</td>
-					<td width="33%">
-						상영일 : ${checkedDay } (${checkedDay2 })<br/>
-						상영시간 : ${movietime} <br/>
-						상영관 : ${tname } ${theaterNo}관 <br/>
-						좌석 : ${seat } <br/>
-					</td>
-					
-					<td width="33%">
-						영화 예매 : ${adult*10000+junior*8000+senior*6000}
-					</td>
-				</tr>
-			</table>
-			<form action="reserve3.do" method="post">
-				<input type="hidden" name="checkedDay" value="${checkedDay }">
-				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-				<input type="hidden" name="tname" value="${tname }">
-				<input type="hidden" name="grade" value="${grade }">
-				<input type="hidden" name="title" value="${title }">				
-				<input type="hidden" name="theaterNo" value="${theaterNo}">
-				<input type="hidden" name="movietime" value="${movietime}">
-				<input type="hidden" name="seat" value="${seat}">
-				<input type="hidden" name="payment" value="${payment}">			
-				<table width="780px">
-					<tr>
-						<td align="left">
-							<input type="button" value="이전페이지" onclick="javascript:history.back();">
-						</td>
-						<td align="right">
-							<input type="button" value="다음페이지" onclick="send()">
-						</td>
-					</tr>
-				</table>
-			</form>	
-		</div>
+		<div id="result">
+			<jsp:include page="${jsp2 }"></jsp:include>		
+		</div>			
 	</div>
 </body>
 </html>
