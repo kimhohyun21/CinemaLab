@@ -26,7 +26,9 @@
 <body>
 	<div align="center">
 		<div class="ticket">
-			<form action="reserve2.do" method="post" name="frm" id="frm">
+			<form id="frm">
+				<input type="hidden" name="year" value="${year }">
+				<input type="hidden" name="month" value="${month }">
 				<input type="hidden" name="checkedDay" value="${checkedDay }">
 				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 				<input type="hidden" name="local" value="${local }">
@@ -54,7 +56,9 @@
 				</c:forEach>					
 				</select>
 			</form>
-			<a href="reserve2.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo2}&movietime=${vo.movietime}">
+			<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+			&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
+			&theaterNo=${theaterNo2}&movietime=${vo.movietime}">
 				<span class="resetBtn">선택초기화</span>
 			</a>
 		</div>

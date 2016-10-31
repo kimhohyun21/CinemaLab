@@ -32,10 +32,12 @@
 					${title }			
 				</td>
 				<td width="33%">
-					상영일 : ${checkedDay } (${checkedDay2 })<br/>
+					상영일 : ${year }. ${month }. ${checkedDay } (${checkedDay2 })<br/>
 					상영시간 : ${movietime} <br/>
 					상영관 : ${tname } ${theaterNo}관 <br/>
-					좌석 : ${seat } <br/>
+					좌석 : <c:forEach var="st" items="${seat }" varStatus="status">
+							${st }<c:if test="${not status.last }">, </c:if>
+						 </c:forEach><br/>
 				</td>
 				
 				<td width="33%">
@@ -44,6 +46,8 @@
 			</tr>
 		</table>
 		<form action="reserve3.do" method="post">
+			<input type="hidden" name="year" value="${year }">
+			<input type="hidden" name="month" value="${month }">
 			<input type="hidden" name="checkedDay" value="${checkedDay }">
 			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 			<input type="hidden" name="tname" value="${tname }">

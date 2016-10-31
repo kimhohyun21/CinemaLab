@@ -100,6 +100,7 @@ public class ReserveModel {
 		int theaterNo2=ReserveDAO.theaterNoData(map);
 		
 		String grade=request.getParameter("grade");
+		if(grade==null)grade="18";
 		String theaterNo=request.getParameter("theaterNo");
 		String movietime=request.getParameter("movietime");
 		String click=request.getParameter("click");

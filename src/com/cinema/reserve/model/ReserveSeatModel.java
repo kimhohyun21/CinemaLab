@@ -12,9 +12,10 @@ import java.util.*;
 @Controller
 public class ReserveSeatModel {
 	@RequestMapping("reserveSeat.do")
-	public String reserve4(HttpServletRequest request){
+	public String reserveSeat(HttpServletRequest request){
 		try{
 			String year=request.getParameter("year");
+			String month=request.getParameter("month");
 			String checkedDay=request.getParameter("checkedDay");
 			String checkedDay2=request.getParameter("checkedDay2");
 			String local=request.getParameter("local");
@@ -34,10 +35,15 @@ public class ReserveSeatModel {
 			int ticket3=Integer.parseInt(junior);
 			
 			int payment=ticket1*10000+ticket2*6000+ticket3*8000;
+			request.setAttribute("adult", adult);
+			request.setAttribute("senior", senior);
+			request.setAttribute("junior", junior);
 			System.out.println(payment);
 			request.setAttribute("payment", payment);
 			request.setAttribute("grade", grade);
 			request.setAttribute("title", title);
+			request.setAttribute("year", year);
+			request.setAttribute("month", month);
 			request.setAttribute("checkedDay", checkedDay);
 			request.setAttribute("checkedDay2", checkedDay2);
 			request.setAttribute("movietime", movietime);

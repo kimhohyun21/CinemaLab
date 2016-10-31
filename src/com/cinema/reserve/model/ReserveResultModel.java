@@ -10,37 +10,31 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-public class ReserveModel2 {
-	@RequestMapping("reserve2.do")
-	public String reserve2(HttpServletRequest request){
+public class ReserveResultModel {
+	@RequestMapping("reserveResult.do")
+	public String reserveResult(HttpServletRequest request){
 		try{
-			request.setCharacterEncoding("EUC-KR");
 			String year=request.getParameter("year");
 			String month=request.getParameter("month");
 			String checkedDay=request.getParameter("checkedDay");
 			String checkedDay2=request.getParameter("checkedDay2");
 			String local=request.getParameter("local");
 			String tname=request.getParameter("tname");
-			String title=request.getParameter("title");		
+			String title=request.getParameter("title");	
 			String grade=request.getParameter("grade");
 			String theaterNo=request.getParameter("theaterNo");
 			String movietime=request.getParameter("movietime");
 			String adult=request.getParameter("adult");
-			if(adult==null)adult="0";
-			int ticket1=Integer.parseInt(adult);
 			String senior=request.getParameter("senior");
-			if(senior==null)senior="0";
-			int ticket2=Integer.parseInt(senior);
 			String junior=request.getParameter("junior");
-			if(junior==null)junior="0";
-			int ticket3=Integer.parseInt(junior);
+			String payment=request.getParameter("payment");
+			String[] seat=request.getParameterValues("seat");			
 			
-			int payment=ticket1*10000+ticket2*6000+ticket3*8000;
-			System.out.println(payment);
 			request.setAttribute("adult", adult);
 			request.setAttribute("senior", senior);
 			request.setAttribute("junior", junior);
 			request.setAttribute("payment", payment);
+			request.setAttribute("seat", seat);
 			request.setAttribute("grade", grade);
 			request.setAttribute("title", title);
 			request.setAttribute("year", year);
@@ -51,14 +45,11 @@ public class ReserveModel2 {
 			request.setAttribute("tname", tname);
 			request.setAttribute("theaterNo", theaterNo);
 			request.setAttribute("local", local);
-			request.setAttribute("jsp", "../reserve/reserve2.jsp");
-			request.setAttribute("jsp2", "../reserve/reserveSeat.jsp");
-			request.setAttribute("jsp3", "../reserve/reserveResult.jsp");
 		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	
-		return "main/main.jsp";
+		return "reserve/reserveResult.jsp";
 	}
 }
