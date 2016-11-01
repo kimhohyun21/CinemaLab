@@ -17,5 +17,5 @@
 	
 	<select id="theaterData" parameterType="String" resultType="Reserve">
 		SELECT DISTINCT theater FROM theaterList WHERE local=#{local}
-	</select>
+	</select>	
 </mapper>

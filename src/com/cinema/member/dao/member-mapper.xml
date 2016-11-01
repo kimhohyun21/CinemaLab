@@ -24,11 +24,18 @@
 	<delete id="memberDelete" parameterType="member">
 		DELETE FROM member WHERE no=#{no}
 	</delete>
-	<select id="memberOverlab" resultType="int" parameterType="String">
+	<select id="memberOverlab" parameterType="String" resultType="int" >
 		SELECT COUNT(*) FROM member WHERE id=#{id} 
 	</select>
-	<!-- <update id="memberModify" parameterMap="member">	
-		UPDATE member SET id=#{id} pwd=#{pwd} name=#{name} phone=#{phone} birth=#{birth}
-		WHERE no=#{no]
-	</update> -->
+	<select id="memberGetPwd" parameterType="int" resultType="String">
+		SELECT pwd FROM member WHERE no=#{no}
+	</select>
+	<update id="memberModify" parameterType="member">
+		UPDATE member SET name=#{name},birth=#{birth},phone=#{phone},pwd=#{pwd} WHERE no=#{no}
+	</update>	
+	<!-- <select id="memberReserveList" parameterType="member" resultType="ArrayList">
+		SELECT rYear, rMonth, rDay, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title
+		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
+		WHERE no=#{no};
+	</select> -->
 </mapper>

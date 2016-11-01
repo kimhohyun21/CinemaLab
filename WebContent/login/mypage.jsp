@@ -26,6 +26,13 @@
 			</tr>
 			<tr>
 				<td>
+					<a href="changepwd.do">
+						비밀번호 수정
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<a href="delete.do">
 						회원탈퇴
 					</a>

@@ -3,6 +3,8 @@ package com.cinema.member.dao;
 import java.io.*;
 import java.util.*;
 
+import javax.websocket.Session;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -67,6 +69,20 @@ public class MemberDAO {
 		int countid=session.selectOne("memberOverlab", id);
 		session.close();
 		return countid;
+	}
+	
+	public static String memberGetPwd(int no){
+		SqlSession session=ssf.openSession();
+		String pwd=session.selectOne("memberGetPwd",no);
+		session.close();
+		return pwd;
+	}
+	
+	public static void memberModify(MemberVO vo){
+		SqlSession session=ssf.openSession();
+		session.update("memberModify",vo);
+		session.commit();
+		session.close();		
 	}
 
 }

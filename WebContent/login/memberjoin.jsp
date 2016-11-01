@@ -31,8 +31,7 @@ function send(){
 	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
 	     f.id.focus();
 	     return;
-	}
-	 /*
+	}	 
 	 if(f.id.value==""){
 		alert("ID를 입력하세요");
 		f.id.focus();
@@ -61,8 +60,8 @@ function send(){
 	if(pwd!=pwdCheck){
 		alert("비밀번호가 맞지 않습니다");
 		return;
-	}}*/
-	/* var number = /[^0-9]/;
+	}
+	 var number = /[^0-9]/;
 	 if (f.birth.value.search(number)!=-1 || f.birth.value.length != 8 || f.birth.value==""){
 	        alert("생년월일은 숫자만 8자리를 입력해 주시기 바랍니다 "
 	        		+"\n ex)20161018");	        
@@ -73,8 +72,7 @@ function send(){
 	        alert("전화번호를 제대로 입력해주세요. \n전화번호는 숫자만 입력하실 수 있습니다 \n ex)01015771577");
 	        f.phone.focus();
 	        return;
-	   } */	  
-	var $ok="${ok }";
+	   }  	var $ok="${ok }";
 	   console.log($ok);
 	 if($ok != '사용가능한 ID입니다 ^^'){
 	 		alert("중복체크를 해주세요") 
@@ -95,12 +93,7 @@ function checkID(){
 		f.id.focus();
 	}
 	location.href="overlab.do?id="+id;
-	/* window.open("login/checkid.jsp?id=${id }","중복첵","width=400 height=150"); */
-	
 }
-/* $(document).ready(function(){
-	$('#id').css("ime-mode", "disabled");
-}); */
 </script>	
 </head>
 <body>
