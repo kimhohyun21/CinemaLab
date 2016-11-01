@@ -7,13 +7,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>작성 결과</title>
 	<script type="text/javascript">
-		function check(){
+		function check(seat){
 			$.ajax({
 				type: "POST",
 				url: "reserveResult.do",
 				data:$('#frm2').serialize(),
 				success:function(data){
-					alert('성공'+this.data)
+					alert("성공"+this.data);
 					$('#result2').html(data);
 				},
 				error:function(data){
@@ -48,7 +48,7 @@
 	  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		
 			<c:forEach var="b" begin="1" end="20">
 				<li>
-					<input type="checkbox" name="seat" value="${sa }${b }" onchange="check()" id="${sa }${b }">
+					<input type="checkbox" name="seat" value="${sa }${b }" onchange="check()" id="${sa }${b }"> 
 				</li>
 			<c:if test="${b==4 || b==16}">
 				<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>
