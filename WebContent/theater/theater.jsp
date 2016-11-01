@@ -11,10 +11,10 @@
 </head>
 <body>
 	<center>
-		<table border="1" width="1000">
+		<table width="1000" id="local_table">
 			<tr>
 				<c:forEach var="vo" items="${localList }">
-					<td><a href="theater.do?local=${vo.local }">${vo.local }</a></td>
+					<td><a href="theater.do?local=${vo.local }"><p id="local">${vo.local }</p></a></td>
 				</c:forEach>
 			</tr>
 		</table>
@@ -117,7 +117,7 @@
 			</table>
 		</div>
 		<div>
-			<jsp:include page="map.jsp"></jsp:include>
+			<%-- <jsp:include page="map.jsp"></jsp:include> --%>
 		</div>
 		<div>
 			<jsp:include page="location_info.jsp"></jsp:include>
