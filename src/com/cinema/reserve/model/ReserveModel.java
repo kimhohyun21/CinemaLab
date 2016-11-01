@@ -72,7 +72,9 @@ public class ReserveModel {
 		int z=0;
 		
 		String checkedDay=request.getParameter("checkedDay");
+		if(checkedDay==null)checkedDay=sd;
 		String checkedDay2=request.getParameter("checkedDay2");
+		if(checkedDay2==null)checkedDay2=ss;
 		
 		//지역 선택
 		String local=request.getParameter("local");
