@@ -10,18 +10,17 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-public class ReserveModel2 {
-	@RequestMapping("reserve2.do")
-	public String reserve2(HttpServletRequest request){
+public class ReserveSeatModel {
+	@RequestMapping("reserveSeat.do")
+	public String reserveSeat(HttpServletRequest request){
 		try{
-			request.setCharacterEncoding("EUC-KR");
 			String year=request.getParameter("year");
 			String month=request.getParameter("month");
 			String checkedDay=request.getParameter("checkedDay");
 			String checkedDay2=request.getParameter("checkedDay2");
 			String local=request.getParameter("local");
 			String tname=request.getParameter("tname");
-			String title=request.getParameter("title");		
+			String title=request.getParameter("title");	
 			String grade=request.getParameter("grade");
 			String theaterNo=request.getParameter("theaterNo");
 			String movietime=request.getParameter("movietime");
@@ -36,10 +35,10 @@ public class ReserveModel2 {
 			int ticket3=Integer.parseInt(junior);
 			
 			int payment=ticket1*10000+ticket2*6000+ticket3*8000;
-			System.out.println(payment);
 			request.setAttribute("adult", adult);
 			request.setAttribute("senior", senior);
 			request.setAttribute("junior", junior);
+			System.out.println(payment);
 			request.setAttribute("payment", payment);
 			request.setAttribute("grade", grade);
 			request.setAttribute("title", title);
@@ -51,14 +50,12 @@ public class ReserveModel2 {
 			request.setAttribute("tname", tname);
 			request.setAttribute("theaterNo", theaterNo);
 			request.setAttribute("local", local);
-			request.setAttribute("jsp", "../reserve/reserve2.jsp");
-			request.setAttribute("jsp2", "../reserve/reserveSeat.jsp");
 			request.setAttribute("jsp3", "../reserve/reserveResult.jsp");
 		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	
-		return "main/main.jsp";
+		return "reserve/reserveSeat.jsp";
 	}
 }

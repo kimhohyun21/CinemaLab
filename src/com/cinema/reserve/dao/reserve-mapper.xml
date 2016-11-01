@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="timeData" parameterType="java.util.Map" resultType="Reserve">
-		SELECT theaterNo, movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
+		SELECT movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
 	</select>
 	
 	<select id="localData" resultType="Reserve">
@@ -17,5 +17,9 @@
 	
 	<select id="theaterData" parameterType="String" resultType="Reserve">
 		SELECT DISTINCT theater FROM theaterList WHERE local=#{local}
+	</select>
+	
+	<select id="theaterNoData" parameterType="java.util.Map" resultType="int">
+		SELECT DISTINCT theaterNo FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
 	</select>
 </mapper>
