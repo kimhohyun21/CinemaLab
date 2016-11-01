@@ -36,12 +36,10 @@ div.seat div.line ul li{
 	float: left;
 	height: 20px;
 	width: 20px;
-	background-color: gray;
-	border: 1px solid black;
 	text-align: center;
 	vertical-align: middle;
 	margin: 1px 5px 1px 5px;
-	padding: 1px;
+	padding: 1.8px;
 	font-size: 9pt;
 }
 form#frm{
@@ -51,4 +49,49 @@ span.resetBtn{
 	width:30px;
 	height: 10px;
 	border: 1px solid black;
+}
+
+input[type=checkbox]{
+	display:none;
+}
+
+/*Style the checkboxes using CSS*/
+input[type=checkbox] + label.btn{
+	padding: 5px 5px 5px 5px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    top: -6px;
+    left: -4px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    background: #cb4e4e;
+    color: #fff;
+    box-shadow: 0 6px #ab3c3c;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 18px;
+    height: 15px;
+    text-align: center;
+}
+
+/*Checkboxes hover and checked CSS*/
+input[type=checkbox] + label.btn:hover{
+	box-shadow: 0 4px #ab3c3c;
+	top: 1px;
+}
+input[type=checkbox]:checked + label.btn{
+	box-shadow: 0 0 #ab3c3c;
+	background-image: url("../image/x.png");
+	background-position: center;
+	background-size: cover;
+	text-indent: -9999px;
+	top: 1px;
 }

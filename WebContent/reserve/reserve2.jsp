@@ -5,13 +5,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>ticket and seat</title>
+	<title>Ticket and Seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
 		function select(){
 			$.ajax({
 				type: "POST",
-				url: "reserveSeat.do",
+				url: "reserve2.do",
 				data:$('#frm').serialize(),
 				success:function(data){
 					$('#result').html(data);
@@ -37,6 +37,7 @@
 				<input type="hidden" name="title" value="${title }">				
 				<input type="hidden" name="theaterNo" value="${theaterNo}">
 				<input type="hidden" name="movietime" value="${movietime}">
+				<input type="hidden" name="rType" value="seat">
 				어른 <select id="adult" name="adult" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
