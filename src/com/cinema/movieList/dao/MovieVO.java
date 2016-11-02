@@ -19,7 +19,6 @@ public class MovieVO {
 	private String cname;
 	private String img;
 	
-	
 	public String getCname() {
 		return cname;
 	}
