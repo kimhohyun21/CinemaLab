@@ -9,168 +9,94 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript"
-		src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=WR8kTv4qMlkv4ayBw2tu"></script>
-	<div id="map" style="border: 1px solid #000;"></div>
-	<script type="text/javascript">
-	
-		var oSeoulCityPoint = new nhn.api.map.LatLng(37.3595704, 127.105399);
-		var defaultLevel = 11;
-		var oMap = new nhn.api.map.Map(document.getElementById('map'), {
-			point : oSeoulCityPoint,
-			zoom : defaultLevel,
-			enableWheelZoom : true,
-			enableDragPan : true,
-			enableDblClickZoom : false,
-			mapMode : 0,
-			activateTrafficMap : false,
-			activateBicycleMap : false,
-			minMaxLevel : [ 1, 14 ],
-			size : new nhn.api.map.Size(1000, 480)
-		});
-		
-		/* nhn.api.map.Marker(icon : Icon, {
-		    point : new nhn.api.map.LatLng(37.3595704, 127.105399); // ¸¶Ä¿ÀÇ ÁÂÇ¥
-		    zIndex : Number // ¸¶Ä¿ÀÇ zIndex
-		    title : String // Å¸ÀÌÆ²
-		    smallSrc : String // ¸¶Ä¿ÀÇ ÀÛÀº ÀÌ¹ÌÁö(Áßº¹ ¸¶Ä¿ ·¹ÀÌ¾î »ç¿ë ½Ã Ç¥½ÃµÊ)
-		});  */
+	<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=B89LGmTHAKKmgnTgbizc"></script>
+<div id="map" style="border:1px solid #000;"></div>
+<script type="text/javascript">
+	var theater1="ì‹ ë„ë¦¼";
+	var theater2="ì˜ë“±í¬";
+	var cinema;
+	if(${theater}==theater1){
+		cinema=new nhn.api.map.LatLng(37.5081508,126.88806390000002);
+	}
+	if(${theater}==theater2){
+		cinema=new nhn.api.map.LatLng(37.5157744,126.90622910000002);
+	} 
+	/* var oSeoulCityPoint = new nhn.api.map.LatLng(37.5675451, 126.9773356); */
+    var defaultLevel = 11;
+    var oMap = new nhn.api.map.Map(document.getElementById('map'), {
+        point: cinema,
+        zoom: defaultLevel,
+        enableWheelZoom: true,
+        enableDragPan: true,
+        enableDblClickZoom: false,
+        mapMode: 0,
+        activateTrafficMap: false,
+        activateBicycleMap: false,
+        minMaxLevel: [1, 14],
+        size: new nhn.api.map.Size(1000, 480)
+    });
+    var oSlider = new nhn.api.map.ZoomControl();
+    oMap.addControl(oSlider);
+    oSlider.setPosition({
+        top: 10,
+        left: 10
+    });
 
-		var oSlider = new nhn.api.map.ZoomControl();
-		oMap.addControl(oSlider);
-		oSlider.setPosition({
-			top : 10,
-			left : 10
-		});
+    var oMapTypeBtn = new nhn.api.map.MapTypeBtn();
+    oMap.addControl(oMapTypeBtn);
+    oMapTypeBtn.setPosition({
+        bottom: 10,
+        right: 80
+    });
 
-		var oMapTypeBtn = new nhn.api.map.MapTypeBtn();
-		oMap.addControl(oMapTypeBtn);
-		oMapTypeBtn.setPosition({
-			bottom : 10,
-			right : 80
-		});
+    var oThemeMapBtn = new nhn.api.map.ThemeMapBtn();
+    oThemeMapBtn.setPosition({
+        bottom: 10,
+        right: 10
+    });
+    oMap.addControl(oThemeMapBtn);
 
-		var oThemeMapBtn = new nhn.api.map.ThemeMapBtn();
-		oThemeMapBtn.setPosition({
-			bottom : 10,
-			right : 10
-		});
-		oMap.addControl(oThemeMapBtn);
+    var oSize = new nhn.api.map.Size(28, 37);
+    var oOffset = new nhn.api.map.Size(14, 37);
+    var oIcon = new nhn.api.map.Icon('http://static.naver.com/maps2/icons/pin_spot2.png', oSize, oOffset); 
 
-		/* var oBicycleGuide = new nhn.api.map.BicycleGuide(); // - ÀÚÀü°Å ¹ü·Ê ¼±¾ğ
-		oBicycleGuide.setPosition({
-			top : 10,
-			right : 10
-		}); // - ÀÚÀü°Å ¹ü·Ê À§Ä¡ ÁöÁ¤
-		oMap.addControl(oBicycleGuide);// - ÀÚÀü°Å ¹ü·Ê¸¦ Áöµµ¿¡ Ãß°¡.
+    var oInfoWnd = new nhn.api.map.InfoWindow();
+    oInfoWnd.setVisible(false);
+    oMap.addOverlay(oInfoWnd);
 
-		var oTrafficGuide = new nhn.api.map.TrafficGuide(); // - ±³Åë ¹ü·Ê ¼±¾ğ
-		oTrafficGuide.setPosition({
-			bottom : 30,
-			left : 10
-		}); // - ±³Åë ¹ü·Ê À§Ä¡ ÁöÁ¤.
-		oMap.addControl(oTrafficGuide); // - ±³Åë ¹ü·Ê¸¦ Áöµµ¿¡ Ãß°¡.
+    oInfoWnd.setPosition({
+        top: 20,
+        left: 20
+    }); 
 
-		var trafficButton = new nhn.api.map.TrafficMapBtn(); // - ½Ç½Ã°£ ±³Åë Áöµµ ¹öÆ° ¼±¾ğ
-		trafficButton.setPosition({
-			bottom : 10,
-			right : 150
-		}); // - ½Ç½Ã°£ ±³Åë Áöµµ ¹öÆ° À§Ä¡ ÁöÁ¤
-		oMap.addControl(trafficButton); */
-
-		var oSize = new nhn.api.map.Size(28, 37);
-		var oOffset = new nhn.api.map.Size(14, 37);
-		var oIcon = new nhn.api.map.Icon(
-				'http://static.naver.com/maps2/icons/pin_spot2.png', oSize,
-				oOffset);
-
-		var oInfoWnd = new nhn.api.map.InfoWindow();
-		oInfoWnd.setVisible(false);
-		oMap.addOverlay(oInfoWnd);
-
-		oInfoWnd.setPosition({
-			top : 20,
-			left : 20
-		});
-
-		var oLabel = new nhn.api.map.MarkerLabel(); // - ¸¶Ä¿ ¶óº§ ¼±¾ğ.
-		oMap.addOverlay(oLabel); // - ¸¶Ä¿ ¶óº§ Áöµµ¿¡ Ãß°¡. ±âº»Àº ¶óº§ÀÌ º¸ÀÌÁö ¾Ê´Â »óÅÂ·Î Ãß°¡µÊ.
-
-		oInfoWnd.attach('changeVisible', function(oCustomEvent) {
-			if (oCustomEvent.visible) {
-				oLabel.setVisible(false);
-			}
-		});
-
-		var oPolyline = new nhn.api.map.Polyline([], {
-			strokeColor : '#f00', // - ¼±ÀÇ »ö±ò
-			strokeWidth : 5, // - ¼±ÀÇ µÎ²²
-			strokeOpacity : 0.5
-		// - ¼±ÀÇ Åõ¸íµµ
-		}); // - polyline ¼±¾ğ, Ã¹ ¹øÂ° ÀÎÀÚ´Â ¼±ÀÌ ±×·ÁÁú Á¡ÀÇ À§Ä¡. ÇöÀç´Â ¾øÀ½.
-		oMap.addOverlay(oPolyline); // - Áöµµ¿¡ ¼±À» Ãß°¡ÇÔ.
-
-		oMap.attach('mouseenter', function(oCustomEvent) {
-
-			var oTarget = oCustomEvent.target;
-			// ¸¶Ä¿À§¿¡ ¸¶¿ì½º ¿Ã¶ó°£°Å¸é
-			if (oTarget instanceof nhn.api.map.Marker) {
-				var oMarker = oTarget;
-				oLabel.setVisible(true, oMarker); // - Æ¯Á¤ ¸¶Ä¿¸¦ ÁöÁ¤ÇÏ¿© ÇØ´ç ¸¶Ä¿ÀÇ titleÀ» º¸¿©ÁØ´Ù.
-			}
-		});
-
-		oMap.attach('mouseleave', function(oCustomEvent) {
-
-			var oTarget = oCustomEvent.target;
-			// ¸¶Ä¿À§¿¡¼­ ¸¶¿ì½º ³ª°£°Å¸é
-			if (oTarget instanceof nhn.api.map.Marker) {
-				oLabel.setVisible(false);
-			}
-		});
-
-		oMap
-				.attach(
-						'click',
-						function(oCustomEvent) {
-							var oPoint = oCustomEvent.point;
-							var oTarget = oCustomEvent.target;
-							oInfoWnd.setVisible(false);
-							// ¸¶Ä¿ Å¬¸¯ÇÏ¸é
-							if (oTarget instanceof nhn.api.map.Marker) {
-								// °ãÄ§ ¸¶Ä¿ Å¬¸¯ÇÑ°Å¸é
-								if (oCustomEvent.clickCoveredMarker) {
-									return;
-								}
-								// - InfoWindow¿¡ µé¾î°¥ ³»¿ëÀº setContent·Î ÀÚÀ¯·Ó°Ô ³ÖÀ» ¼ö ÀÖ½À´Ï´Ù. ¿ÜºÎ css¸¦ ÀÌ¿ëÇÒ ¼ö ÀÖÀ¸¸ç,
-								// - ¿ÜºÎ css¿¡ ¼±¾ğµÈ class¸¦ ÀÌ¿ëÇÏ¸é ÇØ´ç classÀÇ ½ºÅ¸ÀÏÀ» ¹Ù·Î Àû¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
-								// - ´Ü, DIVÀÇ position styleÀº absolute°¡ µÇ¸é ¾ÈµÇ¸ç,
-								// - absoluteÀÇ °æ¿ì autoPositionÀÌ µ¿ÀÛÇÏÁö ¾Ê½À´Ï´Ù.
-								oInfoWnd
-										.setContent('<DIV style="border-top:1px solid; border-bottom:2px groove black; border-left:1px solid; border-right:2px groove black;margin-bottom:1px;color:black;background-color:white; width:auto; height:auto;">'
-												+ '<span style="color: #000000 !important;display: inline-block;font-size: 12px !important;font-weight: bold !important;letter-spacing: -1px !important;white-space: nowrap !important; padding: 2px 5px 2px 2px !important">'
-												+ 'Hello World <br /> '
-												+ oTarget.getPoint()
-												+ '<span></div>');
-								oInfoWnd.setPoint(oTarget.getPoint());
-								oInfoWnd.setPosition({
-									right : 15,
-									top : 30
-								});
-								oInfoWnd.setVisible(true);
-								oInfoWnd.autoPosition();
-								return;
-							}
-							var oMarker = new nhn.api.map.Marker(oIcon, {
-								title : '¸¶Ä¿ : ' + oPoint.toString()
-							});
-							oMarker.setPoint(oPoint);
-							oMap.addOverlay(oMarker);
-
-							var aPoints = oPolyline.getPoints(); // - ÇöÀç Æú¸®¶óÀÎÀ» ÀÌ·ç´Â Á¡À» °¡Á®¿Í¼­ ¹è¿­¿¡ ÀúÀå.
-							aPoints.push(oPoint); // - Ãß°¡ÇÏ°íÀÚ ÇÏ´Â Á¡À» Ãß°¡ÇÏ¿© ¹è¿­·Î ÀúÀåÇÔ.
-							oPolyline.setPoints(aPoints); // - ÇØ´ç Æú¸®¶óÀÎ¿¡ ¹è¿­¿¡ ÀúÀåµÈ Á¡À» Ãß°¡ÇÔ
-						});
-	</script>
+    oMap.attach('click', function (oCustomEvent) {
+        var oPoint = oCustomEvent.point;
+        var oTarget = oCustomEvent.target;
+        oInfoWnd.setVisible(false);
+        // ë§ˆì»¤ í´ë¦­í•˜ë©´
+        if (oTarget instanceof nhn.api.map.Marker) {
+            // ê²¹ì¹¨ ë§ˆì»¤ í´ë¦­í•œê±°ë©´
+            if (oCustomEvent.clickCoveredMarker) {
+                return;
+            }
+            // - InfoWindowì— ë“¤ì–´ê°ˆ ë‚´ìš©ì€ setContentë¡œ ììœ ë¡­ê²Œ ë„£ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì™¸ë¶€ cssë¥¼ ì´ìš©í•  ìˆ˜ ìˆìœ¼ë©°,
+            // - ì™¸ë¶€ cssì— ì„ ì–¸ëœ classë¥¼ ì´ìš©í•˜ë©´ í•´ë‹¹ classì˜ ìŠ¤íƒ€ì¼ì„ ë°”ë¡œ ì ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+            // - ë‹¨, DIVì˜ position styleì€ absoluteê°€ ë˜ë©´ ì•ˆë˜ë©°,
+            // - absoluteì˜ ê²½ìš° autoPositionì´ ë™ì‘í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+            oInfoWnd.setContent('<DIV style="border-top:1px solid; border-bottom:2px groove black; border-left:1px solid; border-right:2px groove black;margin-bottom:1px;color:black;background-color:white; width:auto; height:auto;">' +
+                    '<span style="color: #000000 !important;display: inline-block;font-size: 12px !important;font-weight: bold !important;letter-spacing: -1px !important;white-space: nowrap !important; padding: 2px 5px 2px 2px !important">' +
+                    'Hello World <br /> ' + oTarget.getPoint()
+                    + '<span></div>');
+            oInfoWnd.setPoint(oTarget.getPoint());
+            oInfoWnd.setPosition({right: 15, top: 30});
+            oInfoWnd.setVisible(true);
+            oInfoWnd.autoPosition();
+            return;
+        }       
+    });
+    var oMarker1 = new nhn.api.map.Marker(oIcon, { title : '' });  //ë§ˆì»¤ ìƒì„± 
+    oMarker1.setPoint(oSeoulCityPoint); //ë§ˆì»¤ í‘œì‹œí•  ì¢Œí‘œ ì„ íƒ
+    oMap.addOverlay(oMarker1); //ë§ˆì»¤ë¥¼ ì§€ë„ìœ„ì— í‘œí˜„ 
+</script>
 </body>
 </html>

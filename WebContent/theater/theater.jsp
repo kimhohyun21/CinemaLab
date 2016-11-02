@@ -117,7 +117,7 @@
 			</table>
 		</div>
 		<div>
-			<%-- <jsp:include page="map.jsp"></jsp:include> --%>
+			<jsp:include page="map.jsp"></jsp:include>
 		</div>
 		<div>
 			<jsp:include page="location_info.jsp"></jsp:include>
