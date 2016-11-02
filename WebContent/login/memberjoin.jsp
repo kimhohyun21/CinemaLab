@@ -99,27 +99,27 @@ function checkID(){
 <body>
 	<center>
 		<form action="join_ok.do" method="post" name="frm">
-			<table id="join_table" width="450" height="500">
+			<table id="join_table" width="450" height="300">
 				<tr>
 					<td align="center">
-						<input type="text" class="id" placeholder="아이디" name="id" value="${overCheckId }">
-						<input type="button" value="중복확인" onclick="checkID()"><br/>
+						<b>ID : </b><input type="text" class="id" placeholder="아이디" name="id" value="${overCheckId }">
+						<input type="button" value="중복확인" onclick="checkID()" class="btn"><br/>
 						${ok }										
 					</td>
 				</tr>				
 				<tr>
-					<td align="center">
-						<input type="text" placeholder="이름" name="name">										
+					<td align="right">
+						<b>이름 : </b><input type="text" placeholder="이름" name="name">										
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<input type="password" placeholder="비밀번호" name="pwd">
+					<td align="right">
+						<b>비밀번호 : </b><input type="password" placeholder="비밀번호" name="pwd">
 					</td>
 				</tr>			
 				<tr>
 					<td align="center">
-						<input type="password" placeholder="비밀번호 확인" name="pwd_check">
+						<b>비번 확인 : </b><input type="password" placeholder="비밀번호 확인" name="pwd_check">
 					</td>
 				</tr>
 				<tr>
@@ -134,8 +134,8 @@ function checkID(){
 				</tr>
 			</table>
 		</form>		
-		<input id="button" type="button" value="회원가입" onclick="send()" width="300"><br/>					
-		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+		<input id="button" type="button" value="회원가입" onclick="send()" width="300" class="btn"><br/>					
+		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300" class="btn">
 	</center>
 </body>
 </html>

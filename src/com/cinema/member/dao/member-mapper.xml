@@ -33,9 +33,9 @@
 	<update id="memberModify" parameterType="member">
 		UPDATE member SET name=#{name},birth=#{birth},phone=#{phone},pwd=#{pwd} WHERE no=#{no}
 	</update>	
-	<!-- <select id="memberReserveList" parameterType="member" resultType="ArrayList">
-		SELECT rYear, rMonth, rDay, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title
+	<select id="memberReserveList" parameterType="int" resultType="memberReserve">
+		SELECT rYear, rMonth, rDay, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
 		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
-		WHERE no=#{no};
-	</select> -->
+		WHERE no=#{no}
+	</select>
 </mapper>

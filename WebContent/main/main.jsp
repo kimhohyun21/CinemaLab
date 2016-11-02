@@ -23,7 +23,7 @@
 				<c:if test="${mvo.id!=null }">
 					<li>${mvo.name }님 반갑습니다!</li>
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="mypage.do">마이페이지</a></li>
+					<li><a href="reservePage.do">마이페이지</a></li>
 				</c:if>					
 					<li><a href="customer.do">고객센터</a></li>
 				</ul>

@@ -84,5 +84,13 @@ public class MemberDAO {
 		session.commit();
 		session.close();		
 	}
+	
+	public static List<MemberReserveListVO> memberReserveList(int no){
+		SqlSession session=ssf.openSession();
+		List<MemberReserveListVO> list=session.selectList("memberReserveList",no);
+		session.close();
+		return list;
+		
+	}
 
 }

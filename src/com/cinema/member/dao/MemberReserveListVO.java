@@ -13,6 +13,15 @@ public class MemberReserveListVO {
 	private int theaterno;
 	private String movietime;
 	private String title;
+	private String poster;
+	private int mno;
+	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
 	public int getRyear() {
 		return ryear;
 	}
@@ -84,6 +93,12 @@ public class MemberReserveListVO {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
 	}
 	
 }
