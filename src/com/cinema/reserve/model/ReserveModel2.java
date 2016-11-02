@@ -69,7 +69,9 @@ public class ReserveModel2 {
 		map.put("day", checkedDay);		
 		List<ReserveVO> rlist=ReserveDAO.reserveData(map);
 		for(ReserveVO vo : rlist){
-			String st=vo.getSeat();
+			String sit=vo.getSeat();
+			StringTokenizer st=new StringTokenizer(sit);
+			
 		}
 		
 		request.setAttribute("year", year);
