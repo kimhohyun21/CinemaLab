@@ -59,9 +59,9 @@ public class ReserveModel2 {
 		if(rType.equals("default")){
 			movePage="main/main.jsp";
 		}else if(rType.equals("seat")){
-			movePage="reserve/reserveSeat.jsp";
+			movePage="reserve/reserve2_Seat.jsp";
 		}else if(rType.equals("result")){
-			movePage="reserve/reserveResult.jsp";
+			movePage="reserve/reserve2_Result.jsp";
 		}
 		
 		
@@ -84,8 +84,8 @@ public class ReserveModel2 {
 		request.setAttribute("size", size);
 
 		request.setAttribute("jsp", "../reserve/reserve2.jsp");
-		request.setAttribute("jsp2", "../reserve/reserveSeat.jsp");
-		request.setAttribute("jsp3", "../reserve/reserveResult.jsp");
+		request.setAttribute("jsp2", "../reserve/reserve2_Seat.jsp");
+		request.setAttribute("jsp3", "../reserve/reserve2_Result.jsp");
 		
 		return movePage;
 	}
