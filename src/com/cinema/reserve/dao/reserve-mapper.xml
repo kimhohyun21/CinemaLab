@@ -24,6 +24,9 @@
 	</select>
 	
 	<select id="reserveData" parameterType="java.util.Map" resultType="Reserve">
-		SELECT seat FROM reserveList WHERE rYear=#{year} AND rMonth=#{month} AND rDay=#{day}
+		SELECT seat FROM reserveList NATURAL JOIN theaterList NATURAL JOIN movieList
+		WHERE rYear=#{year} AND rMonth=#{month} AND rDay=#{day}
+		AND theater=#{theater} AND movietime=#{movietime}
+		AND title=#{title}
 	</select>
 </mapper>

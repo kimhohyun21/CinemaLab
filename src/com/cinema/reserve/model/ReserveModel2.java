@@ -66,13 +66,22 @@ public class ReserveModel2 {
 		Map map=new HashMap();
 		map.put("year", year);
 		map.put("month", month);
-		map.put("day", checkedDay);		
+		map.put("day", checkedDay);
+		map.put("theater", tname);
+		map.put("movietime", movietime);
+		map.put("title", title);
 		List<ReserveVO> rlist=ReserveDAO.reserveData(map);
+		
+		//예매 좌석 리스에 담기
+		List<String> slist=new ArrayList<>();
 		for(ReserveVO vo : rlist){
 			String sit=vo.getSeat();
-			StringTokenizer st=new StringTokenizer(sit);
-			
+			StringTokenizer st=new StringTokenizer(sit, ",");
+			while(st.hasMoreTokens()){
+				 slist.add(st.nextToken());
+			}			
 		}
+		System.out.println(slist==null);
 		
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
@@ -90,6 +99,7 @@ public class ReserveModel2 {
 		request.setAttribute("ticketAll", ticketAll);
 		request.setAttribute("payment", payment);
 		request.setAttribute("seat", seat);
+		request.setAttribute("slist", slist);
 
 		request.setAttribute("jsp", "../reserve/reserve2.jsp");
 		request.setAttribute("jsp2", "../reserve/reserve2_Seat.jsp");

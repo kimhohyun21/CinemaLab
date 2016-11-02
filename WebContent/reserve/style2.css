@@ -83,7 +83,7 @@ input[type=checkbox] + label.btn{
 }
 
 /*Checkboxes hover and checked CSS*/
-input[type=checkbox] + label.btn:hover{
+input[type=checkbox] + label.btn:HOVER{
 	box-shadow: 0 4px #ab3c3c;
 	top: 1px;
 }

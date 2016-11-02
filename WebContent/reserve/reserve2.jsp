@@ -59,7 +59,7 @@
 			</form>
 			<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 			&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-			&theaterNo=${theaterNo2}&movietime=${vo.movietime}">
+			&theaterNo=${theaterNo2}&movietime=${movietime}">
 				<span class="resetBtn">선택초기화</span>
 			</a>
 		</div>
