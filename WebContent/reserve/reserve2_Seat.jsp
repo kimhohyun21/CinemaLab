@@ -11,9 +11,7 @@
 			var theater1="영등포";
 			if(${adult==0} && ${senior==0} && ${junior==0}){
 				alert('티켓 장수를 선택해 주세요.');
-				location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}"
-					+"&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}"
-					+"&theaterNo=${theaterNo2}&movietime=${vo.movietime}";
+				location.href="#";
 				return;
 			}else{				
 				$.ajax({					
@@ -91,7 +89,7 @@
 		<input type="hidden" name="senior" value="${senior}">
 		<input type="hidden" name="junior" value="${junior}">
 		<input type="hidden" name="rType" value="result">
-	   	<c:forEach var="sa" begin="0" end="10" items="a,b,c,d,e,f,g,h,i,j">
+	   	<c:forEach var="sa" begin="0" end="10" items="A,B,C,D,E,F,G,H,I,J">
 	   	<div class="line" align="center">
 	  		<ul>
 	  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		

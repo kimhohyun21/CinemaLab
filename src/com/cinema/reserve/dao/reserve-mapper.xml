@@ -22,4 +22,8 @@
 	<select id="theaterNoData" parameterType="java.util.Map" resultType="int">
 		SELECT DISTINCT theaterNo FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
 	</select>
+	
+	<select id="reserveData" parameterType="java.util.Map" resultType="Reserve">
+		SELECT seat FROM reserveList WHERE rYear=#{year} AND rMonth=#{month} AND rDay=#{day}
+	</select>
 </mapper>

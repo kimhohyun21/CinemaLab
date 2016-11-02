@@ -49,8 +49,6 @@ public class ReserveModel2 {
 		
 		//좌석
 		String[] seat=request.getParameterValues("seat");
-		int size=0;
-		if(seat!=null){size=seat.length;}
 		
 		//Ajax 실행 구분 인자
 		String rType=request.getParameter("rType");
@@ -64,6 +62,15 @@ public class ReserveModel2 {
 			movePage="reserve/reserve2_Result.jsp";
 		}
 		
+		//좌석 예매 현황
+		Map map=new HashMap();
+		map.put("year", year);
+		map.put("month", month);
+		map.put("day", checkedDay);		
+		List<ReserveVO> rlist=ReserveDAO.reserveData(map);
+		for(ReserveVO vo : rlist){
+			String st=vo.getSeat();
+		}
 		
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
@@ -81,7 +88,6 @@ public class ReserveModel2 {
 		request.setAttribute("ticketAll", ticketAll);
 		request.setAttribute("payment", payment);
 		request.setAttribute("seat", seat);
-		request.setAttribute("size", size);
 
 		request.setAttribute("jsp", "../reserve/reserve2.jsp");
 		request.setAttribute("jsp2", "../reserve/reserve2_Seat.jsp");
