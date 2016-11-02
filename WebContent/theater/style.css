@@ -1,1 +1,21 @@
 @CHARSET "EUC-KR";
+
+#local{
+	text-align: center;
+	font-size: 20px;
+	color: black;
+	height: 40px;
+}
+
+#local a{
+	margin-top: 20px;
+}
+
+#local:HOVER{
+	background-color: #3667c9;
+}
+
+#local_table{
+	border-collapse: collapse;
+	background-color: #c2d1ef;
+}

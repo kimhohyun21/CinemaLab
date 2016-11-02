@@ -48,5 +48,12 @@ public class ReserveDAO {
 		session.close();
 		return theaterNo2;
 	}
+	
+	public static List<ReserveVO> reserveData(Map map){
+		SqlSession session=ssf.openSession();
+		List<ReserveVO> rlist=session.selectList("reserveData",map);
+		session.close();
+		return rlist;
+	}
 }
 

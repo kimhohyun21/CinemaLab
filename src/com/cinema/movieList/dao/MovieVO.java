@@ -16,8 +16,22 @@ public class MovieVO {
 	private String trailer;
 	private int type;
 	private String rank;
+	private String cname;
+	private String img;
 	
 	
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public String getGenre() {
 		return genre;
 	}

@@ -55,15 +55,16 @@
 			<input type="hidden" name="title" value="${title }">				
 			<input type="hidden" name="theaterNo" value="${theaterNo}">
 			<input type="hidden" name="movietime" value="${movietime}">
+			<input type="hidden" name="ticketAll" value="${ticketAll}">
+			<input type="hidden" name="payment" value="${payment}">	
 			<input type="hidden" name="seat" value="${seat}">
-			<input type="hidden" name="payment" value="${payment }">			
 			<table width="780px">
 				<tr>
 					<td align="left">
 						<input type="button" value="이전페이지" onclick="javascript:history.back();">
 					</td>
 					<td align="right">
-						<input type="button" value="다음페이지" onclick="send()">
+						<input type="submit" value="다음페이지">
 					</td>
 				</tr>
 			</table>

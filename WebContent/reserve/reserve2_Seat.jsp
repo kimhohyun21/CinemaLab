@@ -7,13 +7,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve Seat</title>	
 	<script type="text/javascript">
-		var i=1;
 		function check(){
+			var theater1="영등포";
 			if(${adult==0} && ${senior==0} && ${junior==0}){
 				alert('티켓 장수를 선택해 주세요.');
-				location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}"
-					+"&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}"
-					+"&theaterNo=${theaterNo2}&movietime=${vo.movietime}";
+				location.href="#";
 				return;
 			}else{				
 				$.ajax({					
@@ -22,15 +20,31 @@
 					data:$('#frm2').serialize(),
 					success:function(data){
 						$('#result2').html(data);
-						i++;
 					},
 					error:function(data){
 						alert("실패");
 					}
 				});
-				if(${ticketAll}==i){
-					$('input.seat').attr('disabled', 'true');
-					$('input[type=checkbox].seat + label.btn').css({
+				var $unchecked=$('div.line ul li input[type=checkbox] + label.btn');
+				$unchecked.css({
+					"box-shadow" : "0 6px #ab3c3c",
+					"background" : "#cb4e4e",
+					"text-indent" : "0px",						
+					"top" : "-6px"
+				});
+				var $checked=$('div.line ul li input[type=checkbox]:checked + label.btn');
+				$checked.css({
+					"box-shadow" : "0 0 #ab3c3c",
+					"background" : "#862f2f",
+					"top" : "1px"
+				});
+				
+				var $checkCount=$('div.line ul li input[type=checkbox]:checked').length;
+				var $nocheck=$('div.line ul li input[type=checkbox]').not(':checked');
+				if(${ticketAll}==$checkCount){
+					$nocheck.attr('disabled', 'true');
+					var $nochecklabel=$('div.line ul li input[disabled=disabled] + label.btn');
+					$nochecklabel.css({
 						"box-shadow" : "0 0 #ab3c3c",
 						"background-color" : "gray",
 						"background-image" : "url('image/x.png')",
@@ -39,6 +53,15 @@
 						"text-indent" : "-9999px",
 						"top" : "1px"
 					});
+				}else if(${ticketAll} > $checkCount){
+					var $nochecklabel=$('div.line ul li input[disabled=disabled] + label.btn');
+					$nochecklabel.css({
+						"box-shadow" : "0 6px #ab3c3c",
+						"background" : "#cb4e4e",
+						"text-indent" : "0px",						
+						"top" : "-6px"
+					});
+					$nocheck.removeAttr('disabled', 'disabled');
 				}
 			}
 		};
@@ -66,7 +89,7 @@
 		<input type="hidden" name="senior" value="${senior}">
 		<input type="hidden" name="junior" value="${junior}">
 		<input type="hidden" name="rType" value="result">
-	   	<c:forEach var="sa" begin="0" end="10" items="a,b,c,d,e,f,g,h,i,j">
+	   	<c:forEach var="sa" begin="0" end="10" items="A,B,C,D,E,F,G,H,I,J">
 	   	<div class="line" align="center">
 	  		<ul>
 	  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		

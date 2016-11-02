@@ -1,5 +1,7 @@
 package com.cinema.movieList.model;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.cinema.controller.Controller;
@@ -14,9 +16,11 @@ public class MoviedetailModel {
 		String no=request.getParameter("no");
 		int b=Integer.parseInt(no);
 		MovieVO vo=MovieDAO.getmoviedetail(b);
+		List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 		String url=vo.getTrailer();
 		url=url.substring(url.lastIndexOf("/")+1);
 		request.setAttribute("url", url);
+		request.setAttribute("list", list);
 		request.setAttribute("vo", vo);
 		request.setAttribute("jsp", "../movie/moviedetail.jsp");
 		

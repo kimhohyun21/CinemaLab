@@ -49,8 +49,6 @@ public class ReserveModel2 {
 		
 		//좌석
 		String[] seat=request.getParameterValues("seat");
-		int size=0;
-		if(seat!=null){size=seat.length;}
 		
 		//Ajax 실행 구분 인자
 		String rType=request.getParameter("rType");
@@ -59,11 +57,22 @@ public class ReserveModel2 {
 		if(rType.equals("default")){
 			movePage="main/main.jsp";
 		}else if(rType.equals("seat")){
-			movePage="reserve/reserveSeat.jsp";
+			movePage="reserve/reserve2_Seat.jsp";
 		}else if(rType.equals("result")){
-			movePage="reserve/reserveResult.jsp";
+			movePage="reserve/reserve2_Result.jsp";
 		}
 		
+		//좌석 예매 현황
+		Map map=new HashMap();
+		map.put("year", year);
+		map.put("month", month);
+		map.put("day", checkedDay);		
+		List<ReserveVO> rlist=ReserveDAO.reserveData(map);
+		for(ReserveVO vo : rlist){
+			String sit=vo.getSeat();
+			StringTokenizer st=new StringTokenizer(sit);
+			
+		}
 		
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
@@ -81,11 +90,10 @@ public class ReserveModel2 {
 		request.setAttribute("ticketAll", ticketAll);
 		request.setAttribute("payment", payment);
 		request.setAttribute("seat", seat);
-		request.setAttribute("size", size);
 
 		request.setAttribute("jsp", "../reserve/reserve2.jsp");
-		request.setAttribute("jsp2", "../reserve/reserveSeat.jsp");
-		request.setAttribute("jsp3", "../reserve/reserveResult.jsp");
+		request.setAttribute("jsp2", "../reserve/reserve2_Seat.jsp");
+		request.setAttribute("jsp3", "../reserve/reserve2_Result.jsp");
 		
 		return movePage;
 	}

@@ -32,8 +32,7 @@
 				<td width="15%" align="center" class="main_table_td">
 					<p class="year">${year }</p>
 					<p class="month">${month }</p>
-					<br> <c:forEach var="c" begin="0" end="6" step="1"
-						items="${strWeek2 }">
+					<br> <c:forEach var="c" begin="0" end="6" step="1" items="${strWeek2 }">
 						<c:choose>
 							<c:when test="${day7[z]==1 && z!=0}">
 								<!-- 다음달로 넘어가게 되면 다음달 표기 -->
