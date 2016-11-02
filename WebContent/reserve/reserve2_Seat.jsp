@@ -7,8 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve Seat</title>	
 	<script type="text/javascript">
-		var i=1;
 		function check(){
+			var theater1="영등포";
 			if(${adult==0} && ${senior==0} && ${junior==0}){
 				alert('티켓 장수를 선택해 주세요.');
 				location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}"
@@ -22,15 +22,18 @@
 					data:$('#frm2').serialize(),
 					success:function(data){
 						$('#result2').html(data);
-						i++;
 					},
 					error:function(data){
 						alert("실패");
 					}
 				});
-				if(${ticketAll}==i){
-					$('input.seat').attr('disabled', 'true');
-					$('input[type=checkbox].seat + label.btn').css({
+				var $checkCount=$('div.line ul li input[type=checkbox]:checked').length;
+				var $nocheck=$('div.line ul li input[type=checkbox]').not(':checked');
+				var $nochecklabel=$('div.line ul li input[disabled=disabled]+label.btn');
+				console.log();
+				if(${ticketAll}==$checkCount){
+					$nocheck.attr('disabled', 'true');
+					$nochecklabel.css({
 						"box-shadow" : "0 0 #ab3c3c",
 						"background-color" : "gray",
 						"background-image" : "url('image/x.png')",
@@ -39,6 +42,8 @@
 						"text-indent" : "-9999px",
 						"top" : "1px"
 					});
+				}else if(${ticketAll} > $checkCount){
+					$nocheck.removeAttr('disabled', 'true');
 				}
 			}
 		};
