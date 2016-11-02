@@ -69,7 +69,7 @@ input[type=checkbox] + label.btn{
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     background: #cb4e4e;
-    color: #fff;
+    color: #fff; 
     box-shadow: 0 6px #ab3c3c;
     -webkit-transition: none;
     -moz-transition: none;
@@ -85,13 +85,5 @@ input[type=checkbox] + label.btn{
 /*Checkboxes hover and checked CSS*/
 input[type=checkbox] + label.btn:hover{
 	box-shadow: 0 4px #ab3c3c;
-	top: 1px;
-}
-input[type=checkbox]:checked + label.btn{
-	box-shadow: 0 0 #ab3c3c;
-	background-image: url("../image/x.png");
-	background-position: center;
-	background-size: cover;
-	text-indent: -9999px;
 	top: 1px;
 }

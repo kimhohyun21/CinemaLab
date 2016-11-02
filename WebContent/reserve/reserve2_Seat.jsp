@@ -27,12 +27,25 @@
 						alert("½ÇÆÐ");
 					}
 				});
+				var $unchecked=$('div.line ul li input[type=checkbox] + label.btn');
+				$unchecked.css({
+					"box-shadow" : "0 6px #ab3c3c",
+					"background" : "#cb4e4e",
+					"text-indent" : "0px",						
+					"top" : "-6px"
+				});
+				var $checked=$('div.line ul li input[type=checkbox]:checked + label.btn');
+				$checked.css({
+					"box-shadow" : "0 0 #ab3c3c",
+					"background" : "#862f2f",
+					"top" : "1px"
+				});
+				
 				var $checkCount=$('div.line ul li input[type=checkbox]:checked').length;
 				var $nocheck=$('div.line ul li input[type=checkbox]').not(':checked');
-				var $nochecklabel=$('div.line ul li input[disabled=disabled]+label.btn');
-				console.log();
 				if(${ticketAll}==$checkCount){
 					$nocheck.attr('disabled', 'true');
+					var $nochecklabel=$('div.line ul li input[disabled=disabled] + label.btn');
 					$nochecklabel.css({
 						"box-shadow" : "0 0 #ab3c3c",
 						"background-color" : "gray",
@@ -43,7 +56,14 @@
 						"top" : "1px"
 					});
 				}else if(${ticketAll} > $checkCount){
-					$nocheck.removeAttr('disabled', 'true');
+					var $nochecklabel=$('div.line ul li input[disabled=disabled] + label.btn');
+					$nochecklabel.css({
+						"box-shadow" : "0 6px #ab3c3c",
+						"background" : "#cb4e4e",
+						"text-indent" : "0px",						
+						"top" : "-6px"
+					});
+					$nocheck.removeAttr('disabled', 'disabled');
 				}
 			}
 		};
