@@ -7,21 +7,118 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="theater/style.css">
 </head>
 <body>
+	<table width="1000" id="map_table">
+		<tr>
+			<td id="title">
+				<h3>${theater } ·Ôµ¥½Ã³×¸¶ À§Ä¡Á¤º¸</h3>
+			</td>
+		</tr>
+		<tr>
+			<td id="map" style="border: 1px solid #000; margin-top: 10px; margin-bottom: 10px;"></td>
+		</tr>
+		<tr>
+			<td id="addr">
+				<c:if test="${theater=='½Åµµ¸²' }">
+					ÁÖ¼Ò : ¼­¿ïÆ¯º°½Ã ±¸·Î±¸ °æÀÎ·Î 662 (½Åµµ¸²µ¿, µğÅ¥ºê½ÃÆ¼ 7Ãş)
+				</c:if>
+				<c:if test="${theater=='¿µµîÆ÷' }">
+					ÁÖ¼Ò : ¼­¿ïÆ¯º°½Ã ¿µµîÆ÷±¸ °æÀÎ·Î102±æ 13 (¿µµîÆ÷µ¿, ½Ã³×¸¶µ¿ 7Ãş)
+				</c:if>
+				<c:if test="${theater=='È«´ëÀÔ±¸' }">
+					ÁÖ¼Ò : ¼­¿ïÆ¯º°½Ã ¸¶Æ÷±¸ ¾çÈ­·Î 176 (µ¿±³µ¿, ¿ÍÀÌÁîÆÄÅ© 8Ãş)
+				</c:if>
+				<c:if test="${theater=='¿ëÀÎ' }">
+					ÁÖ¼Ò : °æ±âµµ ¿ëÀÎ½Ã Ã³ÀÎ±¸ ±İ·É·Î 86 (±è·®Àåµ¿)
+				</c:if>
+				<c:if test="${theater=='¼ö¿ø' }">
+					ÁÖ¼Ò : °æ±âµµ ¼ö¿ø½Ã ±Ç¼±±¸ ¼¼È­·Î 134 (¼­µĞµ¿, ·Ôµ¥¸ô 5Ãş)
+				</c:if>
+				<c:if test="${theater=='¾È»ê' }">
+					ÁÖ¼Ò : °æ±âµµ ¾È»ê½Ã »ó·Ï±¸ ÃæÀå·Î 427 (¼ºÆ÷µ¿, ·Ôµ¥¸¶Æ® ¾È»êÁ¡ 4Ãş)
+				</c:if>
+				<c:if test="${theater=='°Ë´Ü' }">
+					ÁÖ¼Ò : ÀÎÃµ±¤¿ª½Ã ¼­±¸ ¿ÏÁ¤·Î 163 (¿Õ±æµ¿)
+				</c:if> 
+				<c:if test="${theater=='ºÎÆò' }">
+					ÁÖ¼Ò : ÀÎÃµ±¤¿ª½Ã ºÎÆò±¸ ´ëÁ¤·Î 66 (ºÎÆòµ¿, ´Ù¿îÅ¸¿îÀÏ·¹ºì 6Ãş~10Ãş)
+				</c:if> 
+				<c:if test="${theater=='ÀÎÃµ' }">
+					ÁÖ¼Ò : ÀÎÃµ±¤¿ª½Ã ³²µ¿±¸ ¿¹¼ú·Î 148 (±¸¿ùµ¿, ·Ôµ¥¹éÈ­Á¡ 7Ãş)
+				</c:if> 
+				<c:if test="${theater=='À²ÇÏ' }">
+					ÁÖ¼Ò : ´ë±¸±¤¿ª½Ã µ¿±¸ ¾È½É·Î 80 (À²ÇÏµ¿)
+				</c:if> 
+				<c:if test="${theater=='»óÀÎ' }">
+					ÁÖ¼Ò : ´ë±¸±¤¿ª½Ã ´Ş¼­±¸ ¿ù°î·Î 247 (»óÀÎµ¿, ´õÄİ·Î´Ï 6Ãş)
+				</c:if> 
+				<c:if test="${theater=='¼º¼­' }">
+					ÁÖ¼Ò : ´ë±¸±¤¿ª½Ã ´Ş¼­±¸ ¼º¼­·Î 414 (ÀÌ°îµ¿)
+				</c:if> 
+				<c:if test="${theater=='ÇØ¿î´ë' }">
+					ÁÖ¼Ò : ºÎ»ê±¤¿ª½Ã ÇØ¿î´ë±¸ ÇØ¿î´ë·Î 802 (ÁÂµ¿, ¿õ½Å½Ã³×¾ÆÆ® 7Ãş)
+				</c:if>
+				<c:if test="${theater=='¼­¸é' }">
+					ÁÖ¼Ò : ºÎ»ê±¤¿ª½Ã ºÎ»êÁø±¸ µ¿Ãµ·Î 92 (ÀüÆ÷µ¿, NC¹éÈ­Á¡ 6Ãş)
+				</c:if>
+				<c:if test="${theater=='ºÎ»ê' }">
+					ÁÖ¼Ò : ºÎ»ê±¤¿ª½Ã ºÎ»êÁø±¸ °¡¾ß´ë·Î 772 (ºÎÀüµ¿, ·Ôµ¥¹éÈ­Á¡ 10Ãş)
+				</c:if> 
+			</td>
+		</tr>
+	</table>
+	<div ></div>
 	<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=B89LGmTHAKKmgnTgbizc"></script>
-<div id="map" style="border:1px solid #000;"></div>
-<script type="text/javascript">
-	var theater1="ì‹ ë„ë¦¼";
-	var theater2="ì˜ë“±í¬";
+	<script type="text/javascript">
 	var cinema;
-	if(${theater}==theater1){
+	if(${theater=='½Åµµ¸²'}){
 		cinema=new nhn.api.map.LatLng(37.5081508,126.88806390000002);
 	}
-	if(${theater}==theater2){
-		cinema=new nhn.api.map.LatLng(37.5157744,126.90622910000002);
-	} 
-	/* var oSeoulCityPoint = new nhn.api.map.LatLng(37.5675451, 126.9773356); */
+	if(${theater=='¿µµîÆ÷'}){
+		cinema=new nhn.api.map.LatLng(37.515887, 126.907472);
+	}
+	if(${theater=='È«´ëÀÔ±¸'}){
+		cinema=new nhn.api.map.LatLng(37.557237, 126.924949);
+	}
+	if(${theater=='¿ëÀÎ'}){
+		cinema=new nhn.api.map.LatLng(37.235082, 127.205942);
+	}
+	if(${theater=='¼ö¿ø'}){
+		cinema=new nhn.api.map.LatLng(37.264242, 126.997365);
+	}
+	if(${theater=='¾È»ê'}){
+		cinema=new nhn.api.map.LatLng(37.317965, 126.846104);
+	}
+	if(${theater=='°Ë´Ü'}){
+		cinema=new nhn.api.map.LatLng(37.601659, 126.658063);
+	}
+	if(${theater=='ºÎÆò'}){
+		cinema=new nhn.api.map.LatLng(37.493481, 126.726511);
+	}
+	if(${theater=='ÀÎÃµ'}){
+		cinema=new nhn.api.map.LatLng(37.447034, 126.701232);
+	}
+	if(${theater=='À²ÇÏ'}){
+		cinema=new nhn.api.map.LatLng(35.867837, 128.694069);
+	}
+	if(${theater=='»óÀÎ'}){
+		cinema=new nhn.api.map.LatLng(35.816619, 128.539320);
+	}
+	if(${theater=='¼º¼­'}){
+		cinema=new nhn.api.map.LatLng(35.854459, 128.507832);
+	}
+	if(${theater=='ÇØ¿î´ë'}){
+		cinema=new nhn.api.map.LatLng(35.169167, 129.176596);
+	}
+	if(${theater=='¼­¸é'}){
+		cinema=new nhn.api.map.LatLng(35.157090, 129.063113);
+	}
+	if(${theater=='ºÎ»ê'}){
+		cinema=new nhn.api.map.LatLng(35.156689, 129.056118);
+	}
+	
     var defaultLevel = 11;
     var oMap = new nhn.api.map.Map(document.getElementById('map'), {
         point: cinema,
@@ -73,18 +170,18 @@
         var oPoint = oCustomEvent.point;
         var oTarget = oCustomEvent.target;
         oInfoWnd.setVisible(false);
-        // ë§ˆì»¤ í´ë¦­í•˜ë©´
+        // ¸¶Ä¿ Å¬¸¯ÇÏ¸é
         if (oTarget instanceof nhn.api.map.Marker) {
-            // ê²¹ì¹¨ ë§ˆì»¤ í´ë¦­í•œê±°ë©´
+            // °ãÄ§ ¸¶Ä¿ Å¬¸¯ÇÑ°Å¸é
             if (oCustomEvent.clickCoveredMarker) {
                 return;
             }
-            // - InfoWindowì— ë“¤ì–´ê°ˆ ë‚´ìš©ì€ setContentë¡œ ììœ ë¡­ê²Œ ë„£ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì™¸ë¶€ cssë¥¼ ì´ìš©í•  ìˆ˜ ìˆìœ¼ë©°,
-            // - ì™¸ë¶€ cssì— ì„ ì–¸ëœ classë¥¼ ì´ìš©í•˜ë©´ í•´ë‹¹ classì˜ ìŠ¤íƒ€ì¼ì„ ë°”ë¡œ ì ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
-            // - ë‹¨, DIVì˜ position styleì€ absoluteê°€ ë˜ë©´ ì•ˆë˜ë©°,
-            // - absoluteì˜ ê²½ìš° autoPositionì´ ë™ì‘í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+            // - InfoWindow¿¡ µé¾î°¥ ³»¿ëÀº setContent·Î ÀÚÀ¯·Ó°Ô ³ÖÀ» ¼ö ÀÖ½À´Ï´Ù. ¿ÜºÎ css¸¦ ÀÌ¿ëÇÒ ¼ö ÀÖÀ¸¸ç,
+            // - ¿ÜºÎ css¿¡ ¼±¾ğµÈ class¸¦ ÀÌ¿ëÇÏ¸é ÇØ´ç classÀÇ ½ºÅ¸ÀÏÀ» ¹Ù·Î Àû¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+            // - ´Ü, DIVÀÇ position styleÀº absolute°¡ µÇ¸é ¾ÈµÇ¸ç,
+            // - absoluteÀÇ °æ¿ì autoPositionÀÌ µ¿ÀÛÇÏÁö ¾Ê½À´Ï´Ù.
             oInfoWnd.setContent('<DIV style="border-top:1px solid; border-bottom:2px groove black; border-left:1px solid; border-right:2px groove black;margin-bottom:1px;color:black;background-color:white; width:auto; height:auto;">' +
-                    '<span style="color: #000000 !important;display: inline-block;font-size: 12px !important;font-weight: bold !important;letter-spacing: -1px !important;white-space: nowrap !important; padding: 2px 5px 2px 2px !important">' +
+                 '<span style="color: #000000 !important;display: inline-block;font-size: 12px !important;font-weight: bold !important;letter-spacing: -1px !important;white-space: nowrap !important; padding: 2px 5px 2px 2px !important">' +
                     'Hello World <br /> ' + oTarget.getPoint()
                     + '<span></div>');
             oInfoWnd.setPoint(oTarget.getPoint());
@@ -94,9 +191,9 @@
             return;
         }       
     });
-    var oMarker1 = new nhn.api.map.Marker(oIcon, { title : '' });  //ë§ˆì»¤ ìƒì„± 
-    oMarker1.setPoint(oSeoulCityPoint); //ë§ˆì»¤ í‘œì‹œí•  ì¢Œí‘œ ì„ íƒ
-    oMap.addOverlay(oMarker1); //ë§ˆì»¤ë¥¼ ì§€ë„ìœ„ì— í‘œí˜„ 
+    var oMarker1 = new nhn.api.map.Marker(oIcon, { title : '' });  //¸¶Ä¿ »ı¼º 
+    oMarker1.setPoint(cinema); //¸¶Ä¿ Ç¥½ÃÇÒ ÁÂÇ¥ ¼±ÅÃ
+    oMap.addOverlay(oMarker1); //¸¶Ä¿¸¦ ÁöµµÀ§¿¡ Ç¥Çö 
 </script>
-</body>
+</body> 
 </html>
