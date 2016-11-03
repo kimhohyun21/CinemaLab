@@ -84,6 +84,12 @@ function checkID(){
 	var f=document.frm;
 	var id=f.id.value;
 	var $ok="${ok}"
+	var eng=/^[0-9 a-z A-Z]*$/;
+	 if (!eng.test(f.id.value) ){
+	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
+	     f.id.focus();
+	     return;
+	}	 
 	if($ok=="사용가능한 ID입니다 ^^"){
 		alert("사용가능한 ID입니다")
 		return;
@@ -102,7 +108,7 @@ function checkID(){
 			<table id="join_table" width="450" height="300">
 				<tr>
 					<td align="center">
-						<b>ID : </b><input type="text" class="id" placeholder="아이디" name="id" value="${overCheckId }">
+						<b>ID : </b><input type="text" class="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }">
 						<input type="button" value="중복확인" onclick="checkID()" class="btn"><br/>
 						${ok }										
 					</td>
