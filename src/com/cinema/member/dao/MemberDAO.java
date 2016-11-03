@@ -3,6 +3,8 @@ package com.cinema.member.dao;
 import java.io.*;
 import java.util.*;
 
+import javax.websocket.Session;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -56,9 +58,10 @@ public class MemberDAO {
 	
 	public static void memberDelete(MemberVO vo){
 		SqlSession session=ssf.openSession();
-		session.selectOne("memberDelete",vo.getNo());
+		int i=session.delete("memberDelete",vo);
+		System.out.println(i);
 		session.commit();
-		session.close();	
+		session.close();
 	}
 	
 	public static int memberOverlab(String id){
@@ -66,6 +69,28 @@ public class MemberDAO {
 		int countid=session.selectOne("memberOverlab", id);
 		session.close();
 		return countid;
+	}
+	
+	public static String memberGetPwd(int no){
+		SqlSession session=ssf.openSession();
+		String pwd=session.selectOne("memberGetPwd",no);
+		session.close();
+		return pwd;
+	}
+	
+	public static void memberModify(MemberVO vo){
+		SqlSession session=ssf.openSession();
+		session.update("memberModify",vo);
+		session.commit();
+		session.close();		
+	}
+	
+	public static List<MemberReserveListVO> memberReserveList(int no){
+		SqlSession session=ssf.openSession();
+		List<MemberReserveListVO> list=session.selectList("memberReserveList",no);
+		session.close();
+		return list;
+		
 	}
 
 }

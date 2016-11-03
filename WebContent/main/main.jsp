@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
 	<link rel="stylesheet" type="text/css" href="main/style1.css">
+	<script src="sliderengine/jquery.js"></script>
 	<script type="text/javascript">
 
 	</script>
@@ -23,7 +24,7 @@
 				<c:if test="${mvo.id!=null }">
 					<li>${mvo.name }님 반갑습니다!</li>
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="mypage.do">마이페이지</a></li>
+					<li><a href="reservePage.do">마이페이지</a></li>
 				</c:if>					
 					<li><a href="customer.do">고객센터</a></li>
 				</ul>

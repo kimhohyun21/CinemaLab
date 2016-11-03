@@ -18,7 +18,19 @@
 	}
 	#find a:HOVER {
 		color: #CD426B;
-}
+	}
+	form{
+		padding-top:50px;
+	}
+	input{
+		padding:0px;
+		height: 35px;
+		width: 200px;
+		font-size: 10pt;
+	}
+	#sinput{
+		margin-bottom: 10px;
+	}
 </style>
 <script type="text/javascript">
 function login(){
@@ -40,18 +52,20 @@ function login(){
 <body>
 	<div align="center">		
 		<form method="post" action="login_ok.do" name="frm">
-			<div>
+			<div class="input">
 				<input type="text" placeholder="ID" name="id">
 			</div>
-			<div>
-				<input type="password" placeholder="PW" name="pwd">
+			<div class="input">
+				<input type="password" placeholder="PW" name="pwd" id="sinput">
 			</div>
 			<div id="find">
 				<a href="find_id.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
 				<a href="find_pwd.do">비밀번호 찾기</a>
 			</div>
-			<input type="button" value="로그인" onclick="login()">
-			<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+			<input type="button" value="로그인" onclick="login()"
+				style="width: 55px;height: 25px;">
+			<input id="button" type="button" value="뒤로" onclick="javascript:history.back()"
+				style="width: 55px;height: 25px;">	
 		</form>
 	</div>
 </body>

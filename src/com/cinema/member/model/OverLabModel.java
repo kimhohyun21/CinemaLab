@@ -13,21 +13,23 @@ import com.cinema.member.dao.MemberDAO;
 public class OverLabModel {
 	
 	@RequestMapping("overlab.do") 
-	public String memberJoin(HttpServletRequest reqeust){
-		String id=reqeust.getParameter("id");
+	public String memberJoin(HttpServletRequest request){
+		String id=request.getParameter("id");
 		int check=MemberDAO.memberOverlab(id);
 		System.out.println(id);
 		if(id==""){
 			check=1;			
 		}else{
 			if(check==0){
-				HttpSession session=reqeust.getSession(); 
-				session.setAttribute("ok", "ok");
+				HttpSession session=request.getSession(); 
+				session.setAttribute("ok", "사용가능한 ID입니다 ^^");
+				session.setAttribute("overCheckId", id);
+				//request.setAttribute("ok", "ok");
 			}else{
 				check=1;
 			}
 		}
-		reqeust.setAttribute("check", check);
+		request.setAttribute("check", check);
 		return "login/join_ok.jsp";
 	}
 }

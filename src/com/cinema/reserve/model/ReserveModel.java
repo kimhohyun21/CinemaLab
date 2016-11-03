@@ -12,7 +12,7 @@ import java.util.*;
 @Controller
 public class ReserveModel {
 	@RequestMapping("reserve.do")
-	public String main(HttpServletRequest request){
+	public String reserve(HttpServletRequest request){
 		
 		//날짜 계산
 		int i,j,a,b;
@@ -72,11 +72,13 @@ public class ReserveModel {
 		int z=0;
 		
 		String checkedDay=request.getParameter("checkedDay");
+		if(checkedDay==null)checkedDay=sd;
 		String checkedDay2=request.getParameter("checkedDay2");
+		if(checkedDay2==null)checkedDay2=ss;
 		
 		//지역 선택
 		String local=request.getParameter("local");
-		if(local==null) local=" ";
+		if(local==null) local="서울";
 		List<ReserveVO> localList=ReserveDAO.localData();
 		
 		//극장 선택
@@ -84,22 +86,28 @@ public class ReserveModel {
 			
 		//영화 선택
 		String tname=request.getParameter("tname");
-		if(tname==null) tname=" ";
+		if(tname==null) tname="신도림";
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
 		//영화 상영 시간 선택
 		String title=request.getParameter("title");
-		if(title==null) title=" ";
+
+		if(title==null) title="데드풀 Deadpool";
 		
 		Map map=new HashMap();
 		map.put("tname", tname);
 		map.put("title", title);
 		List<ReserveVO> timeList=ReserveDAO.timeData(map);
 		
+		int theaterNo2=ReserveDAO.theaterNoData(map);
+		
 		String grade=request.getParameter("grade");
+		if(grade==null)grade="18";
 		String theaterNo=request.getParameter("theaterNo");
 		String movietime=request.getParameter("movietime");
+		String click=request.getParameter("click");
 		
+		request.setAttribute("click", click);
 		request.setAttribute("grade", grade);
 		request.setAttribute("title", title);
 		request.setAttribute("year", year);
@@ -118,6 +126,7 @@ public class ReserveModel {
 		request.setAttribute("timeList", timeList);
 		request.setAttribute("localList", localList);
 		request.setAttribute("theaterList", theaterList);
+		request.setAttribute("theaterNo2", theaterNo2);
 		request.setAttribute("jsp", "../reserve/reserve1.jsp");
 	
 		return "main/main.jsp";

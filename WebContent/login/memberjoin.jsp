@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="login/style3.css">
+<script src="sliderengine/jquery.js"></script>
 <style type="text/css">
 	a{
 	text-decoration: none;
@@ -21,12 +23,17 @@
 </style>
 <script type="text/javascript">
 function send(){
-	 var f=document.frm;
-	 alert("PP\n ${ok}")
-	 /*var pwd=f.pwd.value;
+	 var f=document.frm;	 
+	 var pwd=f.pwd.value;
 	var pwdCheck=f.pwd_check.value;
+ 	var eng=/^[0-9 a-z A-Z]*$/;
+	 if (!eng.test(f.id.value) ){
+	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
+	     f.id.focus();
+	     return;
+	}	 
 	 if(f.id.value==""){
-		alert("ID를 입력하세요 \n ID는 영어만 입력가능합니다");
+		alert("ID를 입력하세요");
 		f.id.focus();
 		return;
 	}
@@ -53,8 +60,8 @@ function send(){
 	if(pwd!=pwdCheck){
 		alert("비밀번호가 맞지 않습니다");
 		return;
-	}}*/
-	/* var number = /[^0-9]/;
+	}
+	 var number = /[^0-9]/;
 	 if (f.birth.value.search(number)!=-1 || f.birth.value.length != 8 || f.birth.value==""){
 	        alert("생년월일은 숫자만 8자리를 입력해 주시기 바랍니다 "
 	        		+"\n ex)20161018");	        
@@ -65,52 +72,54 @@ function send(){
 	        alert("전화번호를 제대로 입력해주세요. \n전화번호는 숫자만 입력하실 수 있습니다 \n ex)01015771577");
 	        f.phone.focus();
 	        return;
-	   } */
-	var $ok="${ok }";
+	   }  	var $ok="${ok }";
 	   console.log($ok);
-	 if($ok != 'ok'){
+	 if($ok != '사용가능한 ID입니다 ^^'){
 	 		alert("중복체크를 해주세요") 
 	 		return;
 	  }
 	f.submit();
 }
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 function checkID(){
 	var f=document.frm;
 	var id=f.id.value;
+	var $ok="${ok}"
+	if($ok=="사용가능한 ID입니다 ^^"){
+		alert("사용가능한 ID입니다")
+		return;
+	}
 	if(id==""){
 		alert("ID를 입력해주세요");
 		f.id.focus();
 	}
 	location.href="overlab.do?id="+id;
-	/* window.open("login/checkid.jsp?id=${id }","중복첵","width=400 height=150"); */
-	
 }
 </script>	
 </head>
 <body>
 	<center>
 		<form action="join_ok.do" method="post" name="frm">
-			<table id="join_table" width="450" height="500">
+			<table id="join_table" width="450" height="300">
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="이름" name="name">
+						<b>ID : </b><input type="text" class="id" placeholder="아이디" name="id" value="${overCheckId }">
+						<input type="button" value="중복확인" onclick="checkID()" class="btn"><br/>
+						${ok }										
+					</td>
+				</tr>				
+				<tr>
+					<td align="center">
+						<b>이름 : </b><input type="text" placeholder="이름" name="name">										
 					</td>
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="아이디" name="id" style="ime-mode:disabled" value="${checkid }">
-						<input type="button" value="중복확인" onclick="checkID()">
-					</td>
-				</tr>
-				<tr>
-					<td align="center">
-						<input type="password" placeholder="비밀번호" name="pwd">
+						<b>비밀번호 : </b><input type="password" placeholder="비밀번호" name="pwd">
 					</td>
 				</tr>			
 				<tr>
 					<td align="center">
-						<input type="password" placeholder="비밀번호 확인" name="pwd_check">
+						<b>비번 확인 : </b><input type="password" placeholder="비밀번호 확인" name="pwd_check">
 					</td>
 				</tr>
 				<tr>
@@ -124,10 +133,9 @@ function checkID(){
 					</td>
 				</tr>
 			</table>
-		</form>
-		
-		<input id="button" type="button" value="회원가입" onclick="send()" width="300"><br/>					
-		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+		</form>		
+		<input id="button" type="button" value="회원가입" onclick="send()" width="300" class="btn"><br/>					
+		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300" class="btn">
 	</center>
 </body>
 </html>

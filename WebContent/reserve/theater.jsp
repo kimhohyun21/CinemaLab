@@ -10,7 +10,11 @@
 <body>
 	<center>
 		<c:forEach var="vo" items="${theaterList}">
-			<a id="theater" href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${vo.theater}&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}">${vo.theater}</a>
+			<a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+			&checkedDay2=${checkedDay2}&local=${local }&tname=${vo.theater}&grade=${grade }&title=${title}
+			&theaterNo=${theaterNo}&movietime=${movietime}">
+				<p id="theater">${vo.theater}</p>
+			</a>
 		</c:forEach>
 	</center>
 </body>
