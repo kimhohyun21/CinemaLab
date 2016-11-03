@@ -12,7 +12,7 @@
 <body>
 	<table id="cont" align="center">
 		<tr>
-			<td align="center" rowspan="9" width="200"><br>
+			<td align="center" rowspan="6" width="200"><br>
 				<img src="${vo.poster}" width="200" height="270">
 				<a href="reserve.do?no=${vo.mNo }">
 					<button class="reserve_btn">

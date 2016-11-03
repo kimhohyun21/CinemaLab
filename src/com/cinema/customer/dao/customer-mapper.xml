@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.customer.dao.customer-mapper">
+	<select id="qnalist" parameterType="java.util.Map" resultType="qna">
+		SELECT qno,qsubject,name,qregdate,qhit,group_tab,num
+		FROM (SELECT qno,qsubject,name,qregdate,qhit,group_tab,Rownum as num
+		FROM(SELECT qno,qsubject,name,qregdate,qhit,group_tab
+		FROM qna, member WHERE qna.no=member.no ORDER BY group_id DESC,group_step ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="qnatotal" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM qna
+	</select>
+</mapper>

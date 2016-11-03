@@ -1,0 +1,4 @@
+@CHARSET "EUC-KR";
+#list_btn a{
+	background: url(../image/list_btn.gif) no-repeat center center;
+}
