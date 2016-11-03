@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.join.model;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import com.cinema.member.dao.*;
 public class MemberJoinOkModel {
 	
 	@RequestMapping("join_ok.do") //회원등록
-	public String memberJoinOk(HttpServletRequest request){
+	public String join_ok(HttpServletRequest request){
 		int countid=0;
 		try{
 			request.setCharacterEncoding("EUC-KR");

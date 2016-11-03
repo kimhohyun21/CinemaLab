@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.login.model;
 
 import java.io.UnsupportedEncodingException;
 
@@ -13,7 +13,7 @@ import com.cinema.member.dao.*;
 public class MemberLoginOkModel {
 	
 	@RequestMapping("login_ok.do") // 로그인 체크
-	public String memberJoin(HttpServletRequest request){
+	public String login_Ok(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
 		}catch(Exception ex){

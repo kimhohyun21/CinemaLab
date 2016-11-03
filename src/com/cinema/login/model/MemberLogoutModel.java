@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.login.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,7 +12,7 @@ import oracle.net.aso.h;
 @Controller
 public class MemberLogoutModel {
 	@RequestMapping("logout.do")
-	public String memeberLogout(HttpServletRequest request){
+	public String logout(HttpServletRequest request){
 		/*String overCheckId=(String) session.getAttribute("overCheckId");
 		String id=(String) session.getAttribute("ok");
 		String mvo=(String) session.getAttribute("mvo");*/

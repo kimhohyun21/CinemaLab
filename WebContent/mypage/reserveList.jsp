@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="login/style3.css">
 <style type="text/css">
 	tr,td{
 		padding: 10px;
@@ -13,7 +14,16 @@
 </style>
 </head>
 <body>
-	<table>
+	<div class="mrList">
+		<a href="#">			
+			<span class="mrList_btn">예매내역</span>
+		</a>
+		<a href="#">			
+			<span class="mrList_btn">지금까지 본 영화</span>
+		</a>
+	</div>
+	<table>		
+			
 	<c:if test="${list == null }">
 		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNHUKwbax2uYSi3cF5wrdrj5YNSLLx-xNQCj4aj1Ajn2duwk-tUw">
 		<br> 예매내역이 없습니다

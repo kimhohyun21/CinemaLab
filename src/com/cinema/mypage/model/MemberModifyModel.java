@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.mypage.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,7 +10,7 @@ import com.cinema.member.dao.MemberVO;
 @Controller
 public class MemberModifyModel {
 	
-	@RequestMapping("modify.do")
+	@RequestMapping("memberModify.do")
 	public String memberModify(HttpServletRequest request){
 		HttpSession session=request.getSession();
 		MemberVO mvo=(MemberVO) session.getAttribute("mvo");
@@ -22,8 +22,8 @@ public class MemberModifyModel {
 		mvo.setBirth(birth);
 		mvo.setPhone(phone);
 		
-		request.setAttribute("jsp", "../login/mypage.jsp");
-		request.setAttribute("jsp2", "../login/modify.jsp");
+		request.setAttribute("jsp", "../mypage/mypage.jsp");
+		request.setAttribute("jsp2", "../mypage/modify.jsp");
 		
 		return "main/main.jsp";
 	}

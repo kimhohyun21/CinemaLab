@@ -23,12 +23,12 @@
 </style>
 <script type="text/javascript">
 function send(){
-	 var f=document.frm;	 
+	 var f=document.frm;
 	 var pwd=f.pwd.value;
 	var pwdCheck=f.pwd_check.value;
  	var eng=/^[0-9 a-z A-Z]*$/;
 	 if (!eng.test(f.id.value) ){
-	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
+	     alert("아이디는 영어 및 숫자만 입력 할 수 있습니다. \n ex) HoHyunMansae");
 	     f.id.focus();
 	     return;
 	}	 
@@ -36,6 +36,12 @@ function send(){
 		alert("ID를 입력하세요");
 		f.id.focus();
 		return;
+	}
+	 var eng=/^[a-z A-Z ㄱ-ㅎ]*$/;
+	 if (!eng.test(f.name.value) ){
+	     alert("이름에 특수문자,숫자는 입력 할 수 없습니다. \n ex) HoHyunMansae");
+	     f.name.focus();
+	     return;
 	}
 	if(f.name.value==""){
 		alert("이름을 입력하세요");
@@ -98,7 +104,7 @@ function checkID(){
 		alert("ID를 입력해주세요");
 		f.id.focus();
 	}
-	location.href="overlab.do?id="+id;
+	location.href="idOverlab.do?id="+id;
 }
 </script>	
 </head>

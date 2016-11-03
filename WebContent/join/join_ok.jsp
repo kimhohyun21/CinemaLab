@@ -6,7 +6,7 @@
 		alert('사용가능한 ID입니다');
 		/* history.back(); */
 	</script>
-	<c:redirect url="member.do"/>
+	<c:redirect url="join.do"/>
 </c:if>
 <c:if test="${check != 0 }">
 	<script type="text/javascript">

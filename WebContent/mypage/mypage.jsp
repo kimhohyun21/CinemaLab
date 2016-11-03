@@ -31,22 +31,22 @@
 		<table id="menubar" border="1" width="900" height="100">
 			<tr>
 				<td align="center">
-					<a href="reservePage.do">
+					<a href="reserveList.do">
 						예매내역
 					</a>
 				</td>			
 				<td align="center">
-					<a href="modify.do">
+					<a href="memberModify.do">
 						회원정보 수정
 					</a>
 				</td>			
 				<td align="center">
-					<a href="changepwd.do">
+					<a href="memberChangepwd.do">
 						비밀번호 수정
 					</a>
 				</td>			
 				<td align="center">
-					<a href="delete.do">
+					<a href="memberDelete.do">
 						회원탈퇴
 					</a>
 				</td>

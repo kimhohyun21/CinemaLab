@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.join.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,10 +10,10 @@ import com.cinema.controller.RequestMapping;
 import com.cinema.member.dao.MemberDAO;
 
 @Controller
-public class OverLabModel {
+public class MemberIDOverLabModel {
 	
-	@RequestMapping("overlab.do") 
-	public String memberJoin(HttpServletRequest request){
+	@RequestMapping("idOverlab.do") 
+	public String idOverlab(HttpServletRequest request){
 		String id=request.getParameter("id");
 		int check=MemberDAO.memberOverlab(id);
 		System.out.println(id);
@@ -30,6 +30,6 @@ public class OverLabModel {
 			}
 		}
 		request.setAttribute("check", check);
-		return "login/join_ok.jsp";
+		return "join/join_ok.jsp";
 	}
 }

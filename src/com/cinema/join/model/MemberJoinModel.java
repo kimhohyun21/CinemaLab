@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.join.model;
 
 import javax.servlet.http.HttpServletRequest;
 import com.cinema.member.dao.*;
@@ -10,11 +10,11 @@ import com.cinema.controller.RequestMapping;
 @Controller
 public class MemberJoinModel {
 	
-	@RequestMapping("member.do") //회원가입 뷰로~
-	public String memberJoin(HttpServletRequest request){
+	@RequestMapping("join.do") //회원가입 뷰로~
+	public String join(HttpServletRequest request){
 		
 		
-		request.setAttribute("jsp", "../login/memberjoin.jsp");		
+		request.setAttribute("jsp", "../join/memberjoin.jsp");		
 		return "main/main.jsp";
 	}
 }

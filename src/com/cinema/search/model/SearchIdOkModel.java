@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.search.model;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import com.cinema.controller.RequestMapping;
 import com.cinema.member.dao.*;
 
 @Controller
-public class FindIdOkModel {
-	@RequestMapping("find_id_ok.do")
-	public String memberJoin(HttpServletRequest request){
+public class SearchIdOkModel {
+	@RequestMapping("searchId_ok.do")
+	public String searchId_ok(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
 		}catch(Exception ex){
@@ -32,7 +32,7 @@ public class FindIdOkModel {
 		request.setAttribute("pwd", "ÆÐ½º");
 		request.setAttribute("id", id);
 		
-		request.setAttribute("jsp", "../login/giveimpo.jsp");
+		request.setAttribute("jsp", "../search/giveimpo.jsp");
 		return "main/main.jsp";
 	}
 }

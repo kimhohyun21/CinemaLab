@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+ <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,11 +27,11 @@
 		<div id="find">
 			<c:if test="${id != '패스' }">
 				<h3>
-				<b>${id }</b><br/>
 				입력하신 정보의 ID는<br/>
+				<b>${id }</b><br/>
 				입니다
 				</h3>
-				<a href="find_pwd.do">비밀번호 찾기</a>
+				<a href="searchPwd.do">비밀번호 찾기</a>
 			</c:if>
 			
 			<c:if test="${pwd != '패스' }">

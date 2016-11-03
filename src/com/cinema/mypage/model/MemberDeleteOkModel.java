@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.mypage.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.mypage.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +11,7 @@ import com.cinema.member.dao.MemberVO;
 @Controller
 public class MemberChangePwdOkModel {
 	@RequestMapping("changepwd_ok.do")
-	public String ChangeOk(HttpServletRequest request) {
+	public String ChangePwdOk(HttpServletRequest request) {
 		try {
 			request.setCharacterEncoding("EUC-KR");
 		} catch (Exception ex) {

@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+package com.cinema.search.model;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,9 +8,9 @@ import com.cinema.member.dao.MemberDAO;
 import com.cinema.member.dao.MemberVO;
 
 @Controller
-public class FindPwdOkModel {
-	@RequestMapping("find_pwd_ok.do")
-	public String memberJoin(HttpServletRequest request){
+public class SearchPwdOkModel {
+	@RequestMapping("searchPwd_ok.do")
+	public String searchPwd_ok(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
 		}catch(Exception ex){
@@ -20,23 +20,20 @@ public class FindPwdOkModel {
 		
 		String name=request.getParameter("name");
 		String id=request.getParameter("id");
-		String phone=request.getParameter("phone");
+		String phone=request.getParameter("phone");		
 		phone=phone.substring(0, 3)+"-"+phone.substring(3,7)+"-"+phone.substring(7,11);
+		System.out.println(id);
 		
 		vo.setPhone(phone);
 		vo.setName(name);
 		vo.setId(id);
-		
+		System.out.println(vo.getId());
 		String pwd=MemberDAO.memberFindPwd(vo);
+		System.out.println(pwd);
 		request.setAttribute("id", "패스");
-		request.setAttribute("pwd", pwd);
-		System.out.println("노래방 안가고 태권도 가는 배신자");
+		request.setAttribute("pwd", pwd);		
 		
-		request.setAttribute("jsp", "../login/giveimpo.jsp");
+		request.setAttribute("jsp", "../search/giveimpo.jsp");
 		return "main/main.jsp";
 	}
 }
-// 노래방 안가는 배신자
-// 학원모임보다 태권도가 더 중요함
-// 당연히 우리따윈 안중에도 없겠지......
-// 

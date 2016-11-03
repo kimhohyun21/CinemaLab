@@ -21,45 +21,44 @@
 </style>
 <script type="text/javascript">
 function send(){
-	 var f=document.frm;	 
+	 var f=document.frm;	
 	if(f.name.value==""){
 		alert("이름을 입력하세요");
 		f.name.focus();
 		return;
 	}
+	if(f.id.value==""){
+		alert("아이디를 입력하세요");
+		f.id.focus();
+		return;
+	}
 	var number = /[^0-9]/;
-	 if (f.birth.value.search(number)!=-1 || f.birth.value.length != 8 || f.birth.value==""){
-	        alert("생년월일은 숫자만 8자리 모두 입력해 주시기 바랍니다 "
-	        		+"ex)20161018");	        
-	        f.birth.focus();
-	        return;
-	   }
-	 if (f.phone.value.search(number)!=-1 || f.phone.value.length == 0 ){
-	        alert("전화번호는 숫자만 입력하실 수 있습니다 ex)01015771577");	        
-	        f.phone.focus();
-	        return;
-	   }
+	 if (f.phone.value.search(number)!=-1 || f.phone.value.length == 0 || f.phone.value.length != 11){
+	       alert("전화번호를 제대로 입력해주세요. \n전화번호는 숫자만 입력하실 수 있습니다 \n ex)01015771577");
+	       f.phone.focus();
+	       return;
+	}
 	f.submit();  
 }
 </script>
 </head>
 <body>
-	<center>
-		<form action="find_id_ok.do" method="post" name="frm">
+	<center>		
+		<form action="searchPwd_ok.do" method="post" name="frm">
 			<table id="join_table" width="450" height="500">
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="이름" name="name">
+						<b>이름 :</b><input type="text" placeholder="이름" name="name">
 					</td>
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="생년월일" name="birth">				
+						<b>아이디 :</b><input type="text" placeholder="아이디" name="id">
 					</td>
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone">
+						<b>전화번호 :</b><input type="text" placeholder="전화번호" name="phone">
 					</td>
 				</tr>
 			</table>

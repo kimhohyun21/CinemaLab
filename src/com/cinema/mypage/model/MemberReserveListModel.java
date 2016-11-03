@@ -1,4 +1,4 @@
-package com.cinema.member.model;
+	package com.cinema.mypage.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,9 @@ import com.cinema.controller.RequestMapping;
 import com.cinema.member.dao.*;
 
 @Controller
-public class MemberReservePageModel {
-	@RequestMapping("reservePage.do")
-	public String reservePage(HttpServletRequest request){
+public class MemberReserveListModel {
+	@RequestMapping("reserveList.do")
+	public String reserveList(HttpServletRequest request){
 		HttpSession session=(HttpSession) request.getSession();
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
 		int no=vo.getNo();
@@ -26,8 +26,8 @@ public class MemberReservePageModel {
 			System.out.println(vo1.getRyear());
 		}		
 		request.setAttribute("list", list);
-		request.setAttribute("jsp", "../login/mypage.jsp");
-		request.setAttribute("jsp2", "../login/reservePage.jsp");
+		request.setAttribute("jsp", "../mypage/mypage.jsp");
+		request.setAttribute("jsp2", "../mypage/reserveList.jsp");
 		
 		return "main/main.jsp";
 	}
