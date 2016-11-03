@@ -5,18 +5,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="reserve/style.css">
-<script type="text/javascript">
-	/* function click(){
-		location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${vo.local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}&click=click";
-	} */
-	function send(){
-		location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
-		+"&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";
-	}
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Reserve 1</title>
+	<link rel="stylesheet" type="text/css" href="reserve/style.css">
+	<script type="text/javascript">
+		/* function click(){
+			location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${vo.local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}&click=click";
+		} */
+		function send(){
+			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
+			+"&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";
+		}
+	</script>
 </head>
 <body>
 	<center>

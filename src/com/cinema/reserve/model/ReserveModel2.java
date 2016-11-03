@@ -6,7 +6,6 @@ import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
 import com.cinema.reserve.dao.*;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller

@@ -74,6 +74,8 @@
 			</c:forEach>
 		</tr>
 	</table>
-	<iframe width="640" height="360" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen/>
+	<iframe width="640" height="360" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen id="youtube">
+		해당 브라우저는 iframe을 지원하지 않습니다. IE9 이상, 크롬, 파이어폭스를 이용해주세요.
+	</iframe>
 </body>
 </html>
