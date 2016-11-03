@@ -15,7 +15,7 @@
 	<br><br>
 	<table>
 		<tr>
-			<td style="max-width: none;">
+			<td class="movieBtn">
 				<a href="movieList.do?type=0">
 					<button class="list_btn">
 						<span class="list">상영 종료 영화</span>

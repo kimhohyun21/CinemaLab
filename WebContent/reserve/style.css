@@ -241,9 +241,10 @@ th{
 	position:relative;
 	top:1px;
 }
-
-
-
+#card td, #account td{
+	max-width: none;
+	padding-left: 10px;
+}
 
 
 

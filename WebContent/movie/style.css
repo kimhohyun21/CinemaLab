@@ -40,3 +40,9 @@ pre{
 	width: 875px;
 	margin-bottom: 30px;
 }
+.movieBtn{
+	max-width: none;
+}
+#youtube{
+	margin-bottom: 30px;
+}

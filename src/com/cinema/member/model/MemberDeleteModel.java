@@ -12,8 +12,8 @@ public class MemberDeleteModel {
 	@RequestMapping("delete.do")
 	public String memberdelete(HttpServletRequest request){
 		
-			
-		request.setAttribute("jsp", "../login/delete.jsp");
+		request.setAttribute("jsp", "../login/mypage.jsp");
+		request.setAttribute("jsp2", "../login/delete.jsp");
 		return "main/main.jsp";
 	}
 }
