@@ -36,7 +36,7 @@
 		</div>
 		<div>
 			<input type="button" value="상영정보" class="info_button">
-			<input type="button" value="위치/교통" class="loc_button" onclick="javascript:location.href='#map'">
+			<input type="button" value="위치/교통" class="loc_button" onclick="javascript:location.href='#maplocation'">
 		</div>
 		<div>
 			<table border="1" width="1000">
@@ -126,7 +126,7 @@
 				</tr>
 			</table>
 		</div>
-		<div id="map">
+		<div id="maplocation">
 			<jsp:include page="map.jsp"></jsp:include>
 		</div>
 		<div>
