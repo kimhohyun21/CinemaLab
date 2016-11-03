@@ -87,6 +87,10 @@ public class ReserveModel {
 		//영화 선택
 		String tname=request.getParameter("tname");
 		if(tname==null) tname="신도림";
+		if(local=="경기") tname="용인";
+		if(local=="인천") tname="검단";
+		if(local=="대구") tname="율하";
+		if(local=="부산") tname="해운대";
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
 		//영화 상영 시간 선택

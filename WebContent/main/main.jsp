@@ -42,7 +42,7 @@
 				<li class="noeffect">|</li>
 				<li><a href="movieList.do">영화</a></li>
 				<li class="noeffect">|</li>
-				<li><a href="theater.do">영화관</a></li>
+				<li><a href="theater.do?local=서울&theater=신도림">영화관</a></li>
 			</ul>
 		</div>
 		<div id="article">

@@ -23,17 +23,21 @@ public class TheaterModel {
 		
 		//지역 선택
 		String local = request.getParameter("local");
-		if (local == null)
-			local = "서울";
+		if(local==null) local="서울";
 	
 		List<TheaterVO> localList = TheaterDAO.localData2();
+		
+		String theater=request.getParameter("theater");
+		if(theater==null && local.equals("서울")) theater="신도림";
+		if(theater==null && local.equals("경기")) theater="용인";
+		if(theater==null && local.equals("인천")) theater="검단";
+		if(theater==null && local.equals("대구")) theater="율하";
+		if(theater==null && local.equals("부산")) theater="해운대";
 		
 		//극장 선택
 		List<TheaterVO> theaterList=TheaterDAO.theaterData2(local);
 		
 		//극장 사진
-		String theater=request.getParameter("theater");
-		if(theater==null) theater="신도림";
 		int num=(int) (Math.random()*4+1);
 		
 		//날짜 계산
