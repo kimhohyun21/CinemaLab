@@ -6,8 +6,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
-	<link rel="stylesheet" type="text/css" href="main/style1.css">
-	<script src="sliderengine/jquery.js"></script>
+	<script type="text/javascript" src="sliderengine/jquery.js"></script>
+	<script type="text/javascript" src="jStyles/jquery-ui.min.js"></script>	
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.structure.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.theme.css">
+	<link rel="stylesheet" type="text/css" href="main/style1.css">	
 	<script type="text/javascript">
 
 	</script>
