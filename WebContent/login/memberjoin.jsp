@@ -108,12 +108,12 @@ function checkID(){
 					</td>
 				</tr>				
 				<tr>
-					<td align="right">
+					<td align="center">
 						<b>이름 : </b><input type="text" placeholder="이름" name="name">										
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
+					<td align="center">
 						<b>비밀번호 : </b><input type="password" placeholder="비밀번호" name="pwd">
 					</td>
 				</tr>			
