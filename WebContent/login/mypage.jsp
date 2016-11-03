@@ -1,37 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"	prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+	tr,td{
+		padding: 10px;
+	}
+	#menubar{
+    margin-bottom: 50px;
+    border-color: black;
+    border-width: 2px;    
+	border-collapse:collapse;  
+	}
+	#menubar tr,td{
+		padding:0px;
+	}
+	#menubar tr :HOVER {
+		background-color: windowframe;
+	}
+</style>
 </head>
 <body>
 <input type="hidden" value="${mvo.birth }" name="birth">
-	<div align="left">
-		<table id="left_menubar" border="1" width="200">
+	<div align="center">
+				<br>
+		<table id="menubar" border="1" width="900" height="100">
 			<tr>
-				<td>
-					<a href="#">
+				<td align="center">
+					<a href="reservePage.do">
 						예매내역
 					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</td>			
+				<td align="center">
 					<a href="modify.do">
 						회원정보 수정
 					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</td>			
+				<td align="center">
+					<a href="changepwd.do">
+						비밀번호 수정
+					</a>
+				</td>			
+				<td align="center">
 					<a href="delete.do">
 						회원탈퇴
 					</a>
 				</td>
 			</tr>
-		</table>
+		</table>		
+		<div align="center">
+			<jsp:include page="${jsp2 }"></jsp:include>
+		</div>
 	</div>
 </body>
 </html>

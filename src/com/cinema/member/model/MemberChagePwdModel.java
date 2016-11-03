@@ -6,11 +6,12 @@ import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
 
 @Controller
-public class MemberMypageModel {
-	@RequestMapping("mypage.do")
-	public String mypage(HttpServletRequest request){
+public class MemberChagePwdModel {
+	@RequestMapping("changepwd.do")
+	public String ChangePwdModel(HttpServletRequest request){
 		request.setAttribute("jsp", "../login/mypage.jsp");
-		request.setAttribute("jsp2", "../login/reservePage.jsp");
+		request.setAttribute("jsp2", "../login/change_pwd.jsp");
 		return "main/main.jsp";
 	}
+	
 }

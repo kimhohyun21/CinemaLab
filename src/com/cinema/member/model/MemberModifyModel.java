@@ -22,7 +22,9 @@ public class MemberModifyModel {
 		mvo.setBirth(birth);
 		mvo.setPhone(phone);
 		
-		request.setAttribute("jsp", "../login/modify.jsp");
+		request.setAttribute("jsp", "../login/mypage.jsp");
+		request.setAttribute("jsp2", "../login/modify.jsp");
+		
 		return "main/main.jsp";
 	}
 }
