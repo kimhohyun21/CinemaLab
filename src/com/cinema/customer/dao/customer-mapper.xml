@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="com.cinema.customer.dao.customer-mapper">
 	<!-- 공통으로 사용되어지는 쿼리를 선언해 ID 값으로 접근 -->
 	<sql id="where-no"> <!-- 구문을 찾기 위해 사용될 수 있는 명명공간내 유일한 구분자 -->
@@ -39,4 +38,14 @@
 		<include refid="where-no"/>
 	</insert>
 	
+	<select id="qnalist" parameterType="java.util.Map" resultType="qna">
+		SELECT qno,qsubject,name,qregdate,qhit,group_tab,num
+		FROM (SELECT qno,qsubject,name,qregdate,qhit,group_tab,Rownum as num
+		FROM(SELECT qno,qsubject,name,qregdate,qhit,group_tab
+		FROM qna, member WHERE qna.no=member.no ORDER BY group_id DESC,group_step ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="qnatotal" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM qna
+	</select>
 </mapper>

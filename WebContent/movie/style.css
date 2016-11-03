@@ -5,12 +5,44 @@
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
 }
-
+.reserve_btn{
+	width: 200px;
+    height: 42px;
+    background: url(../image/list_btn.gif) no-repeat center center;
+    background-size: cover;
+    cursor: pointer; 
+}
 .list{
 	color: white;
-	font: 
 }
-
-td{
+.tb{
+	border-collapse: separate;
+    border-spacing: 35px;
+}
+.title{
+	font-size: 13px;
+}
+#cont td{
+	max-width: 291px;
+}
+.title_2{
+	font-size: 25px;
+}
+#cont span{
+	font-weight : bold;
+	margin-left: 5px;
+}
+pre{
+	font-size: 12pt;
+    font-family: ¸¼Àº°íµñ;
+}
+#cont{
+	width: 875px;
+	margin-bottom: 30px;
+}
+.movieBtn{
 	max-width: none;
+}
+#youtube{
+	margin-bottom: 30px;
 }

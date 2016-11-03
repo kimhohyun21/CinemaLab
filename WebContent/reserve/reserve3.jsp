@@ -5,73 +5,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>결제</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript">
-	function display1() {
-		card.style.display='block';
-		account.style.display='none';
-		return;
-	}
-	
-	function display2(){
-		card.style.display='none';
-		account.style.display='block';
-		return;
-	} 
-	
-	$(function(){
-		$('#send').click(function(){
-			if($('#chooseCard').val()=="선택없음"){
-				alert("카드를 선택하세요");
-				$('#chooseCard').focus();
-				return;
-			}
-			if($('#number1').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number1').focus();
-				return;
-			}
-			if($('#number2').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number2').focus();
-				return;
-			}
-			if($('#number3').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number3').focus();
-				return;
-			}
-			if($('#number4').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number4').focus();
-				return;
-			}
-			if($('#pwd').val()==""){
-				alert("비밀번호를 입력하세요");
-				$('#pwd').focus();
-				return;
-			}
-			if($('#month').val()==""){
-				alert("유효 월을 입력하세요");
-				$('#month').focus();
-				return;
-			}
-			if($('#year').val()==""){
-				alert("유효 년을 입력하세요");
-				$('#year').focus();
-				return;
-			}
-			if($('#birth').val()==""){
-				alert("주민번호 앞자리를 입력하세요");
-				$('#birth').focus();
-				return;
-			}
-			$('#frm').submit();
-		})
-	});
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>결제</title>
+	<link rel="stylesheet" type="text/css" href="reserve/style.css">
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
+	<script type="text/javascript">
+		function display1() {
+			card.style.display='block';
+			account.style.display='none';
+			return;
+		}
+		
+		function display2(){
+			card.style.display='none';
+			account.style.display='block';
+			return;
+		} 
+		
+		$(function(){
+			$('#send').click(function(){
+				if($('#chooseCard').val()=="선택없음"){
+					alert("카드를 선택하세요");
+					$('#chooseCard').focus();
+					return;
+				}
+				if($('#number1').val()==""){
+					alert("카드 번호를 입력하세요");
+					$('#number1').focus();
+					return;
+				}
+				if($('#number2').val()==""){
+					alert("카드 번호를 입력하세요");
+					$('#number2').focus();
+					return;
+				}
+				if($('#number3').val()==""){
+					alert("카드 번호를 입력하세요");
+					$('#number3').focus();
+					return;
+				}
+				if($('#number4').val()==""){
+					alert("카드 번호를 입력하세요");
+					$('#number4').focus();
+					return;
+				}
+				if($('#pwd').val()==""){
+					alert("비밀번호를 입력하세요");
+					$('#pwd').focus();
+					return;
+				}
+				if($('#month').val()==""){
+					alert("유효 월을 입력하세요");
+					$('#month').focus();
+					return;
+				}
+				if($('#year').val()==""){
+					alert("유효 년을 입력하세요");
+					$('#year').focus();
+					return;
+				}
+				if($('#birth').val()==""){
+					alert("주민번호 앞자리를 입력하세요");
+					$('#birth').focus();
+					return;
+				}
+				$('#frm').submit();
+			})
+		});
+	</script>
 </head>
 <body>
 	<center>
@@ -127,7 +128,7 @@
 		</table>
 		<table width="700" border="1" id="account" style="display:none">
 			<tr>
-				<td align="center" width="700">
+				<td width="700">
 					계좌이체 순서<br>
 					1.아래 결제하기 버튼 클리 후 다음 단계로 이동<br>
 					2.결제내역 확인 후 결제하기 버튼 클릭 시 팝업창이 뜸<br>
