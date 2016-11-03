@@ -28,4 +28,13 @@ public class MovieDAO {
 		
 		return vo;
 	}
+	
+	public static List<MovieVO> getmoviecharacter(int b){
+		SqlSession session = ssf.openSession();
+		System.out.println(b);
+		List<MovieVO> list = session.selectList("sasasa",b);
+		session.close();
+		
+		return list;
+	}
 }

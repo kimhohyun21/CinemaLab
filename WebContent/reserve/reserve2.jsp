@@ -5,58 +5,67 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>ticket and seat</title>
+	<title>Ticket and Seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
-
+		function select(){
+			$.ajax({
+				type: "POST",
+				url: "reserve2.do",
+				data:$('#frm').serialize(),
+				success:function(data){
+					$('#result').html(data);
+				},
+				error:function(data){
+					alert("실패");
+				}
+			});
+		};
 	</script>
 </head>
 <body>
 	<div align="center">
 		<div class="ticket">
-			<form action="reserv2.do" method="post">
-				어른 <select name="adult" onchange="send()">
+			<form id="frm">
+				<input type="hidden" name="year" value="${year }">
+				<input type="hidden" name="month" value="${month }">
+				<input type="hidden" name="checkedDay" value="${checkedDay }">
+				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+				<input type="hidden" name="local" value="${local }">
+				<input type="hidden" name="tname" value="${tname }">
+				<input type="hidden" name="grade" value="${grade }">
+				<input type="hidden" name="title" value="${title }">				
+				<input type="hidden" name="theaterNo" value="${theaterNo}">
+				<input type="hidden" name="movietime" value="${movietime}">
+				<input type="hidden" name="rType" value="seat">
+				어른 <select id="adult" name="adult" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				청소년 <select name="junior" onchange="send()">
+				청소년 <select id="junior" name="junior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				시니어 <select name="senior" onchange="send()">
+				시니어 <select id="senior" name="senior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
 			</form>
+			<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+			&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
+			&theaterNo=${theaterNo2}&movietime=${movietime}">
+				<span class="resetBtn">선택초기화</span>
+			</a>
 		</div>
-		<div class=screen>
-			<Strong class=screen-title>
-				SCREEN
-			</strong>
-		</div>
-		<div class="seat" align="center">
-		    <c:forEach var="sa" begin="0" end="10" items="a,b,c,d,e,f,g,h,i,j">
-		    	<div class="line" align="center">
-			  		<ul>
-			  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		
-					<c:forEach var="b" begin="1" end="20">
-						<li><a href="reserve2.do?sa=${sa }&sn=${b }">${b }</a></li>
-					<c:if test="${b==4 || b==16}">
-						<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>
-						<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>		
-					</c:if>
-					</c:forEach>
-					</ul>
-				</div>
-				<br/>
-			</c:forEach>	
-		</div>
+		<div id="result">
+			<jsp:include page="${jsp2 }"></jsp:include>		
+		</div>			
 	</div>
 </body>
 </html>
