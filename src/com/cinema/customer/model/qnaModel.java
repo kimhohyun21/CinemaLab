@@ -8,8 +8,8 @@ import com.cinema.controller.RequestMapping;
 @Controller
 public class qnaModel {
 	
-		@RequestMapping("qna.do")
+/*		@RequestMapping("qna.do")
 		public String memberJoin(HttpServletRequest request){
 		
-		}
+		}*/
 }
