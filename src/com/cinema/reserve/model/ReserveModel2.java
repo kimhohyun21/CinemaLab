@@ -31,6 +31,9 @@ public class ReserveModel2 {
 		String theaterNo=request.getParameter("theaterNo");
 		String movietime=request.getParameter("movietime");
 		
+		//예매 시간
+		String date=year+"-"+month+"-"+checkedDay+" "+movietime;
+		
 		//티켓 매수
 		String adult=request.getParameter("adult");
 		if(adult==null)adult="0";
@@ -63,15 +66,11 @@ public class ReserveModel2 {
 		
 		//좌석 예매 현황
 		Map map=new HashMap();
-		map.put("year", year);
-		map.put("month", month);
-		map.put("day", checkedDay);
+		map.put("date", date);
 		map.put("theater", tname);
-		map.put("movietime", movietime);
 		map.put("title", title);
 		List<ReserveVO> rlist=ReserveDAO.reserveData(map);
-		
-		//예매 좌석 리스에 담기
+		//예매 좌석 리스트에 담기
 		List<String> slist=new ArrayList<>();
 		for(ReserveVO vo : rlist){
 			String sit=vo.getSeat();
@@ -80,7 +79,7 @@ public class ReserveModel2 {
 				 slist.add(st.nextToken());
 			}			
 		}
-		System.out.println(slist==null);
+		
 		
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);

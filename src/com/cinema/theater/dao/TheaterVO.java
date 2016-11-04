@@ -1,10 +1,13 @@
 package com.cinema.theater.dao;
 
+import java.util.*;
+
 public class TheaterVO {
 	private int mNo;
 	private String grade;
 	private String title;
-	private String theaterNo;
+	private int theaterNo;
+	private List<TheaterVO> timeList; 
 	private String movietime;
 	private int tNo;
 	private String local;
@@ -28,11 +31,17 @@ public class TheaterVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getTheaterNo() {
+	public int getTheaterNo() {
 		return theaterNo;
 	}
-	public void setTheaterNo(String theaterNo) {
+	public void setTheaterNo(int theaterNo) {
 		this.theaterNo = theaterNo;
+	}
+	public List<TheaterVO> getTimeList() {
+		return timeList;
+	}
+	public void setTimeList(List<TheaterVO> timeList) {
+		this.timeList = timeList;
 	}
 	public String getMovietime() {
 		return movietime;
@@ -58,5 +67,7 @@ public class TheaterVO {
 	public void setTheater(String theater) {
 		this.theater = theater;
 	}
+	
+	
 	
 }

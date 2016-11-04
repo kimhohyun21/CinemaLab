@@ -15,17 +15,49 @@
 			IMP.init('imp74690571'); 
 		}
 		
+		var type="";
 		function display1() {
 			card.style.display='block';
 			account.style.display='none';
+			type="card"
 			return;
 		}
 		
 		function display2(){
 			card.style.display='none';
 			account.style.display='block';
+			type="trans"
 			return;
 		} 
+	     
+		function payment(type){
+			IMP.request_pay({
+			    pg : 'html5_inicis',
+			    pay_method : type,
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : 'Marvel Cinema 결제',
+			    amount : 4000,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : '김호현',
+			    buyer_tel : '010-1234-5678',
+			    buyer_addr : '서울특별시 강남구 삼성동',
+			    buyer_postcode : '123-456'
+			}, function(rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        location.href="reserve.do?pid="+ rsp.imp_uid+"sid="+ rsp.merchant_uid+"sp="
+			        /* msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;	
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num; */
+
+			    } else {
+			        var msg = '결제에 실패하였습니다.<br/>';
+			        msg += '에러내용 : ' + rsp.error_msg+'.';			        
+			    }
+			    $.jQueryAlert(msg);
+			});
+		}	
 		
 		jQuery.jQueryAlert = function (msg) {
             var $messageBox = $.parseHTML('<div id="alertBox"></div>');
@@ -45,36 +77,6 @@
                 }
             });
         };
-	     
-		function payment(){
-			IMP.request_pay({
-			    pg : 'html5_inicis',
-			    pay_method : 'card',
-			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : 'Marvel Cinema 결제',
-			    amount : 14000,
-			    buyer_email : 'iamport@siot.do',
-			    buyer_name : '구매자이름',
-			    buyer_tel : '010-1234-5678',
-			    buyer_addr : '서울특별시 강남구 삼성동',
-			    buyer_postcode : '123-456'
-			}, function(rsp) {
-			    if ( rsp.success ) {
-			        var msg = '결제가 완료되었습니다.';
-			        msg += '고유ID : ' + rsp.imp_uid;
-			        msg += '상점 거래ID : ' + rsp.merchant_uid;
-			        msg += '결제 금액 : ' + rsp.paid_amount;
-			        msg += '카드 승인번호 : ' + rsp.apply_num;
-			    } else {
-			        var msg = '결제에 실패하였습니다.<br/>';
-			        msg += '에러내용 : ' + rsp.error_msg+'.';
-			    }
-	
-			    /* alert(msg); */
-			    $.jQueryAlert(msg);
-			});
-		}	
-		
 		
 		/* $(function(){
 			$('#send').click(function(){
@@ -130,10 +132,8 @@
 	</script>
 </head>
 <body>
-	<center>
-		
+	<center>		
 		<h2>결제</h2>
-		<form name="pgForm" id="pgForm" action="javascript:payment();" method="post">
 		<table width="700" border="1">
 			<tr>
 				<td align="center">결제정보 입력</td>
@@ -145,7 +145,8 @@
 				</td>
 			</tr>
 		</table>
-		<table width="700" border="1" id="card">
+		<form name="pgForm" id="card" action="javascript:payment(type);" method="post">
+		<table width="700" border="1">
 			<tr>
 				<td width="700">
 					카드종류 
@@ -182,7 +183,11 @@
 				</td>
 			</tr>
 		</table>
-		<table width="700" border="1" id="account" style="display:none">
+		<input type="button" value="취소" onclick="javascript:history.back()">
+		<input type="submit" value="결제" id="send">
+		</form>
+		<form name="pgForm" id="account" action="javascript:payment(type);" method="post" style="display:none">
+		<table width="700" border="1">
 			<tr>
 				<td width="700">
 					계좌이체 순서<br>
@@ -193,7 +198,7 @@
 			</tr>
 		</table>
 		<input type="button" value="취소" onclick="javascript:history.back()">
-		<input type="submit" value="결제" id="send" onclick="">
+		<input type="submit" value="결제" id="send">		
 		</form>
 	</center>	
 </body>
