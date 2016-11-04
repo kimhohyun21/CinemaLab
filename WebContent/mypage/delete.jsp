@@ -20,7 +20,7 @@ function send(){
 </head>
 <body>
 	<center>
-		<form name="frm" method="post" action="delete_ok.do">
+		<form name="frm" method="post" action="delete_ok.do?no=${mvo.no }">
 			비밀번호 : <input type="password" name="pwd"><br/>
 			<input type="button" onclick="send()" value="삭제"><br/>			
 		</form>

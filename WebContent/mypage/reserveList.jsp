@@ -15,10 +15,10 @@
 </head>
 <body>
 	<div class="mrList">
-		<a href="#">			
+		<a href="reserveList.do?no=${mvo.no }&type=0">
 			<span class="mrList_btn">예매내역</span>
 		</a>
-		<a href="#">			
+		<a href="reserveList.do?no=${mvo.no }&type=1">			
 			<span class="mrList_btn">지금까지 본 영화</span>
 		</a>
 	</div>
@@ -36,8 +36,15 @@
 					</a>
 				</td>
 				<td>
-					<h3>${vo.title }</h3><br>
-					상영날짜: ${vo.ryear }.${vo.rmonth }.${vo.rday }<br>
+					<h3>${vo.title }</h3><br><br>
+					
+					<c:if test="${vo.ryear + vo.rmonth +vo.rday } > 2029">
+						zzzzzzzzzzzzzzzzzzzzzzzz
+					</c:if>ㅠㅠㅠㅠㅠ
+					<br><br>
+					
+					
+					상영날짜: ${vo.rdate}<br>
 					상영정보: ${vo.movietime }&nbsp;${vo.local }&nbsp;${vo.theater }&nbsp;${vo.theaterno }관<br>
 					좌석: ${vo.seat }<br>
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 

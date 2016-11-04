@@ -91,7 +91,6 @@ function checkID(){
 	var id=f.id.value;
 	var $ok="${ok}"
 	var eng=/^[0-9 a-z A-Z]*$/;
-	 if (!eng.test(f.id.value) ){
 	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
 	     f.id.focus();
 	     return;

@@ -20,11 +20,11 @@ public class MemberLoginOkModel {
 			System.out.println(ex.getMessage());
 		}
 		
+		String check="";
 		String id=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
 		
 		MemberDAO dao=new MemberDAO();
-		String check="";
 		int idcheck=dao.memberIdCheck(id);
 		
 		if(idcheck==0){
@@ -39,6 +39,7 @@ public class MemberLoginOkModel {
 				session.setAttribute("phone", vo.getPhone());
 				session.setAttribute("birth", vo.getBirth());
 				session.setAttribute("no", vo.getNo());*/
+				vo.setPwd("NOPE");
 				session.setAttribute("mvo", vo);
 				check="ok";
 			}else{

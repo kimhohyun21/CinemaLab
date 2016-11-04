@@ -59,21 +59,21 @@
 <body>
 	<center>
 		<b>정보수정은 이름,생년월일,전화번호만 수정하실수 있습니다.</b>
-		<form action="modify_ok.do" method="post" name="frm">
+		<form action="modify_ok.do?no=${mvo.no }" method="post" name="frm">
 			<table id="modify_table" width="450" height="500">
 				<tr>
 					<td align="center">
-						이름: <input type="text" placeholder="이름" name="name" value="${mvo.name }">																	
+						이름: <input type="text" placeholder="이름" name="name" value="${name }">																	
 					</td>
 				</tr>
 				<tr>
 					<td align="center">
-						생년월일: <input type="text" placeholder="생년월일" name="birth" value="${mvo.birth }">				
+						생년월일: <input type="text" placeholder="생년월일" name="birth" value="${birth }">				
 					</td>
 				</tr>
 				<tr>
 					<td align="center">
-						전화번호: <input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone" value="${mvo.phone }">			
+						전화번호: <input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone" value="${phone }">			
 					</td>
 				</tr>
 				<tr>

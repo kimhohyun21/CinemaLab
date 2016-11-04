@@ -31,12 +31,12 @@
 		<table id="menubar" border="1" width="900" height="100">
 			<tr>
 				<td align="center">
-					<a href="reserveList.do">
+					<a href="reserveList.do?no=${mvo.no }">
 						예매내역
 					</a>
 				</td>			
 				<td align="center">
-					<a href="memberModify.do">
+					<a href="memberModify.do?no=${mvo.no }">
 						회원정보 수정
 					</a>
 				</td>			
@@ -46,7 +46,7 @@
 					</a>
 				</td>			
 				<td align="center">
-					<a href="memberDelete.do">
+					<a href="memberDelete.do?no=${mvo.no }">
 						회원탈퇴
 					</a>
 				</td>

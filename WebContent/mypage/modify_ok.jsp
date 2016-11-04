@@ -6,7 +6,7 @@
 		alert('수정이 완료되었습니다.');
 		/* history.back(); */
 	</script>
-	<c:redirect url="mypage.do"/>
+	<c:redirect url="reserveList.do?no=${mvo.no }"/>
 </c:if>
 <c:if test="${pCheck == false }">
 	<script type="text/javascript">

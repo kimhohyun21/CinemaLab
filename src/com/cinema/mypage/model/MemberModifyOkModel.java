@@ -18,17 +18,19 @@ public class MemberModifyOkModel {
 			System.out.println(ex.getMessage());
 		}
 		
+		String strno=request.getParameter("no");
+		int no=Integer.parseInt(strno);		
+		MemberVO vo=MemberDAO.memberGetAllImfor(no);
 		
+		// DB에서 pwd가져오기
+		String db_pwd=vo.getPwd();
+		
+		//입력한 값 가져오기
 		String pwd=request.getParameter("pwd");
 		String name=request.getParameter("name");
 		String phone=request.getParameter("phone");
-		String birth=request.getParameter("birth");
+		String birth=request.getParameter("birth");		
 		
-		HttpSession session=request.getSession();
-		MemberVO vo=(MemberVO) session.getAttribute("mvo");
-		
-		int no=vo.getNo();
-		String db_pwd=MemberDAO.memberGetPwd(no);
 		
 		boolean pCheck=false;
 		if(db_pwd.equals(pwd)){
@@ -40,7 +42,9 @@ public class MemberModifyOkModel {
 			vo.setName(name);
 			vo.setPhone(phone);
 			vo.setBirth(birth);
-			MemberDAO.memberModify(vo);			
+			vo.setNo(no);
+			MemberDAO.memberModify(vo);
+			HttpSession session=request.getSession();
 			session.setAttribute("mvo", vo);			
 		}else{
 			pCheck=false;
@@ -48,6 +52,6 @@ public class MemberModifyOkModel {
 		}
 		request.setAttribute("pCheck", pCheck);
 		
-		return "login/modify_ok.jsp";
+		return "mypage/modify_ok.jsp";
 	}
 }

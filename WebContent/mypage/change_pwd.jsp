@@ -13,7 +13,7 @@ function send(){
 		alert("현재 비밀번호를 입력해주세요");
 		f.pwd.focus();
 		return;
-	}
+	}//비밀번호 체크 할것	
 	if(f.change_pwd.value==""){
 		alert("바꾸실 비밀번호를 입력해주세요");
 		f.change_pwd.focus();
@@ -30,7 +30,7 @@ function send(){
 </head>
 <body>
 	<center>
-		<form method="post" action="changepwd_ok.do" name="frm">
+		<form method="post" action="changepwd_ok.do?no=${mvo.no }" name="frm">
 			현재 비밀번호:<input type="password" name="pwd"><br>
 			바꿀 비밀번호:<input type="password" name="change_pwd"><br>
 			비밀번호 확인:<input type="password" name="check_pwd"><br>

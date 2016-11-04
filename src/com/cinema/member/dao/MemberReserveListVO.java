@@ -1,5 +1,7 @@
 package com.cinema.member.dao;
 
+import java.util.Date;
+
 public class MemberReserveListVO {
 	private int ryear;
 	private int rmonth;
@@ -15,7 +17,14 @@ public class MemberReserveListVO {
 	private String title;
 	private String poster;
 	private int mno;
+	private Date dbday;	
 	
+	public Date getDbday() {
+		return dbday;
+	}
+	public void setDbday(Date dbday) {
+		this.dbday = dbday;
+	}
 	public int getMno() {
 		return mno;
 	}

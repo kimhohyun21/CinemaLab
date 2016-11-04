@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
+import com.cinema.member.dao.MemberDAO;
 import com.cinema.member.dao.MemberVO;
 
 @Controller
@@ -12,15 +13,18 @@ public class MemberModifyModel {
 	
 	@RequestMapping("memberModify.do")
 	public String memberModify(HttpServletRequest request){
-		HttpSession session=request.getSession();
-		MemberVO mvo=(MemberVO) session.getAttribute("mvo");
-		
-		String birth=mvo.getBirth();
-		String phone=mvo.getPhone();
+		String strno=request.getParameter("no");
+		int no=Integer.parseInt(strno);		
+		MemberVO vo=MemberDAO.memberGetAllImfor(no);
+		String birth=vo.getBirth();
+		String phone=vo.getPhone();
+		String name=vo.getName();
 		birth=birth.replace("-", "");
 		phone=phone.replace("-", "");
-		mvo.setBirth(birth);
-		mvo.setPhone(phone);
+		
+		request.setAttribute("name", name);
+		request.setAttribute("phone", phone);
+		request.setAttribute("birth", birth);
 		
 		request.setAttribute("jsp", "../mypage/mypage.jsp");
 		request.setAttribute("jsp2", "../mypage/modify.jsp");

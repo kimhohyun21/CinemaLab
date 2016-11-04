@@ -13,20 +13,21 @@ public class MemberDeleteOkModel {
 	@RequestMapping("delete_ok.do")
 	public String delete_ok(HttpServletRequest request){
 		try{
-			request.setCharacterEncoding("EUC-KR");
-			HttpSession session=request.getSession();
-			MemberVO vo=(MemberVO) session.getAttribute("mvo");								
-			String pwd=request.getParameter("pwd");
-			System.out.println(pwd+"@@@@");
-			System.out.println(vo.getPwd());
-			System.out.println(vo.getNo());
+			request.setCharacterEncoding("EUC-KR");						
 			
-			String db_pwd=MemberDAO.memberFindPwd(vo);
-			System.out.println(db_pwd);
+			String strno=request.getParameter("no");
+			int no=Integer.parseInt(strno);
+			MemberVO vo=MemberDAO.memberGetAllImfor(no);
+			String db_pwd=vo.getPwd();
+			
+			
+			String pwd=request.getParameter("pwd");
+			
 			int check=3;
 			
 			if(db_pwd.equals(pwd)){
 				MemberDAO.memberDelete(vo);
+				HttpSession session=request.getSession();
 				session.invalidate();
 				check=1;
 			}else{
@@ -38,6 +39,6 @@ public class MemberDeleteOkModel {
 		}
 		
 		
-		return "login/delete_ok.jsp";
+		return "mypage/delete_ok.jsp";
 	}
 }
