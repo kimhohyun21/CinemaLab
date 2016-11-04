@@ -1,6 +1,7 @@
 package com.cinema.theater.model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -108,21 +109,30 @@ public class TheaterModel {
 		String title = request.getParameter("title");
 		if (title == null)
 			title = "데드풀 Deadpool";
-
-		Map map = new HashMap();
-		map.put("theater", theater);
-		map.put("title", title);
-		List<TheaterVO> timeList = TheaterDAO.timeData2(map);
-
-		int theaterNo2 = TheaterDAO.theaterNoData2(map);
+		
+		// 영화 상영 시간 및 상영관
+	      List<TheaterVO> movieList2=new ArrayList<>();
+	      for(TheaterVO vo : movieList){
+	         title=vo.getTitle();
+	         Map map = new HashMap();
+	         map.put("theater", theater);
+	         map.put("title", title);
+	         List<TheaterVO> timeList = TheaterDAO.timeData2(map);
+	         int theaterNo2 = TheaterDAO.theaterNoData2(map);
+	         
+	         
+	         vo.setTheaterNo(theaterNo2);
+	         vo.setTimeList(timeList);
+	         
+	         movieList2.add(vo);
+	      }
 
 		String grade = request.getParameter("grade");
 		String theaterNo = request.getParameter("theaterNo");
 		String movietime = request.getParameter("movietime");
 		
-		request.setAttribute("theaterNo2", theaterNo2);
+		request.setAttribute("movieList2", movieList2);
 		request.setAttribute("movieList", movieList);
-		request.setAttribute("timeList", timeList);
 		request.setAttribute("movietime", movietime);
 		request.setAttribute("theaterNo", theaterNo);
 		request.setAttribute("grade", grade);

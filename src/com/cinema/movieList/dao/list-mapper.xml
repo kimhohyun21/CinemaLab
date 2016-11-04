@@ -12,4 +12,9 @@
 	<select id="sasasa" parameterType="int" resultType="movie">
 		SELECT cname,img FROM characterList WHERE mNo1=#{b } or mNo2=#{b } or mNo3=#{b } or mNo4=#{b } or mNo5=#{b }
 	</select>
+	
+	
+	<select id="getReplyData" parameterType="int" resultType="movie">
+		SELECT score, reContent, regDate, id FROM replyList NATURAL JOIN member NATURAL JOIN movieList WHERE mNo=#{mNo}
+	</select>
 </mapper>

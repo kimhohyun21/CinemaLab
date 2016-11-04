@@ -11,173 +11,80 @@
 </head>
 <body>
 	<table id="movie_time" width="990">
-		<c:forEach var="vo" begin="0" end="4" step="1" items="${movieList }">
-			<%-- <tr>
-				<td colspan="4" width="50%">
-					<c:if test="${vo.grade=='0'}">
-						<a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_all.png">&nbsp;${vo.title}
-						</a>	
-					</c:if>
-					<c:if test="${vo.grade=='12'}">
-						<a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_12.png">&nbsp;${vo.title}
-						</a>
-					</c:if>
-					<c:if test="${vo.grade=='15'}">
-						<a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_15.png">&nbsp;${vo.title}
-						</a>
-					</c:if>
-					<c:if test="${vo.grade=='18'}">
-						<a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_18.png">&nbsp;${vo.title}
-						</a>
-					</c:if>
-				</td>
-				<td colspan="4" width="50%">
-				
-				</td>
-			</tr> --%>
+		<c:forEach var="vo" items="${movieList2 }">
 			<c:if test="${vo.grade=='0'}">
 				<tr>
-					<td colspan="4" width="50%">
-						<a href="movie/moviedetail.jsp">
+					<td width="50%">
+						<a href="moviedetail.do?no=${vo.mNo }">
 							<img src="image/bg_grade_all.png">&nbsp;${vo.title}
 						</a>
 					</td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+					<td width="10%">${vo.theaterNo }包</td>
+					<c:forEach var="vo2" items="${vo.timeList}">
+						<td>
+							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
+							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+								${vo2.movietime} 
+							</a>
+						</td>
 					</c:forEach>
 				</tr>
 			</c:if>
 			<c:if test="${vo.grade=='12'}">
 				<tr>
-					<td colspan="4" width="50%">
-						<a href="movie/moviedetail.jsp">
+					<td width="50%">
+						<a href="moviedetail.do?no=${vo.mNo }">
 							<img src="image/bg_grade_12.png">&nbsp;${vo.title}
 						</a>
 					</td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+					<td width="10%">${vo.theaterNo }包</td>
+					<c:forEach var="vo2" items="${vo.timeList}">
+						<td>
+							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
+							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+								${vo2.movietime}
+							</a>
+						</td>
 					</c:forEach>
 				</tr>
 			</c:if>
 			<c:if test="${vo.grade=='15'}">
 				<tr>
-					<td colspan="4" width="50%"><a href="movie/moviedetail.jsp">
+					<td width="50%">
+						<a href="moviedetail.do?no=${vo.mNo }">
 							<img src="image/bg_grade_15.png">&nbsp;${vo.title}
-					</a></td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+						</a>
+					</td>
+					<td width="10%">${vo.theaterNo }包</td>
+					<c:forEach var="vo2" items="${vo.timeList }">
+						<td>
+							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
+							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+								${vo2.movietime } 
+							</a>
+						</td>
 					</c:forEach>
 				</tr>
 			</c:if>
 			<c:if test="${vo.grade=='18'}">
 				<tr>
-					<td colspan="4" width="50%"><a href="movie/moviedetail.jsp"> <img
-							src="image/bg_grade_18.png">&nbsp;${vo.title}
-					</a></td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+					<td width="50%">
+						<a href="moviedetail.do?no=${vo.mNo }">
+					 		<img src="image/bg_grade_18.png">&nbsp;${vo.title}
+						</a>
+					</td>
+					<td width="10%">${vo.theaterNo }包</td>
+					<c:forEach var="vo2" items="${vo.timeList }">
+						<td>
+							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
-					</c:forEach>
-				</tr>
-			</c:if>
-		</c:forEach>
-		<c:forEach var="vo" begin="5" end="9" step="1" items="${movieList }">
-			<c:if test="${vo.grade=='0'}">
-				<tr>
-					<td colspan="4" width="50%"><a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_all.png">&nbsp;${vo.title}
-					</a></td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
-					</c:forEach>
-				</tr>
-			</c:if>
-			<c:if test="${vo.grade=='12'}">
-				<tr>
-					<td colspan="4" width="50%"><a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_12.png">&nbsp;${vo.title}
-					</a></td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
-					</c:forEach>
-				</tr>
-			</c:if>
-			<c:if test="${vo.grade=='15'}">
-				<tr>
-					<td colspan="4" width="50%"><a href="movie/moviedetail.jsp">
-							<img src="image/bg_grade_15.png">&nbsp;${vo.title}
-					</a></td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
-					</c:forEach>
-				</tr>
-			</c:if>
-			<c:if test="${vo.grade=='18'}">
-				<tr>
-					<td colspan="4" width="50%"><a href="movie/moviedetail.jsp"> <img
-							src="image/bg_grade_18.png">&nbsp;${vo.title}
-					</a></td>
-				</tr>
-				<tr>
-					<td width="10%">${theaterNo2 }包</td>
-					<c:forEach var="vo2" items="${timeList }">
-						<td width="40%"><a
-							href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${theaterNo2}&movietime=${vo2.movietime}">
-								${vo2.movietime } </a></td>
+							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+								${vo2.movietime} 
+							</a>
+						</td>
 					</c:forEach>
 				</tr>
 			</c:if>

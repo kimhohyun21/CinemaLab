@@ -193,6 +193,7 @@
 
 #day_td{
 	border-bottom: 1px solid;
+	background-color: #b3daff;
 }
 
 #movie_time tr{
@@ -202,14 +203,43 @@
 #movie_time{
 	margin-left: 10px;
 	margin-top: 10px;
+	border-collapse: collapse;
 }
 
 #movie_time td{
 	border-bottom: 1px dashed;
 }
 
+#movietime_tr{
+	border-collapse: collapse;
+}
 
+#location_info{
+	position: relative;
+	bottom: 25px;
+	margin-top: 30px;
+	border-top: 1px solid;
+	border-bottom: 1px solid #99ceff;
+	border-collapse: collapse;
+}
 
+#location_center h3{
+	position: relative;
+	left:380px;
+}
+
+#location_info th{
+	border-bottom: 1px solid #99ceff;
+	border-collapse: collapse;
+	padding: 15px 0px;
+	background-color: #b3daff;
+}
+
+#location_info td{
+	border-bottom: 1px solid #99ceff;
+	padding: 15px 20px;
+	background-color: white;
+}
 
 
 

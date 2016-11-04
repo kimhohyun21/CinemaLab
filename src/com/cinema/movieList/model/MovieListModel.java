@@ -22,7 +22,6 @@ public class MovieListModel {
 		request.setAttribute("jsp", "../movie/movieList.jsp");
 		request.setAttribute("url3", url3);
 		
-	
 		return "main/main.jsp";
 	}
 }

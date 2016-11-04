@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
 <body>
-	<table id="cont" align="center">
+	<table id="cont" align="center" width="1000">
 		<tr>
 			<td align="center" rowspan="6" width="200"><br>
 				<img src="${vo.poster}" width="200" height="270">
@@ -59,7 +59,7 @@
 			</td>
 		</tr>
 	</table>
-	<table id="cont">
+	<table id="cont" width="1000">
 		<tr>
 			<td colspan="2" width="867">
 				<span>줄거리 : </span><pre>${vo.content }</pre><br><br>
@@ -77,5 +77,39 @@
 	<iframe width="640" height="360" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen id="youtube">
 		해당 브라우저는 iframe을 지원하지 않습니다. IE9 이상, 크롬, 파이어폭스를 이용해주세요.
 	</iframe>
+	<div align="center">
+		<jsp:include page="reply.jsp"></jsp:include>
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

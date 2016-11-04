@@ -111,7 +111,7 @@
 						</c:forEach>
 					</td>
 				</tr>
-				<tr>
+				<tr id="movietime_tr">
 					<td>
 						<jsp:include page="movie&time.jsp"></jsp:include>
 					</td>
