@@ -20,7 +20,7 @@ public class customerDAO {
 		return list;
 	}
 	
-	public static int customerTotalPage() {
+	public static int customerTotal() {
 		SqlSession session = ssf.openSession();
 		int total = session.selectOne("qnatotal");
 		session.close();
@@ -29,4 +29,11 @@ public class customerDAO {
 		
 	}
 
+	public static void customerInsert(customerVO vo){
+		SqlSession session = ssf.openSession();
+		session.insert("qnainsert", vo);
+		session.commit();
+		session.close();
+	}
+	
 }

@@ -13,4 +13,13 @@
 	<select id="qnatotal" resultType="int">
 		SELECT CEIL(COUNT(*)/10) FROM qna
 	</select>
+	<insert id="qnainsert" parameterType="qna">
+		<selectKey keyProperty="qno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(qno)+1,1) as no FROM qna
+		</selectKey>
+		INSERT INTO qna(qno,qsubject,qcontent,no,group_id) 
+		VALUES(#{qno},#{qsubject},#{qcontent},#{no},
+		(SELECT NVL(MAX(group_id)+1,1) FROM qna))
+
+	</insert>
 </mapper>
