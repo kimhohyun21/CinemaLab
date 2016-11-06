@@ -21,7 +21,7 @@ public class ListModel{
 		
 		System.out.println("¾È³ç");
 		List<customerVO> list = customerDAO.getcustomerList(map);
-		int totalpage = customerDAO.customerTotalPage();
+		int totalpage = customerDAO.customerTotal();
 		
 		request.setAttribute("list", list);
 		request.setAttribute("curpage", curpage);
