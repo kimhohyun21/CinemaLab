@@ -11,10 +11,12 @@
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.structure.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.theme.css">
-	<link rel="stylesheet" type="text/css" href="main/style1.css">	
+	<link rel="stylesheet" type="text/css" href="main/style1.css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-ico" />
+	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
 
-	</script>
+	</script>	
 </head>
 <body>
 	<div align="center">
