@@ -12,15 +12,18 @@
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
-		<form action="moviedetail.do" method="post" name="frm">
+		<form action="reply_ok.do?no=${vo.mNo }" method="post" name="frm">
 			<table border="1" id="reply_table" width="1000">
 				<tr>
-					<td width="20%">평점<br>별점</td>
+					<td width="20%">평점<br>
+						<input type="text" size="10" name="score"><br>
+						별점
+					</td>
 					<td width="69%">
-						<textarea rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required></textarea>
+						<textarea name="content"rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required></textarea>
 					</td>
 					<td width="11%">
-						<a>입력</a>
+						<input type="submit" value="입력" name="send">
 					</td>
 				</tr>
 			</table>
