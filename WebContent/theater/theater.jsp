@@ -20,96 +20,88 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<%-- <table id="local_table">
-			<tr>
-				<c:forEach var="vo" items="${localList }">
-					<td id="local_td"><a href="theater.do?local=${vo.local }">${vo.local }</a></td>
-				</c:forEach>
-			</tr>
-		</table> --%>
-		<br>
 		<div>
 			<jsp:include page="theaterList.jsp"></jsp:include>
 		</div>
 		<div>
 			<jsp:include page="theater_pic.jsp"></jsp:include>
 		</div>
-		<div>
-			<input type="button" value="상영정보" class="info_button">
-			<input type="button" value="위치/교통" class="loc_button" onclick="javascript:location.href='#maplocation'">
+		<div id="button_div">
+			<input class="button1" type="button" value="상영정보" class="info_button" onclick="javascript:location.href='#reserve'">
+			<input class="button2" type="button" value="위치/교통" class="loc_button" onclick="javascript:location.href='#maplocation'">
 		</div>
 		<div>
-			<table border="1" width="1000">
+			<table width="1000"  id="reserve">
 				<tr>
-					<td>
-						${year }
-						${month }
+					<td height="40" id="day_td">
+						<span id="year">${year }</span>
+						<span id="month">${month }</span>
 						<c:forEach var="c" begin="0" end="6" step="1" items="${strWeek2 }">
 							<c:choose>
 								<c:when test="${day7[z]==1}">
 									<!-- 다음달로 넘어가게 되면 다음달 표기 -->
-									${month+1 }
+									<span id="month">${month+1 }</span>
 									<a id="checkedDay"
 										href="theater.do?year=${year }&month=${month+1 }&checkedDay=${day7[z]}
 									&checkedDay2=${c}&local=${local }&theater=${theater }&grade=${grade }&title=${title}
 									&theaterNo=${theaterNo}&movietime=${movietime}">
 										<c:choose>
 											<c:when test="${c eq '토'}">
-												<span class="day" style="color: blue">${c }</span>
 												<span class="day2" style="color: blue">${day7[z] }</span>
+												<span class="day" style="color: blue">${c }</span>
 											</c:when>
-											<c:when test="${c eq '일'}">
-												<span class="day" style="color: red">${c }</span>
+											<c:when test="${c eq '일'}">		
 												<span class="day2" style="color: red">${day7[z] }</span>
+												<span class="day" style="color: red">${c }</span>
 											</c:when>
-											<c:otherwise>
-												<span class="day">${c }</span>
+											<c:otherwise>						
 												<span class="day2">${day7[z] }</span>
+												<span class="day">${c }</span>
 											</c:otherwise>
 										</c:choose>
 									</a>
 								</c:when>
 								<c:when test="${month==12 }&${day7[z]==31 }">
 									<!-- 12월 31일이면 다음년도, 1월로 표기 -->
-									${year+1 }
-									1
+									<span id="year">${year+1 }</span>
+									<span id="month">1</span>
 									<a id="checkedDay"
 										href="theater.do?year=${year+1 }&month=${1 }&checkedDay=${day7[z]}
 									&checkedDay2=${c}&local=${local }&theater=${theater }&grade=${grade }&title=${title}
 									&theaterNo=${theaterNo}&movietime=${movietime}">
 										<c:choose>
-											<c:when test="${c eq '토'}">
-												<span class="day" style="color: blue">${c }</span>
+											<c:when test="${c eq '토'}">											
 												<span class="day2" style="color: blue">${day7[z] }</span>
+												<span class="day" style="color: blue">${c }</span>
 											</c:when>
-											<c:when test="${c eq '일'}">
-												<span class="day" style="color: red">${c }</span>
+											<c:when test="${c eq '일'}">		
 												<span class="day2" style="color: red">${day7[z] }</span>
+												<span class="day" style="color: red">${c }</span>
 											</c:when>
-											<c:otherwise>
-												<span class="day">${c }</span>
+											<c:otherwise>		
 												<span class="day2">${day7[z] }</span>
+												<span class="day">${c }</span>
 											</c:otherwise>
 										</c:choose>
 									</a>
 								</c:when>
 								<c:otherwise>
 									<a id="checkedDay"
-										href="reserve.do?year=${year }&month=${month }&checkedDay=${day7[z]}
+										href="theater.do?year=${year }&month=${month }&checkedDay=${day7[z]}
 									&checkedDay2=${c}&local=${local }&theater=${theater }&grade=${grade }&title=${title}
 									&theaterNo=${theaterNo}&movietime=${movietime}">
 										<c:choose>
-											<c:when test="${c eq '토'}">
-												<span class="day" style="color: blue">${c }</span>
+											<c:when test="${c eq '토'}">											
 												<span class="day2" style="color: blue">${day7[z] }</span>
+												<span class="day" style="color: blue">${c }</span>
 											</c:when>
-											<c:when test="${c eq '일'}">
-												<span class="day" style="color: red">${c }</span>
+											<c:when test="${c eq '일'}">												
 												<span class="day2" style="color: red">${day7[z] }</span>
+												<span class="day" style="color: red">${c }</span>
 											</c:when>
-											<c:otherwise>
-												<span class="day">${c }</span>
+											<c:otherwise>											
 												<span class="day2">${day7[z] }</span>
+												<span class="day">${c }</span>
 											</c:otherwise>
 										</c:choose>
 									</a>
@@ -119,7 +111,7 @@
 						</c:forEach>
 					</td>
 				</tr>
-				<tr>
+				<tr id="movietime_tr">
 					<td>
 						<jsp:include page="movie&time.jsp"></jsp:include>
 					</td>

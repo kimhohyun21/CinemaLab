@@ -44,5 +44,28 @@ pre{
 	max-width: none;
 }
 #youtube{
-	margin-bottom: 30px;
+	margin-bottom: 500px;
 }
+
+#reply{
+	position: relative;
+	bottom: 430px;	
+}
+#reply h3{
+	position: relative;
+	left: 160px;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
