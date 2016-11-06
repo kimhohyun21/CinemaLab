@@ -1,11 +1,21 @@
 @CHARSET "EUC-KR";
-div.ticket{
+div.reserve2{
+	background-color: rgba(250,250,250,0.6);
+	width: 1000px;
+	margin: 10px;
 	padding: 10px;
 }
-div.seat{
-	text-align: center;
-	width:100%;
-	margin: 20px 0px 0px 0px;
+div.ticket{
+	background-color: rgba(255,204,102,0.6);
+	width: 900px;
+	padding: 10px;
+	margin-top:40px;
+}
+div.seatchoice{
+	background-color: rgba(255,204,102,0.6);
+	width: 900px;
+	margin-top: 10px;
+	padding: 10px;
 }
 div.screen{
 	height: 30px;
@@ -17,6 +27,11 @@ div.screen strong.screen-title{
 	background-color: gray;
 	position: relative;
     top: 11%;
+}
+div.seat{
+	text-align: center;	
+	width:100%;
+	margin: 20px 0px 0px 0px;
 }
 div.seat div.line{
 	height: 20px;

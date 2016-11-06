@@ -100,31 +100,34 @@
 	</script>
 </head>
 <body>
-	<div class=screen>
-		<Strong class=screen-title>
-			SCREEN
-		</strong>
-	</div>
-	<div class="seat" align="center">
-    <form id="frm2">
-    	<input type="hidden" name="year" value="${year }">
-		<input type="hidden" name="month" value="${month }">
-		<input type="hidden" name="checkedDay" value="${checkedDay }">
-		<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-		<input type="hidden" name="local" value="${local }">
-		<input type="hidden" name="tname" value="${tname }">
-		<input type="hidden" name="grade" value="${grade }">
-		<input type="hidden" name="title" value="${title }">				
-		<input type="hidden" name="theaterNo" value="${theaterNo}">
-		<input type="hidden" name="movietime" value="${movietime}">
-		<input type="hidden" name="adult" value="${adult}">
-		<input type="hidden" name="senior" value="${senior}">
-		<input type="hidden" name="junior" value="${junior}">
-		<input type="hidden" name="rType" value="result">		
-	   	<c:forEach var="sa" begin="0" end="10" items="A,B,C,D,E,F,G,H,I,J">
-	   	<div class="line" align="center">
-	  		<ul>
-	  		<li style="border: 0px; font: 10pt bolder; color: white; background-color: rgba(0,0,0,0);">${sa }</li>		  		
+	<div class="seatchoice">
+		<div class=screen>
+			<Strong class=screen-title>
+				SCREEN
+			</strong>
+		</div>
+		<div class="seat" align="center">
+	    <form id="frm2">
+	    	<input type="hidden" name="year" value="${year }">
+			<input type="hidden" name="month" value="${month }">
+			<input type="hidden" name="checkedDay" value="${checkedDay }">
+			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+			<input type="hidden" name="local" value="${local }">
+			<input type="hidden" name="tname" value="${tname }">
+			<input type="hidden" name="grade" value="${grade }">
+			<input type="hidden" name="title" value="${title }">				
+			<input type="hidden" name="theaterNo" value="${theaterNo}">
+			<input type="hidden" name="movietime" value="${movietime}">
+			<input type="hidden" name="adult" value="${adult}">
+			<input type="hidden" name="senior" value="${senior}">
+			<input type="hidden" name="junior" value="${junior}">
+			<input type="hidden" name="rType" value="result">		
+		   	<c:forEach var="sa" begin="0" end="10" items="A,B,C,D,E,F,G,H,I,J">
+		   	<div class="line" align="center">
+		  		<ul>
+		  		<li style="border: 0px;font-size: 11pt;font-weight:bold;color:black;background-color: rgba(0,0,0,0);text-shadow:0px 3px 5px #808080;">
+		  			${sa }
+		  		</li>		  		
 			<c:forEach var="b" begin="1" end="20">
 				<li>
 					<input type="checkbox" id="${sa }${b }" name="seat" value="${sa }${b }" onchange="check()" class="seat">
@@ -134,12 +137,13 @@
 				<li style="border: 0px; margin: 0px; background-color: rgba(0,0,0,0);"></li>
 				<li style="border: 0px; margin: 0px; background-color: rgba(0,0,0,0);"></li>		
 			</c:if>
-			</c:forEach>
-			</ul>
+				</c:forEach>
+				</ul>
+			</div>
+			<br/>
+			</c:forEach>		
+	    </form>
 		</div>
-		<br/>
-		</c:forEach>		
-    </form>
 	</div>
 	<div id="result2">
 		<jsp:include page="${jsp3 }"></jsp:include>

@@ -9,9 +9,6 @@
 	<title>Reserve 1</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style.css">
 	<script type="text/javascript">
-		/* function click(){
-			location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${vo.local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}&click=click";
-		} */
 		function send(){
 			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
 			+"&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";

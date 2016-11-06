@@ -16,7 +16,7 @@
 	<div align="center">
 	    <!-- Insert to your webpage where you want to display the carousel -->
 		<div id="amazingcarousel-container-1">
-			<div>현재 상영작</div>
+			<div class="posttitle">현재 상영작</div>
 		    <div id="amazingcarousel-1" style="display:none;position:relative;width:100%;max-width:1200px;margin:0px auto 0px;">
 		        <div class="amazingcarousel-list-container">
 					<ul class="amazingcarousel-list">

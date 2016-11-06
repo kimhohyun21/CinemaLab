@@ -15,7 +15,7 @@
 <body>
 	<div align="center">
 		<!-- Insert to your webpage where you want to display the slider -->
-	    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1200px;margin:0px auto 56px; border-top: 1px solid">
+	    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1200px;margin:10px auto 54px;">
         <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
             <ul class="amazingslider-slides" style="display:none;">
             <c:forEach var="vo" items="${plist2 }">

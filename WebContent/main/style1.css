@@ -67,7 +67,7 @@ img.logo{
 	padding: 11.5px 0px 11.5px 0px;
 }
 #nav ul li:HOVER{
-	background-color: rgba(4, 106, 208, 0.66);;
+	background-color: #3278fa;
 }
 #nav ul li.noeffect:HOVER{
 	background-color: rgba(0, 1, 2, 0.66);
@@ -84,6 +84,24 @@ img.logo{
 .amazingslider-play-1{
 	position: absolute;
     left: 50%;
+}
+.posttitle{
+	font-size:15pt;
+	font-weight:bolder;
+	font-style:normal;
+	color:#ffffff;
+	background:#fd2513;
+	border:2px solid #ffffff;
+	text-shadow:0px 3px 5px #808080;
+	box-shadow:0px 0px 6px #454545;
+	-moz-box-shadow:0px 0px 6px #454545;
+	-webkit-box-shadow:0px 0px 6px #454545;
+	border-radius:90px 90px 90px 90px;
+	-moz-border-radius:90px 90px 90px 90px;
+	-webkit-border-radius:90px 90px 90px 90px;
+	width:200px;
+	padding:5px 90px;
+	margin:0 auto;
 }
 #posterSlider-wrapper{
 	display: block;
