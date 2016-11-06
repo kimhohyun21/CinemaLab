@@ -15,12 +15,13 @@
 <body>
 	<div align="center">
 		<!-- Insert to your webpage where you want to display the slider -->
-	    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1200px;margin:0px auto 56px;">
+	    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1200px;margin:0px auto 56px; border-top: 1px solid">
         <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
             <ul class="amazingslider-slides" style="display:none;">
             <c:forEach var="vo" items="${plist2 }">
-                <li><img src="https://img.youtube.com/vi/${vo.trailer }/maxresdefault.jpg" alt="마블&apos;s ${vo.title }"  title="마블&apos;s ${vo.title }" />
-                <video preload="none" src="https://www.youtube.com/embed/${vo.trailer }" ></video>
+                <li>
+                	<img src="https://img.youtube.com/vi/${vo.trailer }/maxresdefault.jpg" alt="마블&apos;s ${vo.title }"  title="마블&apos;s ${vo.title }"/>
+                	<video preload="none" src="https://www.youtube.com/embed/${vo.trailer }" ></video>
                 </li>
             </c:forEach>
             </ul>

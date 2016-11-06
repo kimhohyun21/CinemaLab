@@ -124,15 +124,15 @@
 	   	<c:forEach var="sa" begin="0" end="10" items="A,B,C,D,E,F,G,H,I,J">
 	   	<div class="line" align="center">
 	  		<ul>
-	  		<li style="border: 0px; font: 10pt normal bold; background-color: #dbf0ff;">${sa }</li>		  		
+	  		<li style="border: 0px; font: 10pt bolder; color: white; background-color: rgba(0,0,0,0);">${sa }</li>		  		
 			<c:forEach var="b" begin="1" end="20">
 				<li>
 					<input type="checkbox" id="${sa }${b }" name="seat" value="${sa }${b }" onchange="check()" class="seat">
 					<label for="${sa }${b }" class="btn">${b }</label>
 				</li>
 			<c:if test="${b==4 || b==16}">
-				<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>
-				<li style="border: 0px; margin: 0px; background-color: #dbf0ff;"></li>		
+				<li style="border: 0px; margin: 0px; background-color: rgba(0,0,0,0);"></li>
+				<li style="border: 0px; margin: 0px; background-color: rgba(0,0,0,0);"></li>		
 			</c:if>
 			</c:forEach>
 			</ul>

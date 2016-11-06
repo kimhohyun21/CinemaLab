@@ -14,7 +14,7 @@
 		<tr>
 			<td align="center" rowspan="6" width="200"><br>
 				<img src="${vo.poster}" width="200" height="270">
-				<a href="reserve.do?no=${vo.mNo }">
+				<a href="reserve.do?title=${vo.title }">
 					<button class="reserve_btn">
 						<span class="list">예매하기</span>
 					</button>
