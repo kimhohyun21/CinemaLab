@@ -59,8 +59,8 @@ function login(){
 				<input type="password" placeholder="PW" name="pwd" id="sinput">
 			</div>
 			<div id="find">
-				<a href="find_id.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
-				<a href="find_pwd.do">비밀번호 찾기</a>
+				<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
+				<a href="searchPwd.do">비밀번호 찾기</a>
 			</div>
 			<input type="button" value="로그인" onclick="login()"
 				style="width: 55px;height: 25px;">
