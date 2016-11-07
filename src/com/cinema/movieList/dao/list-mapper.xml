@@ -14,13 +14,10 @@
 	</select>
 	
 	<select id="getReplyData" parameterType="int" resultType="movie">
-		SELECT score, reContent, regDate, id FROM replyList NATURAL JOIN member NATURAL JOIN movieList WHERE mNo=#{mNo}
+		SELECT score, reContent, regDATE, id FROM replyList NATURAL JOIN member NATURAL JOIN movieList WHERE mNo=#{mNo} ORDER BY reNo DESC
 	</select>
 	<insert id="replyInsert" parameterType="movie">
-		INSERT INTO replyList(reNo,score,reContent,regDate,no,mNo)
-		VALUES((SELECT NVL(MAX(reNo)+1,1) FROM replyList), 
-		#{score},#{reContent},#{regDate},
-		(SELECT no FROM member WHERE id=#{id}),#{mNo})
+		INSERT INTO replyList(reNo,score,reContent,regDATE,no,mNo) VALUES((SELECT NVL(MAX(reNo)+1,1) FROM replyList),#{score},#{reContent},#{regDATE},(SELECT no FROM member WHERE id=#{id}),#{mNo})
 	</insert>
 </mapper>
 

@@ -22,7 +22,7 @@ public class MovieVO {
 	
 	private int reNo;
 	private String reContent;
-	private Date regDate;
+	private Date regDATE;
 	private int score;
 	private int no;
 	private String id;
@@ -135,11 +135,11 @@ public class MovieVO {
 	public void setReContent(String reContent) {
 		this.reContent = reContent;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegDATE() {
+		return regDATE;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegDATE(Date regDATE) {
+		this.regDATE = regDATE;
 	}
 	public int getScore() {
 		return score;
@@ -159,5 +159,6 @@ public class MovieVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	
 }
