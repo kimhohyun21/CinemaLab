@@ -15,11 +15,11 @@
 </head>
 <body>
 	<div class="mrList">
-		<a href="reserveList.do?no=${mvo.no }&type=0">
+		<a href="reserveList.do?no=${mvo.no }">
 			<span class="mrList_btn">예매내역</span>
 		</a>
 		<a href="reserveList.do?no=${mvo.no }&type=1">			
-			<span class="mrList_btn">지금까지 본 영화</span>
+			<span class="mrList_btn">관람내역</span>
 		</a>
 	</div>
 	<table>		

@@ -3,9 +3,6 @@ package com.cinema.member.dao;
 import java.util.Date;
 
 public class MemberReserveListVO {
-	private int ryear;
-	private int rmonth;
-	private int rday;
 	private String seat;
 	private int ticket;
 	private String paytype;
@@ -17,37 +14,15 @@ public class MemberReserveListVO {
 	private String title;
 	private String poster;
 	private int mno;
-	private Date dbday;	
+	private Date dbday;
+	private Date rDate;
+	private int check;
 	
-	public Date getDbday() {
-		return dbday;
+	public int getCheck() {
+		return check;
 	}
-	public void setDbday(Date dbday) {
-		this.dbday = dbday;
-	}
-	public int getMno() {
-		return mno;
-	}
-	public void setMno(int mno) {
-		this.mno = mno;
-	}
-	public int getRyear() {
-		return ryear;
-	}
-	public void setRyear(int ryear) {
-		this.ryear = ryear;
-	}
-	public int getRmonth() {
-		return rmonth;
-	}
-	public void setRmonth(int rmonth) {
-		this.rmonth = rmonth;
-	}
-	public int getRday() {
-		return rday;
-	}
-	public void setRday(int rday) {
-		this.rday = rday;
+	public void setCheck(int check) {
+		this.check = check;
 	}
 	public String getSeat() {
 		return seat;
@@ -108,6 +83,24 @@ public class MemberReserveListVO {
 	}
 	public void setPoster(String poster) {
 		this.poster = poster;
+	}
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
+	public Date getDbday() {
+		return dbday;
+	}
+	public void setDbday(Date dbday) {
+		this.dbday = dbday;
+	}
+	public Date getrDate() {
+		return rDate;
+	}
+	public void setrDate(Date rDate) {
+		this.rDate = rDate;
 	}
 	
 }

@@ -101,7 +101,14 @@ public class MemberDAO {
 		session.close();		
 	}
 	
-	public static List<MemberReserveListVO> memberReserveList(int no){
+	public static List<MemberReserveListVO> memberWhatchData(int no){
+		SqlSession session=ssf.openSession();
+		List<MemberReserveListVO> list=session.selectList("memberWhatchData",no);
+		session.close();
+		return list;		
+	}
+	
+	public static List<MemberReserveListVO> memberReserveList(int no){//@@@@@@@@@@@
 		SqlSession session=ssf.openSession();
 		List<MemberReserveListVO> list=session.selectList("memberReserveList",no);
 		session.close();
