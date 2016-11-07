@@ -1,13 +1,16 @@
 package com.cinema.member.dao;
 
+import java.util.Date;
+
 public class MemberVO {
-	private int no;	
+	private int no;
 	private String id;
 	private String pwd;
 	private String name;
 	private String phone;
 	private String birth;
 	private int admin;
+	private Date rdate;
 	public int getNo() {
 		return no;
 	}
@@ -49,6 +52,12 @@ public class MemberVO {
 	}
 	public void setAdmin(int admin) {
 		this.admin = admin;
+	}
+	public Date getRdate() {
+		return rdate;
+	}
+	public void setRdate(Date rdate) {
+		this.rdate = rdate;
 	}
 	
 }

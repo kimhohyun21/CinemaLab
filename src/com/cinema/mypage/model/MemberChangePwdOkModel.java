@@ -18,11 +18,9 @@ public class MemberChangePwdOkModel {
 			System.out.println(ex.getMessage());
 		}
 		
-		String strno=request.getParameter("no");
-		System.out.println(strno);
+		String strno=request.getParameter("no");		
 		int no=Integer.parseInt(strno);
 		MemberVO vo=MemberDAO.memberGetAllImfor(no);
-		
 		//입력값 가져오기
 		String pwd = request.getParameter("pwd");
 		
@@ -32,13 +30,13 @@ public class MemberChangePwdOkModel {
 		boolean pCheck = false;
 		
 		if (db_pwd.equals(pwd)) {
-			pCheck = true;
-			System.out.println("성공");
+			pCheck = true;			
 			// @@@@@@@@이거안된다 태식아
 			String change_pwd=request.getParameter("change_pwd");
+			vo.setNo(no);
 			vo.setPwd(change_pwd);
-			System.out.println(vo.getPwd());
-			MemberDAO.memberModify(vo);
+			System.out.println(vo.getPwd()+" ---- 모델입니다");
+			MemberDAO.memberChangePwd(vo);
 		} else {
 			pCheck = false;
 		}
