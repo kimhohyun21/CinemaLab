@@ -20,6 +20,11 @@
 		INSERT INTO qna(qno,qsubject,qcontent,no,group_id) 
 		VALUES(#{qno},#{qsubject},#{qcontent},#{no},
 		(SELECT NVL(MAX(group_id)+1,1) FROM qna))
-
 	</insert>
+	<update id="CHI" parameterType="int">
+		UPDATE qna SET hit=hit+1
+	</update>
+	<select id="customerContent" resultType="qna" parameterType="int">
+		SELECT qno,name,qsubject,qcontent,qregdate,qhit FROM qna,member
+	</select>
 </mapper>

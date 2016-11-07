@@ -36,4 +36,13 @@ public class customerDAO {
 		session.close();
 	}
 	
+	public static customerVO customerContent(int no){
+		SqlSession session = ssf.openSession();
+		session.update("CHI", no);
+		session.commit();
+		customerVO vo = session.selectOne("customerContent", no);
+		session.close();
+		return vo;
+	}
+	
 }
