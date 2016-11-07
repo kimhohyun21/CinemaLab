@@ -15,6 +15,10 @@ public class customerVO {
 	private int depth;
 	private int no;
 	private String name;
+
+	private int fno;
+	private String question;
+	private String answer;
 	
 	public int getQno() {
 		return qno;
@@ -88,5 +92,25 @@ public class customerVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getFno() {
+		return fno;
+	}
+	public void setFno(int fno) {
+		this.fno = fno;
+	}
+	public String getQuestion() {
+		return question;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+	
 	
 }

@@ -17,7 +17,7 @@
 				<a href="list.do?type=0">QnA</a>
 			</td>
 			<td>
-				<a href="list.do?type=1">FAQ</a>
+				<a href="faq.do">FAQ</a>
 			</td>
 		</tr>
 	</table>

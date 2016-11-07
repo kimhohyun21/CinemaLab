@@ -11,7 +11,6 @@
 </head>
 <body>
 	<center>
-	<!-- 행 하나만 표현 tr td 조합으로   -->
 		<h3>게시판</h3>
 		<hr>
 		<table border="0" width="600">

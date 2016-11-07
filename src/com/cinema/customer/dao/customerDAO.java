@@ -29,4 +29,14 @@ public class customerDAO {
 		
 	}
 
+	public static List<customerVO> getfaqList(){
+		SqlSession session = ssf.openSession();  
+		List<customerVO> list = session.selectList("faqlist");
+		session.close();
+		
+		return list;
+	}
+	
+
+
 }

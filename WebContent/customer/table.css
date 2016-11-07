@@ -41,3 +41,24 @@ a{
 a:HOVER{
 	color: green;
 }
+
+/* @media( max-width: 640px ) {
+	#table_content,
+	#table_content thead,
+	#table_content tbody,
+	#table_content tr,
+	#table_content th,
+	#table_content td {
+		display: block;
+	}
+
+	#table_content tr {
+		border-bottom: 1px solid #ddd;
+	}
+
+	#table_content th,
+	#table_content td {
+		border-top: none;
+		border-bottom: none;
+	}
+} */

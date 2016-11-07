@@ -2,42 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="com.cinema.customer.dao.customer-mapper">
-	<!-- 공통으로 사용되어지는 쿼리를 선언해 ID 값으로 접근 -->
-	<sql id="where-no"> <!-- 구문을 찾기 위해 사용될 수 있는 명명공간내 유일한 구분자 -->
-		WHERE no=#{no}
-	</sql>
-	
-	<!-- SELECT 쿼리문을 실햏할 때 사용 -->
-	<select id="boardListData" resultType="Board" parameterType="java.util.Map">
-		SELECT no,subject,name,regdate,hit,group_tab,num FROM (SELECT no,subject,name,regdate,hit,group_tab,rownum as num FROM (SELECT no,subject,name,regdate,hit,group_tab FROM replyBoard ORDER BY group_id DESC,group_step ASC)) WHERE num BETWEEN #{start} AND #{end}
-	</select>
-	
-	<select id="boardTotalPage" resultType="int">
-		SELECT CEIL(COUNT(*)/10) FROM replyBoard
-	</select>
-	
-	<update id="boardHitIncrement" parameterType="int">
-		UPDATE replyBoard SET hit=hit+1
-		<include refid="where-no"/>
-	</update>
-	
-	<select id="boardContentData" resultType="Board" parameterType="int">
-		SELECT no,name,subject,content,regdate,hit FROM replyBoard
-		<include refid="where-no"/>
-	</select>
-	
-	<insert id="boardInsert" parameterType="Board">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(no)+1,1) as no FROM replyBoard
-		</selectKey>
-		INSERT INTO replyBoard(no,name,email,subject,content,pwd,group_id) 
-		VALUES(#{no},#{nqme},#{email},#{subject},#{content},#{pwd},
-		(SELECT NVL(MAX(group_id)+1,1) FROM replyBoard))
-		
-		<include refid="where-no"/>
-	</insert>
-	
+<mapper namespace="com.cinema.customer.dao.customer-mapper">	
 	<select id="qnalist" parameterType="java.util.Map" resultType="qna">
 		SELECT qno,qsubject,name,qregdate,qhit,group_tab,num
 		FROM (SELECT qno,qsubject,name,qregdate,qhit,group_tab,Rownum as num
@@ -48,4 +13,9 @@
 	<select id="qnatotal" resultType="int">
 		SELECT CEIL(COUNT(*)/10) FROM qna
 	</select>
+
+	<select id="faqlist" resultType="qna">
+		SELECT question, answer
+		FROM faq
+	</select>	
 </mapper>
