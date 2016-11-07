@@ -9,17 +9,15 @@
 	<title>Reserve 1</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style.css">
 	<script type="text/javascript">
-		/* function click(){
-			location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${vo.local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}&click=click";
-		} */
 		function send(){
 			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
-			+"&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";
+			+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
+			+"#nav";
 		}
 	</script>
 </head>
 <body>
-	<center>
+	<div align="center">
 		<table width="1000" id="main_table">
 			<tr height="40">
 				<th align="center" class="menu" width="15%">날짜</th>
@@ -148,7 +146,9 @@
 		</table>
 		<table width="1000" id="movieInfo_table">
 			<tr>
-				<td>영화 : <c:if test="${grade=='0'}">
+				<td valign="top">영화 : 
+					<p><img alt="${title }_poster" src="${poster }" width="110px" height="160px"></p>
+					<c:if test="${grade=='0'}">
 						<img src="image/bg_grade_all.png" width="15">
 					</c:if> <c:if test="${grade=='12'}">
 						<img src="image/bg_grade_12.png" width="15">
@@ -156,17 +156,17 @@
 						<img src="image/bg_grade_15.png" width="15">
 					</c:if> <c:if test="${grade=='18'}">
 						<img src="image/bg_grade_18.png" width="15">
-					</c:if> ${title }
+					</c:if> ${title }					
 				</td>
 				<td>일시 : ${year }.${month }.${checkedDay }.${checkedDay2 }</td>
 				<td>극장 : ${tname } / ${theaterNo } 관 / ${movietime }</td>
 			</tr>
 		</table>
-		<input type="button" value="취소" class="back_button"
-			onclick="javascript:history.back()"> <input type="button" value="다음"
-			class="next_button" onclick="send()">
-
-	</center>
+		<div>
+			<input type="button" value="취소" class="back_button"	onclick="javascript:history.back()"> 
+			<input type="button" value="다음"	class="next_button" onclick="send()">
+		</div>
+	</div>
 </body>
 </html>
 

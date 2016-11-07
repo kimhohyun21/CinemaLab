@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="movieData2" parameterType="String"  resultType="theater">
-		SELECT DISTINCT grade,title FROM movieList NATURAL JOIN theaterList WHERE theater=#{theater} 
+		SELECT DISTINCT grade,title,mNo FROM movieList NATURAL JOIN theaterList WHERE theater=#{theater} ORDER BY mNo ASC
 	</select>
 	
 	<select id="timeData2" parameterType="java.util.Map" resultType="theater">

@@ -6,25 +6,31 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
+	<script type="text/javascript" src="sliderengine/jquery.js"></script>
+	<script type="text/javascript" src="jStyles/jquery-ui.min.js"></script>	
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.structure.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.theme.css">
 	<link rel="stylesheet" type="text/css" href="main/style1.css">
-	<script src="sliderengine/jquery.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-ico" />
+	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
 
-	</script>
+	</script>	
 </head>
 <body>
 	<div align="center">
 		<div id="header">
 			<div id="mini_nav">
 				<ul>
-				<c:if test="${mvo.id==null }">
+				<c:if test="${mvo.name==null }">
 					<li><a href="login.do">로그인</a></li>
-					<li><a href="member.do">회원가입</a></li>
+					<li><a href="join.do">회원가입</a></li>
 				</c:if>
-				<c:if test="${mvo.id!=null }">
+				<c:if test="${mvo.name!=null }">
 					<li>${mvo.name }님 반갑습니다!</li>
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="reservePage.do">마이페이지</a></li>
+					<li><a href="reserveList.do?no=${mvo.no }">마이페이지</a></li>
 				</c:if>					
 					<li><a href="customer.do">고객센터</a></li>
 				</ul>
@@ -42,14 +48,14 @@
 				<li class="noeffect">|</li>
 				<li><a href="movieList.do">영화</a></li>
 				<li class="noeffect">|</li>
-				<li><a href="theater.do">영화관</a></li>
+				<li><a href="theater.do?local=서울&theater=신도림">영화관</a></li>
 			</ul>
 		</div>
 		<div id="article">
 			<jsp:include page="${jsp }"></jsp:include>
 		</div>
 		<div id="footer">
-			<span>&copy;2016 Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan</span>
+			<span>&copy;2016 Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan/</span>
 		</div>
 	</div>
 </body>

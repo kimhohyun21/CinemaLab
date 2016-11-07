@@ -40,6 +40,13 @@ public class MemberDAO {
 		return list;		
 	}
 	
+	public static MemberVO memberGetAllImfor(int no){
+		SqlSession session=ssf.openSession();		
+		MemberVO list=session.selectOne("memberAllImfor",no);		
+		session.close();
+		return list;		
+	}
+	
 	public static String memberFindId(MemberVO vo){
 		SqlSession session=ssf.openSession();
 		String id=session.selectOne("memberFindId",vo);
@@ -89,8 +96,7 @@ public class MemberDAO {
 		SqlSession session=ssf.openSession();
 		List<MemberReserveListVO> list=session.selectList("memberReserveList",no);
 		session.close();
-		return list;
-		
+		return list;		
 	}
 
 }

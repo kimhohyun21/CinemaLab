@@ -12,8 +12,7 @@
 	</script>
 </head>
 <body>
-	<br><br>
-	<table>
+	<table style="margin:10px 0px 10px 0px">
 		<tr>
 			<td class="movieBtn">
 				<a href="movieList.do?type=0">
@@ -37,54 +36,56 @@
 	<c:set var="i" value="1"/>
 	<c:set var="j" value="4" />
 	<c:if test="${list!=null }">
-	<table class="tb">
-	<c:forEach var="vo" items="${list }">
-	<c:if test="${i==1}">
-		<tr>
-	</c:if>
-			<td>
-				<table border="1">
-					<tr>
-						<td colspan="2">
-							<a href="moviedetail.do?no=${vo.mNo }">
-								<img src="${vo.poster}" width="200" height="270">
-							</a>
-						</td>
-					</tr>
-					<tr>	
-						<td align="center" colspan="2" class="title">
-						<c:if test="${vo.grade=='0'}">
-						<img src="image/bg_grade_all.png" width="18px">
-						</c:if>
-						<c:if test="${vo.grade=='12'}">
-						<img src="image/bg_grade_12.png" width="18px">
-						</c:if>
-						<c:if test="${vo.grade=='15'}">
-						<img src="image/bg_grade_15.png" width="18px">
-						</c:if>
-						<c:if test="${vo.grade=='18'}">
-						<img src="image/bg_grade_18.png" width="18px">
-						</c:if>
-						${vo.title }
-						</td>
-					</tr>
-					<tr>
-						<td align="center">
-							예매율 ${vo.rank }%
-						</td>
-						<td align="center">
-							관람 평점 ${vo.movieLike }
-						</td>
-					</tr>
-				</table>
-			</td>
-		<c:set var="i" value="${i+1}" />
-		<c:if test="${i==j+1}">
-		</tr>
-		<c:set var="i" value="1" />
+	<div class="movielist">
+		<table class="tb">
+		<c:forEach var="vo" items="${list }">
+		<c:if test="${i==1}">
+			<tr>
 		</c:if>
-		</c:forEach>
-	</table>
+				<td>
+					<table border="1">
+						<tr>
+							<td colspan="2">
+								<a href="moviedetail.do?no=${vo.mNo }">
+									<img src="${vo.poster}" width="200" height="270">
+								</a>
+							</td>
+						</tr>
+						<tr>	
+							<td align="center" colspan="2" class="title">
+							<c:if test="${vo.grade=='0'}">
+							<img src="image/bg_grade_all.png" width="18px">
+							</c:if>
+							<c:if test="${vo.grade=='12'}">
+							<img src="image/bg_grade_12.png" width="18px">
+							</c:if>
+							<c:if test="${vo.grade=='15'}">
+							<img src="image/bg_grade_15.png" width="18px">
+							</c:if>
+							<c:if test="${vo.grade=='18'}">
+							<img src="image/bg_grade_18.png" width="18px">
+							</c:if>
+							${vo.title }
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								예매율 ${vo.rank }%
+							</td>
+							<td align="center">
+								관람 평점 ${vo.movieLike }
+							</td>
+						</tr>
+					</table>
+				</td>
+			<c:set var="i" value="${i+1}" />
+			<c:if test="${i==j+1}">
+			</tr>
+			<c:set var="i" value="1" />
+			</c:if>
+			</c:forEach>
+		</table>
+	</div>
 	</c:if>
 </body>
 </html>

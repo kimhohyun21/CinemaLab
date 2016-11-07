@@ -13,8 +13,13 @@
 		SELECT COUNT(*) FROM member WHERE id=#{id}
 	</select>
 	<select id="memberImfor" parameterType="String" resultType="member">
-		SELECT id,pwd,name,phone,birth,no FROM member WHERE id=#{id} 
+		SELECT name,no,pwd FROM member WHERE id=#{id}
 	</select>
+	
+	<select id="memberAllImfor" parameterType="int" resultType="member">
+		SELECT name,phone,birth,pwd FROM member WHERE no=#{no}
+	</select>
+	
 	<select id="memberFindId" parameterType="member" resultType="String">
 		SELECT id FROM member WHERE name=#{name} and phone=#{phone} and birth=#{birth}
 	</select>
@@ -34,7 +39,7 @@
 		UPDATE member SET name=#{name},birth=#{birth},phone=#{phone},pwd=#{pwd} WHERE no=#{no}
 	</update>	
 	<select id="memberReserveList" parameterType="int" resultType="memberReserve">
-		SELECT rYear, rMonth, rDay, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
+		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
 		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
 		WHERE no=#{no}
 	</select>

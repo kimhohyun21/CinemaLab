@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="theater/style.css">
 </head>
 <body>
-	<center>
+	<div align="center" id="theater_pic">
 		<c:if test="${num=='1' }">
 			<img src="image/1.jpg">
 		</c:if>
@@ -22,6 +22,6 @@
 		<c:if test="${num=='4' }">
 			<img src="image/4.jpg">
 		</c:if>
-	</center>
+	</div>
 </body>
 </html>

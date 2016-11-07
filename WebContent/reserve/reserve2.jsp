@@ -24,7 +24,8 @@
 	</script>
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="reserve2">
+		<!-- 티켓 매수 선택 -->
 		<div class="ticket">
 			<form id="frm">
 				<input type="hidden" name="year" value="${year }">
@@ -34,35 +35,43 @@
 				<input type="hidden" name="local" value="${local }">
 				<input type="hidden" name="tname" value="${tname }">
 				<input type="hidden" name="grade" value="${grade }">
-				<input type="hidden" name="title" value="${title }">				
+				<input type="hidden" name="title" value="${title }">
+				<input type="hidden" name="poster" value="${poster }">				
 				<input type="hidden" name="theaterNo" value="${theaterNo}">
 				<input type="hidden" name="movietime" value="${movietime}">
 				<input type="hidden" name="rType" value="seat">
-				어른 <select id="adult" name="adult" onchange="select()">
+				<strong>어른</strong>
+				<select id="adult" name="adult" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				청소년 <select id="junior" name="junior" onchange="select()">
+				<strong>청소년</strong>
+				<select id="junior" name="junior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
-				시니어 <select id="senior" name="senior" onchange="select()">
+				<strong>시니어</strong> 
+				<select id="senior" name="senior" onchange="select()">
 					<option selected="selected">0</option>
 				<c:forEach var="i" begin="1" end="8">
 					<option>${i}</option>
 				</c:forEach>					
 				</select>
 			</form>
-			<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-			&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-			&theaterNo=${theaterNo2}&movietime=${movietime}">
-				<span class="resetBtn">선택초기화</span>
-			</a>
+			<!-- 선택 초기화 버튼 -->
+			<span class="resetBtn">
+				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
+				&poster=${poster }&theaterNo=${theaterNo2}&movietime=${movietime}">
+					선택초기화
+				</a>
+			</span>
 		</div>
+		<!-- 자리 선택  include-->
 		<div id="result">
 			<jsp:include page="${jsp2 }"></jsp:include>		
 		</div>			

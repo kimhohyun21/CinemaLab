@@ -16,24 +16,23 @@
 	<div align="center">
 	    <!-- Insert to your webpage where you want to display the carousel -->
 		<div id="amazingcarousel-container-1">
-			<div>현재 상영작</div>
+			<div class="posttitle">현재 상영작</div>
 		    <div id="amazingcarousel-1" style="display:none;position:relative;width:100%;max-width:1200px;margin:0px auto 0px;">
 		        <div class="amazingcarousel-list-container">
 					<ul class="amazingcarousel-list">
-					<c:set var="no" value="1"/>
-					<c:forEach var="url" items="${plist }">
+					<c:forEach var="vo" items="${plist2 }">
 						<li class="amazingcarousel-item">
 							<div class="amazingcarousel-item-container">
 							<script>
-								console.log('${no}');
+								console.log('${vo.mNo}');
 							</script>
-								<div class="amazingcarousel-image" id="${no }">
+								<div class="amazingcarousel-image" id="${vo.mNo}">
 									<a href="#" class="html5lightbox"> 
-										<img src="${url }"/>
+										<img src="${vo.poster }"/>
 										<script type="text/javascript">
 											$(function(){
-												$('div#${no } div.amazingcarousel-hover-effect').click(function(){													
-													location.href="reserve.do?no=${no }";
+												$('div#${vo.mNo} div.amazingcarousel-hover-effect').click(function(){													
+													location.href="reserve.do?title=${vo.title}";
 												});
 											});
 										</script>
@@ -41,7 +40,6 @@
 								</div>
 							</div>
 						</li>
-						<c:set var="no" value="${no=no+1 }"/>
 					</c:forEach>		
 					</ul>
 					<div class="amazingcarousel-prev"></div>

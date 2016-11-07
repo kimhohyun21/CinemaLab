@@ -1,6 +1,7 @@
 package com.cinema.theater.model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,17 +24,21 @@ public class TheaterModel {
 		
 		//지역 선택
 		String local = request.getParameter("local");
-		if (local == null)
-			local = "서울";
+		if(local==null) local="서울";
 	
 		List<TheaterVO> localList = TheaterDAO.localData2();
+		
+		String theater=request.getParameter("theater");
+		if(theater==null && local.equals("서울")) theater="신도림";
+		if(theater==null && local.equals("경기")) theater="용인";
+		if(theater==null && local.equals("인천")) theater="검단";
+		if(theater==null && local.equals("대구")) theater="율하";
+		if(theater==null && local.equals("부산")) theater="해운대";
 		
 		//극장 선택
 		List<TheaterVO> theaterList=TheaterDAO.theaterData2(local);
 		
 		//극장 사진
-		String theater=request.getParameter("theater");
-		if(theater==null) theater="신도림";
 		int num=(int) (Math.random()*4+1);
 		
 		//날짜 계산
@@ -99,26 +104,36 @@ public class TheaterModel {
 		
 		//영화 선택
 		List<TheaterVO> movieList = TheaterDAO.movieData2(theater);
-
+		
 		// 영화 상영 시간 선택
 		String title = request.getParameter("title");
 		if (title == null)
 			title = "데드풀 Deadpool";
-
-		Map map = new HashMap();
-		map.put("theater", theater);
-		map.put("title", title);
-		List<TheaterVO> timeList = TheaterDAO.timeData2(map);
-
-		int theaterNo2 = TheaterDAO.theaterNoData2(map);
+		
+		// 영화 상영 시간 및 상영관
+	      List<TheaterVO> movieList2=new ArrayList<>();
+	      for(TheaterVO vo : movieList){
+	         title=vo.getTitle();
+	         Map map = new HashMap();
+	         map.put("theater", theater);
+	         map.put("title", title);
+	         List<TheaterVO> timeList = TheaterDAO.timeData2(map);
+	         int theaterNo2 = TheaterDAO.theaterNoData2(map);
+	         
+	         
+	         vo.setTheaterNo(theaterNo2);
+	         vo.setTimeList(timeList);
+	         
+	         movieList2.add(vo);
+	      }
 
 		String grade = request.getParameter("grade");
 		String theaterNo = request.getParameter("theaterNo");
 		String movietime = request.getParameter("movietime");
+		String click=request.getParameter("click");
 		
-		request.setAttribute("theaterNo2", theaterNo2);
+		request.setAttribute("movieList2", movieList2);
 		request.setAttribute("movieList", movieList);
-		request.setAttribute("timeList", timeList);
 		request.setAttribute("movietime", movietime);
 		request.setAttribute("theaterNo", theaterNo);
 		request.setAttribute("grade", grade);

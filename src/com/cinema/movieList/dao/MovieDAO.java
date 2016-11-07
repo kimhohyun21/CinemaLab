@@ -37,4 +37,33 @@ public class MovieDAO {
 		
 		return list;
 	}
+	
+	public static List<MovieVO> getReplyData(int mNo){
+		SqlSession session=ssf.openSession();
+		List<MovieVO> replyList=session.selectList("getReplyData",mNo);
+		session.close();
+		
+		return replyList;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
