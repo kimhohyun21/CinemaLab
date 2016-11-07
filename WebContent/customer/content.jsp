@@ -9,14 +9,13 @@
 </head>
 <body>
 	<center>
-		<h3>내용보기</h3>
 		<table id="table_content" width="500">
 			<tr>
 				<th width="20%" align="center">번호</th>
-				<td width="30%" align="center">${vo.no}</td>
+				<td width="30%" align="center">${vo.qno}</td>
 				<th width="20%" align="center">작성일</th>
 				<td width="30%" align="center">
-					<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${vo.qregdate}" pattern="yyyy-MM-dd"/>
 				</td>
 			</tr>
 			
@@ -25,20 +24,30 @@
 				<td width="30%" align="center">${vo.name}</td>
 				
 				<th width="20%" align="center">조회수</th>
-				<td width="30%" align="center">${vo.hit}</td>
+				<td width="30%" align="center">${vo.qhit}</td>
 			</tr>
 			
 			<tr>
 				<th width="20%" align="center">제목</th>
-				<td colspan="3" align="center">${vo.subject}</td>
+				<td colspan="3" align="center">${vo.qsubject}</td>
 			</tr>
 			
 			<tr>
 				<td colspan="4" valign="top" align="left" height="200">
-					<pre>${vo.content}</pre>
+					<pre>${vo.qcontent}</pre>
 				</td>
 			</tr>
-			
+		</table>
+		<table>
+			<tr align="right">
+				<td>
+					<a href="update.do?no=${vo.qno }&page="${page }">수정</a>
+					&nbsp;&nbsp;
+					<a href="delete.do?no=${vo.qno }&page="${page }"">삭제</a>
+					&nbsp;&nbsp;
+					<a onclick="javascript:history.back()">돌아가기</a>
+				</td>
+			</tr>
 		</table>
 	</center>
 </body>

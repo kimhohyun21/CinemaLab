@@ -59,7 +59,7 @@
 					</c:if>
 					
 					<c:if test="${msg ne vo.qsubject}">
-						<a href="content.do?no=${vo.qno}">${vo.qsubject}</a>
+						<a href="content.do?no=${vo.qno}&page=${page }">${vo.qsubject}</a>
 					</c:if>
 				</td>
 				<td width="15%" align="center">${vo.name}</td>
