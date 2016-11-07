@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>결제 완료</title>
 </head>
 <body>
-	<center>
-		
-	</center>
+	<div align="center">
+			결제가 완료 되었습니다.
+	</div>
 </body>
 </html>

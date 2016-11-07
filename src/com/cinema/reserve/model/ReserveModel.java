@@ -96,7 +96,7 @@ public class ReserveModel {
 		//영화 상영 시간 선택
 		String title=request.getParameter("title");
 
-		if(title==null) title="데드풀 Deadpool";
+		if(title==null) title="닥터 스트레인지";
 		
 		Map map=new HashMap();
 		map.put("tname", tname);
@@ -106,14 +106,17 @@ public class ReserveModel {
 		int theaterNo2=ReserveDAO.theaterNoData(map);
 		
 		String grade=request.getParameter("grade");
-		if(grade==null)grade="18";
+		if(grade==null)grade="12";
 		String theaterNo=request.getParameter("theaterNo");
 		String movietime=request.getParameter("movietime");
 		String click=request.getParameter("click");
+		String poster=request.getParameter("poster");
+		if(poster==null)poster="http://movie.phinf.naver.net/20161014_50/147640824152266AVn_JPEG/movie_image.jpg";
 		
 		request.setAttribute("click", click);
 		request.setAttribute("grade", grade);
 		request.setAttribute("title", title);
+		request.setAttribute("poster", poster);
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
 		request.setAttribute("checkedDay", checkedDay);

@@ -115,7 +115,8 @@
 			<input type="hidden" name="local" value="${local }">
 			<input type="hidden" name="tname" value="${tname }">
 			<input type="hidden" name="grade" value="${grade }">
-			<input type="hidden" name="title" value="${title }">				
+			<input type="hidden" name="title" value="${title }">
+			<input type="hidden" name="poster" value="${poster }">				
 			<input type="hidden" name="theaterNo" value="${theaterNo}">
 			<input type="hidden" name="movietime" value="${movietime}">
 			<input type="hidden" name="adult" value="${adult}">

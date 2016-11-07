@@ -7,14 +7,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>결제</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style.css">
+	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 	<script type="text/javascript">	
+		/* 결제 모듈 사용을 위한 초기화 */
 		window.onload=function(){
 			var IMP = window.IMP;
 			IMP.init('imp74690571'); 
 		}
 		
+		/* 결제 방법 선택에 따라 결제 방법 값 변경 및 화면 표시 전환*/
 		var type="";
 		function display1() {
 			card.style.display='block';
@@ -29,28 +31,29 @@
 			type="trans"
 			return;
 		} 
-	     
+	    
+		/* 결제 모듈 호출*/
 		function payment(type){
 			IMP.request_pay({
 			    pg : 'html5_inicis',
 			    pay_method : type,
 			    merchant_uid : 'merchant_' + new Date().getTime(),
 			    name : 'Marvel Cinema 결제',
-			    amount : 4000,
-			    buyer_email : 'iamport@siot.do',
+			    amount : 1000,
+			    buyer_email : '',
 			    buyer_name : '김호현',
-			    buyer_tel : '010-1234-5678',
-			    buyer_addr : '서울특별시 강남구 삼성동',
-			    buyer_postcode : '123-456'
+			    buyer_tel : '010-1234-5678'
 			}, function(rsp) {
 			    if ( rsp.success ) {
 			        var msg = '결제가 완료되었습니다.';
-			        location.href="reserve.do?pid="+ rsp.imp_uid+"sid="+ rsp.merchant_uid+"sp="
 			        /* msg += '고유ID : ' + rsp.imp_uid;
 			        msg += '상점 거래ID : ' + rsp.merchant_uid;	
 			        msg += '결제 금액 : ' + rsp.paid_amount;
 			        msg += '카드 승인번호 : ' + rsp.apply_num; */
-
+			        
+			        location.href="reserve4.do?pid="+ rsp.imp_uid+"&sid="+ rsp.merchant_uid+"&sp="
+			        			+rsp.paid_amount+"&cokn="+rsp.apply_num;
+			      
 			    } else {
 			        var msg = '결제에 실패하였습니다.<br/>';
 			        msg += '에러내용 : ' + rsp.error_msg+'.';			        
@@ -59,6 +62,7 @@
 			});
 		}	
 		
+		/* jQuery Alert 창 */
 		jQuery.jQueryAlert = function (msg) {
             var $messageBox = $.parseHTML('<div id="alertBox"></div>');
             $("body").append($messageBox);
@@ -77,62 +81,10 @@
                 }
             });
         };
-		
-		/* $(function(){
-			$('#send').click(function(){
-				if($('#chooseCard').val()=="선택없음"){
-					alert("카드를 선택하세요");
-					$('#chooseCard').focus();
-					return;
-				}
-				if($('#number1').val()==""){
-					alert("카드 번호를 입력하세요");
-					$('#number1').focus();
-					return;
-				}
-				if($('#number2').val()==""){
-					alert("카드 번호를 입력하세요");
-					$('#number2').focus();
-					return;
-				}
-				if($('#number3').val()==""){
-					alert("카드 번호를 입력하세요");
-					$('#number3').focus();
-					return;
-				}
-				if($('#number4').val()==""){
-					alert("카드 번호를 입력하세요");
-					$('#number4').focus();
-					return;
-				}
-				if($('#pwd').val()==""){
-					alert("비밀번호를 입력하세요");
-					$('#pwd').focus();
-					return;
-				}
-				if($('#month').val()==""){
-					alert("유효 월을 입력하세요");
-					$('#month').focus();
-					return;
-				}
-				if($('#year').val()==""){
-					alert("유효 년을 입력하세요");
-					$('#year').focus();
-					return;
-				}
-				if($('#birth').val()==""){
-					alert("주민번호 앞자리를 입력하세요");
-					$('#birth').focus();
-					return;
-				}
-				alert('성공');
-				$('#pgForm').submit();
-			})
-		}); */
 	</script>
 </head>
 <body>
-	<center>		
+	<div align="center" class="finalPaymentInfo">		
 		<h2>결제</h2>
 		<table width="700" border="1">
 			<tr>
@@ -200,7 +152,7 @@
 		<input type="button" value="취소" onclick="javascript:history.back()">
 		<input type="submit" value="결제" id="send">		
 		</form>
-	</center>	
+	</div>	
 </body>
 </html>
 

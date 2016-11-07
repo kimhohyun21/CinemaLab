@@ -25,7 +25,8 @@ public class ReserveModel2 {
 		
 		//영화 정보
 		String grade=request.getParameter("grade");
-		String title=request.getParameter("title");		
+		String title=request.getParameter("title");
+		String poster=request.getParameter("poster");
 		
 		//상영시간
 		String theaterNo=request.getParameter("theaterNo");
@@ -89,6 +90,7 @@ public class ReserveModel2 {
 		request.setAttribute("tname", tname);
 		request.setAttribute("grade", grade);
 		request.setAttribute("title", title);
+		request.setAttribute("poster", poster);
 		request.setAttribute("theaterNo", theaterNo);
 		request.setAttribute("movietime", movietime);
 		request.setAttribute("adult", adult);

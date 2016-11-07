@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="com.cinema.reserve.dao.reserve-mapper">
 	<select id="movieData" parameterType="String"  resultType="Reserve">
-		SELECT DISTINCT grade,title FROM movieList NATURAL JOIN theaterList WHERE theater=#{tname } 
+		SELECT DISTINCT mNo, grade,title, poster FROM movieList NATURAL JOIN theaterList WHERE theater=#{tname } ORDER BY mNo ASC
 	</select>
 	
 	<select id="timeData" parameterType="java.util.Map" resultType="Reserve">

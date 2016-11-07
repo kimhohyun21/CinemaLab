@@ -35,7 +35,8 @@
 				<input type="hidden" name="local" value="${local }">
 				<input type="hidden" name="tname" value="${tname }">
 				<input type="hidden" name="grade" value="${grade }">
-				<input type="hidden" name="title" value="${title }">				
+				<input type="hidden" name="title" value="${title }">
+				<input type="hidden" name="poster" value="${poster }">				
 				<input type="hidden" name="theaterNo" value="${theaterNo}">
 				<input type="hidden" name="movietime" value="${movietime}">
 				<input type="hidden" name="rType" value="seat">
@@ -62,13 +63,13 @@
 				</select>
 			</form>
 			<!-- 선택 초기화 버튼 -->
-			<p class="resetBtn">
+			<span class="resetBtn">
 				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-				&theaterNo=${theaterNo2}&movietime=${movietime}">
+				&poster=${poster }&theaterNo=${theaterNo2}&movietime=${movietime}">
 					선택초기화
 				</a>
-			</p>
+			</span>
 		</div>
 		<!-- 자리 선택  include-->
 		<div id="result">
