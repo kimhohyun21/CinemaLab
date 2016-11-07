@@ -108,10 +108,15 @@ public class ReserveModel {
 		String grade=request.getParameter("grade");
 		if(grade==null)grade="12";
 		String theaterNo=request.getParameter("theaterNo");
+		if(theaterNo==null)theaterNo="1";
 		String movietime=request.getParameter("movietime");
 		String click=request.getParameter("click");
 		String poster=request.getParameter("poster");
 		if(poster==null)poster="http://movie.phinf.naver.net/20161014_50/147640824152266AVn_JPEG/movie_image.jpg";
+		String payment=request.getParameter("payment");
+		if(payment==null){
+			payment="0";
+		}
 		
 		request.setAttribute("click", click);
 		request.setAttribute("grade", grade);
@@ -134,6 +139,7 @@ public class ReserveModel {
 		request.setAttribute("localList", localList);
 		request.setAttribute("theaterList", theaterList);
 		request.setAttribute("theaterNo2", theaterNo2);
+		request.setAttribute("payment", payment);
 		request.setAttribute("jsp", "../reserve/reserve1.jsp");
 	
 		return "main/main.jsp";

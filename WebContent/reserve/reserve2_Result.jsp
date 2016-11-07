@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 	<div id="reserve">
-		<table class="paymentInfo">
+			<table class="paymentInfo">
 			<tr>
 				<th width="33%">영화</th>
 				<th width="33%">예매 정보</th>
@@ -30,23 +31,54 @@
 					<c:if test="${grade=='18'}">
 						<img src="image/bg_grade_18.png">
 					</c:if>
-					${title }			
+					<span style="width: 180px;display: inline-block; vertical-align: inherit; color:#f78824;">
+						${title }
+					</span>				
 				</td>
 				<td width="30%">
 					<ul>
-						<li>상영일 : ${year }. ${month }. ${checkedDay } (${checkedDay2 })</li>
-						<li>상영시간 : ${movietime} </li>
-						<li>상영관 : ${tname } ${theaterNo}관 </li>
-						<li>좌석 : <c:forEach var="st" items="${seat }" varStatus="status">
+						<li>
+							<strong>상영일 :</strong> 
+							<span style="color:#f78824;">
+								${year }. ${month }. ${checkedDay } (${checkedDay2 })
+							</span>
+						</li>
+						<li>
+							<strong>상영시간 :</strong> 
+							<span style="color:#f78824;">	
+								${movietime}
+							</span>	
+						</li>
+						<li>
+							<strong>상영관 :</strong> 
+							<span style="color:#f78824;">	
+								${tname } ${theaterNo} 
+							</span>관
+						</li>
+						<li>
+							<strong>좌석 :</strong>
+							<span style="color:#f78824;">  
+							<c:forEach var="st" items="${seat }" varStatus="status">
 								${st }<c:if test="${not status.last }">, </c:if>
-							 </c:forEach>
+							</c:forEach>
+							</span>
 						</li>						 
 					</ul>
 				</td>
 				
 				<td width="30%">
 					<ul>
-						<li>영화 예매 : ${payment }원</li>
+						<li>
+							<strong>영화 예매 :</strong>
+							<span style="color:#f78824;">  
+							<c:if test="${payment!=0 }"> 
+								<fmt:formatNumber value="${payment }" pattern=",000"/> 
+							</c:if>
+							<c:if test="${payment==0 }">
+								${payment }
+							</c:if>	
+							</span>원
+						</li>
 					</ul>
 				</td>
 			</tr>
