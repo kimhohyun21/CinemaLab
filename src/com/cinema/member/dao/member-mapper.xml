@@ -13,7 +13,7 @@
 		SELECT COUNT(*) FROM member WHERE id=#{id}
 	</select>
 	<select id="memberImfor" parameterType="String" resultType="member">
-		SELECT name,no,pwd FROM member WHERE id=#{id}
+		SELECT name,no,pwd,id FROM member WHERE id=#{id}
 	</select>
 	
 	<select id="memberAllImfor" parameterType="int" resultType="member">
@@ -29,18 +29,26 @@
 	<delete id="memberDelete" parameterType="member">
 		DELETE FROM member WHERE no=#{no}
 	</delete>
-	<select id="memberOverlab" parameterType="String" resultType="int" >
+	<select id="memberOverlab" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM member WHERE id=#{id} 
 	</select>
 	<select id="memberGetPwd" parameterType="int" resultType="String">
 		SELECT pwd FROM member WHERE no=#{no}
 	</select>
 	<update id="memberModify" parameterType="member">
-		UPDATE member SET name=#{name},birth=#{birth},phone=#{phone},pwd=#{pwd} WHERE no=#{no}
+		UPDATE member SET name=#{name},birth=#{birth},phone=#{phone} WHERE no=#{no}
+	</update>
+	<update id="memberChangePwd" parameterType="member">
+		UPDATE member SET pwd=#{pwd} WHERE no=#{no}
 	</update>	
-	<select id="memberReserveList" parameterType="int" resultType="memberReserve">
+	<select id="memberWhatchData" parameterType="int" resultType="memberReserve">
 		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
 		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
 		WHERE no=#{no}
+	</select>
+	<select id="memberReserveList" parameterType="int" resultType="memberReserve">
+		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
+		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
+		WHERE no=#{no} AND rdate>to_char(sysdate)
 	</select>
 </mapper>

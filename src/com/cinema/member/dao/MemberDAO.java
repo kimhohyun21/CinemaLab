@@ -92,7 +92,23 @@ public class MemberDAO {
 		session.close();		
 	}
 	
-	public static List<MemberReserveListVO> memberReserveList(int no){
+	public static void memberChangePwd(MemberVO vo){
+		SqlSession session=ssf.openSession();
+		session.update("memberChangePwd",vo);
+		System.out.println(vo.getPwd()+" ---- DAO입니다");
+		System.out.println(vo.getNo()+" ---- DAO입니다");
+		session.commit();
+		session.close();		
+	}
+	
+	public static List<MemberReserveListVO> memberWhatchData(int no){
+		SqlSession session=ssf.openSession();
+		List<MemberReserveListVO> list=session.selectList("memberWhatchData",no);
+		session.close();
+		return list;		
+	}
+	
+	public static List<MemberReserveListVO> memberReserveList(int no){//@@@@@@@@@@@
 		SqlSession session=ssf.openSession();
 		List<MemberReserveListVO> list=session.selectList("memberReserveList",no);
 		session.close();
