@@ -45,6 +45,13 @@ public class MovieDAO {
 		
 		return replyList;
 	}
+	
+	public static void replyInsert(MovieVO vo){
+		SqlSession session=ssf.openSession();
+		session.insert("replyInsert",vo);
+		session.commit();
+		session.close();
+	}
 }
 
 

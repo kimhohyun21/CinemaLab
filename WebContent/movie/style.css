@@ -51,16 +51,40 @@ pre{
 	margin-bottom: 500px;
 }
 
+/* ´ñ±ÛºÎºÐ css */
 #reply{
 	position: relative;
 	bottom: 430px;	
+	width: 1000px;
 }
 #reply h3{
-	position: relative;
-	left: 160px;
+	
 	margin-bottom: 10px;
 }
 
+#send{
+	width: 105px;
+    height: 94px;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#reply ul li{
+	position: relative;
+	top:20px;
+	margin-left: 10px;
+	list-style: none;
+	border-bottom: 1px solid;
+	margin-bottom: 30px;
+}
+
+#reContent{
+	font-size: 20px;
+	position: relative;
+	left: 15px;
+}
 
 
 

@@ -1,8 +1,11 @@
 package com.cinema.movieList.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
