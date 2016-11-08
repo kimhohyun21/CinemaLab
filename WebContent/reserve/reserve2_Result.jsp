@@ -24,27 +24,47 @@
 				f.submit();
 			}	
 		}; 
-		/*jQuery Alert*/
+		
+		function login(){
+			var f=document.loginfrm;	
+			if(f.id.value==""){
+				$.jQueryAlert("아이디를 입력하세요");
+				f.id.focus();
+				return;
+			}
+			if(f.pwd.value==""){
+				$.jQueryAlert("비밀번호를 입력하세요");
+				f.pwd.focus();
+				return;
+			}
+			f.submit();
+		}
+		
+		/*jQuery Login*/
 		jQuery.jQueryLogin = function (){
-			var $loginform = $.parseHTML('<div><form id="login" action="login.do" method="post">'
-											+'<label for="name">Name</label>'
-				      					  	+'<input type="text" name="name" id="name">'
-				      					  	+'<label for="email">Email</label>'
-				      						+'<input type="text" name="email" id="email">'
-				      						+'<label for="password">Password</label>'
-				      						+'<input type="password" name="password" id="password">'
-											+'</form></div>');
+			var $loginform = $.parseHTML('<div id="logindiv">'
+											+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
+											+'<div class="input">'
+											+'<label for="id">ID</label>'
+											+'<input type="text" placeholder="ID" name="id" id="id">'
+											+'</div>'+'<div class="input">'
+											+'<label for="pwd">PW</label>'
+											+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+											+'</div><input type="hidden" name="loginType" value="reserve">'
+											+'</form><div id="find">'
+											+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+											+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
 			$("body").append($loginform);
 			
 			$($loginform).dialog({
 				 open: $($loginform),
 			     autoOpen: true,
-			     height: 400,
-			     width: 350,
+			     width: 400,
 			     modal: true,
+			     resizable:false, 
 			     buttons: {	
 			       LOGIN : function() {
-				         $('#login').submit();
+				         login();
 				   },		 
 			       Cancel: function() {
 			         $(this).dialog("close");
@@ -62,7 +82,6 @@
 	
 	        $($messageBox).dialog({
 	            open: $($messageBox).append(msg),
-	            title: "처리 결과",
 	            autoOpen: true,
 	            modal: true,
 	            resizable:false, 

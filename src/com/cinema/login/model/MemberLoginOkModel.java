@@ -23,6 +23,7 @@ public class MemberLoginOkModel {
 		String check="";
 		String id=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
+		String loginType=request.getParameter("loginType");
 		
 		int idcheck=MemberDAO.memberIdCheck(id);
 		
@@ -45,6 +46,9 @@ public class MemberLoginOkModel {
 				check="pwdnot";
 			}
 		}
+		String url=request.getHeader("referer");
+		request.setAttribute("url", url);
+		request.setAttribute("loginType", loginType);
 		request.setAttribute("check", check);		
 		
 		

@@ -29,7 +29,6 @@
 	
 	        $($messageBox).dialog({
 	            open: $($messageBox).append(msg),
-	            title: "처리 결과",
 	            autoOpen: true,
 	            modal: true,
 	            resizable:false, 
