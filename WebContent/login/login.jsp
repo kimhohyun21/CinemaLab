@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="login/style3.css">
 	<c:if test="${join == '가입성공' }">
 		<script type="text/javascript">
 			alert("회원가입이 완료되었습니다")
@@ -62,10 +63,20 @@ function login(){
 				<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
 				<a href="searchPwd.do">비밀번호 찾기</a>
 			</div>
-			<input type="button" value="로그인" onclick="login()"
-				style="width: 55px;height: 25px;">
-			<input id="button" type="button" value="뒤로" onclick="javascript:history.back()"
-				style="width: 55px;height: 25px;">	
+		<table height="100">
+			<tr>
+				<td>
+					<input type="button" value="로그인" onclick="login()"
+						class="btn">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input id="button" type="button" value="뒤로" onclick="javascript:history.back()"
+						class="btn">
+				</td>
+			</tr>
+		</table>	
 		</form>
 	</div>
 </body>

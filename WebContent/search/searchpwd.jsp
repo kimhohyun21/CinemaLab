@@ -6,19 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<style type="text/css">
-	a{
-	text-decoration: none;
-	color: black;
-}
-	#button{	
-	margin:10px;
-}
-	#join_table tr td input{
-		margin:0px;
-		padding:0px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="search/style.css">
 <script type="text/javascript">
 function send(){
 	 var f=document.frm;	
@@ -44,28 +32,37 @@ function send(){
 </head>
 <body>
 	<center>		
-		<form action="searchPwd_ok.do" method="post" name="frm">
-			<table id="join_table" width="450" height="500">
+		<form action="searchPwd_ok.do" method="post" id="frm">
+			<table id="join_table" width="450" height="300">
 				<tr>
-					<td align="center">
-						<b>이름 :</b><input type="text" placeholder="이름" name="name">
+					<td align="right">
+						<b>이름 :</b>
+					</td>
+					<td align="left">
+						<input type="text" placeholder="이름" name="name">
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<b>아이디 :</b><input type="text" placeholder="아이디" name="id">
+					<td align="right">
+						<b>아이디 :</b>
+					</td>
+					<td align="left">
+						<input type="text" placeholder="아이디" name="id">
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<b>전화번호 :</b><input type="text" placeholder="전화번호" name="phone">
+					<td align="right">
+						<b>전화번호 :</b>
+					</td>
+					<td align="left">
+						<input type="text" placeholder="전화번호" name="phone">
 					</td>
 				</tr>
 			</table>
 		</form>
 		
-		<input id="button" type="button" value="찾기" onclick="send()" width="300"><br/>
-		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+		<input class="btn" id="btn1" type="button" value="찾기" onclick="send()"><br/>
+		<input class="btn" type="button" value="뒤로" onclick="javascript:history.back()">
 	</center>
 </body>
 </html>

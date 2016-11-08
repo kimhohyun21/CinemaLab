@@ -15,14 +15,15 @@ public class MemberReserveListVO {
 	private String poster;
 	private int mno;
 	private Date dbday;
-	private Date rDate;
+	private Date rdate;
 	private int check;
+	private String listdate;
 	
-	public int getCheck() {
-		return check;
+	public String getListdate() {
+		return listdate;
 	}
-	public void setCheck(int check) {
-		this.check = check;
+	public void setListdate(String listdate) {
+		this.listdate = listdate;
 	}
 	public String getSeat() {
 		return seat;
@@ -96,11 +97,17 @@ public class MemberReserveListVO {
 	public void setDbday(Date dbday) {
 		this.dbday = dbday;
 	}
-	public Date getrDate() {
-		return rDate;
+	public Date getRdate() {
+		return rdate;
 	}
-	public void setrDate(Date rDate) {
-		this.rDate = rDate;
+	public void setRdate(Date rdate) {
+		this.rdate = rdate;
+	}
+	public int getCheck() {
+		return check;
+	}
+	public void setCheck(int check) {
+		this.check = check;
 	}
 	
 }
