@@ -13,8 +13,13 @@
 		SELECT COUNT(*) FROM member WHERE id=#{id}
 	</select>
 	<select id="memberImfor" parameterType="String" resultType="member">
-		SELECT id,pwd,name,phone,birth,no FROM member WHERE id=#{id} 
+		SELECT name,no,pwd,id FROM member WHERE id=#{id}
 	</select>
+	
+	<select id="memberAllImfor" parameterType="int" resultType="member">
+		SELECT name,phone,birth,pwd FROM member WHERE no=#{no}
+	</select>
+	
 	<select id="memberFindId" parameterType="member" resultType="String">
 		SELECT id FROM member WHERE name=#{name} and phone=#{phone} and birth=#{birth}
 	</select>
@@ -24,11 +29,32 @@
 	<delete id="memberDelete" parameterType="member">
 		DELETE FROM member WHERE no=#{no}
 	</delete>
-	<select id="memberOverlab" resultType="int" parameterType="String">
+	<select id="memberOverlab" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM member WHERE id=#{id} 
 	</select>
-	<!-- <update id="memberModify" parameterMap="member">	
-		UPDATE member SET id=#{id} pwd=#{pwd} name=#{name} phone=#{phone} birth=#{birth}
-		WHERE no=#{no]
-	</update> -->
+	<select id="memberGetPwd" parameterType="int" resultType="String">
+		SELECT pwd FROM member WHERE no=#{no}
+	</select>
+	<update id="memberModify" parameterType="member">
+		UPDATE member SET name=#{name},birth=#{birth},phone=#{phone} WHERE no=#{no}
+	</update>
+	<update id="memberChangePwd" parameterType="member">
+		UPDATE member SET pwd=#{pwd} WHERE no=#{no}
+	</update>	
+	<select id="memberWhatchData" parameterType="int" resultType="memberReserve">
+		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
+		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
+		WHERE no=#{no} ORDER BY rDate DESC
+	</select>
+	<select id="memberReserveList" parameterType="int" resultType="memberReserve">
+		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
+		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
+		WHERE no=#{no} AND rdate>to_char(sysdate) ORDER BY rDate ASC
+	</select>
+	<select id="ReserveCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM reserveList WHERE no=#{no}
+	</select>
+	<select id="ReserveCount2" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM reserveList WHERE no=#{no} AND rdate>to_char(sysdate)
+	</select>
 </mapper>
