@@ -23,11 +23,22 @@ public class MemberReserveListModel {
 
 		String strno = request.getParameter("no");
 		String type = request.getParameter("type");
-		if (type == null)
-			type = "0";
-
 		int no = Integer.parseInt(strno);
 		List<MemberReserveListVO> list;
+		
+		//페이지 재료
+		String sPage=request.getParameter("page");
+		if(sPage==null) sPage="1";
+		
+		int page=Integer.parseInt(sPage);
+		int start;
+		int end;
+		int row=3;
+		int rowCount;
+		int totalPage;
+		
+		if (type == null)
+			type = "0";
 		
 		if (type.equals("1")) {
 			// 관람내역 가져오기
@@ -38,19 +49,35 @@ public class MemberReserveListModel {
 			request.setAttribute("check", "ok");
 		}
 		
+		//리스트에서  쓸날짜구하기
 		try {
 			for (MemberReserveListVO vo : list) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 				String sDate = sdf.format(vo.getRdate());		
 				
 				vo.setListdate(sDate);
-				System.out.println(sDate+"@@");
-				System.out.println(vo.getListdate());
 			}
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
 		}
-
+		
+		// 페이지 구하기		
+		
+		start = (page*row)-row;
+		end = start + row;
+		
+		rowCount=MemberDAO.ReserveCount(no);
+		totalPage=(rowCount/row)+1;
+		System.out.println(totalPage);
+		//startPage=
+		
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("page", page);
+		
+		request.setAttribute("type", type);	// 페이지넘길때 구분
 		request.setAttribute("list", list);
 		request.setAttribute("jsp", "../mypage/mypage.jsp");
 		request.setAttribute("jsp2", "../mypage/reserveList.jsp");

@@ -27,7 +27,7 @@
 		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNHUKwbax2uYSi3cF5wrdrj5YNSLLx-xNQCj4aj1Ajn2duwk-tUw">
 		<br> 예매내역이 없습니다
 	</c:if>
-	<c:forEach var="vo" items="${list }">
+	<c:forEach var="vo" items="${list }" begin="${start }" end="${end }" step="1">
 			<tr>
 				<td>
 					<a href="moviedetail.do?no=${vo.mno }">
@@ -35,16 +35,44 @@
 					</a>
 				</td>
 				<td>
-					<h3>${vo.title }</h3><br><br>
-					
-					
+					<h3>${vo.title }</h3><br><br>					
 					상영날짜: ${vo.listdate }<br>
 					상영정보: ${vo.movietime }&nbsp;${vo.local }&nbsp;${vo.theater }&nbsp;${vo.theaterno }관<br>
 					좌석: ${vo.seat }<br>
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
+					<c:if test="${check == 'ok' }">	
+						<div align="right">
+							<input type="button" value="치소">
+						</div>
+					</c:if>
 				</td>
 			</tr>
 	</c:forEach>
-	</table>	
+	</table>
+	<c:if test="${type eq '1' }">
+		<table>
+			<tr>
+				<td align="right">
+					<a href="reserveList.do?no=${mvo.no }&type=1&page=1">처음</a>&nbsp;
+					
+					<c:if test="${page > 1 }"> <!-- 1페이지가 아닐때 -->
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page -1 }">이전</a>&nbsp;&nbsp;
+					</c:if>
+					<c:if test="${page eq 1 }"> <!-- 1페이지 일때 -->
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page }">이전</a>&nbsp;&nbsp;
+					</c:if>
+					
+					<c:if test="${page != totalPage }">	<!-- 마지막페이지가 아닐때 -->
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page + 1}">다음</a>&nbsp;
+					</c:if>
+					<c:if test="${page eq totalPage }">	<!-- 마지막 페이지일때 -->
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page}">다음</a>&nbsp;
+					</c:if>
+					
+					<a href="reserveList.do?no=${mvo.no }&type=1&page=${totalPage }">마지막</a>
+				</td>
+			</tr>
+		</table>
+	</c:if>
 </body>
 </html>

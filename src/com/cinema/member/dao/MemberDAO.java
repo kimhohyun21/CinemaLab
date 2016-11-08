@@ -114,5 +114,12 @@ public class MemberDAO {
 		session.close();
 		return list;		
 	}
+	
+	public static int ReserveCount(int no){
+		SqlSession session=ssf.openSession();
+		int total=session.selectOne("ReserveCount",no);				
+		session.close();
+		return total;
+	}
 
 }
