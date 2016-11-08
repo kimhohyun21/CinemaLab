@@ -9,11 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
+	<div align="center">
+		<p id="theaterNo">${theaterNo2 } °ü</p>
 		<c:forEach var="vo" items="${timeList }">
-			<span>${vo.theaterNo }</span>
-			<a id="movietime" href="reserve2.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${vo.theaterNo}&movietime=${vo.movietime}">${vo.movietime }</a><br>
+			<a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+			&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
+			&poster=${poster }&theaterNo=${theaterNo2}&movietime=${vo.movietime}">
+				<p id="movietime">${vo.movietime }</p>
+			</a>
 		</c:forEach>
-	</center>
+	</div>
 </body>
 </html>

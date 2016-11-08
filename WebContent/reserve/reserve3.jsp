@@ -5,78 +5,87 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>결제</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript">
-	function display1() {
-		card.style.display='block';
-		account.style.display='none';
-		return;
-	}
-	
-	function display2(){
-		card.style.display='none';
-		account.style.display='block';
-		return;
-	} 
-	
-	$(function(){
-		$('#send').click(function(){
-			if($('#chooseCard').val()=="선택없음"){
-				alert("카드를 선택하세요");
-				$('#chooseCard').focus();
-				return;
-			}
-			if($('#number1').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number1').focus();
-				return;
-			}
-			if($('#number2').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number2').focus();
-				return;
-			}
-			if($('#number3').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number3').focus();
-				return;
-			}
-			if($('#number4').val()==""){
-				alert("카드 번호를 입력하세요");
-				$('#number4').focus();
-				return;
-			}
-			if($('#pwd').val()==""){
-				alert("비밀번호를 입력하세요");
-				$('#pwd').focus();
-				return;
-			}
-			if($('#month').val()==""){
-				alert("유효 월을 입력하세요");
-				$('#month').focus();
-				return;
-			}
-			if($('#year').val()==""){
-				alert("유효 년을 입력하세요");
-				$('#year').focus();
-				return;
-			}
-			if($('#birth').val()==""){
-				alert("주민번호 앞자리를 입력하세요");
-				$('#birth').focus();
-				return;
-			}
-			$('#frm').submit();
-		})
-	});
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>결제</title>
+	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
+	<script type="text/javascript">	
+		/* 결제 모듈 사용을 위한 초기화 */
+		window.onload=function(){
+			var IMP = window.IMP;
+			IMP.init('imp74690571'); 
+		}
+		
+		/* 결제 방법 선택에 따라 결제 방법 값 변경 및 화면 표시 전환*/
+		var type="";
+		function display1() {
+			card.style.display='block';
+			account.style.display='none';
+			type="card"
+			return;
+		}
+		
+		function display2(){
+			card.style.display='none';
+			account.style.display='block';
+			type="trans"
+			return;
+		} 
+	    
+		/* 결제 모듈 호출*/
+		function payment(type){
+			IMP.request_pay({
+			    pg : 'html5_inicis',
+			    pay_method : type,
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : 'Marvel Cinema 결제',
+			    amount : 1000,
+			    buyer_email : '',
+			    buyer_name : '김호현',
+			    buyer_tel : '010-1234-5678'
+			}, function(rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        /* msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;	
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num; */
+			        
+			        location.href="reserve4.do?pid="+ rsp.imp_uid+"&sid="+ rsp.merchant_uid+"&sp="
+			        			+rsp.paid_amount+"&cokn="+rsp.apply_num;
+			      
+			    } else {
+			        var msg = '결제에 실패하였습니다.<br/>';
+			        msg += '에러내용 : ' + rsp.error_msg+'.';			        
+			    }
+			    $.jQueryAlert(msg);
+			});
+		}	
+		
+		/* jQuery Alert 창 */
+		jQuery.jQueryAlert = function (msg) {
+            var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+            $("body").append($messageBox);
+
+            $($messageBox).dialog({
+                open: $($messageBox).append(msg),
+                title: "처리 결과",
+                autoOpen: true,
+                modal: true,
+                resizable:false, 
+				width: 400,
+                buttons: {
+                    OK: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        };
+	</script>
 </head>
 <body>
-	<center>
+	<div align="center" class="finalPaymentInfo">		
 		<h2>결제</h2>
-		<form action="reserve2.do" method="post" name="frm" id="frm">
 		<table width="700" border="1">
 			<tr>
 				<td align="center">결제정보 입력</td>
@@ -88,7 +97,8 @@
 				</td>
 			</tr>
 		</table>
-		<table width="700" border="1" id="card">
+		<form name="pgForm" id="card" action="javascript:payment(type);" method="post">
+		<table width="700" border="1">
 			<tr>
 				<td width="700">
 					카드종류 
@@ -125,9 +135,13 @@
 				</td>
 			</tr>
 		</table>
-		<table width="700" border="1" id="account" style="display:none">
+		<input type="button" value="취소" onclick="javascript:history.back()">
+		<input type="submit" value="결제" id="send">
+		</form>
+		<form name="pgForm" id="account" action="javascript:payment(type);" method="post" style="display:none">
+		<table width="700" border="1">
 			<tr>
-				<td align="center" width="700">
+				<td width="700">
 					계좌이체 순서<br>
 					1.아래 결제하기 버튼 클리 후 다음 단계로 이동<br>
 					2.결제내역 확인 후 결제하기 버튼 클릭 시 팝업창이 뜸<br>
@@ -136,9 +150,9 @@
 			</tr>
 		</table>
 		<input type="button" value="취소" onclick="javascript:history.back()">
-		<input type="button" value="결제" id="send">
+		<input type="submit" value="결제" id="send">		
 		</form>
-	</center>
+	</div>	
 </body>
 </html>
 

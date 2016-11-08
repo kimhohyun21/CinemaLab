@@ -7,24 +7,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="reserve/style.css">
 </head>
 <body>
 	<div id="movieList">
 		<c:forEach var="vo" items="${movieList }">
 			<c:if test="${vo.grade=='0'}">
-				<img src="image/bg_grade_all.png" width="15px">
+				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
+					<img src="image/bg_grade_all.png">&nbsp;${vo.title}
+				</a></p>
 			</c:if>
 			<c:if test="${vo.grade=='12'}">
-				<img src="image/bg_grade_12.png" width="15px">
+				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}" >
+					<img src="image/bg_grade_12.png">&nbsp;${vo.title}
+				</a></p>
 			</c:if>
 			<c:if test="${vo.grade=='15'}">
-				<img src="image/bg_grade_15.png" width="15px">
+				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
+					<img src="image/bg_grade_15.png">&nbsp;${vo.title}
+				</a></p>
 			</c:if>
 			<c:if test="${vo.grade=='18'}">
-				<img src="image/bg_grade_18.png" width="15px">
+				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
+					<img src="image/bg_grade_18.png">&nbsp;${vo.title}
+				</a></p>
 			</c:if>
-			<a href="reserve.do?checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${local }
-			&tname=${tname}&grade=${vo.grade }&title=${vo.title}&theaterNo=${theaterNo}&movietime=${movietime}">${vo.title}</a><br>
 		</c:forEach>
 	</div>
 </body>

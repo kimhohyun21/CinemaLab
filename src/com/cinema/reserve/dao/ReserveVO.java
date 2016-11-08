@@ -9,6 +9,8 @@ public class ReserveVO {
 	private int tNo;
 	private String local;
 	private String theater;
+	private String seat;
+	private String poster;
 	
 	public int getmNo() {
 		return mNo;
@@ -57,5 +59,17 @@ public class ReserveVO {
 	}
 	public void setTheater(String theater) {
 		this.theater = theater;
+	}
+	public String getSeat() {
+		return seat;
+	}
+	public void setSeat(String seat) {
+		this.seat = seat;
+	}
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
 	}
 }

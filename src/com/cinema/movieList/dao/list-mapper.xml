@@ -9,4 +9,29 @@
 	<select id="caca2" parameterType="int" resultType="movie">
 		SELECT mNo,poster,title,openDate,genre,runtime,director,cast,grade,content,trailer,rank,movieLike FROM movieList WHERE mNo=#{b }
 	</select>
+	<select id="sasasa" parameterType="int" resultType="movie">
+		SELECT cname,img FROM characterList WHERE mNo1=#{b } or mNo2=#{b } or mNo3=#{b } or mNo4=#{b } or mNo5=#{b }
+	</select>
+	
+	<select id="getReplyData" parameterType="int" resultType="movie">
+		SELECT score, reContent, regDATE, id FROM replyList NATURAL JOIN member NATURAL JOIN movieList WHERE mNo=#{mNo} ORDER BY reNo DESC
+	</select>
+	<insert id="replyInsert" parameterType="movie">
+		INSERT INTO replyList(reNo,score,reContent,regDATE,no,mNo) VALUES((SELECT NVL(MAX(reNo)+1,1) FROM replyList),#{score},#{reContent},#{regDATE},(SELECT no FROM member WHERE id=#{id}),#{mNo})
+	</insert>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

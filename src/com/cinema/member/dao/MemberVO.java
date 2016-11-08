@@ -1,13 +1,15 @@
 package com.cinema.member.dao;
 
+import java.util.Date;
+
 public class MemberVO {
-	private int no;	
+	private int no;
 	private String id;
 	private String pwd;
 	private String name;
 	private String phone;
 	private String birth;
-	private int admin;
+	private int admin;	
 	public int getNo() {
 		return no;
 	}

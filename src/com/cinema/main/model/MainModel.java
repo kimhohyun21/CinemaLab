@@ -13,24 +13,17 @@ public class MainModel {
 	
 	@RequestMapping("main.do")
 	public String main(HttpServletRequest request){
+				
+		List<MainVO> plist=MainDAO.getMovieListData();
+		List<MainVO> plist2=new ArrayList<>();
+		for(MainVO vo : plist){
+			String url=vo.getTrailer();
+			url=url.substring(url.lastIndexOf("/")+1);
+			vo.setTrailer(url);
+			plist2.add(vo);
+		}
 		
-		String[] plist=new String[]{
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201610/10707_103_1.jpg", 
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201609/10664_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201609/10663_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201610/10668_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201610/10681_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201610/10801_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201610/10804_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201609/10608_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201609/10671_103_1.jpg",
-					"http://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/201609/10611_103_1.jpg"	
-				};
-		/*		
-		List<MainVO> plist=MainDAO.getListData();			 
-		 */
-		
-		request.setAttribute("plist", plist);
+		request.setAttribute("plist2", plist2);
 		request.setAttribute("jsp", "default.jsp");
 
 		

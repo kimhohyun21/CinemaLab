@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 	<context:component-scan base-package="com.cinema.main.model"/>
-	<context:component-scan base-package="com.cinema.member.model"/>
 	<context:component-scan base-package="com.cinema.reserve.model"/>
 	<context:component-scan base-package="com.cinema.movieList.model"/>
+	<context:component-scan base-package="com.cinema.theater.model"/>
+	<context:component-scan base-package="com.cinema.customer.model"/>	
+	<context:component-scan base-package="com.cinema.login.model"/>
+	<context:component-scan base-package="com.cinema.join.model"/>
+	<context:component-scan base-package="com.cinema.search.model"/>
+	<context:component-scan base-package="com.cinema.mypage.model"/>
 </beans>

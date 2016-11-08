@@ -6,20 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="login/style3.css">
 	<c:if test="${join == '가입성공' }">
 		<script type="text/javascript">
-			alert("회원가입이 완료되었습니다")
+			alert("회원가입이 완료되었습니다");
 		</script>
 	</c:if>
-<style type="text/css">
-	#find a{
-		color: gray;
-		text-decoration: none;
-	}
-	#find a:HOVER {
-		color: #CD426B;
-}
-</style>
 <script type="text/javascript">
 function login(){
 	var f=document.frm;	
@@ -40,18 +32,30 @@ function login(){
 <body>
 	<div align="center">		
 		<form method="post" action="login_ok.do" name="frm">
-			<div>
+			<div class="input">
 				<input type="text" placeholder="ID" name="id">
 			</div>
-			<div>
-				<input type="password" placeholder="PW" name="pwd">
+			<div class="input">
+				<input type="password" placeholder="PW" name="pwd" id="pwd">
 			</div>
 			<div id="find">
-				<a href="find_id.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
-				<a href="find_pwd.do">비밀번호 찾기</a>
+				<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
+				<a href="searchPwd.do">비밀번호 찾기</a>
 			</div>
-			<input type="button" value="로그인" onclick="login()">
-			<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+		<table height="100">
+			<tr>
+				<td>
+					<input type="button" value="로그인" onclick="login()"
+						class="btn">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input id="button" type="button" value="뒤로" onclick="javascript:history.back()"
+						class="btn">
+				</td>
+			</tr>
+		</table>	
 		</form>
 	</div>
 </body>

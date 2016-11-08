@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:if test="${check=='ok' }">
+<c:if test="${check=='ok' && loginType==null}">
 	<c:redirect url="main.do"/>
+</c:if>
+<c:if test="${check=='ok' && loginType=='reserve'}">
+	<c:redirect url="${url }"/>
 </c:if>
 <c:if test="${check=='pwdnot' }">
 	<script type="text/javascript">

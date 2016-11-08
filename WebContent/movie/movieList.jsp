@@ -9,37 +9,36 @@
 	<title>Marvel Cinema</title>
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
 	<script type="text/javascript">
-
 	</script>
 </head>
 <body>
-	<div align="center">
-		<table>
-			<tr>
-				<td>
-					<a href="movieList.do?type=0">
-						<button class="list_btn">
-							<span class="list">상영 종료 영화</span>
-						</button>
-					</a>
-					<a href="movieList.do?type=1">
-						<button class="list_btn">
-							<span class="list">현재 상영 영화</span>
-						</button>
-					</a>
-					<a href="movieList.do?type=2">
-						<button class="list_btn">
-							<span class="list">상영 예정 영화</span>
-						</button>
-					</a>
-				</td>
-			</tr>
-		</table>
+	<table style="margin:10px 0px 10px 0px">
+		<tr>
+			<td class="movieBtn">
+				<a href="movieList.do?type=0">
+					<button class="list_btn">
+						<span class="list">상영 종료 영화</span>
+					</button>
+				</a>
+				<a href="movieList.do?type=1">
+					<button class="list_btn">
+						<span class="list">현재 상영 영화</span>
+					</button>
+				</a>
+				<a href="movieList.do?type=2">
+					<button class="list_btn">
+						<span class="list">상영 예정 영화</span>
+					</button>
+				</a>
+			</td>
+		</tr>
+	</table>
 	<c:set var="i" value="1"/>
 	<c:set var="j" value="4" />
 	<c:if test="${list!=null }">
+	<div class="movielist">
 		<table class="tb">
-	<c:forEach var="vo" items="${list }">
+		<c:forEach var="vo" items="${list }">
 		<c:if test="${i==1}">
 			<tr>
 		</c:if>
@@ -79,15 +78,14 @@
 						</tr>
 					</table>
 				</td>
-				<div style="height:7px;">&nbsp;</div>
-		<c:set var="i" value="${i+1}" />
-		<c:if test="${i==j+1}">
+			<c:set var="i" value="${i+1}" />
+			<c:if test="${i==j+1}">
 			</tr>
 			<c:set var="i" value="1" />
-		</c:if>
-	</c:forEach>
+			</c:if>
+			</c:forEach>
 		</table>
-	</c:if>
 	</div>
+	</c:if>
 </body>
 </html>
