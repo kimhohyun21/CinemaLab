@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
+	<div align="center" class="bg">
 	<!-- fno순차별로 question과 answer 한 번 씩 출력    -->
 		<h3>faq게시판</h3>
 		<hr>
@@ -38,6 +38,6 @@
 			</c:forEach>
 		</table>
 
-	</center>
+	</div>
 </body>
 </html>
