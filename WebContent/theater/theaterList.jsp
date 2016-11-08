@@ -9,10 +9,14 @@
 <link rel="stylesheet" type="text/css" href="theater/style.css">
 </head>
 <body>
-	<center>
-		<c:forEach var="vo" items="${theaterList }">
-			<a href="theater.do?local=${local}&theater=${vo.theater}">${vo.theater }</a>
-		</c:forEach>
-	</center>
+	<div align="center" id="theaterList">
+		<ul>
+			<c:forEach var="vo" items="${theaterList }">
+				<li>
+					<a href="theater.do?local=${local}&theater=${vo.theater}">${vo.theater }</a>
+				</li>
+			</c:forEach>
+		</ul>
+	</div>
 </body>
 </html>

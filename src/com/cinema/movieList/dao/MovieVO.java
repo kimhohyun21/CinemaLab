@@ -18,18 +18,32 @@ public class MovieVO {
 	private String rank;
 	private String cname;
 	private String img;
+	private int movieLike;
 	
-	public String getCname() {
-		return cname;
+	private int reNo;
+	private String reContent;
+	private Date regDATE;
+	private int score;
+	private int no;
+	private String id;
+	
+	public int getmNo() {
+		return mNo;
 	}
-	public void setCname(String cname) {
-		this.cname = cname;
+	public void setmNo(int mNo) {
+		this.mNo = mNo;
 	}
-	public String getImg() {
-		return img;
+	public String getPoster() {
+		return poster;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getGenre() {
 		return genre;
@@ -54,26 +68,6 @@ public class MovieVO {
 	}
 	public void setCast(String cast) {
 		this.cast = cast;
-	}
-	private int movieLike;
-	
-	public int getmNo() {
-		return mNo;
-	}
-	public void setmNo(int mNo) {
-		this.mNo = mNo;
-	}
-	public String getPoster() {
-		return poster;
-	}
-	public void setPoster(String poster) {
-		this.poster = poster;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	public Date getOpendate() {
 		return opendate;
@@ -111,11 +105,59 @@ public class MovieVO {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getMovieLike() {
 		return movieLike;
 	}
 	public void setMovieLike(int movieLike) {
 		this.movieLike = movieLike;
+	}
+	public int getReNo() {
+		return reNo;
+	}
+	public void setReNo(int reNo) {
+		this.reNo = reNo;
+	}
+	public String getReContent() {
+		return reContent;
+	}
+	public void setReContent(String reContent) {
+		this.reContent = reContent;
+	}
+	public Date getRegDATE() {
+		return regDATE;
+	}
+	public void setRegDATE(Date regDATE) {
+		this.regDATE = regDATE;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

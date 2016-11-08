@@ -21,14 +21,15 @@ public class ListModel{
 		
 		System.out.println("¾È³ç");
 		List<customerVO> list = customerDAO.getcustomerList(map);
-		int totalpage = customerDAO.customerTotalPage();
+		int totalpage = customerDAO.customerTotal();
 		
 		request.setAttribute("list", list);
-		request.setAttribute("curpage", curpage);
+		request.setAttribute("page", curpage);
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("jsp", "../customer/list.jsp");
 		System.out.println(list==null);
 		
 		return "main/main.jsp";
 	}
+	
 }

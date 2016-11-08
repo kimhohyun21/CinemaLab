@@ -6,11 +6,17 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Marvel Cinema</title>
+	<script type="text/javascript" src="sliderengine/jquery.js"></script>
+	<script type="text/javascript" src="jStyles/jquery-ui.min.js"></script>	
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.structure.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.theme.css">
 	<link rel="stylesheet" type="text/css" href="main/style1.css">
-	<script src="sliderengine/jquery.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-ico" />
+	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
 
-	</script>
+	</script>	
 </head>
 <body>
 	<div align="center">
@@ -42,7 +48,7 @@
 				<li class="noeffect">|</li>
 				<li><a href="movieList.do">영화</a></li>
 				<li class="noeffect">|</li>
-				<li><a href="theater.do">영화관</a></li>
+				<li><a href="theater.do?local=서울&theater=신도림">영화관</a></li>
 			</ul>
 		</div>
 		<div id="article">

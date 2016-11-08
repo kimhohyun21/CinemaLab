@@ -15,6 +15,10 @@
 .list{
 	color: white;
 }
+.movielist{
+	background-color: rgba(250,250,250,0.6);
+	width: 1000px;
+}
 .tb{
 	border-collapse: separate;
     border-spacing: 35px;
@@ -44,5 +48,57 @@ pre{
 	max-width: none;
 }
 #youtube{
+	margin-bottom: 500px;
+}
+
+/* ´ñ±ÛºÎºÐ css */
+#reply{
+	position: relative;
+	bottom: 430px;	
+	width: 1000px;
+}
+#reply h3{
+	
+	margin-bottom: 10px;
+}
+
+#send{
+	width: 105px;
+    height: 94px;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#reply ul li{
+	position: relative;
+	top:20px;
+	margin-left: 10px;
+	list-style: none;
+	border-bottom: 1px solid;
 	margin-bottom: 30px;
 }
+
+#reContent{
+	font-size: 20px;
+	position: relative;
+	left: 15px;
+}
+div.detail{
+	background-color: rgba(250,250,250,0.6);
+	width: 1000px;
+	margin: 10px;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+

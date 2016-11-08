@@ -15,28 +15,28 @@
 			<c:if test="${vo.grade=='0'}">
 				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&theaterNo=${theaterNo}&movietime=${movietime}">
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
 					<img src="image/bg_grade_all.png">&nbsp;${vo.title}
 				</a></p>
 			</c:if>
 			<c:if test="${vo.grade=='12'}">
 				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&theaterNo=${theaterNo}&movietime=${movietime}" >
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}" >
 					<img src="image/bg_grade_12.png">&nbsp;${vo.title}
 				</a></p>
 			</c:if>
 			<c:if test="${vo.grade=='15'}">
 				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&theaterNo=${theaterNo}&movietime=${movietime}">
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
 					<img src="image/bg_grade_15.png">&nbsp;${vo.title}
 				</a></p>
 			</c:if>
 			<c:if test="${vo.grade=='18'}">
 				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&theaterNo=${theaterNo}&movietime=${movietime}">
+				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
 					<img src="image/bg_grade_18.png">&nbsp;${vo.title}
 				</a></p>
 			</c:if>

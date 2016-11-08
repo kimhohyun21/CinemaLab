@@ -8,7 +8,7 @@ import com.cinema.controller.RequestMapping;
 @Controller
 public class ReserveModel3 {
 	@RequestMapping("reserve3.do")
-	public String main(HttpServletRequest request){
+	public String Reserve3(HttpServletRequest request){
 		//날짜 관련
 		String year=request.getParameter("year");
 		String month=request.getParameter("month");
@@ -20,7 +20,7 @@ public class ReserveModel3 {
 		
 		//영화 정보
 		String grade=request.getParameter("grade");
-		String title=request.getParameter("title");		
+		String title=request.getParameter("title");
 		
 		//상영시간
 		String theaterNo=request.getParameter("theaterNo");
@@ -48,6 +48,13 @@ public class ReserveModel3 {
 		
 		request.setAttribute("jsp", "../reserve/reserve3.jsp");		
 		
+		return "main/main.jsp";
+	}
+	
+	@RequestMapping("reserve4.do")
+	public String Reserve4(HttpServletRequest request){
+		
+		request.setAttribute("jsp", "../reserve/reserve4.jsp");	
 		return "main/main.jsp";
 	}
 

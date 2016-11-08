@@ -8,18 +8,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve 1</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style.css">
+	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
-		/* function click(){
-			location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}&local=${vo.local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}&click=click";
-		} */
 		function send(){
 			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
-			+"&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";
+			+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
+			+"#nav";
 		}
 	</script>
 </head>
 <body>
-	<center>
+	<div align="center" class="reserve1">
 		<table width="1000" id="main_table">
 			<tr height="40">
 				<th align="center" class="menu" width="15%">날짜</th>
@@ -146,27 +145,84 @@
 				<td width="15%"><jsp:include page="movieTime.jsp" /></td>
 			</tr>
 		</table>
-		<table width="1000" id="movieInfo_table">
+		<table class="paymentInfo">
 			<tr>
-				<td>영화 : <c:if test="${grade=='0'}">
-						<img src="image/bg_grade_all.png" width="15">
-					</c:if> <c:if test="${grade=='12'}">
-						<img src="image/bg_grade_12.png" width="15">
-					</c:if> <c:if test="${grade=='15'}">
-						<img src="image/bg_grade_15.png" width="15">
-					</c:if> <c:if test="${grade=='18'}">
-						<img src="image/bg_grade_18.png" width="15">
-					</c:if> ${title }
+				<th width="33%">영화</th>
+				<th width="33%">예매 정보</th>
+				<th width="33%">총 결제 금액</th>					
+			</tr>
+			<tr>
+				<td width="40%">
+					<img alt="${title }_poster" src="${poster }" width="110px" height="160px">
+					<c:if test="${grade=='0'}">
+						<img src="image/bg_grade_all.png">
+					</c:if>
+					<c:if test="${grade=='12'}">
+						<img src="image/bg_grade_12.png">
+					</c:if>
+					<c:if test="${grade=='15'}">
+						<img src="image/bg_grade_15.png">
+					</c:if>
+					<c:if test="${grade=='18'}">
+						<img src="image/bg_grade_18.png">
+					</c:if>
+					<span style="width: 180px;display: inline-block; vertical-align: inherit; color:#f78824;">
+						${title }
+					</span>				
 				</td>
-				<td>일시 : ${year }.${month }.${checkedDay }.${checkedDay2 }</td>
-				<td>극장 : ${tname } / ${theaterNo } 관 / ${movietime }</td>
+				<td width="30%">
+					<ul>
+						<li>
+							<strong>상영일 :</strong> 
+							<span style="color:#f78824;">
+								${year }. ${month }. ${checkedDay } (${checkedDay2 })
+							</span>
+						</li>
+						<li>
+							<strong>상영시간 :</strong> 
+							<span style="color:#f78824;">	
+								${movietime}
+							</span>	
+						</li>
+						<li>
+							<strong>상영관 :</strong> 
+							<span style="color:#f78824;">	
+								${tname } ${theaterNo} 
+							</span>관
+						</li>
+						<li>
+							<strong>좌석 :</strong>
+							<span style="color:#f78824;">  
+							<c:forEach var="st" items="${seat }" varStatus="status">
+								${st }<c:if test="${not status.last }">, </c:if>
+							</c:forEach>
+							</span>
+						</li>						 
+					</ul>
+				</td>
+				
+				<td width="30%">
+					<ul>
+						<li>
+							<strong>영화 예매 :</strong>
+							<span style="color:#f78824;">  
+							<c:if test="${payment!=0 }"> 
+								<fmt:formatNumber value="${payment }" pattern=",000"/> 
+							</c:if>
+							<c:if test="${payment==0 }">
+								${payment }
+							</c:if>	
+							</span>원
+						</li>
+					</ul>
+				</td>
 			</tr>
 		</table>
-		<input type="button" value="취소" class="back_button"
-			onclick="javascript:history.back()"> <input type="button" value="다음"
-			class="next_button" onclick="send()">
-
-	</center>
+		<div>
+			<input type="button" value="취소" class="back_button"	onclick="javascript:history.back()"> 
+			<input type="button" value="다음"	class="next_button" onclick="send()">
+		</div>
+	</div>
 </body>
 </html>
 

@@ -72,3 +72,9 @@ form{
    background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
    color: #fff;
    }
+.bg{
+	background-color: rgba(250,250,250,0.6);
+	width: 1000px;
+	margin: 10px;
+	padding: 10px;
+}

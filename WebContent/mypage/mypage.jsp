@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="login/style3.css">
 <style type="text/css">
 	tr,td{
 		padding: 10px;
@@ -25,35 +26,37 @@
 </style>
 </head>
 <body>
-<input type="hidden" value="${mvo.birth }" name="birth">
-	<div align="center">
-				<br>
-		<table id="menubar" border="1" width="900" height="100">
-			<tr>
-				<td align="center">
-					<a href="reserveList.do?no=${mvo.no }">
-						예매내역
-					</a>
-				</td>			
-				<td align="center">
-					<a href="memberModify.do?no=${mvo.no }">
-						회원정보 수정
-					</a>
-				</td>			
-				<td align="center">
-					<a href="memberChangepwd.do">
-						비밀번호 수정
-					</a>
-				</td>			
-				<td align="center">
-					<a href="memberDelete.do?no=${mvo.no }">
-						회원탈퇴
-					</a>
-				</td>
-			</tr>
-		</table>		
+	<div class="bg">
+		<input type="hidden" value="${mvo.birth }" name="birth">
 		<div align="center">
-			<jsp:include page="${jsp2 }"></jsp:include>
+					<br>
+			<table id="menubar" border="1" width="900" height="100">
+				<tr>
+					<td align="center">
+						<a href="reserveList.do?no=${mvo.no }">
+							예매내역
+						</a>
+					</td>			
+					<td align="center">
+						<a href="memberModify.do?no=${mvo.no }">
+							회원정보 수정
+						</a>
+					</td>			
+					<td align="center">
+						<a href="memberChangepwd.do">
+							비밀번호 수정
+						</a>
+					</td>			
+					<td align="center">
+						<a href="memberDelete.do?no=${mvo.no }">
+							회원탈퇴
+						</a>
+					</td>
+				</tr>
+			</table>		
+			<div align="center">
+				<jsp:include page="${jsp2 }"></jsp:include>
+			</div>
 		</div>
 	</div>
 </body>
