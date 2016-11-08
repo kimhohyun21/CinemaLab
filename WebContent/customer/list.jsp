@@ -15,14 +15,14 @@
 		<table>
 			<tr id="sub">
 				<td>
-					<a href="list.do?">
+					<a href="list.do">
 						<button class="list_btn">
 							<span>QnA</span>
 						</button>
 					</a>
 				</td>
 				<td>
-					<a href="list.do?type=1">
+					<a href="faq.do">
 						<button class="list_btn">
 							<span>FAQ</span>
 						</button>
