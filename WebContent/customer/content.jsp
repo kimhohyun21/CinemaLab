@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,11 +44,15 @@
 		<table>
 			<tr align="right">
 				<td>
-					<a href="update.do?no=${vo.qno }&page="${page }">수정</a>
+					<a href="reply.do">답글쓰기</a>
 					&nbsp;&nbsp;
-					<a href="delete.do?no=${vo.qno }&page="${page }"">삭제</a>
+					<c:if test="${mvo.name == vo.name}">
+						<a href="update.do?no=${vo.qno }&page="${page}">수정</a>
+						&nbsp;&nbsp;
+						<a href="delete.do?no=${vo.qno }&page="${page}">삭제</a>
+					</c:if>
 					&nbsp;&nbsp;
-					<a onclick="javascript:history.back()">돌아가기</a>
+					<a href="customer.do">돌아가기</a>
 				</td>
 			</tr>
 		</table>
