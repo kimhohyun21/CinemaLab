@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="board/table.css">
 <script type="text/javascript">
 	function send(){
-		//°èÃþ±¸Á¶ ==> window => document => form => input
 		var f=document.frm;
 		
 		if(f.subject.value==""){

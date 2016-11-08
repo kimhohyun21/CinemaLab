@@ -24,7 +24,7 @@ public class ListModel{
 		int totalpage = customerDAO.customerTotal();
 		
 		request.setAttribute("list", list);
-		request.setAttribute("curpage", curpage);
+		request.setAttribute("page", curpage);
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("jsp", "../customer/list.jsp");
 		System.out.println(list==null);

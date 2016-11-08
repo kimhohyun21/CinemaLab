@@ -59,7 +59,7 @@
 					</c:if>
 					
 					<c:if test="${msg ne vo.qsubject}">
-						<a href="content.do?no=${vo.qno}">${vo.qsubject}</a>
+						<a href="content.do?no=${vo.qno}&page=${page }">${vo.qsubject}</a>
 					</c:if>
 				</td>
 				<td width="15%" align="center">${vo.name}</td>
@@ -73,9 +73,9 @@
 		<table border="0" width="700">
 			<tr>
 				<td align="right">
-					<a href="board.do?page=${curpage>1?curpage-1:curpage}">이전</a>
+					<a href="customer.do?page=${curpage>1?curpage-1:curpage}">이전</a>
 					&nbsp;
-					<a href="board.do?page=${curpage<totalpage?curpage+1:curpage}">다음</a>
+					<a href="customer.do?page=${curpage<totalpage?curpage+1:curpage}">다음</a>
 					&nbsp;&nbsp;
 					${curpage} page / ${totalpage} pages
 				</td>
