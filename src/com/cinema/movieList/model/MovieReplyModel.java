@@ -36,6 +36,7 @@ public class MovieReplyModel {
 			int mNo = Integer.parseInt(no);
 			String sco = request.getParameter("score");
 			int score = Integer.parseInt(sco);
+			System.out.println(score);
 			String reContent = request.getParameter("content");
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
