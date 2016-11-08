@@ -6,21 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="login/style3.css">
+<link rel="stylesheet" type="text/css" href="mypage/style.css">
 <script src="sliderengine/jquery.js"></script>
-<style type="text/css">
-	a{
-	text-decoration: none;
-	color: black;
-}
-	#button{	
-	margin:10px;
-}
-	#join_table tr td input{
-		margin:0px;
-		padding:0px;
-	}
-</style>
 <script type="text/javascript">
 	function send(){
 		 var f=document.frm;	 
@@ -58,33 +45,45 @@
 </head>
 <body>
 	<center>
-		<b>정보수정은 이름,생년월일,전화번호만 수정하실수 있습니다.</b>
+		<b style="color: red;">정보수정은 이름,생년월일,전화번호만 수정하실수 있습니다.</b>
 		<form action="modify_ok.do?no=${mvo.no }" method="post" name="frm">
-			<table id="modify_table" width="450" height="500">
+			<table id="modify_table" width="450" height="350">
 				<tr>
-					<td align="center">
-						이름: <input type="text" placeholder="이름" name="name" value="${name }">																	
+					<td align="right">
+						<b>이름:</b>
+					</td>
+					<td>
+						 <input type="text" placeholder="이름" name="name" value="${name }">																	
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						생년월일: <input type="text" placeholder="생년월일" name="birth" value="${birth }">				
+					<td align="right">
+						<b>생년월일:</b> 
+					</td>
+					<td>
+						<input type="text" placeholder="생년월일" name="birth" value="${birth }">				
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						전화번호: <input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone" value="${phone }">			
+					<td align="right">
+						<b>전화번호:</b> 
+					</td>
+					<td>
+						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone" value="${phone }">			
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<b>비밀번호:</b> <input type="password" placeholder="꼭 입력해 주세요" name="pwd">
+					<td align="right">
+						<b>비밀번호:</b> 
+					</td>
+					<td>
+						<input type="password" placeholder="꼭 입력해 주세요" name="pwd">
 					</td>
 				</tr>
 			</table>
 		</form>		
-		<input id="button" type="button" value="수정" onclick="send()" width="300">&nbsp;&nbsp;&nbsp;					
-		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+		<input class="btn" type="button" value="수정" onclick="send()">&nbsp;&nbsp;&nbsp;					
+		<input class="btn" type="button" value="뒤로" onclick="javascript:history.back()">
 	</center>
 </body>
 </html>

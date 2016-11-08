@@ -49,6 +49,8 @@
 			</tr>
 	</c:forEach>
 	</table>
+	
+	<!-- 관람내역 일때 -->
 	<c:if test="${type eq '1' }">
 		<table>
 			<tr>
@@ -70,6 +72,33 @@
 					</c:if>
 					
 					<a href="reserveList.do?no=${mvo.no }&type=1&page=${totalPage }">마지막</a>
+				</td>
+			</tr>
+		</table>
+	</c:if>
+	
+	<!-- 예매내역일때 -->
+	<c:if test="${type eq '0' }">
+		<table>
+			<tr>
+				<td align="right">
+					<a href="reserveList.do?no=${mvo.no }&page=1">처음</a>&nbsp;
+					
+					<c:if test="${page > 1 }"> <!-- 1페이지가 아닐때 -->
+						<a href="reserveList.do?no=${mvo.no }&page=${page -1 }">이전</a>&nbsp;&nbsp;
+					</c:if>
+					<c:if test="${page eq 1 }"> <!-- 1페이지 일때 -->
+						<a href="reserveList.do?no=${mvo.no }&page=${page }">이전</a>&nbsp;&nbsp;
+					</c:if>
+					
+					<c:if test="${page != totalPage }">	<!-- 마지막페이지가 아닐때 -->
+						<a href="reserveList.do?no=${mvo.no }&page=${page + 1}">다음</a>&nbsp;
+					</c:if>
+					<c:if test="${page eq totalPage }">	<!-- 마지막 페이지일때 -->
+						<a href="reserveList.do?no=${mvo.no }&page=${page}">다음</a>&nbsp;
+					</c:if>
+					
+					<a href="reserveList.do?no=${mvo.no }&page=${totalPage }">마지막</a>
 				</td>
 			</tr>
 		</table>

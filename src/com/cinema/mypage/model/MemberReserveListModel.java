@@ -35,7 +35,7 @@ public class MemberReserveListModel {
 		int end;
 		int row=3;
 		int rowCount;
-		int totalPage;
+		int totalPage=1;
 		
 		if (type == null)
 			type = "0";
@@ -43,10 +43,16 @@ public class MemberReserveListModel {
 		if (type.equals("1")) {
 			// 관람내역 가져오기
 			list = MemberDAO.memberWhatchData(no);
+			
+			//마지막페이지
+			rowCount=MemberDAO.ReserveCount(no);			
 		} else {
 			// 예매내역
 			list = MemberDAO.memberReserveList(no);
 			request.setAttribute("check", "ok");
+			
+			//마지막페이지
+			rowCount=MemberDAO.ReserveCount2(no);			
 		}
 		
 		//리스트에서  쓸날짜구하기
@@ -62,14 +68,11 @@ public class MemberReserveListModel {
 				System.out.println(e.getMessage());
 		}
 		
-		// 페이지 구하기		
-		
+		// 페이지 구하기	
 		start = (page*row)-row;
 		end = start + row;
-		
-		rowCount=MemberDAO.ReserveCount(no);
+				
 		totalPage=(rowCount/row)+1;
-		System.out.println(totalPage);
 		//startPage=
 		
 		request.setAttribute("start", start);

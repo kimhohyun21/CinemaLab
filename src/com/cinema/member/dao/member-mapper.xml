@@ -54,4 +54,7 @@
 	<select id="ReserveCount" parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM reserveList WHERE no=#{no}
 	</select>
+	<select id="ReserveCount2" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM reserveList WHERE no=#{no} AND rdate>to_char(sysdate)
+	</select>
 </mapper>
