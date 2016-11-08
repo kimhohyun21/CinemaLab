@@ -22,8 +22,7 @@
 			<span class="mrList_btn">관람내역</span>
 		</a>
 	</div>
-	<table>		
-			
+	<table>
 	<c:if test="${list == null }">
 		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNHUKwbax2uYSi3cF5wrdrj5YNSLLx-xNQCj4aj1Ajn2duwk-tUw">
 		<br> 예매내역이 없습니다
@@ -39,7 +38,7 @@
 					<h3>${vo.title }</h3><br><br>
 					
 					
-					상영날짜: <br>
+					상영날짜: ${vo.listdate }<br>
 					상영정보: ${vo.movietime }&nbsp;${vo.local }&nbsp;${vo.theater }&nbsp;${vo.theaterno }관<br>
 					좌석: ${vo.seat }<br>
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
