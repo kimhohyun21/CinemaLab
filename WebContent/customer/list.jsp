@@ -10,8 +10,7 @@
 <link rel="stylesheet" type="text/css" href="customer/style.css">
 </head>
 <body>
-	<br>
-	<center>
+	<div align="center" class="bg">
 		<table>
 			<tr id="sub">
 				<td>
@@ -81,6 +80,6 @@
 				</td>
 			</tr>
 		</table>
-	</center>
+	</div>
 </body>
 </html>

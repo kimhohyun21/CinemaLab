@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="board/table.css">
+<link rel="stylesheet" type="text/css" href="customer/style.css">
 <script type="text/javascript">
 	function send(){
 		var f=document.frm;
@@ -26,7 +26,7 @@
 </script>
 </head>
 <body>
-	<center>
+	<div align="center" class="bg">
 		<h3>글쓰기</h3>
 		<form action="insert_ok.do" method="post" name="frm">
 			<table width="500" id="table_content">
@@ -57,6 +57,6 @@
 				</tr>
 			</table>
 		</form>
-	</center>
+	</div>
 </body>
 </html>

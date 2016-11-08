@@ -1,34 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link rel="stylesheet" type="text/css" href="customer/style.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
+	<div align="center" class="bg">
 		<table id="table_content" width="500">
 			<tr>
-				<th width="20%" align="center">ë²ˆí˜¸</th>
+				<th width="20%" align="center">¹øÈ£</th>
 				<td width="30%" align="center">${vo.qno}</td>
-				<th width="20%" align="center">ì‘ì„±ì¼</th>
+				<th width="20%" align="center">ÀÛ¼ºÀÏ</th>
 				<td width="30%" align="center">
 					<fmt:formatDate value="${vo.qregdate}" pattern="yyyy-MM-dd"/>
 				</td>
 			</tr>
 			
 			<tr>
-				<th width="20%" align="center">ì´ë¦„</th>
+				<th width="20%" align="center">ÀÌ¸§</th>
 				<td width="30%" align="center">${vo.name}</td>
 				
-				<th width="20%" align="center">ì¡°íšŒìˆ˜</th>
+				<th width="20%" align="center">Á¶È¸¼ö</th>
 				<td width="30%" align="center">${vo.qhit}</td>
 			</tr>
 			
 			<tr>
-				<th width="20%" align="center">ì œëª©</th>
+				<th width="20%" align="center">Á¦¸ñ</th>
 				<td colspan="3" align="center">${vo.qsubject}</td>
 			</tr>
 			
@@ -41,14 +42,14 @@
 		<table>
 			<tr align="right">
 				<td>
-					<a href="update.do?no=${vo.qno }&page="${page }">ìˆ˜ì •</a>
+					<a href="update.do?no=${vo.qno }&page="${page }">¼öÁ¤</a>
 					&nbsp;&nbsp;
-					<a href="delete.do?no=${vo.qno }&page="${page }"">ì‚­ì œ</a>
+					<a href="delete.do?no=${vo.qno }&page="${page }"">»èÁ¦</a>
 					&nbsp;&nbsp;
-					<a onclick="javascript:history.back()">ëŒì•„ê°€ê¸°</a>
+					<a onclick="javascript:history.back()">µ¹¾Æ°¡±â</a>
 				</td>
 			</tr>
 		</table>
-	</center>
+	</div>
 </body>
 </html>

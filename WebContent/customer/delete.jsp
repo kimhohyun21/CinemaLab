@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="humor/table.css">
+	<link rel="stylesheet" type="text/css" href="customer/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){			
@@ -18,7 +18,7 @@
 	</script>
 </head>
 <body>
-	<center>
+	<div align="center" class="bg">
 		<div id="header">
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
@@ -59,6 +59,6 @@
 		<div id="footer">
 			<span>&copy;2016 Shin Eun Hye, Kim Ho Hyun, Park Jung Hwan, Jun Jin Tae.</span>
 		</div>
-	</center>	
+	</div>	
 </body>
 </html>

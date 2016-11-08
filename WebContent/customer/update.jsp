@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="humor/table.css">
+	<link rel="stylesheet" type="text/css" href="customer/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -22,14 +22,14 @@
 				var subject=$('#qsubject').val();
 				if(subject.trim()==""){
 					$('#qsubject').focus();
-					alert('ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.');
+					alert('Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.');
 					$('#qsubject').val("");
 					return;
 				}
 				var content=$('#qcontent').val();
 				if(content.trim()==""){
 					$('#qcontent').focus();
-					alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.');
+					alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.');
 					$('#qcontent').val("");
 					return;
 				}	
@@ -39,32 +39,32 @@
 	</script>
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="">
 		<div id="article">
 			<table width="50%" class="button_table">
 				<tr>
 					<td align="center">
-						<span class="btn_title">ìˆ˜ì •í•˜ê¸°</span>
+						<span class="btn_title">¼öÁ¤ÇÏ±â</span>
 					</td>
 				</tr>
 			</table>
 			<form action="update_ok.do?page=${page }&list=${plist } method="post" name="frm" id="frm">
 				<table id="insert_table" width="50%">
 					<tr height="27">
-						<td width="20%" align="center">ì´ë¦„</td>
+						<td width="20%" align="center">ÀÌ¸§</td>
 						<td width="80%" align="left">
 							<input type="text" size="10" name="name" value="${mvo.name}">
 							<input type="hidden" size="10" name="no" value="${mvo.no}">
 						</td>
 					</tr>
 					<tr>
-						<th width="20%">ì œëª©</th>
+						<th width="20%">Á¦¸ñ</th>
 						<td>
 							<input type="text" size="50" value="${vo.qsubject }" name="subject" id="subject">
 						</td>
 					</tr>
 					<tr >
-						<th width="20%">ë‚´ìš©</th>
+						<th width="20%">³»¿ë</th>
 						<td>
 							<pre>
 								<textArea cols="70" rows="20" name="content" id="content" >${vo.qcontent }</textArea>
@@ -75,8 +75,8 @@
 				<table class="button_table" width="50%">
 					<tr>
 						<td align="center">
-							<input type="button" value="ê¸€ì“°ê¸°" id="sendBtn" class="btn_normal2">
-							<input type="reset" value="ì·¨ì†Œ" onclick="javascript:history.back()" class="btn_normal2">
+							<input type="button" value="±Û¾²±â" id="sendBtn" class="btn_normal2">
+							<input type="reset" value="Ãë¼Ò" onclick="javascript:history.back()" class="btn_normal2">
 						</td>
 					</tr>
 				</table>
