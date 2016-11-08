@@ -18,7 +18,7 @@
 				<tr>
 					<td width="20%" align="center">
 						평점<br>
-						<span class="star-input">
+						<!-- <span class="star-input">
 						   <span class="input">
 						      <input type="radio" name="star-input" id="p1" value="1"><label for="p1">1</label>
 						      <input type="radio" name="star-input" id="p2" value="2"><label for="p2">2</label>
@@ -31,8 +31,9 @@
 						      <input type="radio" name="star-input" id="p9" value="9"><label for="p9">9</label>
 						      <input type="radio" name="star-input" id="p10" value="10"><label for="p10">10</label>
 						   </span><br>
-						   <output for="star-input"><b name="score">0</b></output>
-					  </span>	
+						   <output for="star-input"><b name="score">0</b>점</output>
+					  </span>	 -->
+					  <input type="text" size="10" name="score">
 					</td>
 					<td width="69%">
 						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required></textarea>
