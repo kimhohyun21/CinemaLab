@@ -5,8 +5,66 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Reserve Result</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Reserve Result</title>
+	<script type="text/javascript">
+		function send(){
+			var f=document.frm;
+			if(${ticketAll==0}){
+				$.jQueryAlert('티켓 매수를 선택해 주세요.');
+				return;
+			}
+			if(${seat==null || size!=ticketAll}){
+				$.jQueryAlert('좌석 선택을 확인해 주세요.');
+				return;
+			}
+			if(${mvo==null}){
+				$.jQueryLogin();
+			}
+			f.submit();
+		}; 
+		/*jQuery Alert*/
+		jQuery.jQueryLogin = function (){
+			$( "#dialog-form" ).dialog({
+			     autoOpen: false,
+			     height: 400,
+			     width: 350,
+			     modal: true,
+			     buttons: {
+			       "Create an account": "login.do",
+			       Cancel: function() {
+			         dialog.dialog( "close" );
+			       }
+			     },
+			     close: function() {
+			       form[ 0 ].reset();
+			       allFields.removeClass( "ui-state-error" );
+			     }
+			 });
+		}
+			 
+			
+		
+		/* jQuery Alert 창 */
+		jQuery.jQueryAlert = function (msg) {
+	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+	        $("body").append($messageBox);
+	
+	        $($messageBox).dialog({
+	            open: $($messageBox).append(msg),
+	            title: "처리 결과",
+	            autoOpen: true,
+	            modal: true,
+	            resizable:false, 
+				width: 400,
+	            buttons: {
+	                OK: function () {
+	                    $(this).dialog("close");
+	                }
+	            }
+	        });
+	    };
+	</script>
 </head>
 <body>
 	<div id="reserve">
@@ -59,7 +117,7 @@
 							<strong>좌석 :</strong>
 							<span style="color:#f78824;">  
 							<c:forEach var="st" items="${seat }" varStatus="status">
-								${st }<c:if test="${not status.last }">, </c:if>
+								${st }<c:if test="${not status.last}">, </c:if>
 							</c:forEach>
 							</span>
 						</li>						 
@@ -83,7 +141,7 @@
 				</td>
 			</tr>
 		</table>
-		<form action="reserve3.do" method="post">
+		<form action="reserve3.do" method="post" name="frm">
 			<input type="hidden" name="year" value="${year }">
 			<input type="hidden" name="month" value="${month }">
 			<input type="hidden" name="checkedDay" value="${checkedDay }">
@@ -105,11 +163,28 @@
 						+'&poster=${poster }&theaterNo=${theaterNo2}&movietime=${movietime}';">
 					</td>
 					<td align="right">
-						<input type="submit" value="다음페이지">
+						<input type="button" value="다음페이지" onclick="send()">
 					</td>
 				</tr>
 			</table>
 		</form>	
+	</div>
+	<div id="dialog-form" title="Create new user">
+	  <p class="validateTips">All form fields are required.</p>
+	 
+	  <form>
+	    <fieldset>
+	      <label for="name">Name</label>
+	      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+	      <label for="email">Email</label>
+	      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+	      <label for="password">Password</label>
+	      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+	 
+	      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+	      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+	    </fieldset>
+	  </form>
 	</div>	
 </body>
 </html>

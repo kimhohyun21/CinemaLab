@@ -1,9 +1,11 @@
 package com.cinema.reserve.model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
+import com.cinema.member.dao.MemberVO;
 import com.cinema.reserve.dao.*;
 
 import java.util.*;
@@ -52,6 +54,11 @@ public class ReserveModel2 {
 		
 		//좌석
 		String[] seat=request.getParameterValues("seat");
+		int size=0;
+		if(seat!=null){
+			size=seat.length;
+			System.out.println("자리 수: "+seat.length);
+		}
 		
 		//Ajax 실행 구분 인자
 		String rType=request.getParameter("rType");
@@ -81,6 +88,9 @@ public class ReserveModel2 {
 			}			
 		}
 		
+		//세션 값 받기
+		HttpSession session=request.getSession();
+		MemberVO vo=(MemberVO) session.getAttribute("mvo");
 		
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
@@ -99,7 +109,9 @@ public class ReserveModel2 {
 		request.setAttribute("ticketAll", ticketAll);
 		request.setAttribute("payment", payment);
 		request.setAttribute("seat", seat);
+		request.setAttribute("size", size);
 		request.setAttribute("slist", slist);
+		request.setAttribute("vo", vo);
 
 		request.setAttribute("jsp", "../reserve/reserve2.jsp");
 		request.setAttribute("jsp2", "../reserve/reserve2_Seat.jsp");
