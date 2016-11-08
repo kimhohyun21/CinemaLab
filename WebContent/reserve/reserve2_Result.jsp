@@ -20,25 +20,35 @@
 			}
 			if(${mvo==null}){
 				$.jQueryLogin();
-			}
-			f.submit();
+			}else{
+				f.submit();
+			}	
 		}; 
 		/*jQuery Alert*/
 		jQuery.jQueryLogin = function (){
-			$( "#dialog-form" ).dialog({
-			     autoOpen: false,
+			var $loginform = $.parseHTML('<div><form id="login" action="login.do" method="post">'
+											+'<label for="name">Name</label>'
+				      					  	+'<input type="text" name="name" id="name">'
+				      					  	+'<label for="email">Email</label>'
+				      						+'<input type="text" name="email" id="email">'
+				      						+'<label for="password">Password</label>'
+				      						+'<input type="password" name="password" id="password">'
+											+'</form></div>');
+			$("body").append($loginform);
+			
+			$($loginform).dialog({
+				 open: $($loginform),
+			     autoOpen: true,
 			     height: 400,
 			     width: 350,
 			     modal: true,
-			     buttons: {
-			       "Create an account": "login.do",
+			     buttons: {	
+			       LOGIN : function() {
+				         $('#login').submit();
+				   },		 
 			       Cancel: function() {
-			         dialog.dialog( "close" );
+			         $(this).dialog("close");
 			       }
-			     },
-			     close: function() {
-			       form[ 0 ].reset();
-			       allFields.removeClass( "ui-state-error" );
 			     }
 			 });
 		}
@@ -168,23 +178,6 @@
 				</tr>
 			</table>
 		</form>	
-	</div>
-	<div id="dialog-form" title="Create new user">
-	  <p class="validateTips">All form fields are required.</p>
-	 
-	  <form>
-	    <fieldset>
-	      <label for="name">Name</label>
-	      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-	      <label for="email">Email</label>
-	      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-	      <label for="password">Password</label>
-	      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
-	 
-	      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-	      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-	    </fieldset>
-	  </form>
-	</div>	
+	</div>	 
 </body>
 </html>
