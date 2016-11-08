@@ -34,7 +34,7 @@ public class MovieReplyModel {
 			
 			//´ñ±ÛºÎºÐ
 			int mNo = Integer.parseInt(no);
-			String sco = request.getParameter("score");
+			String sco = request.getParameter("star-input");
 			int score = Integer.parseInt(sco);
 			System.out.println(score);
 			String reContent = request.getParameter("content");
