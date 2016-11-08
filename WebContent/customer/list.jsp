@@ -72,11 +72,11 @@
 		<table border="0" width="700">
 			<tr>
 				<td align="right">
-					<a href="customer.do?page=${curpage>1?curpage-1:curpage}">이전</a>
+					<a href="customer.do?page=${page>1?page-1:page}">이전</a>
 					&nbsp;
-					<a href="customer.do?page=${curpage<totalpage?curpage+1:curpage}">다음</a>
+					<a href="customer.do?page=${page<totalpage?page+1:page}">다음</a>
 					&nbsp;&nbsp;
-					${curpage} page / ${totalpage} pages
+					${page} page / ${totalpage} pages
 				</td>
 			</tr>
 		</table>

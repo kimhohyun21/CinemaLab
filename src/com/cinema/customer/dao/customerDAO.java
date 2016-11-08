@@ -61,10 +61,28 @@ public class customerDAO {
 	}
 	
 	public static List<customerVO> getfaqList(){
-		SqlSession session = ssf.openSession();  
+		SqlSession session = ssf.openSession();
 		List<customerVO> list = session.selectList("faqlist");
 		session.close();
 		
 		return list;
+	}
+	
+	public static void customerDelete(customerVO vo){
+		SqlSession session = ssf.openSession();
+		session.delete("CDelete", vo);
+		session.commit();
+		session.close();
+	}
+	
+	public static void customerReply(int no, customerVO vo){
+		SqlSession session = ssf.openSession();
+		customerVO vo2=session.selectOne("GroupData", no);
+		vo.setGroup_id(vo2.getGroup_id());
+		vo.setGroup_step(vo2.getGroup_step()+1);
+		vo.setGroup_tab(vo2.getGroup_tab()+1);
+		session.insert("CReply", vo);
+		session.commit();
+		session.close();
 	}
 }
