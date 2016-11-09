@@ -38,7 +38,7 @@
 			    pg : 'html5_inicis',
 			    pay_method : type,
 			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : '{title} 결제',
+			    name : '${title} 예매',
 			    amount : '${payment }',
 			    buyer_name : '${mvo.name }'
 			}, function(rsp) {
@@ -168,59 +168,57 @@
 			</tr>
 		</table>
 		<form name="pgForm" id="card" action="javascript:payment(type);" method="post">
-		<table width="700" border="1">
-			<tr>
-				<td width="700">
-					카드종류 
-					<select id="chooseCard" name="chooseCard">
-						<option>선택없음</option>
-						<option value="현대">현대카드</option>
-						<option value="현대">삼성카드</option>
-						<option value="현대">신한카드</option>
-						<option value="현대">농협카드</option>
-						<option value="현대">국민카드</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>카드번호 
-					<input type="text" name="number1" id="number1" size="10">-
-					<input type="text" name="number2" id="number2" size="10">- 
-					<input type="text" name="number3" id="number3" size="10">-
-					<input type="text" name="number4" id="number4" size="10">
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호 <input type="password" name="pwd" id="pwd" size="5">
-				</td>
-			</tr>
-			<tr>
-				<td>유효기간 
-					<input type="text" name="month" id="month" size="5"> 월 
-					<input type="text" name="year" id="year" size="5"> 년
-				</td>
-			</tr>
-			<tr>
-				<td>법정생년월일(6자리) <input type="text" name="birth" id="birth" size="10">
-				</td>
-			</tr>
-		</table>
-		<input type="button" value="취소" onclick="javascript:history.back()">
-		<input type="submit" value="결제" id="send">
+			<input type="hidden" name="year" value="${year }">
+			<input type="hidden" name="month" value="${month }">
+			<input type="hidden" name="checkedDay" value="${checkedDay }">
+			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+			<input type="hidden" name="tname" value="${tname }">
+			<input type="hidden" name="grade" value="${grade }">
+			<input type="hidden" name="title" value="${title }">
+			<input type="hidden" name="poster" value="${poster }">					
+			<input type="hidden" name="theaterNo" value="${theaterNo}">
+			<input type="hidden" name="movietime" value="${movietime}">
+			<input type="hidden" name="ticketAll" value="${ticketAll}">
+			<input type="hidden" name="payment" value="${payment}">	
+			<input type="hidden" name="seatNo" value="${seatNo }">
+			<table width="700" border="1">
+				<tr>
+					<td>
+						신용카드 결제 안내<br>
+						1.결제내역 확인 후 결제하기 버튼을 클릭시, 팝업창이 나타납니다.<br>
+						2.해당 팝업에서 원하는 카드사를 선택 후 결제 정보를 입력하시면 됩니다.
+						     ※ 신용카드 결제 가능 최소 금액은 1,000원 이상 입니다.     
+					</td>
+				</tr>
+			</table>
+			<input type="button" value="취소" onclick="javascript:history.back()">
+			<input type="submit" value="결제" id="send">
 		</form>
 		<form name="pgForm" id="account" action="javascript:payment(type);" method="post" style="display:none">
-		<table width="700" border="1">
-			<tr>
-				<td width="700">
-					계좌이체 순서<br>
-					1.아래 결제하기 버튼 클리 후 다음 단계로 이동<br>
-					2.결제내역 확인 후 결제하기 버튼 클릭 시 팝업창이 뜸<br>
-					3.해당 팝업에서 원하는 은행을 선택 후 계좌이체 정보를 입력하시면 됩니다.
-				</td>
-			</tr>
-		</table>
-		<input type="button" value="취소" onclick="javascript:history.back()">
-		<input type="submit" value="결제" id="send">		
+			<input type="hidden" name="year" value="${year }">
+			<input type="hidden" name="month" value="${month }">
+			<input type="hidden" name="checkedDay" value="${checkedDay }">
+			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+			<input type="hidden" name="tname" value="${tname }">
+			<input type="hidden" name="grade" value="${grade }">
+			<input type="hidden" name="title" value="${title }">
+			<input type="hidden" name="poster" value="${poster }">					
+			<input type="hidden" name="theaterNo" value="${theaterNo}">
+			<input type="hidden" name="movietime" value="${movietime}">
+			<input type="hidden" name="ticketAll" value="${ticketAll}">
+			<input type="hidden" name="payment" value="${payment}">	
+			<input type="hidden" name="seatNo" value="${seatNo }">
+			<table width="700" border="1">
+				<tr>
+					<td width="700">
+						실시간 계좌이체 안내<br>
+						1.결제내역 확인 후 결제하기 버튼을 클릭시, 팝업창이 나타납니다.<br>
+						2.해당 팝업에서 원하는 은행을 선택 후 계좌이체 정보를 입력하시면 됩니다.
+					</td>
+				</tr>
+			</table>
+			<input type="button" value="취소" onclick="javascript:history.back()">
+			<input type="submit" value="결제" id="send">		
 		</form>
 	</div>	
 </body>
