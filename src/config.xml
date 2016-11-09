@@ -19,6 +19,7 @@
         <typeAlias type="com.cinema.theater.dao.TheaterVO" alias="theater"/>
         <typeAlias type="com.cinema.customer.dao.customerVO" alias="qna"/>
         <typeAlias type="com.cinema.member.dao.MemberReserveListVO" alias="memberReserve"/> 
+        <typeAlias type="com.cinema.admin.dao.ReserveListVO" alias="reservelist"/>
      </typeAliases>
      
      <!-- 환경설정 JDBC,DBCP -->
@@ -46,5 +47,6 @@
         <mapper resource="com/cinema/movieList/dao/list-mapper.xml"/>
         <mapper resource="com/cinema/customer/dao/customer-mapper.xml"/>
         <mapper resource="com/cinema/theater/dao/theater-mapper.xml"/>
+        <!-- <mapper resource="com/cinema/admin/dao/admin-mapper.xml"/> -->
      </mappers>
   </configuration>

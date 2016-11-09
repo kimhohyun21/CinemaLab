@@ -43,7 +43,6 @@ public class MemberReserveListModel {
 		if (type.equals("1")) {
 			// 관람내역 가져오기
 			list = MemberDAO.memberWhatchData(no);
-			
 			//마지막페이지
 			rowCount=MemberDAO.ReserveCount(no);			
 		} else {
