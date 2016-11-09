@@ -135,7 +135,7 @@
 					</div>
 					<c:if test="${id eq vo.id }">
 						<div align="right">
-							<input type="button" value="´ñ±Û»èÁ¦" onclick="delete()">
+							<input type="button" value="´ñ±Û»èÁ¦" onclick="replydelete()">
 						</div>		
 					</c:if>
 				</li>
