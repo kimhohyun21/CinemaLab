@@ -26,7 +26,14 @@ public class MovieVO {
 	private int score;
 	private int no;
 	private String id;
+	private String date;//리스트에 뽑아낼 날짜
 	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public int getmNo() {
 		return mNo;
 	}

@@ -9,7 +9,15 @@ public class MemberVO {
 	private String name;
 	private String phone;
 	private String birth;
-	private int admin;	
+	private int admin;
+	private int age;
+	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public int getNo() {
 		return no;
 	}
