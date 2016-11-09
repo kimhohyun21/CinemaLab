@@ -53,12 +53,17 @@ public class ReserveModel2 {
 		int payment=ticket1*10000+ticket2*6000+ticket3*8000;
 		
 		//좌석
-		String[] seat=request.getParameterValues("seat");
+		String[] seat=request.getParameterValues("seat");		
+		String seatNo=null;
 		int size=0;
 		if(seat!=null){
 			size=seat.length;
-			System.out.println("자리 수: "+seat.length);
+			for(String st : seat){
+				seatNo+=st+", ";
+			}
+			seatNo=seatNo.substring(seatNo.indexOf("null")+4, seatNo.lastIndexOf(","));
 		}
+		System.out.println(seatNo);
 		
 		//Ajax 실행 구분 인자
 		String rType=request.getParameter("rType");
@@ -108,7 +113,7 @@ public class ReserveModel2 {
 		request.setAttribute("junior", junior);
 		request.setAttribute("ticketAll", ticketAll);
 		request.setAttribute("payment", payment);
-		request.setAttribute("seat", seat);
+		request.setAttribute("seatNo", seatNo);
 		request.setAttribute("size", size);
 		request.setAttribute("slist", slist);
 		request.setAttribute("vo", vo);

@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		function send(){
 			
-			if(${movietime==null}){
+			if(${movietime==null || movietime==""}){
 				$.jQueryAlert('상영시간을 선택해 주세요.');
 				return;
 			}	
@@ -218,9 +218,7 @@
 						<li>
 							<strong>좌석 :</strong>
 							<span style="color:#f78824;">  
-							<c:forEach var="st" items="${seat }" varStatus="status">
-								${st }<c:if test="${not status.last }">, </c:if>
-							</c:forEach>
+							${seatNo }
 							</span>
 						</li>						 
 					</ul>

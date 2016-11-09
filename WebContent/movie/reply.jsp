@@ -7,8 +7,81 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script type="text/javascript" src="sliderengine/jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="movie/style.css">
+<script type="text/javascript">
+	function loginCheck(){
+		if(${mvo==null}){
+			$.jQueryLogin();
+		}
+	}	
+	
+	function login(){
+		var f=document.loginfrm;	
+		if(f.id.value==""){
+			$.jQueryAlert("아이디를 입력하세요");
+			f.id.focus();
+			return;
+		}
+		if(f.pwd.value==""){
+			$.jQueryAlert("비밀번호를 입력하세요");
+			fs.pwd.focus();
+			return;
+		}
+		f.submit();
+	}
+	
+	/*jQuery Login*/
+	jQuery.jQueryLogin = function (){
+		var $loginform = $.parseHTML('<div id="logindiv">'
+										+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
+										+'<div class="input">'
+										+'<label for="id">ID</label>'
+										+'<input type="text" placeholder="ID" name="id" id="id">'
+										+'</div>'+'<div class="input">'
+										+'<label for="pwd">PW</label>'
+										+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+										+'</div><input type="hidden" name="loginType" value="reserve">'
+										+'</form><div id="find">'
+										+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+										+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
+		$("body").append($loginform);
+		
+		$($loginform).dialog({
+			 open: $($loginform),
+		     autoOpen: true,
+		     width: 400,
+		     modal: true,
+		     resizable:false, 
+		     buttons: {	
+		       LOGIN : function() {
+			         login();
+			   },		 
+		       Cancel: function() {
+		         $(this).dialog("close");
+		       }
+		     }
+		 });
+	}
+	
+	/* jQuery Alert 창 */
+	jQuery.jQueryAlert = function (msg) {
+        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+        $("body").append($messageBox);
+
+        $($messageBox).dialog({
+            open: $($messageBox).append(msg),
+            autoOpen: true,
+            modal: true,
+            resizable:false, 
+			width: 400,
+            buttons: {
+                OK: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    };
+</script>
 </head>
 <body>
 	<div id="reply">
@@ -36,7 +109,7 @@
 				 	<!--  <input type="text" size="10" name="score"> -->
 					</td>
 					<td width="69%">
-						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required></textarea>
+						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
 					</td>
 					<td width="11%">
 						<input type="submit" value="입력" id="send">
