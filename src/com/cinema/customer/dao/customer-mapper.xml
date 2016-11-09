@@ -22,16 +22,25 @@
 		(SELECT NVL(MAX(group_id)+1,1) FROM qna))
 	</insert>
 	<update id="CHI" parameterType="int">
-		UPDATE qna SET qhit=qhit+1
+		UPDATE qna SET qhit=qhit+1 WHERE qno=#{no}
 	</update>
 	<select id="CContent" resultType="qna" parameterType="int">
 		SELECT qno,name,qsubject,qcontent,qregdate,qhit FROM qna NATURAL JOIN member where qno=#{no}
 	</select>
 	<update id="CUpdate" parameterType="qna">
-		UPDATE qna SET qsubject=#{qsubject},qcontent=#{qcontent} WHERE qno=#{no}
+		UPDATE qna SET qsubject=#{qsubject},qcontent=#{qcontent} WHERE qno=#{qno}
 	</update>
+	<delete id="CDelete" parameterType="qna">
+		Delete FROM qna WHERE qno=#{qno}
+	</delete>
+	<select id="">
+		INSERT INTO qna NATURAL JOIN member(qno, name, qsubject, qcontent, group_id, group_step, group_tab, qhit) "
+				+ "VALUES((SELECT NVL(MAX(qno)+1, 1) FROM qna),#{qno},#{qsubject},#{qcontent},#{no})
+	</select>
+	<select id="GroupData" parameterType="int" resultType="qna">
+		SELECT group_id, group_step, group_tab WHERE qno=#{qno}
+	</select>
 	<select id="faqlist" resultType="qna">
-		SELECT question, answer
-		FROM faq
-	</select>	
+		SELECT question, answer FROM faq
+	</select>
 </mapper>

@@ -112,3 +112,22 @@ form{
 	position:relative;
 	top:1px;
 }
+#find a{
+		color: gray;
+		text-decoration: none;
+}
+#find a:HOVER {
+	color: #CD426B;
+}
+form{
+	padding-top:50px;
+}
+input{
+	padding:0px;
+	height: 35px;
+	width: 200px;
+	font-size: 10pt;
+}
+#pwd{
+	margin-bottom: 10px;
+}

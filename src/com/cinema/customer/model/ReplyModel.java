@@ -6,12 +6,12 @@ import com.cinema.controller.Controller;
 import com.cinema.controller.RequestMapping;
 
 @Controller
-public class InsertModel{
+public class ReplyModel{
 
-	@RequestMapping("insert.do")
+	@RequestMapping("reply.do")
 	public String handlerRequest(HttpServletRequest request){
-		request.setAttribute("jsp", "../customer/insert.jsp");
-		System.out.println("¸¸³ª´À¶ó");
+		request.setAttribute("jsp", "../customer/reply.jsp");
+		System.out.println("°«¼±ºó");
 		return "main/main.jsp";
 	}
 }

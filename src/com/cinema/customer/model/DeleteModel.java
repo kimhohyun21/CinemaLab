@@ -5,31 +5,34 @@ import com.cinema.controller.*;
 import com.cinema.customer.dao.*;
 
 @Controller
-public class UpdateOkModel{
+public class DeleteModel{
 
-	@RequestMapping("update_ok.do")
+	@RequestMapping("delete.do")
 	public String handlerRequest(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
+			System.out.println("그저 바라보며");
 			String content=request.getParameter("content");
+			System.out.println(content);
 			String subject=request.getParameter("subject");
+			System.out.println(subject);
 			String strNo=request.getParameter("no");
+			System.out.println(strNo);
 			String strPage=request.getParameter("page");
 			int no=Integer.parseInt(strNo);
-			
-			System.out.println("얼굴값을 못한대");
 			
 			customerVO vo = new customerVO();
 			vo.setQcontent(content);
 			vo.setQsubject(subject);
 			vo.setQno(no);
-			customerDAO.customerUpdate_ok(vo);
+			customerDAO.customerDelete(vo);
 			request.setAttribute("page", strPage);
+			System.out.println(no);
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
 		
-		return "customer/update_ok.jsp";
+		return "customer/delete.jsp";
 	}
 
 }

@@ -11,10 +11,11 @@ import com.cinema.controller.RequestMapping;
 import com.cinema.customer.dao.*;
 
 @Controller
-public class InsertOkModel{
+public class ReplyOkModel{
 	
-	@RequestMapping("insert_ok.do")
+	@RequestMapping("reply_ok.do")
 	public String handlerRequest(HttpServletRequest request){		
+		System.out.println("³Î ³Ê¹« »ç¶ûÇØ¼­");
 		try {
 			request.setCharacterEncoding("EUC-KR");
 		} catch (Exception e) {			
@@ -25,15 +26,14 @@ public class InsertOkModel{
 		String content = request.getParameter("content");
 		String strno = request.getParameter("no");
 		int no=Integer.parseInt(strno);
-		System.out.println("»þ»þ»þ");
 		customerVO vo = new customerVO();
 		vo.setName(name);
 		vo.setNo(no);
 		vo.setQsubject(subject);
 		vo.setQcontent(content);
-		customerDAO.customerInsert(vo);
+		customerDAO.customerReply(no, vo);
 		
-		return "customer/insert_ok.jsp";
+		return "customer/reply_ok.jsp";
 	
 	}
 }

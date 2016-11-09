@@ -34,7 +34,7 @@
 		//자리 체크에 따른 Ajax와 스타일 함수
 		function check(){
 			if(${adult==0} && ${senior==0} && ${junior==0}){
-				alert('티켓 매수를 선택해 주세요.');
+				$.jQueryAlert('티켓 매수를 선택해 주세요.');
 				location.href="#";
 				return;
 			}else{				
@@ -46,7 +46,7 @@
 						$('#result2').html(data);
 					},
 					error:function(data){
-						alert("실패");
+						$.jQueryAlert("실패");
 					}
 				});
 				
@@ -97,6 +97,25 @@
 				}
 			}
 		};
+		
+		/* jQuery Alert 창 */
+		jQuery.jQueryAlert = function (msg) {
+	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+	        $("body").append($messageBox);
+	
+	        $($messageBox).dialog({
+	            open: $($messageBox).append(msg),
+	            autoOpen: true,
+	            modal: true,
+	            resizable:false, 
+				width: 400,
+	            buttons: {
+	                OK: function () {
+	                    $(this).dialog("close");
+	                }
+	            }
+	        });
+	    };
 	</script>
 </head>
 <body>
