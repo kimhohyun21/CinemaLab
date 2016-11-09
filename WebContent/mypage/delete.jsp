@@ -18,12 +18,13 @@ function send(){
 	f.submit();
 }
 
-/* function yesnoCheck() {
+function yesnoCheck() {
     if (document.getElementById('yesCheck').checked) {
-        document.getElementById('ifYes').style.visibility = 'visible';
+        document.getElementById('yesCheck').style.visibility = 'visible';
     } else {
-        document.getElementById('ifYes').style.visibility = 'hidden';
-    } */
+        document.getElementById('yesCheck').style.visibility = 'hidden';
+    }
+}
 </script>
 </head>
 <body>
@@ -32,7 +33,8 @@ function send(){
 		<form name="frm" method="post" action="delete_ok.do?no=${mvo.no }">
 			비밀번호 : <input type="password" name="pwd"><br/>
 		<div>
-			<input type="button" onclick="send()" value="삭제" class="btn">
+			<input type="button" onclick="yesnoCheck()" value="삭제" class="btn">
+			<input type="hidden" onclick="#" value="삭제" class="btn" id="yesCheck">
 		</div>
 		</form>
 	</center>

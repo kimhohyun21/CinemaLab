@@ -12,7 +12,7 @@
 </style>
 <script type="text/javascript">
 function send(){
-	 var f=document.frm;	 
+	 var f=document.frm;
 	if(f.name.value==""){
 		alert("이름을 입력하세요");
 		f.name.focus();

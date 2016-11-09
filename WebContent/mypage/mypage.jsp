@@ -52,6 +52,13 @@
 							È¸¿øÅ»Åð
 						</a>
 					</td>
+					<c:if test="${mvo.admin == 1 }">
+						<td align="center">
+							<a href="#">
+								<b style="color: olive;">ºñ¹ÐÀÇ ¹æ</b>
+							</a>	
+						</td>
+					</c:if>
 				</tr>
 			</table>		
 			<div align="center">

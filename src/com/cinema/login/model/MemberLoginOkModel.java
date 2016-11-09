@@ -18,7 +18,7 @@ public class MemberLoginOkModel {
 			request.setCharacterEncoding("EUC-KR");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
-		}
+		}		
 		
 		String check="";
 		String id=request.getParameter("id");
@@ -46,7 +46,7 @@ public class MemberLoginOkModel {
 				check="pwdnot";
 			}
 		}
-		String url=request.getHeader("referer");
+		String url=request.getHeader("referer");		
 		request.setAttribute("url", url);
 		request.setAttribute("loginType", loginType);
 		request.setAttribute("check", check);		
