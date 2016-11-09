@@ -33,13 +33,19 @@
 	<delete id="CDelete" parameterType="qna">
 		Delete FROM qna WHERE qno=#{qno}
 	</delete>
-	<select id="">
-		INSERT INTO qna NATURAL JOIN member(qno, name, qsubject, qcontent, group_id, group_step, group_tab, qhit) "
-				+ "VALUES((SELECT NVL(MAX(qno)+1, 1) FROM qna),#{qno},#{qsubject},#{qcontent},#{no})
-	</select>
 	<select id="GroupData" parameterType="int" resultType="qna">
-		SELECT group_id, group_step, group_tab WHERE qno=#{qno}
+		SELECT group_id, group_step, group_tab FROM qna WHERE qno=#{qno}
 	</select>
+	<insert id="CReply" parameterType="qna">
+		<selectKey keyProperty="qno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(qno)+1,1) FROM qna
+		</selectKey>
+		INSERT INTO qna (qno, qsubject, qcontent, group_id, group_step, group_tab, no, root)
+		VALUES(#{qno},#{qsubject},#{qcontent},#{group_id},#{group_step},#{group_tab},#{no},#{root})
+	</insert>
+	<update id="StepUpdate" parameterType="qna">
+		UPDATE qna SET group_step=group_step+1 WHERE group_id=#{group_id} and group_step>#{group_step}
+	</update>
 	<select id="faqlist" resultType="qna">
 		SELECT question, answer FROM faq
 	</select>

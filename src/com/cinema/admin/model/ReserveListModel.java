@@ -1,11 +1,11 @@
-package com.cinema.customer.model;
+package com.cinema.admin.model;
 
 import java.util.*;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.*;
 import com.cinema.controller.*;
-import com.cinema.customer.dao.*;
+import com.cinema.admin.dao.*;
 @Controller
-public class ListModel{
+public class ReserveListModel{
 	@RequestMapping("customer.do")
 	public String qnaList(HttpServletRequest request){
 		String page= request.getParameter("page");
@@ -19,15 +19,15 @@ public class ListModel{
 		map.put("start", start);		
 		map.put("end", end);
 		
-		System.out.println("칭구를 만나느라");
-		List<customerVO> list = customerDAO.getcustomerList(map);
-		int totalpage = customerDAO.customerTotal();
+		System.out.println("맨체스터 유나이티드");
+	/*	List<ReserveListVO> list = AdminDAO.reserveList(map);
+		int totalpage = AdminDAO.customerTotal();
 		
 		request.setAttribute("list", list);
 		request.setAttribute("page", curpage);
 		request.setAttribute("totalpage", totalpage);
-		request.setAttribute("jsp", "../customer/list.jsp");
-		System.out.println(list==null);
+		request.setAttribute("jsp", "../adminpage/reservelist.jsp");
+		System.out.println(list==null);*/
 		
 		return "main/main.jsp";
 	}

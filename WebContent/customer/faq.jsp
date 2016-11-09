@@ -12,6 +12,24 @@
 <body>
 	<div align="center" class="bg">
 	<!-- fno순차별로 question과 answer 한 번 씩 출력    -->
+		<table>
+			<tr id="sub">
+				<td>
+					<a href="customer.do">
+						<button class="list_btn">
+							<span>QnA</span>
+						</button>
+					</a>
+				</td>
+				<td>
+					<a href="faq.do">
+						<button class="list_btn">
+							<span>FAQ</span>
+						</button>
+					</a>
+				</td>
+			</tr>
+		</table>
 		<h3>faq게시판</h3>
 		<hr>
 		<table border="0" width="600">

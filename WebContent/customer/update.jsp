@@ -39,10 +39,11 @@
 	</script>
 </head>
 <body>
-	<div align="center" class="">
+	<div align="center" class="bg">
 		<div id="article">
+			<h3>수정하기</h3>
 			<form action="update_ok.do" method="post" name="frm" id="frm">
-				<table id="insert_table" width="50%">
+				<table id="insert_table">
 					<tr height="27">
 						<th width="20%" align="center">이름</th>
 						<td width="80%" align="left">

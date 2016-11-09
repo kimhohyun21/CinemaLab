@@ -44,12 +44,14 @@
 		<table>
 			<tr align="right">
 				<td>
-					<a href="reply.do">답글쓰기</a>
-					&nbsp;&nbsp;
-					<c:if test="${mvo.name == vo.name}">
-						<a href="update.do?no=${vo.qno }&page="${page}">수정</a>
+					<c:if test="${mvo.name != null}">
+						<a href="reply.do?no=${vo.qno }&page=${page}">답글쓰기</a>
 						&nbsp;&nbsp;
-						<a href="delete.do?no=${vo.qno }&page="${page}">삭제</a>
+					</c:if>	
+					<c:if test="${mvo.name == vo.name}">
+						<a href="update.do?no=${vo.qno }&page=${page}">수정</a>
+						&nbsp;&nbsp;
+						<a href="delete.do?no=${vo.qno }&page=${page}">삭제</a>
 					</c:if>
 					&nbsp;&nbsp;
 					<a href="customer.do">돌아가기</a>

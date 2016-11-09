@@ -1,8 +1,7 @@
 package com.cinema.admin.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
+import com.cinema.reserve.dao.ReserveVO;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -19,7 +18,15 @@ public class AdminDAO {
 	public static List<MovieVO> adminMovieAllList(){
 		SqlSession session=ssf.openSession();		
 		List<MovieVO> list=session.selectList("adminMovieAllList");
-		session.close();		
+		session.close();
+		
+		return list;
+	}
+	
+	public static List<ReserveVO> reserveList(Map map){
+		SqlSession session = ssf.openSession();
+		List<ReserveVO> list = session.selectList("RList", map);
+		session.close();
 		
 		return list;
 	}
