@@ -22,6 +22,14 @@
 	}
 </style>
 <script type="text/javascript">
+ window.onload=function(){	
+	var $ok="${ok}"
+	if($ok=="사용가능한 ID입니다 ^^" && first == 1){
+		document.frm.name.focus();
+		alert("사용가능한 ID입니다");
+	}
+}
+
 function send(){
 	 var f=document.frm;
 	 var pwd=f.pwd.value;
@@ -86,6 +94,7 @@ function send(){
 	  }
 	f.submit();
 }
+
 function checkID(){
 	var f=document.frm;
 	var id=f.id.value;
@@ -102,10 +111,16 @@ function checkID(){
 		return;
 	}
 	location.href="idOverlab.do?id="+id;
-	
-	if($ok=="사용가능한 ID입니다 ^^"){
-		alert("사용가능한 ID입니다");
-		return;
+}
+
+function enter(){
+	if(window.event.keyCode == 13){
+		send();
+	}
+}
+function cc(){
+	if(window.event.keyCode == 13){
+		checkID();
 	}
 }
 </script>	
@@ -120,7 +135,7 @@ function checkID(){
 					</td>
 					<td>
 						<c:if test="${ok eq null || ok eq ''}">
-							<input type="text" class="id" id="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }" size="30">
+							<input type="text" class="id" id="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }" size="30" onkeydown="cc()">
 						</c:if>
 						<c:if test="${ok eq '사용가능한 ID입니다 ^^' }">
 							<input type="text" class="id" id="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }" size="30" readonly="readonly">
@@ -162,7 +177,7 @@ function checkID(){
 						<b class="fc">생년월일 : </b>
 					</td>
 					<td>
-						<input type="text" placeholder="생년월일" name="birth">				
+						<input type="text" placeholder="생년월일" name="birth" onkeyup="enter()">				
 					</td>
 				</tr>
 				<tr>
@@ -170,12 +185,14 @@ function checkID(){
 						<b class="fc">전화번호 : </b>
 					</td>
 					<td>
-						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone">			
+						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" 
+						id="phone" onkeyup="enter()">			
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input id="button" type="button" value="회원가입" onclick="send()" class="btn"><br/>
+						<input id="button" type="button" value="회원가입" onclick="send()" 
+						class="btn"><br/>
 					</td>
 				</tr>
 				<tr>

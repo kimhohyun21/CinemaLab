@@ -27,6 +27,12 @@ function login(){
 	}
 	f.submit();
 }
+
+function enter(){
+	if(window.event.keyCode == 13){
+		login();
+	}
+}
 </script>
 </head>
 <body>
@@ -36,7 +42,7 @@ function login(){
 				<input type="text" placeholder="ID" name="id">
 			</div>
 			<div class="input">
-				<input type="password" placeholder="PW" name="pwd" id="pwd">
+				<input type="password" placeholder="PW" name="pwd" id="pwd" onkeydown="enter()">				
 			</div>
 			<div id="find">
 				<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
