@@ -17,15 +17,24 @@ function send(){
 	
 	f.submit();
 }
+
+function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        document.getElementById('yesCheck').style.visibility = 'visible';
+    } else {
+        document.getElementById('yesCheck').style.visibility = 'hidden';
+    }
+}
 </script>
 </head>
 <body>
 	<center>
-		<b style="color:red;">탈퇴한 아이디는 복구 할 수 없습니다</b>
+		<b style="color:red;">탈퇴한 아이디는 복구할 수 없습니다</b>
 		<form name="frm" method="post" action="delete_ok.do?no=${mvo.no }">
 			비밀번호 : <input type="password" name="pwd"><br/>
 		<div>
-			<input type="button" onclick="send()" value="삭제" class="btn">
+			<input type="button" onclick="yesnoCheck()" value="삭제" class="btn">
+			<input type="hidden" onclick="#" value="삭제" class="btn" id="yesCheck">
 		</div>
 		</form>
 	</center>
