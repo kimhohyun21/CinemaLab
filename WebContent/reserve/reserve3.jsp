@@ -17,21 +17,18 @@
 		}
 		
 		/* 결제 방법 선택에 따라 결제 방법 값 변경 및 화면 표시 전환*/
-		var type="";
 		function display1() {
 			card.style.display='block';
 			account.style.display='none';
-			type="card"
 			return;
 		}
 		
 		function display2(){
 			card.style.display='none';
 			account.style.display='block';
-			type="trans"
 			return;
 		} 
-	    
+		
 		/* 결제 모듈 호출*/
 		function payment(type){
 			IMP.request_pay({
@@ -40,23 +37,31 @@
 			    merchant_uid : 'merchant_' + new Date().getTime(),
 			    name : '${title} 예매',
 			    amount : '${payment }',
-			    buyer_name : '${mvo.name }'
+			    buyer_name : '${mvo.name }',
+			    buyer_email :''
 			}, function(rsp) {
 			    if ( rsp.success ) {
 			        var msg = '결제가 완료되었습니다.';
-			        /* msg += '고유ID : ' + rsp.imp_uid;
-			        msg += '상점 거래ID : ' + rsp.merchant_uid;	
-			        msg += '결제 금액 : ' + rsp.paid_amount;
-			        msg += '카드 승인번호 : ' + rsp.apply_num; */
-			        
-			        location.href="reserve4.do?pid="+ rsp.imp_uid+"&sid="+ rsp.merchant_uid+"&sp="
-			        			+rsp.paid_amount+"&cokn="+rsp.apply_num;
+			        /*
+			        	고유ID : rsp.imp_uid
+			        	상점 거래ID : rsp.merchant_uid	
+			       		결제 금액 : rsp.paid_amount
+			        	카드 승인번호 : rsp.apply_num
+			        */
+			        $.jQueryAlert(msg);
+			        location.href="reserve4.do?"
+			        			+"year=${year }&month=${month }&checkedDay=${checkedDay }&checkedDay2=${checkedDay2 }"
+			        			+"&tname=${tname }&grade=${grade }&title=${title }&poster=${poster }&theaterNo=${theaterNo}"
+			        			+"&movietime=${movietime}&ticketAll=${ticketAll}&payment=${payment}&seatNo=${seatNo }"
+			        			+"&pid="+ rsp.imp_uid+"&sid="+ rsp.merchant_uid
+			        			+"&sp="+rsp.paid_amount+"&cokn="+rsp.apply_num;
 			      
 			    } else {
 			        var msg = '결제에 실패하였습니다.<br/>';
-			        msg += '에러내용 : ' + rsp.error_msg+'.';			        
+			        msg += '에러내용 : ' + rsp.error_msg+'.';	
+			        $.jQueryAlert(msg);
 			    }
-			    $.jQueryAlert(msg);
+			    
 			});
 		}	
 		
@@ -162,25 +167,12 @@
 			</tr>
 			<tr>
 				<td align="center">
-					<input type="radio" name="pay" value="card" onClick="display1()" checked>신용카드
-					<input type="radio" name="pay" value="account" onClick="display2()">계좌이체
+					<input type="radio" name="pay" value="card" onclick="display1()" checked>신용카드
+					<input type="radio" name="pay" value="account" onclick="display2()">계좌이체
 				</td>
 			</tr>
 		</table>
-		<form name="pgForm" id="card" action="javascript:payment(type);" method="post">
-			<input type="hidden" name="year" value="${year }">
-			<input type="hidden" name="month" value="${month }">
-			<input type="hidden" name="checkedDay" value="${checkedDay }">
-			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-			<input type="hidden" name="tname" value="${tname }">
-			<input type="hidden" name="grade" value="${grade }">
-			<input type="hidden" name="title" value="${title }">
-			<input type="hidden" name="poster" value="${poster }">					
-			<input type="hidden" name="theaterNo" value="${theaterNo}">
-			<input type="hidden" name="movietime" value="${movietime}">
-			<input type="hidden" name="ticketAll" value="${ticketAll}">
-			<input type="hidden" name="payment" value="${payment}">	
-			<input type="hidden" name="seatNo" value="${seatNo }">
+		<div id="card">
 			<table width="700" border="1">
 				<tr>
 					<td>
@@ -191,23 +183,10 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:history.back()">
-			<input type="submit" value="결제" id="send">
-		</form>
-		<form name="pgForm" id="account" action="javascript:payment(type);" method="post" style="display:none">
-			<input type="hidden" name="year" value="${year }">
-			<input type="hidden" name="month" value="${month }">
-			<input type="hidden" name="checkedDay" value="${checkedDay }">
-			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-			<input type="hidden" name="tname" value="${tname }">
-			<input type="hidden" name="grade" value="${grade }">
-			<input type="hidden" name="title" value="${title }">
-			<input type="hidden" name="poster" value="${poster }">					
-			<input type="hidden" name="theaterNo" value="${theaterNo}">
-			<input type="hidden" name="movietime" value="${movietime}">
-			<input type="hidden" name="ticketAll" value="${ticketAll}">
-			<input type="hidden" name="payment" value="${payment}">	
-			<input type="hidden" name="seatNo" value="${seatNo }">
+			<input type="button" value="취소" onclick="javascript:location.href='${url }'">
+			<input type="button" value="결제" onclick="javascript:payment('card')">
+		</div>
+		<div id="account" style="display:none">
 			<table width="700" border="1">
 				<tr>
 					<td width="700">
@@ -217,9 +196,9 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:history.back()">
-			<input type="submit" value="결제" id="send">		
-		</form>
+			<input type="button" value="취소" onclick="javascript:location.href='${url }'">
+			<input type="button" value="결제" onclick="javascript:payment('trans')">
+		</div>
 	</div>	
 </body>
 </html>

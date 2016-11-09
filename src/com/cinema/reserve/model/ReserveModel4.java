@@ -16,10 +16,10 @@ import com.cinema.reserve.dao.ReserveDAO;
 import com.cinema.reserve.dao.ReserveVO;
 
 @Controller
-public class ReserveModel3 {
+public class ReserveModel4 {
 	
-	@RequestMapping("reserve3.do")
-	public String Reserve3(HttpServletRequest request){
+	@RequestMapping("reserve4.do")
+	public String Reserve4(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
 			
@@ -71,10 +71,12 @@ public class ReserveModel3 {
 			request.setAttribute("seatNo", seatNo);
 			request.setAttribute("mvo", mvo);
 			
-			request.setAttribute("jsp", "../reserve/reserve3.jsp");		
+			request.setAttribute("jsp", "../reserve/reserve4.jsp");		
 		}catch(Exception e){
 			e.printStackTrace();
 		}		
+		
 		return "main/main.jsp";
 	}
+
 }
