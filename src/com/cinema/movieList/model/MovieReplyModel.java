@@ -82,6 +82,7 @@ public class MovieReplyModel {
 			request.setAttribute("curpage", curpage);
 			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("replyList", replyList);
+			request.setAttribute("id", id);
 			request.setAttribute("vo2", vo2);
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 		} catch (Exception ex) {
