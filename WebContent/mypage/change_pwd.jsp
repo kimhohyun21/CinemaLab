@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="mypage/style.css">
 <script src="sliderengine/jquery.js"></script>
 <script type="text/javascript">
 function send(){
@@ -34,8 +35,8 @@ function send(){
 			현재 비밀번호:<input type="password" name="pwd"><br>
 			바꿀 비밀번호:<input type="password" name="change_pwd"><br>
 			비밀번호 확인:<input type="password" name="check_pwd"><br>
-			<input type="button" onclick="send()" value="변경">
-			<input type="button" onclick="javascript:hitory.back()" value="뒤로">			
+			<input type="button" onclick="send()" value="변경" class="btn">
+			<input type="button" onclick="javascript:hitory.back()" value="뒤로" class="btn">			
 		</form>
 	</center>
 </body>

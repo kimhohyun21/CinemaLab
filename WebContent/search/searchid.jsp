@@ -6,18 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="search/style.css">
 <style type="text/css">
-	a{
-	text-decoration: none;
-	color: black;
-}
-	#button{	
-	margin:10px;
-}
-	#join_table tr td input{
-		margin:0px;
-		padding:0px;
-	}
+	
 </style>
 <script type="text/javascript">
 function send(){
@@ -45,28 +36,48 @@ function send(){
 </head>
 <body>
 	<center>
-		<form action="searchId_ok.do" method="post" name="frm">
-			<table id="join_table" width="450" height="500">
+		<form action="searchId_ok.do" method="post" name="frm" id="frm">
+			<table id="join_table" width="450" height="300">
 				<tr>
-					<td align="center">
-						<b>이름 :</b><input type="text" placeholder="이름" name="name">
+					<td align="right">
+						<b>이름 :</b>
+					</td>
+					<td align="left">
+						<input type="text" placeholder="이름" name="name">
+					</td>					
+				</tr>
+				<tr>
+					<td align="right">
+						<b>생년월일 :</b>
+					</td>
+					<td align="left">
+						<input type="text" placeholder="생년월일" name="birth">				
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<b>생년월일 :</b><input type="text" placeholder="생년월일" name="birth">				
+					<td align="right">
+						<b>전화번호 :</b>
+					</td>
+					<td align="left">
+						<input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone">
 					</td>
 				</tr>
 				<tr>
-					<td align="center">
-						<b>전화번호 :</b><input type="text" placeholder="전화번호 '-'는 빼고 써주세요" name="phone" id="phone">
+					<td align="center" colspan="2">
+						<input class="btn" type="button" value="찾기" 
+						onclick="send()" width="300" ><br/>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">	
+						<input class="btn" type="button" value="뒤로" 
+						onclick="javascript:history.back()" width="300">
 					</td>
 				</tr>
 			</table>
 		</form>
 		
-		<input id="button" type="button" value="찾기" onclick="send()" width="300"><br/>
-		<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" width="300">
+		
 	</center>
 </body>
 </html>

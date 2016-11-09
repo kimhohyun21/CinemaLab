@@ -23,14 +23,14 @@ public class MemberLoginOkModel {
 		String check="";
 		String id=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
+		String loginType=request.getParameter("loginType");
 		
-		MemberDAO dao=new MemberDAO();
-		int idcheck=dao.memberIdCheck(id);
+		int idcheck=MemberDAO.memberIdCheck(id);
 		
 		if(idcheck==0){
 			check="idnot";
 		}else{
-			MemberVO vo=(MemberVO) dao.memberGetImfor(id);			
+			MemberVO vo = MemberDAO.memberGetImfor(id);			
 			if(pwd.equals(vo.getPwd())){
 				HttpSession session=request.getSession();
 				/*session.setAttribute("id", id);
@@ -46,6 +46,9 @@ public class MemberLoginOkModel {
 				check="pwdnot";
 			}
 		}
+		String url=request.getHeader("referer");
+		request.setAttribute("url", url);
+		request.setAttribute("loginType", loginType);
 		request.setAttribute("check", check);		
 		
 		
