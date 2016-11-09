@@ -86,7 +86,7 @@
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
-		<form action="reply_ok.do?no=${vo.mNo }" method="post" name="frm">
+		<form action="replyInsert.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">
 			<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
@@ -106,13 +106,12 @@
 					   		</span><br>
 					   		<output for="star-input"><b name="score">0</b>점</output>
 				  		</span>	
-				 	<!--  <input type="text" size="10" name="score"> -->
 					</td>
 					<td width="69%">
 						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
 					</td>
 					<td width="11%">
-						<input type="submit" value="입력" id="send">
+						<input type="button" value="입력" id="send">
 					</td>
 				</tr>
 			</table>
@@ -132,6 +131,48 @@
 				</li>
 			</c:forEach>
 		</ul>
+		<table width="1000">
+			<tr>
+				<td align="right">
+					<a href="moviedetail.do?page=${1 }&no=${vo.mNo}">
+						<img src="movie/img/begin.gif">
+					</a>
+					<c:if test="${curpage>block }">
+						<a href="moviedetail.do?page=${frompage-1 }&no=${vo.mNo}">
+							<img src="movie/img/prev.gif">
+						</a>
+					</c:if>
+					<c:if test="${curpage<=block }">
+						<a href="moviedetail.do?page=${curpage>1 ? curpage-1 : 1}&no=${vo.mNo}">
+							<img src="movie/img/prev.gif">
+						</a>
+					</c:if>
+					<c:forEach var="i" begin="${frompage }" end="${topage }">
+						[<c:if test="${curpage==i }">
+							<font color="red">${i }</font>
+						</c:if>
+						<c:if test="${curpage!=i }">
+							<a href="moviedetail.do?page=${i }&no=${vo.mNo}">${i }</a>
+						</c:if>]
+					</c:forEach>
+					<c:if test="${topage<totalpage }">
+						<a href="moviedetail.do?page=${topage+1 }&no=${vo.mNo}">
+							<img src="movie/img/next.gif">
+						</a>
+					</c:if>
+					<c:if test="${topage>=totalpage }">
+						<a href="moviedetail.do?page=${curpage<totalpage ? curpage+1 : totalpage}&no=${vo.mNo}">
+							<img src="movie/img/next.gif">
+						</a>
+					</c:if>
+					<a href="moviedetail.do?page${totalpage }&no=${vo.mNo}">
+						<img src="movie/img/end.gif">
+					</a>
+					&nbsp;
+					${curpage } page / ${totalpage } pages
+				</td>
+			</tr>
+		</table>
 	</div>
 <script type="text/javascript">	
 	var starRating = function() {
