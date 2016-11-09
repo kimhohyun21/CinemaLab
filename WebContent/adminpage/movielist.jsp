@@ -16,10 +16,6 @@
 				</th>
 				<th>
 					개봉일
-					<!-- 
-					<input type="radio" value="zzzz">gggg
-					<input type="radio" value="zzzz">jjjj 이거 name만 똑같이 하면댐 
-					-->
 				</th>
 			</tr>
 			<%-- <c:forEach>

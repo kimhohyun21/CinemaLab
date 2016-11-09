@@ -54,7 +54,7 @@
 					</td>
 					<c:if test="${mvo.admin == 1 }">
 						<td align="center">
-							<a href="#">
+							<a href="Amovielist.do">
 								<b style="color: olive;">비밀의 방</b>
 							</a>	
 						</td>
