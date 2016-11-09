@@ -27,24 +27,23 @@
 </head>
 <body>
 	<div align="center" class="bg">
-		<h3>글쓰기</h3>
-		<form action="reply_ok.do?page=${page }&no=${no }" method="post" name="frm">
+		<h3>답글쓰기</h3>
+		<form action="qreply_ok.do?page=${page }&no=${no }" method="post" name="frm">
 			<table width="500" id="table_content">
 				<tr height="27">
-					<td width="20%" align="center">이름</td>
+					<th width="20%" align="center">이름</th>
 					<td width="80%" align="left">
 						<input type="text" size="10" name="name" value="${mvo.name}">
-						<input type="hidden" size="10" name="no" value="${mvo.no}">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">제목</td>
+					<th width="20%" align="center">제목</th>
 					<td width="80%" align="left">
-						<input type="text" size="45" name="subject">
+						<input type="text" size="45" value="${vo.qsubject }" name="subject">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">내용</td>
+					<th width="20%" align="center">내용</th>
 					<td width="80%" align="left">
 						<textarea rows="8" cols="50" name="content"></textarea>
 					</td>

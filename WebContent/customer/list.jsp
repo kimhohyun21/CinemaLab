@@ -14,7 +14,7 @@
 		<table>
 			<tr id="sub">
 				<td>
-					<a href="list.do">
+					<a href="customer.do">
 						<button class="list_btn">
 							<span>QnA</span>
 						</button>
@@ -48,9 +48,11 @@
 			<tr>
 				<td width="10%" align="center">${vo.qno}</td>
 				<td width="45%" align="left">
+					
 					<c:if test="${vo.group_tab!=0}">
 						<c:forEach var="i" begin="1" end="${vo.group_tab}">
 							&nbsp;&nbsp;
+							<img alt="reply" src="customer/img/icon_reply.gif">
 						</c:forEach>
 					</c:if>
 					<c:if test="${msg eq vo.qsubject}">

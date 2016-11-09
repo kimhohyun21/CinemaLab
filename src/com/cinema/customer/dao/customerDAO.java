@@ -75,13 +75,24 @@ public class customerDAO {
 		session.close();
 	}
 	
-	public static void customerReply(int no, customerVO vo){
+	public static void customerReply(customerVO vo){
 		SqlSession session = ssf.openSession();
-		customerVO vo2=session.selectOne("GroupData", no);
-		vo.setGroup_id(vo2.getGroup_id());
-		vo.setGroup_step(vo2.getGroup_step()+1);
-		vo.setGroup_tab(vo2.getGroup_tab()+1);
 		session.insert("CReply", vo);
+		session.commit();
+		session.close();
+	}
+	
+	public static customerVO customerGroupData(int qno){
+		SqlSession session = ssf.openSession();
+		customerVO vo = session.selectOne("GroupData", qno);
+		session.commit();
+		session.close();
+		return vo;
+	}
+	
+	public static void StepUpdate(customerVO vo){
+		SqlSession session = ssf.openSession();
+		session.update("StepUpdate",vo);
 		session.commit();
 		session.close();
 	}

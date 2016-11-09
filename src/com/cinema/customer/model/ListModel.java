@@ -19,7 +19,7 @@ public class ListModel{
 		map.put("start", start);		
 		map.put("end", end);
 		
-		System.out.println("Äª±¸¸¦");
+		System.out.println("Äª±¸¸¦ ¸¸³ª´À¶ó");
 		List<customerVO> list = customerDAO.getcustomerList(map);
 		int totalpage = customerDAO.customerTotal();
 		
