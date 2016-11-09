@@ -1,7 +1,9 @@
 package com.cinema.movieList.model;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,7 +16,7 @@ import com.cinema.movieList.dao.MovieVO;
 
 @Controller
 public class MovieReplyModel {
-	@RequestMapping("reply_ok.do")
+	@RequestMapping("replyInsert.do")
 	public String HandlerRequest(HttpServletRequest request){
 		
 		try {
@@ -36,7 +38,6 @@ public class MovieReplyModel {
 			int mNo = Integer.parseInt(no);
 			String sco = request.getParameter("star-input");
 			int score = Integer.parseInt(sco);
-			System.out.println(score);
 			String reContent = request.getParameter("content");
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
@@ -51,9 +52,37 @@ public class MovieReplyModel {
 			vo2.setmNo(mNo);
 			MovieDAO.replyInsert(vo2);
 
-			List<MovieVO> replyList = MovieDAO.getReplyData(mNo);
+			//∆‰¿Ã¡ˆ
+			String page=request.getParameter("page");
+			if(page==null) page="1";
+			int curpage=Integer.parseInt(page);
+			int rowSize=5;
+			int start=(curpage*rowSize)-(rowSize-1);
+			int end=curpage*rowSize;
 			
+			Map map=new HashMap();
+			map.put("start", start);
+			map.put("end",end);
+			map.put("mNo", mNo);
+			
+			List<MovieVO> replyList = MovieDAO.getReplyData(map);
+			int totalpage=MovieDAO.replyTotalPage(mNo);
+			int count=MovieDAO.replyCount(mNo);
+			count=count-((curpage*5)-5);
+			
+			int block=5;
+			int frompage=((curpage-1)/block*block)+1;
+			int topage=((curpage-1)/block*block)+block;
+			if(topage>totalpage) topage=totalpage;
+			
+			request.setAttribute("count", count);
+			request.setAttribute("block", block);
+			request.setAttribute("frompage", frompage);
+			request.setAttribute("topage", topage);
+			request.setAttribute("curpage", curpage);
+			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("replyList", replyList);
+			request.setAttribute("id", id);
 			request.setAttribute("vo2", vo2);
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 		} catch (Exception ex) {

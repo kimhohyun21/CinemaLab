@@ -14,7 +14,7 @@
 				$.jQueryAlert('티켓 매수를 선택해 주세요.');
 				return;
 			}
-			if(${seat==null || size!=ticketAll}){
+			if(${size!=ticketAll}){
 				$.jQueryAlert('좌석 선택을 확인해 주세요.');
 				return;
 			}
@@ -97,7 +97,7 @@
 </head>
 <body>
 	<div id="reserve">
-			<table class="paymentInfo">
+		<table class="paymentInfo">
 			<tr>
 				<th width="33%">영화</th>
 				<th width="33%">예매 정보</th>
@@ -145,9 +145,7 @@
 						<li>
 							<strong>좌석 :</strong>
 							<span style="color:#f78824;">  
-							<c:forEach var="st" items="${seat }" varStatus="status">
-								${st }<c:if test="${not status.last}">, </c:if>
-							</c:forEach>
+							${seatNo }
 							</span>
 						</li>						 
 					</ul>
@@ -177,12 +175,13 @@
 			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 			<input type="hidden" name="tname" value="${tname }">
 			<input type="hidden" name="grade" value="${grade }">
-			<input type="hidden" name="title" value="${title }">				
+			<input type="hidden" name="title" value="${title }">
+			<input type="hidden" name="poster" value="${poster }">					
 			<input type="hidden" name="theaterNo" value="${theaterNo}">
 			<input type="hidden" name="movietime" value="${movietime}">
 			<input type="hidden" name="ticketAll" value="${ticketAll}">
 			<input type="hidden" name="payment" value="${payment}">	
-			<input type="hidden" name="seat" value="${seat}">
+			<input type="hidden" name="seatNo" value="${seatNo }">
 			<table width="780px">
 				<tr>
 					<td align="left">

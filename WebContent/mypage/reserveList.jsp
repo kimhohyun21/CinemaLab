@@ -40,7 +40,7 @@
 					상영정보: ${vo.movietime }&nbsp;${vo.local }&nbsp;${vo.theater }&nbsp;${vo.theaterno }관<br>
 					좌석: ${vo.seat }<br>
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
-					<c:if test="${check == 'ok' }">	
+					<c:if test="${vo.rdate > today}">	
 						<div align="right">
 							<input type="button" value="치소">
 						</div>

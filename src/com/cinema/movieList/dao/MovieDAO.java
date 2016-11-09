@@ -39,9 +39,9 @@ public class MovieDAO {
 	}
 	
 	//´ñ±Û
-	public static List<MovieVO> getReplyData(int mNo){
+	public static List<MovieVO> getReplyData(Map map){
 		SqlSession session=ssf.openSession();
-		List<MovieVO> replyList=session.selectList("getReplyData",mNo);
+		List<MovieVO> replyList=session.selectList("getReplyData",map);
 		session.close();
 		
 		return replyList;
@@ -52,6 +52,22 @@ public class MovieDAO {
 		session.insert("replyInsert",vo);
 		session.commit();
 		session.close();
+	}
+	
+	public static int replyTotalPage(int mNo){
+		SqlSession session=ssf.openSession();
+		int totalpage=session.selectOne("replyTotalPage",mNo);
+		session.close();
+		
+		return totalpage;
+	}
+	
+	public static int replyCount(int mNo){
+		SqlSession session=ssf.openSession();
+		int count=session.selectOne("replyCount",mNo);
+		session.close();
+		
+		return count;
 	}
 }
 
