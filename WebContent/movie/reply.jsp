@@ -81,6 +81,11 @@
             }
         });
     };
+    
+    function check(){
+    	if($('input:checkbox[name=star-input]').is(':checked')==false)
+    		alert('평점을 체크해 주세요.');
+    }
 </script>
 </head>
 <body>
@@ -111,7 +116,7 @@
 						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
 					</td>
 					<td width="11%">
-						<input type="button" value="입력" id="send">
+						<input type="button" value="입력" id="send" onclick="check()">
 					</td>
 				</tr>
 			</table>
@@ -128,6 +133,11 @@
 					<div align="left">
 						<fmt:formatDate value="${vo.regDATE }" pattern="yyyy-MM-dd"/> &nbsp;|&nbsp;&nbsp;<span>${vo.id }</span>
 					</div>
+					<c:if test="${id eq vo.id }">
+						<div align="right">
+							<input type="button" value="댓글삭제" onclick="delete()">
+						</div>		
+					</c:if>
 				</li>
 			</c:forEach>
 		</ul>
