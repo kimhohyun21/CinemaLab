@@ -8,12 +8,66 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript" src="sliderengine/jquery.js"></script>
+<script type="text/javascript">
+
+$('textarea #content').click(function(){
+	alert('아이디를 입력하세요');	
+}); 
+
+function login(){
+	var f=document.loginfrm;	
+	if(f.id.value==""){
+		$.jQueryAlert("아이디를 입력하세요");
+		f.id.focus();
+		return;
+	}
+	if(f.pwd.value==""){
+		$.jQueryAlert("비밀번호를 입력하세요");
+		f.pwd.focus();
+		return;
+	}
+	f.submit();
+}
+
+/*jQuery Login*/
+jQuery.jQueryLogin = function (){
+	var $loginform = $.parseHTML('<div id="logindiv">'
+									+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
+									+'<div class="input">'
+									+'<label for="id">ID</label>'
+									+'<input type="text" placeholder="ID" name="id" id="id">'
+									+'</div>'+'<div class="input">'
+									+'<label for="pwd">PW</label>'
+									+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+									+'</div><input type="hidden" name="loginType" value="reserve">'
+									+'</form><div id="find">'
+									+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+									+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
+	$("body").append($loginform);
+	
+	$($loginform).dialog({
+		 open: $($loginform),
+	     autoOpen: true,
+	     width: 400,
+	     modal: true,
+	     resizable:false, 
+	     buttons: {	
+	       LOGIN : function() {
+		         login();
+		   },		 
+	       Cancel: function() {
+	         $(this).dialog("close");
+	       }
+	     }
+	 });
+}
+</script>
 <link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
-		<form action="reply_ok.do?no=${vo.mNo }" method="post" name="frm">
+		<form action="replyInsert.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">
 			<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
@@ -33,13 +87,12 @@
 					   		</span><br>
 					   		<output for="star-input"><b name="score">0</b>점</output>
 				  		</span>	
-				 	<!--  <input type="text" size="10" name="score"> -->
 					</td>
 					<td width="69%">
 						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required></textarea>
 					</td>
 					<td width="11%">
-						<input type="submit" value="입력" id="send">
+						<input type="button" value="입력" id="send">
 					</td>
 				</tr>
 			</table>
@@ -59,6 +112,48 @@
 				</li>
 			</c:forEach>
 		</ul>
+		<table width="1000">
+			<tr>
+				<td align="right">
+					<a href="moviedetail.do?page=${1 }&no=${vo.mNo}">
+						<img src="movie/img/begin.gif">
+					</a>
+					<c:if test="${curpage>block }">
+						<a href="moviedetail.do?page=${frompage-1 }&no=${vo.mNo}">
+							<img src="movie/img/prev.gif">
+						</a>
+					</c:if>
+					<c:if test="${curpage<=block }">
+						<a href="moviedetail.do?page=${curpage>1 ? curpage-1 : 1}&no=${vo.mNo}">
+							<img src="movie/img/prev.gif">
+						</a>
+					</c:if>
+					<c:forEach var="i" begin="${frompage }" end="${topage }">
+						[<c:if test="${curpage==i }">
+							<font color="red">${i }</font>
+						</c:if>
+						<c:if test="${curpage!=i }">
+							<a href="moviedetail.do?page=${i }&no=${vo.mNo}">${i }</a>
+						</c:if>]
+					</c:forEach>
+					<c:if test="${topage<totalpage }">
+						<a href="moviedetail.do?page=${topage+1 }&no=${vo.mNo}">
+							<img src="movie/img/next.gif">
+						</a>
+					</c:if>
+					<c:if test="${topage>=totalpage }">
+						<a href="moviedetail.do?page=${curpage<totalpage ? curpage+1 : totalpage}&no=${vo.mNo}">
+							<img src="movie/img/next.gif">
+						</a>
+					</c:if>
+					<a href="moviedetail.do?page${totalpage }&no=${vo.mNo}">
+						<img src="movie/img/end.gif">
+					</a>
+					&nbsp;
+					${curpage } page / ${totalpage } pages
+				</td>
+			</tr>
+		</table>
 	</div>
 <script type="text/javascript">	
 	var starRating = function() {
