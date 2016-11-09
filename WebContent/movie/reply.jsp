@@ -12,23 +12,9 @@
 	function loginCheck(){
 		if(${mvo==null}){
 			$.jQueryLogin();
-		}
-	}	
-	
-	function login(){
-		var f=document.loginfrm;	
-		if(f.id.value==""){
-			$.jQueryAlert("아이디를 입력하세요");
-			f.id.focus();
 			return;
 		}
-		if(f.pwd.value==""){
-			$.jQueryAlert("비밀번호를 입력하세요");
-			fs.pwd.focus();
-			return;
-		}
-		f.submit();
-	}
+	}		
 	
 	/*jQuery Login*/
 	jQuery.jQueryLogin = function (){
@@ -61,6 +47,22 @@
 		       }
 		     }
 		 });
+	}
+	
+	//로그인 창 값 입력 체크
+	function login(){
+		var f=document.loginfrm;	
+		if(f.id.value==""){
+			$.jQueryAlert("아이디를 입력하세요");
+			f.id.focus();
+			return;
+		}
+		if(f.pwd.value==""){
+			$.jQueryAlert("비밀번호를 입력하세요");
+			fs.pwd.focus();
+			return;
+		}
+		f.submit();
 	}
 	
 	/* jQuery Alert 창 */
