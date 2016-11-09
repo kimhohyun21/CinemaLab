@@ -18,14 +18,14 @@
 		<a href="reserveList.do?no=${mvo.no }">
 			<span class="mrList_btn">예매내역</span>
 		</a>
-		<a href="reserveList.do?no=${mvo.no }&type=1">			
+		<a href="reserveList.do?no=${mvo.no }&type=1">
 			<span class="mrList_btn">관람내역</span>
 		</a>
 	</div>
 	<table>
-	<c:if test="${list == null }">
+	<c:if test="${list == '[]' }">
 		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNHUKwbax2uYSi3cF5wrdrj5YNSLLx-xNQCj4aj1Ajn2duwk-tUw">
-		<br> 예매내역이 없습니다
+		<br> 내역이 없습니다
 	</c:if>
 	<c:forEach var="vo" items="${list }" begin="${start }" end="${end }" step="1">
 			<tr>
