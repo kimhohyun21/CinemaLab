@@ -16,7 +16,7 @@
 	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
 
-	</script>	
+	</script>
 </head>
 <body>
 	<div align="center">

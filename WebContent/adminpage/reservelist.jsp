@@ -36,7 +36,7 @@
 				<td width="20%" align="center">
 					<fmt:formatDate value="${vo.rdate}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td width="10%" align="center">${vo.cancle}</td>
+				<td width="10%" align="center">${vo.cancel}</td>
 				<td width="10%" align="center">${vo.refund}</td>
 			</tr>
 			</c:forEach>

@@ -15,7 +15,7 @@
 					<a href="Amovielist.do">영화리스트</a>
 				</td>
 				<td>
-					<a href="#">고객센터</a>
+					<a href="reservelist.do">고객센터</a>
 				</td>
 			</tr>
 		</table>

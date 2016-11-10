@@ -4,9 +4,11 @@ import java.util.*;
 import javax.servlet.http.*;
 import com.cinema.controller.*;
 import com.cinema.admin.dao.*;
+
 @Controller
 public class ReserveListModel{
-	@RequestMapping("abracatabra.do")
+
+	@RequestMapping("reservelist.do")
 	public String qnaList(HttpServletRequest request){
 		String page= request.getParameter("page");
 		if(page == null) page = "1";
@@ -20,14 +22,14 @@ public class ReserveListModel{
 		map.put("end", end);
 		
 		System.out.println("맨체스터 유나이티드");
-	/*	List<ReserveListVO> list = AdminDAO.reserveList(map);
-		int totalpage = AdminDAO.customerTotal();
+		List<ReserveListVO> list = AdminDAO.reserveList(map);
+		int totalpage = AdminDAO.reserveTotal();
 		
 		request.setAttribute("list", list);
 		request.setAttribute("page", curpage);
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("jsp", "../adminpage/reservelist.jsp");
-		System.out.println(list==null);*/
+		System.out.println(list==null);
 		
 		return "main/main.jsp";
 	}

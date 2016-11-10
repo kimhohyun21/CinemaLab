@@ -23,11 +23,19 @@ public class AdminDAO {
 		return list;
 	}
 	
-	public static List<ReserveVO> reserveList(Map map){
+	public static List<ReserveListVO> reserveList(Map map){
 		SqlSession session = ssf.openSession();
-		List<ReserveVO> list = session.selectList("RList", map);
+		List<ReserveListVO> list = session.selectList("RList", map);
+		session.close();
+		return list;
+	}
+	
+	public static int reserveTotal() {
+		SqlSession session = ssf.openSession();
+		int total = session.selectOne("RTotal");
 		session.close();
 		
-		return list;
+		return total;
+		
 	}
 }
