@@ -10,4 +10,7 @@
 		FROM reservelist, member WHERE reservelist.no=member.no))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
+	<select id="RTotal" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM reservelist
+	</select>
 </mapper>
