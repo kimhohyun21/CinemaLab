@@ -48,18 +48,18 @@ public class MemberReserveListModel {
 		} else {
 			// 예매내역
 			list = MemberDAO.memberReserveList(no);
-			request.setAttribute("check", "ok");
+			//request.setAttribute("check", "ok");
 			
 			//마지막페이지
-			rowCount=MemberDAO.ReserveCount2(no);			
+			rowCount=MemberDAO.ReserveCount2(no);
 		}
 		
 		//리스트에서  쓸날짜구하기
 		try {
 			for (MemberReserveListVO vo : list) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-				String sDate = sdf.format(vo.getRdate());		
-				
+				String sDate = sdf.format(vo.getRdate());
+				System.out.println(vo.getRdate());
 				vo.setListdate(sDate);
 			}
 			
@@ -74,11 +74,15 @@ public class MemberReserveListModel {
 		totalPage=(rowCount/row)+1;
 		//startPage=
 		
+		//예매취소 비교용
+		Date today=new Date();
+		
+		
+		request.setAttribute("today", today);		
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
 		request.setAttribute("totalPage", totalPage);
-		request.setAttribute("page", page);
-		
+		request.setAttribute("page", page);		
 		request.setAttribute("type", type);	// 페이지넘길때 구분
 		request.setAttribute("list", list);
 		request.setAttribute("jsp", "../mypage/mypage.jsp");

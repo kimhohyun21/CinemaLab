@@ -32,7 +32,7 @@
 										<script type="text/javascript">
 											$(function(){
 												$('div#${vo.mNo} div.amazingcarousel-hover-effect').click(function(){													
-													location.href="reserve.do?title=${vo.title}";
+													location.href="reserve.do?title=${vo.title}&poster=${vo.poster }";
 												});
 											});
 										</script>

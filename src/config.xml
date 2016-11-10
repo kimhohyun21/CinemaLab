@@ -47,6 +47,6 @@
         <mapper resource="com/cinema/movieList/dao/list-mapper.xml"/>
         <mapper resource="com/cinema/customer/dao/customer-mapper.xml"/>
         <mapper resource="com/cinema/theater/dao/theater-mapper.xml"/>
-        <!-- <mapper resource="com/cinema/admin/dao/admin-mapper.xml"/> -->
+        <mapper resource="com/cinema/admin/dao/admin-mapper.xml"/>
      </mappers>
   </configuration>

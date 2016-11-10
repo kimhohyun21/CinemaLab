@@ -14,90 +14,19 @@
 				$.jQueryAlert('티켓 매수를 선택해 주세요.');
 				return;
 			}
-			if(${seat==null || size!=ticketAll}){
+			if(${size!=ticketAll}){
 				$.jQueryAlert('좌석 선택을 확인해 주세요.');
 				return;
 			}
-			if(${mvo==null}){
-				$.jQueryLogin();
-			}else{
-				f.submit();
-			}	
+			f.submit();	
 		}; 
 		
-		function login(){
-			var f=document.loginfrm;	
-			if(f.id.value==""){
-				$.jQueryAlert("아이디를 입력하세요");
-				f.id.focus();
-				return;
-			}
-			if(f.pwd.value==""){
-				$.jQueryAlert("비밀번호를 입력하세요");
-				f.pwd.focus();
-				return;
-			}
-			f.submit();
-		}
 		
-		/*jQuery Login*/
-		jQuery.jQueryLogin = function (){
-			var $loginform = $.parseHTML('<div id="logindiv">'
-											+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
-											+'<div class="input">'
-											+'<label for="id">ID</label>'
-											+'<input type="text" placeholder="ID" name="id" id="id">'
-											+'</div>'+'<div class="input">'
-											+'<label for="pwd">PW</label>'
-											+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
-											+'</div><input type="hidden" name="loginType" value="reserve">'
-											+'</form><div id="find">'
-											+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
-											+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
-			$("body").append($loginform);
-			
-			$($loginform).dialog({
-				 open: $($loginform),
-			     autoOpen: true,
-			     width: 400,
-			     modal: true,
-			     resizable:false, 
-			     buttons: {	
-			       LOGIN : function() {
-				         login();
-				   },		 
-			       Cancel: function() {
-			         $(this).dialog("close");
-			       }
-			     }
-			 });
-		}
-			 
-			
-		
-		/* jQuery Alert 창 */
-		jQuery.jQueryAlert = function (msg) {
-	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
-	        $("body").append($messageBox);
-	
-	        $($messageBox).dialog({
-	            open: $($messageBox).append(msg),
-	            autoOpen: true,
-	            modal: true,
-	            resizable:false, 
-				width: 400,
-	            buttons: {
-	                OK: function () {
-	                    $(this).dialog("close");
-	                }
-	            }
-	        });
-	    };
 	</script>
 </head>
 <body>
 	<div id="reserve">
-			<table class="paymentInfo">
+		<table class="paymentInfo">
 			<tr>
 				<th width="33%">영화</th>
 				<th width="33%">예매 정보</th>
@@ -145,9 +74,7 @@
 						<li>
 							<strong>좌석 :</strong>
 							<span style="color:#f78824;">  
-							<c:forEach var="st" items="${seat }" varStatus="status">
-								${st }<c:if test="${not status.last}">, </c:if>
-							</c:forEach>
+							${seatNo }
 							</span>
 						</li>						 
 					</ul>
@@ -177,12 +104,13 @@
 			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 			<input type="hidden" name="tname" value="${tname }">
 			<input type="hidden" name="grade" value="${grade }">
-			<input type="hidden" name="title" value="${title }">				
+			<input type="hidden" name="title" value="${title }">
+			<input type="hidden" name="poster" value="${poster }">					
 			<input type="hidden" name="theaterNo" value="${theaterNo}">
 			<input type="hidden" name="movietime" value="${movietime}">
 			<input type="hidden" name="ticketAll" value="${ticketAll}">
 			<input type="hidden" name="payment" value="${payment}">	
-			<input type="hidden" name="seat" value="${seat}">
+			<input type="hidden" name="seatNo" value="${seatNo }">
 			<table width="780px">
 				<tr>
 					<td align="left">
