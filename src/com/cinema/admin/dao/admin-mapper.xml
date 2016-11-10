@@ -7,9 +7,9 @@
 	 	SELECT mno,title,opendate,type,rank,movielike FROM movielist
 	</select>
 	<select id="RList" parameterType="java.util.Map" resultType="reservelist">
-		SELECT rno,rtitle,name,rdate,cancle,refund
-		FROM (SELECT rno,rtitle,name,rdate,cancle,refund,Rownum as num
-		FROM(SELECT rno,rtitle,name,rdate,cancle,refund
+		SELECT rno,rtitle,name,rdate,cancel,refund
+		FROM (SELECT rno,rtitle,name,rdate,cancel,refund,Rownum as num
+		FROM(SELECT rno,rtitle,name,rdate,cancel,refund
 		FROM reservelist, member WHERE reservelist.no=member.no))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>

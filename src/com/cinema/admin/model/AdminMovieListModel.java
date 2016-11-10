@@ -32,7 +32,8 @@ public class AdminMovieListModel {
 		
 		
 		request.setAttribute("list", list);
-		request.setAttribute("jsp","../adminpage/movielist.jsp");
+		request.setAttribute("jsp","../adminpage/menubar.jsp");
+		request.setAttribute("jsp2", "../adminpage/movielist.jsp");
 		return "main/main.jsp";
 	}
 }
