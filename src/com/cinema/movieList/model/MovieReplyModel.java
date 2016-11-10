@@ -16,11 +16,19 @@ import com.cinema.movieList.dao.MovieVO;
 
 @Controller
 public class MovieReplyModel {
-	@RequestMapping("replyInsert.do")
+	@RequestMapping("replyCheck.do")
 	public String HandlerRequest(HttpServletRequest request){
 		
 		try {
 			request.setCharacterEncoding("EUC-KR");
+
+			//¥Ò±€ ªË¡¶
+			String rno=request.getParameter("reNo");
+			int reNo=0;
+			if(rno != null){
+				reNo=Integer.parseInt(rno);
+				MovieDAO.replyDelete(reNo);
+			}
 			
 			//øµ»≠≥ªøÎ
 			String no=request.getParameter("no");
@@ -34,24 +42,26 @@ public class MovieReplyModel {
 			request.setAttribute("list", list);
 			request.setAttribute("vo", vo);
 			
-			//¥Ò±€∫Œ∫–
+			//¥Ò±€ª¿‘
 			int mNo = Integer.parseInt(no);
 			String sco = request.getParameter("star-input");
-			int score = Integer.parseInt(sco);
+			int score=0;
 			String reContent = request.getParameter("content");
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
 			String id = vo1.getId();
 			Date regDATE = new Date();
-		
-			MovieVO vo2 = new MovieVO();
-			vo2.setScore(score);
-			vo2.setReContent(reContent);
-			vo2.setRegDATE(regDATE);
-			vo2.setId(id);
-			vo2.setmNo(mNo);
-			MovieDAO.replyInsert(vo2);
-
+			if(sco!=null){
+				score = Integer.parseInt(sco);
+				MovieVO vo2 = new MovieVO();
+				vo2.setScore(score);
+				vo2.setReContent(reContent);
+				vo2.setRegDATE(regDATE);
+				vo2.setId(id);
+				vo2.setmNo(mNo);
+				MovieDAO.replyInsert(vo2);
+			}
+				
 			//∆‰¿Ã¡ˆ
 			String page=request.getParameter("page");
 			if(page==null) page="1";
@@ -67,15 +77,14 @@ public class MovieReplyModel {
 			
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
-			int count=MovieDAO.replyCount(mNo);
-			count=count-((curpage*5)-5);
 			
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
-			request.setAttribute("count", count);
+			
+			request.setAttribute("mNo", mNo);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
 			request.setAttribute("topage", topage);
@@ -83,7 +92,6 @@ public class MovieReplyModel {
 			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("replyList", replyList);
 			request.setAttribute("id", id);
-			request.setAttribute("vo2", vo2);
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -29,6 +29,15 @@ public class MoviedetailModel {
 			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 			String url=vo.getTrailer();
 			url=url.substring(url.lastIndexOf("/")+1);
+			int totalScore=MovieDAO.replyTotalScore(b);
+			int count=MovieDAO.replyCount(b);
+			double result=(double)totalScore/count;
+			double movieLike=Double.parseDouble(String.format("%.2f", result));
+			Map map2=new HashMap();
+			map2.put("movieLike", movieLike);
+			map2.put("b", b);
+			MovieDAO.movieLikeUpdate(map2);
+			
 			
 			request.setAttribute("url", url);
 			request.setAttribute("list", list);
@@ -52,40 +61,18 @@ public class MoviedetailModel {
 			
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
-			int count=MovieDAO.replyCount(mNo);
-			count=count-((curpage*5)-5);
 			
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
-			request.setAttribute("count", count);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
 			request.setAttribute("topage", topage);
 			request.setAttribute("curpage", curpage);
 			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("replyList", replyList);
-			/*request.setAttribute("jsp2", "../movie/reply.jsp");*/
-			
-			/*//´ñ±Û ºÎºÐ
-			String sco = request.getParameter("star-input");
-			int score = Integer.parseInt(sco);
-			String reContent = request.getParameter("content");
-			HttpSession session = request.getSession();
-			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
-			String id = vo1.getId();
-			Date regDATE = new Date();
-		
-			MovieVO vo2 = new MovieVO();
-			vo2.setScore(score);
-			vo2.setReContent(reContent);
-			vo2.setRegDATE(regDATE);
-			vo2.setId(id);
-			vo2.setmNo(mNo);
-			MovieDAO.replyInsert(vo2);
-			request.setAttribute("vo2", vo2);*/
 			
 		}catch(Exception ex){
 			ex.printStackTrace();
