@@ -8,6 +8,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>결제 완료</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<script type="text/javascript">
+		function reserveCancel(){
+			var cancelfrom=$.parseHTML('<form id="cancelfrm" action="reserveCancel.do" method="post">'
+										+'<input type="hidden" name="pid" value="${pid}">'
+										+'<input type="hidden" name="sid" value="${sid}">'
+										+'</form>');
+			$('body').append(cancelfrom);
+			$('#cancelfrm').submit();
+		}
+	</script>
 </head>
 <body>
 	<div align="center" class="finalPaymentInfo">
@@ -84,7 +94,7 @@
 			</tr>
 		</table>
 		<input type="button" value="확인" onclick="javascript:location.href='reserveList.do?no=${mvo.no }'">
-		<input type="button" value="예매 취소" onclick="">		
+		<input type="button" value="예매 취소" onclick="reserveCancel()">		
 	</div>
 </body>
 </html>

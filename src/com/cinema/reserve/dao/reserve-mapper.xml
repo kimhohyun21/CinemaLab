@@ -46,4 +46,10 @@
 	<update id="updateRank" parameterType="java.util.Map">
 		UPDATE movieList SET rank=#{rank} WHERE title=#{title}
 	</update>
+	<select id="getReserveData" parameterType="int" resultType="Reserve">
+		SELECT paymentId, shopId FROM reserveList WHERE rNo=#{rNo}
+	</select>
+	<update id="updateCancel" parameterType="int">
+		UPDATE reserveList SET seat='null', cancel='취소완료', refund='환불완료' WHERE rNo=#{rNo}
+	</update>
 </mapper>

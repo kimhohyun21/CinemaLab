@@ -1,8 +1,6 @@
 package com.cinema.controller;
 
 import java.util.*;
-import java.io.*;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

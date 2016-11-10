@@ -121,6 +121,8 @@ public class ReserveModel4 {
 			request.setAttribute("payment", payment);
 			request.setAttribute("seatNo", seatNo);
 			request.setAttribute("mvo", mvo);
+			request.setAttribute("pid", paymentId);
+			request.setAttribute("sid", shopId);
 			
 			request.setAttribute("jsp", "../reserve/reserve4.jsp");		
 		}catch(Exception e){

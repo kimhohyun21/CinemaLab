@@ -3,6 +3,7 @@ package com.cinema.member.dao;
 import java.util.Date;
 
 public class MemberReserveListVO {
+	private int rNo;
 	private String seat;
 	private int ticket;
 	private String paytype;
@@ -19,6 +20,12 @@ public class MemberReserveListVO {
 	private int check;
 	private String listdate;
 	
+	public int getrNo() {
+		return rNo;
+	}
+	public void setrNo(int rNo) {
+		this.rNo = rNo;
+	}
 	public String getListdate() {
 		return listdate;
 	}

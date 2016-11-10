@@ -93,6 +93,21 @@ public class ReserveDAO {
 		session.commit();
 		session.close();
 	}
+	
+	public static ReserveVO getReserveData(int rNo){
+		SqlSession session=ssf.openSession();
+		ReserveVO vo=session.selectOne("getReserveData", rNo);
+		session.close();
+		
+		return vo;
+	}
+	
+	public static void updateCancel(int rNo){
+		SqlSession session=ssf.openSession();
+		session.update("updateCancel", rNo);
+		session.commit();
+		session.close();
+	}
 }
 
 
