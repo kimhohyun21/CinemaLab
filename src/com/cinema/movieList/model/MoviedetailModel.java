@@ -25,10 +25,8 @@ public class MoviedetailModel {
 			//영화 상세 내용
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
-			MovieVO vo=MovieDAO.getmoviedetail(b);
-			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
-			String url=vo.getTrailer();
-			url=url.substring(url.lastIndexOf("/")+1);
+			
+			//영화 평점 구하기
 			int totalScore=MovieDAO.replyTotalScore(b);
 			int count=MovieDAO.replyCount(b);
 			double result=(double)totalScore/count;
@@ -38,6 +36,10 @@ public class MoviedetailModel {
 			map2.put("b", b);
 			MovieDAO.movieLikeUpdate(map2);
 			
+			MovieVO vo=MovieDAO.getmoviedetail(b);
+			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
+			String url=vo.getTrailer();
+			url=url.substring(url.lastIndexOf("/")+1);
 			
 			request.setAttribute("url", url);
 			request.setAttribute("list", list);

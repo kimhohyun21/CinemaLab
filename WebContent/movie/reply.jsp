@@ -94,7 +94,6 @@
     }
     
     function replydelete(reNo){
-    	/* document.write(reNo); */
        	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
     }
 </script>
