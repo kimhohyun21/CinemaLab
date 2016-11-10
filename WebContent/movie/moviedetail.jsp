@@ -24,7 +24,7 @@
 					<img src="${vo.poster}" width="200" height="270">
 					<a href="reserve.do?title=${vo.title }&poster=${vo.poster }">
 						<button class="reserve_btn">
-							<span class="list">예매하기${no }</span>
+							<span class="list">예매하기</span>
 						</button>
 					</a>
 				</td>
