@@ -55,6 +55,44 @@ public class ReserveDAO {
 		session.close();
 		return rlist;
 	}
+	
+	public static int getTno(Map map){
+		SqlSession session=ssf.openSession();
+		int tno=session.selectOne("getTno", map);
+		session.close();
+		
+		return tno;
+	}
+	
+	public static void regReserve(Map map){
+		SqlSession session=ssf.openSession();
+		session.insert("regReserve", map);
+		session.commit();
+		session.close();
+	}
+	
+	public static int getTotalReserve(){
+		SqlSession session=ssf.openSession();
+		int totalReserve=session.selectOne("getTotalReserve");
+		session.close();
+		
+		return totalReserve;
+	}
+	
+	public static int getReserveNum(String title){
+		SqlSession session=ssf.openSession();
+		int reserveNum=session.selectOne("getReserveNum", title);
+		session.close();
+		
+		return reserveNum;
+	}
+	
+	public static void updateRank(Map map){
+		SqlSession session=ssf.openSession();
+		session.update("updateRank", map);
+		session.commit();
+		session.close();
+	}
 }
 
 

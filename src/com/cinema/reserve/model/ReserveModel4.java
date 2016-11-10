@@ -27,7 +27,7 @@ public class ReserveModel4 {
 			String year=request.getParameter("year");
 			String month=request.getParameter("month");
 			String checkedDay=request.getParameter("checkedDay");
-			String checkedDay2=request.getParameter("checkedDay2");
+			String checkedDay2=request.getParameter("checkedDay2");			
 			
 			//극장 관련
 			String tname=request.getParameter("tname");
@@ -54,6 +54,57 @@ public class ReserveModel4 {
 			
 			//이전 페이지 주소 획득
 			String url=request.getHeader("referer");
+			
+			//결제정보 획득
+			String paymentId=request.getParameter("pid");
+			String shopId=request.getParameter("sid");
+			String serverPay=request.getParameter("sp");
+			String cardOkNum=request.getParameter("cokn");
+			String paytype=request.getParameter("paytype");
+			
+			
+			//예약 정보 설정			
+			String rDate=year+"-"+month+"-"+checkedDay+" "+movietime;
+			String strPayType=null;
+			if(paytype.equals("card"))strPayType="신용카드";
+			if(paytype.equals("trans"))strPayType="계좌이체";
+			int no=mvo.getNo();
+			
+			Map map=new HashMap();
+			map.put("theater", tname);
+			map.put("theaterNo", theaterNo);
+			map.put("movietime", movietime);
+			int tNo=ReserveDAO.getTno(map);
+			
+			//예약 정보 등록
+			map=new HashMap();
+			map.put("rDate", rDate);
+			map.put("seat", seatNo);
+			map.put("ticket", ticketAll);
+			map.put("payType", strPayType);
+			map.put("payment", payment);
+			map.put("paymentId", paymentId);
+			map.put("shopId", shopId);
+			map.put("serverPay", serverPay);
+			map.put("cardOkNum", cardOkNum);
+			map.put("no", no);
+			map.put("tNo", tNo);
+			ReserveDAO.regReserve(map);
+			
+			//예매율 삽입
+			int totalReserve=ReserveDAO.getTotalReserve();
+			System.out.println(totalReserve);
+			int reserveNum=ReserveDAO.getReserveNum(title);
+			System.out.println(reserveNum);
+			double reserveRate=((double)reserveNum/totalReserve)*100;	
+			System.out.println(reserveRate);
+			double rank = Double.parseDouble(String.format("%.2f",reserveRate));
+			System.out.println(rank);
+
+			map=new HashMap();
+			map.put("title", title);
+			map.put("rank", rank);
+			ReserveDAO.updateRank(map);			
 			
 			request.setAttribute("url", url);
 			request.setAttribute("year", year);

@@ -63,7 +63,6 @@ public class ReserveModel2 {
 			}
 			seatNo=seatNo.substring(seatNo.indexOf("null")+4, seatNo.lastIndexOf(","));
 		}
-		System.out.println(seatNo);
 		
 		//Ajax 실행 구분 인자
 		String rType=request.getParameter("rType");

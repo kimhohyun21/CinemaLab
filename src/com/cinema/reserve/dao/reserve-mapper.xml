@@ -27,4 +27,23 @@
 		SELECT seat FROM reserveList NATURAL JOIN theaterList NATURAL JOIN movieList
 		WHERE rDate=to_date(#{date}, 'YYYY-MM-DD HH24:MI') AND theater=#{theater} AND title=#{title}
 	</select>
+	<select id="getTno" parameterType="java.util.Map" resultType="int">
+		SELECT tNo FROM theaterList WHERE theater=#{theater} AND theaterNo=#{theaterNo} AND movietime=#{movietime}
+	</select>
+	<insert id="regReserve" parameterType="java.util.Map">
+		<selectKey keyProperty="rNo" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(rNo)+1,1) FROM reserveList
+		</selectKey>
+		INSERT INTO reserveList VALUES (#{rNo},to_date(#{rDate}, 'YYYY-MM-DD HH24:MI'),#{seat},#{ticket},
+		#{payType},#{payment},#{paymentId},#{shopId},#{serverPay},#{cardOkNum},'','',#{no},#{tNo})
+	</insert>
+	<select id="getTotalReserve" resultType="int">
+		SELECT COUNT(*) FROM reserveList
+	</select>
+	<select id="getReserveNum" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM reserveList NATURAL JOIN theaterList NATURAL JOIN movieList WHERE title=#{title}
+	</select>
+	<update id="updateRank" parameterType="java.util.Map">
+		UPDATE movieList SET rank=#{rank} WHERE title=#{title}
+	</update>
 </mapper>
