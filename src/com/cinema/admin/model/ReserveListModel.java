@@ -6,7 +6,7 @@ import com.cinema.controller.*;
 import com.cinema.admin.dao.*;
 @Controller
 public class ReserveListModel{
-	@RequestMapping("customer.do")
+	@RequestMapping("abracatabra.do")
 	public String qnaList(HttpServletRequest request){
 		String page= request.getParameter("page");
 		if(page == null) page = "1";
