@@ -26,16 +26,6 @@ public class MoviedetailModel {
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
 			
-			//영화 평점 구하기
-			int totalScore=MovieDAO.replyTotalScore(b);
-			int count=MovieDAO.replyCount(b);
-			double result=(double)totalScore/count;
-			double movieLike=Double.parseDouble(String.format("%.2f", result));
-			Map map2=new HashMap();
-			map2.put("movieLike", movieLike);
-			map2.put("b", b);
-			MovieDAO.movieLikeUpdate(map2);
-			
 			MovieVO vo=MovieDAO.getmoviedetail(b);
 			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 			String url=vo.getTrailer();
