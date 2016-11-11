@@ -114,10 +114,7 @@
 			<table width="780px">
 				<tr>
 					<td align="left">
-						<input type="button" value="이전페이지" onclick="javascript:location.href='reserve.do?'
-						+'year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}'
-						+'&local=${local }&tname=${tname }&grade=${grade }&title=${title}'
-						+'&poster=${poster }&theaterNo=${theaterNo2}&movietime=${movietime}';">
+						<input type="button" value="이전페이지" onclick="javascript:location.href='${url}';">
 					</td>
 					<td align="right">
 						<input type="button" value="다음페이지" onclick="send()">
