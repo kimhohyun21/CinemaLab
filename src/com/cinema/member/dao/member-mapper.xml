@@ -44,12 +44,12 @@
 	<select id="memberWhatchData" parameterType="int" resultType="memberReserve">
 		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
 		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
-		WHERE no=#{no} ORDER BY rDate DESC
+		WHERE no=#{no} AND cancel IS NULL ORDER BY rDate DESC
 	</select>
 	<select id="memberReserveList" parameterType="int" resultType="memberReserve">
 		SELECT rNo, rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
 		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
-		WHERE no=#{no} AND rdate>sysdate AND cancel!='취소완료' ORDER BY rDate ASC
+		WHERE no=#{no} AND rdate>sysdate AND cancel IS NULL ORDER BY rDate ASC
 	</select>
 	<select id="ReserveCount" parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM reserveList WHERE no=#{no}
