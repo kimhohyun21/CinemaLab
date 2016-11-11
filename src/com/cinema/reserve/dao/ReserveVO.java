@@ -11,6 +11,8 @@ public class ReserveVO {
 	private String theater;
 	private String seat;
 	private String poster;
+	private String paymentId;
+	private String shopId;
 	
 	public int getmNo() {
 		return mNo;
@@ -72,4 +74,17 @@ public class ReserveVO {
 	public void setPoster(String poster) {
 		this.poster = poster;
 	}
+	public String getPaymentId() {
+		return paymentId;
+	}
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
+	}
+	public String getShopId() {
+		return shopId;
+	}
+	public void setShopId(String shopId) {
+		this.shopId = shopId;
+	}
+	
 }

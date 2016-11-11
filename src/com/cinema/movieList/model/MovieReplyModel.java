@@ -16,15 +16,23 @@ import com.cinema.movieList.dao.MovieVO;
 
 @Controller
 public class MovieReplyModel {
-	@RequestMapping("replyInsert.do")
+	@RequestMapping("replyCheck.do")
 	public String HandlerRequest(HttpServletRequest request){
 		
 		try {
 			request.setCharacterEncoding("EUC-KR");
-			
-			//영화내용
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
+			
+			//댓글 삭제
+			String rno=request.getParameter("reNo");
+			int reNo=0;
+			if(rno != null){
+				reNo=Integer.parseInt(rno);
+				MovieDAO.replyDelete(reNo);
+			}
+			
+			//영화내용
 			MovieVO vo=MovieDAO.getmoviedetail(b);
 			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 			String url=vo.getTrailer();
@@ -34,24 +42,26 @@ public class MovieReplyModel {
 			request.setAttribute("list", list);
 			request.setAttribute("vo", vo);
 			
-			//댓글부분
+			//댓글삽입
 			int mNo = Integer.parseInt(no);
 			String sco = request.getParameter("star-input");
-			int score = Integer.parseInt(sco);
+			int score=0;
 			String reContent = request.getParameter("content");
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
 			String id = vo1.getId();
 			Date regDATE = new Date();
-		
-			MovieVO vo2 = new MovieVO();
-			vo2.setScore(score);
-			vo2.setReContent(reContent);
-			vo2.setRegDATE(regDATE);
-			vo2.setId(id);
-			vo2.setmNo(mNo);
-			MovieDAO.replyInsert(vo2);
-
+			if(sco!=null){
+				score = Integer.parseInt(sco);
+				MovieVO vo2 = new MovieVO();
+				vo2.setScore(score);
+				vo2.setReContent(reContent);
+				vo2.setRegDATE(regDATE);
+				vo2.setId(id);
+				vo2.setmNo(mNo);
+				MovieDAO.replyInsert(vo2);
+			}
+			
 			//페이지
 			String page=request.getParameter("page");
 			if(page==null) page="1";
@@ -67,15 +77,23 @@ public class MovieReplyModel {
 			
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
-			int count=MovieDAO.replyCount(mNo);
-			count=count-((curpage*5)-5);
 			
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
-			request.setAttribute("count", count);
+			//영화 평점 구하기
+			int totalScore=MovieDAO.replyTotalScore(b);
+			int count=MovieDAO.replyCount(b);
+			double result=(double)totalScore/count;
+			double movieLike=Double.parseDouble(String.format("%.2f", result));
+			Map map2=new HashMap();
+			map2.put("movieLike", movieLike);
+			map2.put("b", b);
+			MovieDAO.movieLikeUpdate(map2);
+		
+			request.setAttribute("mNo", mNo);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
 			request.setAttribute("topage", topage);
@@ -83,7 +101,6 @@ public class MovieReplyModel {
 			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("replyList", replyList);
 			request.setAttribute("id", id);
-			request.setAttribute("vo2", vo2);
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -7,6 +7,7 @@ import com.cinema.admin.dao.*;
 
 @Controller
 public class ReserveListModel{
+
 	@RequestMapping("reservelist.do")
 	public String qnaList(HttpServletRequest request){
 		String page= request.getParameter("page");
@@ -17,7 +18,7 @@ public class ReserveListModel{
 		int end = curpage*rowSize;
 		
 		Map map = new HashMap();
-		map.put("start", start);		
+		map.put("start", start);
 		map.put("end", end);
 		
 		System.out.println("맨체스터 유나이티드");

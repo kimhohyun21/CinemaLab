@@ -42,4 +42,11 @@ public class AdminDAO {
 		session.close();
 		return vo;
 	}
+	
+	public static MovieVO adminMovieModify(int no){
+		SqlSession session = ssf.openSession();
+		MovieVO vo=session.selectOne("adminMovieModify",no);
+		session.close();
+		return vo;
+	}
 }
