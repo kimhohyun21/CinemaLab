@@ -22,9 +22,9 @@
 					<td width="10%">${vo.theaterNo }包</td>
 					<c:forEach var="vo2" items="${vo.timeList}">
 						<td>
-							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+							&checkedDay2=${checkedDay2}&local=${local }&tname=${theater }&grade=${grade }
+							&poster=${vo.poster }&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
 								${vo2.movietime} 
 							</a>
 						</td>
@@ -41,9 +41,9 @@
 					<td width="10%">${vo.theaterNo }包</td>
 					<c:forEach var="vo2" items="${vo.timeList}">
 						<td>
-							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+							&checkedDay2=${checkedDay2}&local=${local }&tname=${theater }&grade=${grade }
+							&poster=${vo.poster }&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
 								${vo2.movietime}
 							</a>
 						</td>
@@ -60,9 +60,9 @@
 					<td width="10%">${vo.theaterNo }包</td>
 					<c:forEach var="vo2" items="${vo.timeList }">
 						<td>
-							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+							&checkedDay2=${checkedDay2}&local=${local }&tname=${theater }&grade=${grade }
+							&poster=${vo.poster }&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
 								${vo2.movietime } 
 							</a>
 						</td>
@@ -79,9 +79,9 @@
 					<td width="10%">${vo.theaterNo }包</td>
 					<c:forEach var="vo2" items="${vo.timeList }">
 						<td>
-							<a href="theater.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-							&checkedDay2=${checkedDay2}&local=${local }&theater=${theater }&grade=${grade }
-							&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
+							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+							&checkedDay2=${checkedDay2}&local=${local }&tname=${theater }&grade=${grade }
+							&poster=${vo.poster }&title=${vo.title}&theaterNo=${vo.theaterNo}&movietime=${vo2.movietime}">
 								${vo2.movietime} 
 							</a>
 						</td>

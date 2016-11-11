@@ -25,6 +25,7 @@ public class MoviedetailModel {
 			//영화 상세 내용
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
+			
 			MovieVO vo=MovieDAO.getmoviedetail(b);
 			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 			String url=vo.getTrailer();
@@ -52,41 +53,18 @@ public class MoviedetailModel {
 			
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
-			int count=MovieDAO.replyCount(mNo);
-			count=count-((curpage*5)-5);
 			
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
-			request.setAttribute("no",no);
-			request.setAttribute("count", count);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
 			request.setAttribute("topage", topage);
 			request.setAttribute("curpage", curpage);
 			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("replyList", replyList);
-			/*request.setAttribute("jsp2", "../movie/reply.jsp");*/
-			
-			/*//댓글 부분
-			String sco = request.getParameter("star-input");
-			int score = Integer.parseInt(sco);
-			String reContent = request.getParameter("content");
-			HttpSession session = request.getSession();
-			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
-			String id = vo1.getId();
-			Date regDATE = new Date();
-		
-			MovieVO vo2 = new MovieVO();
-			vo2.setScore(score);
-			vo2.setReContent(reContent);
-			vo2.setRegDATE(regDATE);
-			vo2.setId(id);
-			vo2.setmNo(mNo);
-			MovieDAO.replyInsert(vo2);
-			request.setAttribute("vo2", vo2);*/
 			
 		}catch(Exception ex){
 			ex.printStackTrace();

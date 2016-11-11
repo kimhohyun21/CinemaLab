@@ -63,7 +63,6 @@ public class ReserveModel2 {
 			}
 			seatNo=seatNo.substring(seatNo.indexOf("null")+4, seatNo.lastIndexOf(","));
 		}
-		System.out.println(seatNo);
 		
 		//Ajax 실행 구분 인자
 		String rType=request.getParameter("rType");
@@ -96,7 +95,10 @@ public class ReserveModel2 {
 		//세션 값 받기
 		HttpSession session=request.getSession();
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
+		//이전 페이지 주소 획득
+		String url=request.getHeader("referer");
 		
+		request.setAttribute("url", url);
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
 		request.setAttribute("checkedDay", checkedDay);

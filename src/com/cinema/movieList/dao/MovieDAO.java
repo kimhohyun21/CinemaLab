@@ -69,6 +69,28 @@ public class MovieDAO {
 		
 		return count;
 	}
+	
+	public static void replyDelete(int reNo){
+		SqlSession session=ssf.openSession();
+		session.delete("replyDelete",reNo);
+		session.commit();
+		session.close();
+	}
+	
+	public static int replyTotalScore(int mNo){
+		SqlSession session=ssf.openSession();
+		int totalScore=session.selectOne("replyTotalScore", mNo);
+		session.close();
+		
+		return totalScore;
+	}
+	
+	public static void movieLikeUpdate(Map map){
+		SqlSession session=ssf.openSession();
+		session.update("movieLikeUpdate", map);
+		session.commit();
+		session.close();
+	}
 }
 
 

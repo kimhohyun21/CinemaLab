@@ -84,16 +84,24 @@
         });
     };
     
-    function check(){
-    	if($('input:checkbox[name=star-input]').is(':checked')==false)
+    function replycheck(){
+    	var f=document.frm;
+    	if($(':input[name=star-input]:radio:checked').val()==null)
     		alert('평점을 체크해 주세요.');
+    	else{
+    		f.submit();
+    	}
+    }
+    
+    function replydelete(reNo){
+       	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
     }
 </script>
 </head>
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
-		<form action="replyInsert.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">
+		<form action="replyCheck.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">
 			<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
@@ -115,10 +123,10 @@
 				  		</span>	
 					</td>
 					<td width="69%">
-						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+						<textarea name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
 					</td>
 					<td width="11%">
-						<input type="button" value="입력" id="send" onclick="check()">
+						<input type="button" value="입력" id="send" onclick="replycheck()">
 					</td>
 				</tr>
 			</table>
@@ -135,9 +143,9 @@
 					<div align="left">
 						<fmt:formatDate value="${vo.regDATE }" pattern="yyyy-MM-dd"/> &nbsp;|&nbsp;&nbsp;<span>${vo.id }</span>
 					</div>
-					<c:if test="${id eq vo.id }">
+					<c:if test="${mvo.id eq vo.id }">
 						<div align="right">
-							<input type="button" value="댓글삭제" onclick="replydelete()">
+							<input type="button" value="댓글삭제" onclick="replydelete('${vo.reNo}')">
 						</div>		
 					</c:if>
 				</li>

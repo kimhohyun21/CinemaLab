@@ -49,13 +49,13 @@
 			        	카드 승인번호 : rsp.apply_num
 			        */
 			        $.jQueryAlert(msg);
-			        location.href="reserve4.do?"
-			        			+"year=${year }&month=${month }&checkedDay=${checkedDay }&checkedDay2=${checkedDay2 }"
-			        			+"&tname=${tname }&grade=${grade }&title=${title }&poster=${poster }&theaterNo=${theaterNo}"
-			        			+"&movietime=${movietime}&ticketAll=${ticketAll}&payment=${payment}&seatNo=${seatNo }"
-			        			+"&pid="+ rsp.imp_uid+"&sid="+ rsp.merchant_uid
-			        			+"&sp="+rsp.paid_amount+"&cokn="+rsp.apply_num;
-			      
+			        var $frmBox = $.parseHTML('<input type="hidden" name="pid" value='+rsp.imp_uid+'>'
+			        						+'<input type="hidden" name="sid" value='+rsp.merchant_uid+'>'
+			        						+'<input type="hidden" name="sp" value='+rsp.paid_amount+'>'
+			        						+'<input type="hidden" name="cokn" value='+rsp.apply_num+'>'
+			        						+'<input type="hidden" name="paytype" value='+type+'>');
+			        $('#paymentfrm').append($frmBox);
+			        $('#paymentfrm').submit();
 			    } else {
 			        var msg = '결제에 실패하였습니다.<br/>';
 			        msg += '에러내용 : ' + rsp.error_msg+'.';	
@@ -64,7 +64,7 @@
 			    
 			});
 		}	
-		
+
 		/* jQuery Alert 창 */
 		jQuery.jQueryAlert = function (msg) {
             var $messageBox = $.parseHTML('<div id="alertBox"></div>');
@@ -79,7 +79,7 @@
 				width: 400,
                 buttons: {
                     OK: function () {
-                        $(this).dialog("close");
+                        $('div #alertBox').dialog("close");
                     }
                 }
             });
@@ -169,6 +169,21 @@
 				<td align="center">
 					<input type="radio" name="pay" value="card" onclick="display1()" checked>신용카드
 					<input type="radio" name="pay" value="account" onclick="display2()">계좌이체
+					<form id="paymentfrm" action="reserve4.do" method="post">
+						<input type="hidden" name="year" value="${year }">
+						<input type="hidden" name="month" value="${month }">
+						<input type="hidden" name="checkedDay" value="${checkedDay }">
+						<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+						<input type="hidden" name="tname" value="${tname }">
+						<input type="hidden" name="grade" value="${grade }">
+						<input type="hidden" name="title" value="${title }">
+						<input type="hidden" name="poster" value="${poster }">					
+						<input type="hidden" name="theaterNo" value="${theaterNo}">
+						<input type="hidden" name="movietime" value="${movietime}">
+						<input type="hidden" name="ticketAll" value="${ticketAll}">
+						<input type="hidden" name="payment" value="${payment}">	
+						<input type="hidden" name="seatNo" value="${seatNo }">
+					</form>
 				</td>
 			</tr>
 		</table>
