@@ -10,8 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="reserve/style.css">
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
-		function send(){
-			
+		function send(){			
 			if(${movietime==null || movietime==""}){
 				$.jQueryAlert('상영시간을 선택해 주세요.');
 				return;
@@ -19,7 +18,6 @@
 			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
 			+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
 			+"#nav";
-
 		}
 		
 		/* jQuery Alert 창 */
