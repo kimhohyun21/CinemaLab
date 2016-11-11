@@ -12,12 +12,17 @@
 		
 		f.submit();
 }
+	function num(){
+		if( (event.keyCode<48)||(event.keyCode>57) ){
+			event.returnValue=false;
+		}
+	}
 </script>
 </head>
 <body>
 	<div align="center">
 	<form action="main.do" name="frm">
-		<table width="600" height="300" class="TT">
+		<table width="700" height="300" class="TT">
 			<tr>
 				<th align="right">
 					제목
@@ -65,9 +70,9 @@
 					상영일
 				</th>
 				<td align="left">					
-					<input type="number" value="${year }" name="year" size="1" placeholder="년도">
-					<b>- </b><input type="number" value="${month }" name="month" size="1" placeholder="월">
-					<b>- </b><input type="number" value="${day }" name="day" size="1" placeholder="일">
+					<input type=text value="${year }" name="year" size="1" placeholder="년도" onkeydown="num()">
+					<b>- </b><input type="text" value="${month }" name="month" size="1" placeholder="월">
+					<b>- </b><input type="text" value="${day }" name="day" width="10" placeholder="일">
 				</td>
 				<th align="right">
 					상영종류

@@ -13,9 +13,10 @@ import com.cinema.movieList.dao.MovieVO;
 @Controller
 public class AModifyMovieListModel {
 	@RequestMapping("Amodifymovielist.do")
-	public String modifyMovieList(HttpServletRequest request){		
-		String sno=(String) request.getParameter("no");		
+	public String modifyMovieList(HttpServletRequest request){
+		String sno=(String) request.getParameter("no");	
 		int no = Integer.parseInt(sno);		
+		
 		
 		//영화정보들 가져오기
 		MovieVO vo=AdminDAO.adminMovieModify(no);
