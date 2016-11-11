@@ -12,7 +12,6 @@
 		function reserveCancel(){
 			var cancelfrom=$.parseHTML('<form id="cancelfrm" action="reserveCancel.do" method="post">'
 										+'<input type="hidden" name="pid" value="${pid}">'
-										+'<input type="hidden" name="sid" value="${sid}">'
 										+'</form>');
 			$('body').append(cancelfrom);
 			$('#cancelfrm').submit();

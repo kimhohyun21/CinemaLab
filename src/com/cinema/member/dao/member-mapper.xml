@@ -42,7 +42,7 @@
 		UPDATE member SET pwd=#{pwd} WHERE no=#{no}
 	</update>	
 	<select id="memberWhatchData" parameterType="int" resultType="memberReserve">
-		SELECT rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
+		SELECT rNo, rDate, seat, ticket, payType, payment, local, theater, theaterNo, movieTime, title,poster,mno
 		FROM reserveList NATURAL JOIN theaterList NATURAL JOIN MOVIELIST
 		WHERE no=#{no} AND cancel IS NULL ORDER BY rDate DESC
 	</select>

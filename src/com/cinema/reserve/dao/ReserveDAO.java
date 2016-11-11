@@ -108,6 +108,14 @@ public class ReserveDAO {
 		session.commit();
 		session.close();
 	}
+	
+	public static int getRno(String pid){
+		SqlSession session=ssf.openSession();
+		int rNo=session.selectOne("getRno", pid);
+		session.close();
+		
+		return rNo;
+	}
 }
 
 

@@ -14,10 +14,6 @@
 	</style>
 	<script type="text/javascript">
 		function reserveCancel(){
-			var cancelfrom=$.parseHTML('<form id="cancelfrm" action="reserveCancel.do" method="post">'
-										+'<input type="hidden" name="rNo" value="${vo.rNo}">'					
-										+'</form>');
-			$('body').append(cancelfrom);
 			$('#cancelfrm').submit();
 		}
 	</script>
@@ -51,6 +47,9 @@
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
 					<c:if test="${vo.rdate > today}">	
 						<div align="right">
+							<form id="cancelfrm" action="reserveCancel.do" method="post">
+								<input type="hidden" name="rNo" value="${vo.rNo}">					
+							</form>
 							<input type="button" value="예매취소" onclick="reserveCancel()">
 						</div>
 					</c:if>
