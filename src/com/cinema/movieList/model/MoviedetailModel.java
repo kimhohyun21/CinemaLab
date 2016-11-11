@@ -21,11 +21,23 @@ public class MoviedetailModel {
 	public String HandlerRequest(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
-			
-			//영화 상세 내용
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
 			
+			HttpSession session = request.getSession();
+			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
+			String id = vo1.getId();
+			int memberNo=vo1.getNo();
+			
+			//댓글 기록 확인
+			Map map=new HashMap();
+			map.put("mNo", b);
+			map.put("memberNo", memberNo);
+			int check=MovieDAO.replyRecordCheck(map);
+			request.setAttribute("check", check);
+			
+			
+			//영화 상세 내용
 			MovieVO vo=MovieDAO.getmoviedetail(b);
 			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 			String url=vo.getTrailer();
@@ -46,7 +58,7 @@ public class MoviedetailModel {
 			int start=(curpage*rowSize)-(rowSize-1);
 			int end=curpage*rowSize;
 			
-			Map map=new HashMap();
+			map=new HashMap();
 			map.put("start", start);
 			map.put("end",end);
 			map.put("mNo", mNo);
@@ -59,6 +71,7 @@ public class MoviedetailModel {
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
+			request.setAttribute("check", check);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
 			request.setAttribute("topage", topage);

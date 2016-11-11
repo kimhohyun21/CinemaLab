@@ -101,8 +101,9 @@
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
-		<form action="replyCheck.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">
-			<table id="reply_table" width="1000">
+		<c:if test="${check=='0'}">
+		<form action="replyCheck.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">	
+				<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
 						평점<br>
@@ -129,8 +130,9 @@
 						<input type="button" value="입력" id="send" onclick="replycheck()">
 					</td>
 				</tr>
-			</table>
+				</table>
 		</form>
+		</c:if>
 		<ul id="ul">
 			<c:forEach var="vo" items="${replyList }">
 				<li>
@@ -142,12 +144,11 @@
 					</div>
 					<div align="left">
 						<fmt:formatDate value="${vo.regDATE }" pattern="yyyy-MM-dd"/> &nbsp;|&nbsp;&nbsp;<span>${vo.id }</span>
+						<c:if test="${mvo.id eq vo.id }">
+							<input class="replyDeleteBtn" type="button" value="댓글삭제" onclick="replydelete('${vo.reNo}')">	
+						</c:if>
 					</div>
-					<c:if test="${mvo.id eq vo.id }">
-						<div align="right">
-							<input type="button" value="댓글삭제" onclick="replydelete('${vo.reNo}')">
-						</div>		
-					</c:if>
+					
 				</li>
 			</c:forEach>
 		</ul>
