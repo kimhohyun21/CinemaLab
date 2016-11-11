@@ -9,8 +9,15 @@
 	<title>영화 상세</title>
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
-<body>
+<body>	
 	<div class="detail">
+	<c:if test="${mvo.admin eq '1' }">
+		<div align="right">
+			<a href="Amodifymovielist.do?no=${no }">
+				<b style="color: red;">수정하기</b>
+			</a>
+		</div>
+	</c:if>
 		<table id="cont" align="center" width="1000">
 			<tr>
 				<td align="center" rowspan="6" width="200"><br>
@@ -65,7 +72,7 @@
 				<td colspan="2" width="867">
 					<span>줄거리 : </span><pre>${vo.content }</pre><br><br>
 				</td>
-			</tr>
+			</tr>			
 			<tr align="center">
 				<c:forEach items="${list }" var="cvo">
 					<td style="font-size: 12px" width="33%" >
@@ -84,34 +91,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

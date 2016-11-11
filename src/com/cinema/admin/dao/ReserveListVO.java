@@ -7,7 +7,7 @@ public class ReserveListVO {
 	private Date rdate;
 	private String title;
 	private String name;
-	private String cancle;
+	private String cancel;
 	private String refund;
 	private String seat;
 	private int ticket;
@@ -45,11 +45,11 @@ public class ReserveListVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCancle() {
-		return cancle;
+	public String getcancel() {
+		return cancel;
 	}
-	public void setCancle(String cancle) {
-		this.cancle = cancle;
+	public void setcancel(String cancel) {
+		this.cancel = cancel;
 	}
 	public String getRefund() {
 		return refund;

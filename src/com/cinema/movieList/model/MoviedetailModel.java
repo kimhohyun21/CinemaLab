@@ -60,6 +60,7 @@ public class MoviedetailModel {
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
+			request.setAttribute("no",no);
 			request.setAttribute("count", count);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
