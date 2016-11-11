@@ -9,6 +9,7 @@
 </head>
 <body>
 	<center>
+	<div class="bg">
 		<table width="700">
 			<tr>
 				<th align="center">
@@ -52,6 +53,7 @@
 				<%-- <a href="moviedetail.do?no=${vo.mNo }"></a> --%>
 			</c:forEach>
 		</table>
+	</div>
 	</center>
 </body>
 </html>

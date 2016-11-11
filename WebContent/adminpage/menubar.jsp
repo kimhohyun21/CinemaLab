@@ -9,7 +9,7 @@
 </head>
 <body>
 	<center>
-		<table border="1">
+		<table border="1" class="bg">
 			<tr>
 				<td>
 					<a href="Amovielist.do">영화리스트</a>

@@ -12,7 +12,7 @@ import com.cinema.movieList.*;
 import com.cinema.movieList.dao.MovieVO;
 
 @Controller
-public class AdminMovieListModel {
+public class AMovieListModel {
 	@RequestMapping("Amovielist.do")
 	public String movieList(HttpServletRequest request){
 		//무비 리스트 뽑아오기
