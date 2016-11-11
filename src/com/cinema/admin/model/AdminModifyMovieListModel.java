@@ -10,13 +10,13 @@ import com.cinema.movieList.dao.MovieVO;
 @Controller
 public class AdminModifyMovieListModel {
 	@RequestMapping("Amodifymovielist.do")
-	public String modifyMovieList(HttpServletRequest request){
-		System.out.println("@들어옴@");
-		String sno=(String) request.getAttribute("no");
-		int no = Integer.parseInt(sno);
-		System.out.println("출발함");
+	public String modifyMovieList(HttpServletRequest request){		
+		String sno=(String) request.getParameter("no");		
+		int no = Integer.parseInt(sno);		
+		
+		//영화정보들 가져오기
 		MovieVO vo=AdminDAO.adminMovieModify(no);
-		System.out.println("돌아옴");
+		
 		request.setAttribute("vo", vo);
 		request.setAttribute("jsp", "../adminpage/menubar.jsp");
 		request.setAttribute("jsp2", "../adminpage/moviemodify.jsp");

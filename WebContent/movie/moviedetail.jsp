@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>영화 상세</title>
 	<link rel="stylesheet" type="text/css" href="movie/style.css">
-</head>
+</head>	
 <body>	
 	<div class="detail">
 	<c:if test="${mvo.admin eq '1' }">
