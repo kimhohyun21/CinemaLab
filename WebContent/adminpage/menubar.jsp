@@ -8,20 +8,17 @@
 <link rel="stylesheet" type="text/css" href="adminpage/astyle.css">
 </head>
 <body>
-	<center>
-		<table border="1">
-			<tr>
-				<td>
-					<a href="Amovielist.do">영화리스트</a>
-				</td>
-				<td>
-					<a href="reservelist.do">고객센터</a>
-				</td>
-			</tr>
-		</table>
-		<div>
-			<jsp:include page="${jsp2 }"></jsp:include>
-		</div>
-	</center>
+   <center>
+      <br>
+         <a href="Amovielist.do">
+            <button>영화리스트</button>
+         </a>         
+         <a href="reservelist.do">
+            <button>고객센터</button>
+         </a>      
+      <div>
+         <jsp:include page="${jsp2 }"></jsp:include>
+      </div>
+   </center>
 </body>
 </html>

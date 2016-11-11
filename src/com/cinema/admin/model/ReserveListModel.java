@@ -28,7 +28,8 @@ public class ReserveListModel{
 		request.setAttribute("list", list);
 		request.setAttribute("page", curpage);
 		request.setAttribute("totalpage", totalpage);
-		request.setAttribute("jsp", "../adminpage/reservelist.jsp");
+		request.setAttribute("jsp", "../adminpage/menubar.jsp");
+		request.setAttribute("jsp2", "../adminpage/reservelist.jsp");
 		System.out.println(list==null);
 		
 		return "main/main.jsp";

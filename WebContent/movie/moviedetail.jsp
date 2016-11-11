@@ -13,12 +13,13 @@
    <div class="detail">
       <div class="detail2">
          <div id="poster_div">
-            <img align="left" src="${vo.poster}" width="200" height="270"
-               id="poster"><br> <a
-               href="reserve.do?title=${vo.title }&poster=${vo.poster }">
-               <button class="reserve_btn">
-                  <span class="list">예매하기</span>
-               </button>
+            <img align="left" src="${vo.poster}" width="200" height="270" id="poster"><br>
+            <a href="reserve.do?title=${vo.title }&poster=${vo.poster }">
+               <c:if test="${type eq '1'}">
+	               <button class="reserve_btn">
+	                  <span class="list">예매하기</span>
+	               </button>
+               </c:if>
             </a>
          </div>
          <div id="title">

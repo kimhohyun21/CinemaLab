@@ -40,6 +40,7 @@ public class MoviedetailModel {
 			//페이지 설정
 			int mNo=Integer.parseInt(no);
 			String page=request.getParameter("page");
+			String type=request.getParameter("type");
 			if(page==null) page="1";
 			int curpage=Integer.parseInt(page);
 			int rowSize=5;
@@ -59,6 +60,7 @@ public class MoviedetailModel {
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
+			request.setAttribute("type", type);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
 			request.setAttribute("topage", topage);
