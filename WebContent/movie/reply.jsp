@@ -123,7 +123,7 @@
 				  		</span>	
 					</td>
 					<td width="69%">
-						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+						<textarea name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
 					</td>
 					<td width="11%">
 						<input type="button" value="입력" id="send" onclick="replycheck()">
