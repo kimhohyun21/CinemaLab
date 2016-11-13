@@ -9,7 +9,7 @@
 	<title>Reserve1 MovieTime</title>
 	<!-- Ajax ½ÇÇà -->					
 	<script type="text/javascript">
-	 	function movietimeSelect(no){
+	 	function timeSelect(no){
 			$('p.movietime').css("background", "#fdedcc");
 			$('#movietime'+no).css("background", "#fad385");
 			
@@ -71,7 +71,7 @@
 							<input type="hidden" name="movietime" value="${vo.movietime }">
 							<input type="hidden" name="rType" value="timecheck">
 						</form>
-						<a href="javascript:movietimeSelect('${vo.movietime }');">
+						<a href="javascript:timeSelect('${vo.movietime }');">
 							<p id="movietime${vo.movietime }" class="movietime">${vo.movietime }</p>
 						</a>
 					</c:forEach>
