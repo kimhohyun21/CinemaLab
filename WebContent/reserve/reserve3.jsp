@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>결제</title>
+	<title>Reserve3 Payment</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 	<script type="text/javascript">	
@@ -35,7 +35,7 @@
 			    pg : 'html5_inicis',
 			    pay_method : type,
 			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : '${title} 예매',
+			    name : 'Marvel Cinema ${title} 예매',
 			    amount : '${payment }',
 			    buyer_name : '${mvo.name }',
 			    buyer_email :''

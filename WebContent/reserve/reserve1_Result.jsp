@@ -1,26 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>결제 완료</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<title>Reserve Result</title>
 	<script type="text/javascript">
-		function reserveCancel(){
-			var cancelfrom=$.parseHTML('<form id="cancelfrm" action="reserveCancel.do" method="post">'
-										+'<input type="hidden" name="pid" value="${pid}">'
-										+'</form>');
-			$('body').append(cancelfrom);
-			$('#cancelfrm').submit();
+		function send(){
+			var f=document.frm;
+			if(${movietime==null || movietime==""}){
+				$.jQueryAlert('상영시간을 선택해 주세요.');
+				return;
+			}
+			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
+			+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
+			+"#nav";
 		}
+		
+		/* jQuery Alert 창 */
+		jQuery.jQueryAlert = function (msg) {
+	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+	        $("body").append($messageBox);
+	
+	        $($messageBox).dialog({
+	            open: $($messageBox).append(msg),
+	            autoOpen: true,
+	            modal: true,
+	            resizable:false, 
+				width: 400,
+	            buttons: {
+	                OK: function () {
+	                    $(this).dialog("close");
+	                }
+	            }
+	        });
+	    };		
 	</script>
 </head>
 <body>
-	<div align="center" class="finalPaymentInfo">
-		<h2>예매 완료 내역</h2>
+	<div id="reserve">
 		<table class="paymentInfo">
 			<tr>
 				<th width="33%">영화</th>
@@ -92,8 +112,16 @@
 				</td>
 			</tr>
 		</table>
-		<input type="button" value="확인" onclick="javascript:location.href='reserveList.do?no=${mvo.no }'">
-		<input type="button" value="예매 취소" onclick="reserveCancel()">		
-	</div>
+		<table width="780px">
+			<tr>
+				<td align="left">
+					<input type="button" value="처음으로" class="back_button"	onclick="javascript:location.href='${url}';">
+				</td>
+				<td align="right">
+					<input type="button" value="다음페이지" class="next_button" onclick="send()">
+				</td>
+			</tr>
+		</table>
+	</div>	 
 </body>
 </html>

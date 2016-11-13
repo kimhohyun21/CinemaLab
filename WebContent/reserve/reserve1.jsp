@@ -10,34 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="reserve/style.css">
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
-		function send(){			
-			if(${movietime==null || movietime==""}){
-				$.jQueryAlert('상영시간을 선택해 주세요.');
-				return;
-			}	
-			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
-			+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
-			+"#nav";
-		}
 		
-		/* jQuery Alert 창 */
-		jQuery.jQueryAlert = function (msg) {
-	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
-	        $("body").append($messageBox);
-	
-	        $($messageBox).dialog({
-	            open: $($messageBox).append(msg),
-	            autoOpen: true,
-	            modal: true,
-	            resizable:false, 
-				width: 400,
-	            buttons: {
-	                OK: function () {
-	                    $(this).dialog("close");
-	                }
-	            }
-	        });
-	    };
 	</script>
 </head>
 <body>
@@ -57,7 +30,7 @@
 					<br> <c:forEach var="c" begin="0" end="6" step="1" items="${strWeek2 }">
 						<c:choose>
 							<c:when test="${day7[z]==1 && z!=0}">
-								<!-- 다음달로 넘어가게 되면 다음달 표기 -->
+							<!-- 다음달로 넘어가게 되면 다음달 표기 -->
 								<br>
 								<p class="month">${month+1 }</p>
 								<a id="checkedDay"
@@ -141,108 +114,42 @@
 					</c:forEach>
 				</td>
 
-				<!-- 극장설정 -->
 				<td width="25%" align="left" class="main_table_td">
 					<table id="theater_table">
 						<tr>
-							<td><c:forEach var="vo" items="${localList }">
-									<a
-										href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-										&checkedDay2=${checkedDay2}&local=${vo.local}&tname=${tname }&grade=${grade }&title=${title}
-										&theaterNo=${theaterNo}&movietime=${movietime}">
-										<p id="local">${vo.local }</p>
-									</a>
-									<br>
-								</c:forEach></td>
-							<td>&nbsp;&nbsp;<jsp:include page="theater.jsp" />
+							<td>
+								<div id="localList">
+									<!-- 지역 설정 -->
+									<jsp:include page="${jsp2 }" />
+								</div>
+							</td>
+							<td>
+								<div id="theaterList">
+									<!-- 극장 리스트설정 -->
+									&nbsp;&nbsp;<jsp:include page="${jsp3 }" />
+								</div>
 							</td>
 						</tr>
 					</table>
-				</td>
-
-				<!-- 영화리스트설정 -->
-				<td width="45%" class="main_table_td"><jsp:include
-						page="movieList.jsp" /></td>
-
-				<!-- 상영시간설정 -->
-				<td width="15%"><jsp:include page="movieTime.jsp" /></td>
-			</tr>
-		</table>
-		<table class="paymentInfo">
-			<tr>
-				<th width="33%">영화</th>
-				<th width="33%">예매 정보</th>
-				<th width="33%">총 결제 금액</th>					
-			</tr>
-			<tr>
-				<td width="40%">
-					<img alt="${title }_poster" src="${poster }" width="110px" height="160px">
-					<c:if test="${grade=='0'}">
-						<img src="image/bg_grade_all.png">
-					</c:if>
-					<c:if test="${grade=='12'}">
-						<img src="image/bg_grade_12.png">
-					</c:if>
-					<c:if test="${grade=='15'}">
-						<img src="image/bg_grade_15.png">
-					</c:if>
-					<c:if test="${grade=='18'}">
-						<img src="image/bg_grade_18.png">
-					</c:if>
-					<span style="width: 180px;display: inline-block; vertical-align: inherit; color:#f78824;">
-						${title }
-					</span>				
-				</td>
-				<td width="30%">
-					<ul>
-						<li>
-							<strong>상영일 :</strong> 
-							<span style="color:#f78824;">
-								${year }. ${month }. ${checkedDay } (${checkedDay2 })
-							</span>
-						</li>
-						<li>
-							<strong>상영시간 :</strong> 
-							<span style="color:#f78824;">	
-								${movietime}
-							</span>	
-						</li>
-						<li>
-							<strong>상영관 :</strong> 
-							<span style="color:#f78824;">	
-								${tname } ${theaterNo} 
-							</span>관
-						</li>
-						<li>
-							<strong>좌석 :</strong>
-							<span style="color:#f78824;">  
-							${seatNo }
-							</span>
-						</li>						 
-					</ul>
-				</td>
-				
-				<td width="30%">
-					<ul>
-						<li>
-							<strong>영화 예매 :</strong>
-							<span style="color:#f78824;">  
-							<c:if test="${payment!=0 }"> 
-								<fmt:formatNumber value="${payment }" pattern=",000"/> 
-							</c:if>
-							<c:if test="${payment==0 }">
-								${payment }
-							</c:if>	
-							</span>원
-						</li>
-					</ul>
+				</td>				
+				<td width="45%" class="main_table_td">
+					<div id="movieList">
+						<!-- 영화리스트설정 -->
+						<jsp:include page="${jsp4 }" />
+					</div>					
+				</td>			
+				<td width="15%">
+					<div id="movieTime">
+						<!-- 상영시간설정 -->
+						<jsp:include page="${jsp5 }" />
+					</div>					
 				</td>
 			</tr>
-		</table>
-		<div>
-			<input type="button" value="취소" class="back_button"	onclick="javascript:history.back()"> 
-			<input type="button" value="다음"	class="next_button" onclick="send()">
-		</div>
+		</table>		
+		<!-- 상영 정보 선택 결과 -->
+		<div id="selectInfo">
+			<jsp:include page="${jsp6 }" />
+		</div>		
 	</div>
 </body>
 </html>

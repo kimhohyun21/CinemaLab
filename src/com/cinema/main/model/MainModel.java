@@ -13,7 +13,8 @@ public class MainModel {
 	
 	@RequestMapping("main.do")
 	public String main(HttpServletRequest request){
-				
+		
+		//상영 중인 영화 정보 얻어오기
 		List<MainVO> plist=MainDAO.getMovieListData();
 		List<MainVO> plist2=new ArrayList<>();
 		for(MainVO vo : plist){

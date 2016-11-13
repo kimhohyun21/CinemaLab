@@ -95,6 +95,7 @@ public class ReserveModel2 {
 		//세션 값 받기
 		HttpSession session=request.getSession();
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
+		
 		//이전 페이지 주소 획득
 		String url=request.getHeader("referer");
 		

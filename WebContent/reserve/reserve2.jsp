@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Ticket and Seat</title>
+	<title>Reserve2 Ticket and Seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
 	<script type="text/javascript">
 		function select(){			
