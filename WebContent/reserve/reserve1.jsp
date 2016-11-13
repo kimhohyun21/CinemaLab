@@ -7,8 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve 1</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style.css">
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<script type="text/javascript">
 		
 	</script>
@@ -126,7 +125,7 @@
 							<td>
 								<div id="theaterList">
 									<!-- 극장 리스트설정 -->
-									&nbsp;&nbsp;<jsp:include page="${jsp3 }" />
+									<jsp:include page="${jsp3 }" />
 								</div>
 							</td>
 						</tr>

@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve2 Ticket and Seat</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<script type="text/javascript">
 		function select(){			
 			$.ajax({
