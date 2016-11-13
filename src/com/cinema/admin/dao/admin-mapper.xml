@@ -7,14 +7,19 @@
 	 	SELECT mno,title,opendate,type,rank,movielike FROM movielist
 	</select>
 	<select id="RList" parameterType="java.util.Map" resultType="reservelist">
-		SELECT rno,rtitle,name,rdate,cancel,refund
-		FROM (SELECT rno,rtitle,name,rdate,cancel,refund,Rownum as num
-		FROM(SELECT rno,rtitle,name,rdate,cancel,refund
-		FROM reservelist, member WHERE reservelist.no=member.no))
-		WHERE num BETWEEN #{start} AND #{end}
+	 <![CDATA[
+		SELECT rno,title,name,rdate,cancel,refund, num 
+		FROM (SELECT rno,title,name,rdate,cancel,refund, ROWNUM as num 
+		FROM (SELECT rno,title,name,rdate,cancel,refund 
+		FROM reservelist NATURAL JOIN member NATURAL JOIN THEATERLIST NATURAL JOIN MOVIELIST ORDER BY RNO DESC))
+		WHERE num BETWEEN #{start} AND #{end} 
+	]]>  
 	</select>
 	<select id="RTotal" resultType="int">
 		SELECT CEIL(COUNT(*)/10) FROM reservelist
+	</select>
+	<select id="RContent" resultType="reservelist">
+		SELECT seat,ticket,payment,paytype,serverpay,shopid,cardoknum,theater,theaterno,movietime FROM reservelist NATURAL JOIN THEATERLIST WHERE rno=#{no}
 	</select>
 	<select id="adminMovieModify" parameterType="int" resultType="movie">
 		SELECT poster,title,opendate,grade,genre,runtime,director,cast,content,trailer,type 

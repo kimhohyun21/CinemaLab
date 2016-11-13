@@ -7,46 +7,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="customer/style.css">
+<link rel="stylesheet" type="text/css" href="adminpage/astyle.css">
 </head>
 <body>
 	<div align="center" class="bg">
+		<h3>예매 내역</h3>
 		<table class="tb" width="700">
 			<tr>
 				<th width="10%" align="center">번호</th>
-				<th width="25%" align="center">이름</th>
-				<th width="25%" align="center">영화이름</th>
+				<th width="15%" align="center">이름</th>
+				<th width="30%" align="center">영화이름</th>
 				<th width="20%" align="center">예약일</th>
 				<th width="10%" align="center">취소</th>
 				<th width="10%" align="center">환불</th>
 			</tr>
 		<c:forEach var="vo" items="${list}">
 			<tr>
-				<td width="10%" align="center">${vo.rno}</td>
-				<td width="25%" align="center">${vo.name}</td>
-				<td width="25%" align="left">
-					<c:if test="${msg eq vo.rtitle}">
+				<td align="center">${vo.rno}</td>
+				<td align="center">${vo.name}</td>
+				<td align="left">
+					<c:if test="${msg eq vo.title}">
 					<span>${vo.rtitle}</span>
 					</c:if>
 					
-					<c:if test="${msg ne vo.rtitle}">
-						<a href="rcontent.do?no=${vo.rno}&page=${curpage }">${vo.rtitle}</a>
+					<c:if test="${msg ne vo.title}">
+						<a href="reservecontent.do?no=${vo.rno}&page=${curpage }">${vo.title}</a>
 					</c:if>
 				</td>
-				<td width="20%" align="center">
+				<td align="center">
 					<fmt:formatDate value="${vo.rdate}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td width="10%" align="center">${vo.cancel}</td>
-				<td width="10%" align="center">${vo.refund}</td>
+				<td align="center">${vo.cancel}</td>
+				<td align="center">${vo.refund}</td>
 			</tr>
 			</c:forEach>
 		</table>
 		<table border="0" width="700">
 			<tr>
 				<td align="right">
-					<a href="customer.do?page=${page>1?page-1:page}">이전</a>
+					<a href="reservelist.do?page=${page>1?page-1:page}">이전</a>
 					&nbsp;
-					<a href="customer.do?page=${page<totalpage?page+1:page}">다음</a>
+					<a href="reservelist.do?page=${page<totalpage?page+1:page}">다음</a>
 					&nbsp;&nbsp;
 					${page} page / ${totalpage} pages
 				</td>

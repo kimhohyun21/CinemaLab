@@ -14,7 +14,7 @@ public class MovieDAO {
 	public static List<MovieVO> getmovieList(int a){
 		SqlSession session = ssf.openSession();
 		System.out.println(a);
-		List<MovieVO> list = session.selectList("caca",a);
+		List<MovieVO> list = session.selectList("Mlist",a);
 		session.close();
 		
 		return list;
@@ -23,7 +23,7 @@ public class MovieDAO {
 	public static MovieVO getmoviedetail(int b){
 		SqlSession session = ssf.openSession();
 		System.out.println(b);
-		MovieVO vo = session.selectOne("caca2",b);
+		MovieVO vo = session.selectOne("Mdetail",b);
 		session.close();
 		
 		return vo;
@@ -32,7 +32,7 @@ public class MovieDAO {
 	public static List<MovieVO> getmoviecharacter(int b){
 		SqlSession session = ssf.openSession();
 		System.out.println(b);
-		List<MovieVO> list = session.selectList("sasasa",b);
+		List<MovieVO> list = session.selectList("Mcharacter",b);
 		session.close();
 		
 		return list;
@@ -41,7 +41,7 @@ public class MovieDAO {
 	//´ñ±Û Ãâ·Â
 	public static List<MovieVO> getReplyData(Map map){
 		SqlSession session=ssf.openSession();
-		List<MovieVO> replyList=session.selectList("getReplyData",map);
+		List<MovieVO> replyList=session.selectList("MReplyData",map);
 		session.close();
 		
 		return replyList;
