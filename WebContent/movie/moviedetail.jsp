@@ -10,6 +10,13 @@
    <link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
 <body>
+	<c:if test="${mvo.admin eq '1' }">
+		<div align="right">
+			<a href="Amodifymovielist.do?no=${no }">
+				<b style="color: red;">수정하기</b>
+			</a>
+		</div>
+	</c:if>
    <div class="detail">
       <div class="detail2">
          <div id="poster_div">
@@ -91,5 +98,6 @@
          <jsp:include page="reply.jsp"></jsp:include>
       </div>
    </div>
+>>>>>>> refs/remotes/origin/hohyun
 </body>
 </html>

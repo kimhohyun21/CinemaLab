@@ -36,7 +36,7 @@ function send(){
 			바꿀 비밀번호:<input type="password" name="change_pwd"><br>
 			비밀번호 확인:<input type="password" name="check_pwd"><br>
 			<input type="button" onclick="send()" value="변경" class="btn">
-			<input type="button" onclick="javascript:hitory.back()" value="뒤로" class="btn">			
+			<input type="button" onclick="javascript:history.back()" value="뒤로" class="btn">			
 		</form>
 	</center>
 </body>
