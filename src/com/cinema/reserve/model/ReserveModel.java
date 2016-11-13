@@ -60,6 +60,10 @@ public class ReserveModel {
 		int z=0;
 		
 		//선택된 날짜 및 요일 값 받기
+		String checkedYear=request.getParameter("checkedYear");
+		if(checkedYear==null)checkedYear=sy; //선택이 없을 경우 초기값
+		String checkedMonth=request.getParameter("checkedMonth");
+		if(checkedMonth==null)checkedMonth=sm; //선택이 없을 경우 초기값
 		String checkedDay=request.getParameter("checkedDay");
 		if(checkedDay==null)checkedDay=sd; //선택이 없을 경우 초기값
 		String checkedDay2=request.getParameter("checkedDay2");
@@ -76,17 +80,17 @@ public class ReserveModel {
 		
 		//영화관 선택 값 받기
 		String tname=request.getParameter("tname");
-		if(tname==null) tname="신도림"; //선택이 없을 경우 초기값	
-		if(local=="경기") tname="용인";  //지역별 초기값	
-		if(local=="인천") tname="검단";  //지역별 초기값	
-		if(local=="대구") tname="율하";  //지역별 초기값	
-		if(local=="부산") tname="해운대"; //지역별 초기값		
+		if(local.equals("서울") && tname==null || tname==null) tname="신도림"; //선택이 없을 경우 초기값	
+		if(local.equals("경기") && tname==null) tname="용인";  //지역별 초기값	
+		if(local.equals("인천") && tname==null) tname="검단";  //지역별 초기값	
+		if(local.equals("대구") && tname==null) tname="율하";  //지역별 초기값	
+		if(local.equals("부산") && tname==null) tname="해운대"; //지역별 초기값	
 		//영화관 선택에 따른 영화 리스트 받기
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
 		//영화 선택값 받기
 		String title=request.getParameter("title");
-		if(title==null) title="닥터 스트레인지";  //선택이 없을 경우 초기값		
+		if(title==null) title=movieList.get(0).getTitle();  //선택이 없을 경우 초기값		
 		//영화관 및 영화 선택에 따른 영화 상영관 및 상영시간 받기
 		Map map=new HashMap();
 		map.put("tname", tname);
@@ -96,25 +100,40 @@ public class ReserveModel {
 		
 		//나머지 정보 값 받기 
 		String grade=request.getParameter("grade");
-		if(grade==null)grade="12";
+		if(grade==null)grade=movieList.get(0).getGrade();
 		String theaterNo=request.getParameter("theaterNo");
-		if(theaterNo==null)theaterNo="1";
 		String poster=request.getParameter("poster");
-		if(poster==null)poster="http://movie.phinf.naver.net/20161014_50/147640824152266AVn_JPEG/movie_image.jpg";
+		if(poster==null)poster=movieList.get(0).getPoster();
 		String payment=request.getParameter("payment");
 		if(payment==null)payment="0";
 		String movietime=request.getParameter("movietime");
 		
-		//이전 페이지 주소 획득
-		String url=request.getHeader("referer");
-		
-		request.setAttribute("url", url);
+		//Ajax 실행 구분 인자
+		String rType=request.getParameter("rType");
+		if(rType==null)rType="default";
+		String movePage=null;
+		if(rType.equals("default")){
+			movePage="main/main.jsp";
+		}else if(rType.equals("daycheck")){
+			movePage="reserve/reserve1_Local.jsp";
+		}else if(rType.equals("localcheck")){
+			movePage="reserve/reserve1_Theater.jsp";
+		}else if(rType.equals("theatercheck")){
+			movePage="reserve/reserve1_MovieList.jsp";
+		}else if(rType.equals("moviecheck")){
+			movePage="reserve/reserve1_MovieTime.jsp";
+		}else if(rType.equals("timecheck")){
+			movePage="reserve/reserve1_Result.jsp";
+		}		
+		System.out.println(rType);
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
 		request.setAttribute("day", day);
 		request.setAttribute("strWeek2", strWeek2);
 		request.setAttribute("day7", day7);
 		request.setAttribute("z", z);
+		request.setAttribute("checkedYear", checkedYear);
+		request.setAttribute("checkedMonth", checkedMonth);
 		request.setAttribute("checkedDay", checkedDay);
 		request.setAttribute("checkedDay2", checkedDay2);
 		request.setAttribute("localList", localList);
@@ -138,6 +157,6 @@ public class ReserveModel {
 		request.setAttribute("jsp5", "../reserve/reserve1_MovieTime.jsp");
 		request.setAttribute("jsp6", "../reserve/reserve1_Result.jsp");
 	
-		return "main/main.jsp";
+		return movePage;
 	}
 }

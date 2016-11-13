@@ -7,39 +7,91 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve1 MovieList</title>
+	<!-- Ajax 실행 -->					
+	<script type="text/javascript">
+	 	function movieSelect(no){
+			$('p.movie').css("background", "#fdedcc");
+			$('#movie'+no).css("background", "#fad385");
+			
+			$.ajax({
+				type: "POST",
+				url: "reserve.do",
+				data: $('#frm4_'+no).serialize(),
+				success:function(data){
+					$('#movieTime').html(data);
+				},
+				error:function(data){
+					$.jQueryAlert("실패");
+				}
+			});
+		}; 
+		
+		/* jQuery Alert 창 */
+		jQuery.jQueryAlert = function (msg) {
+	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+	        $("body").append($messageBox);
+	
+	        $($messageBox).dialog({
+	            open: $($messageBox).append(msg),
+	            autoOpen: true,
+	            modal: true,
+	            resizable:false, 
+				width: 400,
+	            buttons: {
+	                OK: function () {
+	                    $(this).dialog("close");
+	                }
+	            }
+	        });
+	    };    
+	</script>
 </head>
 <body>
 	<div align="center" class="movieList">
-		<c:forEach var="vo" items="${movieList }">
-			<c:if test="${vo.grade=='0'}">
-				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
-					<img src="image/bg_grade_all.png">&nbsp;${vo.title}
-				</a></p>
-			</c:if>
-			<c:if test="${vo.grade=='12'}">
-				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}" >
-					<img src="image/bg_grade_12.png">&nbsp;${vo.title}
-				</a></p>
-			</c:if>
-			<c:if test="${vo.grade=='15'}">
-				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
-					<img src="image/bg_grade_15.png">&nbsp;${vo.title}
-				</a></p>
-			</c:if>
-			<c:if test="${vo.grade=='18'}">
-				<p class="movie"><a href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname}&grade=${vo.grade }&title=${vo.title}
-				&poster=${vo.poster }&theaterNo=${theaterNo}&movietime=${movietime}">
-					<img src="image/bg_grade_18.png">&nbsp;${vo.title}
-				</a></p>
-			</c:if>
-		</c:forEach>
+		<table width="391px" id="time_table">
+			<tr>
+				<th align="center" >영화</th>
+			</tr>
+			<tr>
+				<td>							
+					<c:forEach var="vo" items="${movieList }">
+						<form id="frm4_${vo.mNo}">
+							<input type="hidden" name="checkedYear" value="${checkedYear }">
+							<input type="hidden" name="checkedMonth" value="${checkedMonth }">
+							<input type="hidden" name="checkedDay" value="${checkedDay }">
+							<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+							<input type="hidden" name="local" value="${local }">
+							<input type="hidden" name="tname" value="${tname }">
+							<input type="hidden" name="grade" value="${vo.grade }">
+							<input type="hidden" name="title" value="${vo.title }">
+							<input type="hidden" name="poster" value="${vo.poster }">
+							<input type="hidden" name="rType" value="moviecheck">
+						</form>
+						<c:if test="${vo.grade=='0'}">
+							<c:set var="imgUrl" value="image/bg_grade_all.png"/>
+						</c:if>
+						<c:if test="${vo.grade=='12'}">
+							<c:set var="imgUrl" value="image/bg_grade_12.png"/>
+						</c:if>
+						<c:if test="${vo.grade=='15'}">
+							<c:set var="imgUrl" value="image/bg_grade_15.png"/>
+						</c:if>
+						<c:if test="${vo.grade=='18'}">
+								<c:set var="imgUrl" value="image/bg_grade_18.png"/>
+						</c:if>
+						<p id="movie${vo.mNo}" class="movie">
+							<a href="javascript:movieSelect('${vo.mNo }');">
+								<img src="${imgUrl }" width="17px">&nbsp;${vo.title}
+							</a>
+						</p>
+					</c:forEach>
+				</td>
+			</tr>
+		</table>
+		<div id="movieTime">
+			<!-- 상영시간설정 -->
+			<jsp:include page="${jsp5 }" />
+		</div>		
 	</div>
 </body>
 </html>

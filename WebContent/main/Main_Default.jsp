@@ -4,11 +4,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Main Page</title>
+	<title>Main Default</title>
 	<!-- Responsive Slider Library -->
     <script src="sliderengine/amazingslider.js"></script>
     <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
-    <link rel="stylesheet" type="text/css" href="main/style1.css">
+    <link rel="stylesheet" type="text/css" href="main/main_style.css">
     <script src="sliderengine/initslider-1.js"></script>
     <!-- End of Responsive Slider -->
 </head>
@@ -36,7 +36,7 @@
     </div>
     <!-- End of body section HTML codes -->
    	<div id="vertical-slider">
-   		<jsp:include page="slider.jsp"></jsp:include>
+   		<jsp:include page="Main_Slider.jsp"></jsp:include>
    	</div>
 
 </body>

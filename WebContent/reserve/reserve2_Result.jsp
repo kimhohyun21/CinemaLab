@@ -28,12 +28,12 @@
 	<div id="reserve">
 		<table class="paymentInfo">
 			<tr>
-				<th width="33%">영화</th>
-				<th width="33%">예매 정보</th>
-				<th width="33%">총 결제 금액</th>					
+				<th width="45%">영화</th>
+				<th width="30%">예매 정보</th>
+				<th width="25%">총 결제 금액</th>					
 			</tr>
 			<tr>
-				<td width="40%">
+				<td width="45%">
 					<img alt="${title }_poster" src="${poster }" width="110px" height="160px">
 					<c:if test="${grade=='0'}">
 						<img src="image/bg_grade_all.png">
@@ -47,7 +47,7 @@
 					<c:if test="${grade=='18'}">
 						<img src="image/bg_grade_18.png">
 					</c:if>
-					<span style="width: 180px;display: inline-block; vertical-align: inherit; color:#f78824;">
+					<span style="width: 200px; display: inline-block; vertical-align: inherit; color:#f78824;">
 						${title }
 					</span>				
 				</td>
@@ -60,16 +60,16 @@
 							</span>
 						</li>
 						<li>
-							<strong>상영시간 :</strong> 
-							<span style="color:#f78824;">	
-								${movietime}
-							</span>	
-						</li>
-						<li>
 							<strong>상영관 :</strong> 
 							<span style="color:#f78824;">	
-								${tname } ${theaterNo} 
+								${tname } ${theaterNo } 
 							</span>관
+						</li>
+						<li>
+							<strong>상영시간 :</strong> 
+							<span style="color:#f78824;">	
+								${movietime }
+							</span>	
 						</li>
 						<li>
 							<strong>좌석 :</strong>
@@ -80,7 +80,7 @@
 					</ul>
 				</td>
 				
-				<td width="30%">
+				<td width="25%">
 					<ul>
 						<li>
 							<strong>영화 예매 :</strong>
@@ -114,10 +114,10 @@
 			<table width="780px">
 				<tr>
 					<td align="left">
-						<input type="button" value="이전페이지" class="back_button" onclick="javascript:location.href='${url}';">
+						<input type="button" value="◀ 이전페이지" class="back_button" onclick="javascript:location.href='${url}';">
 					</td>
 					<td align="right">
-						<input type="button" value="다음페이지" class="next_button" onclick="send()">
+						<input type="button" value="다음페이지 ▶" class="next_button" onclick="send()">
 					</td>
 				</tr>
 			</table>
