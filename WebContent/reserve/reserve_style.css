@@ -203,16 +203,16 @@ p.local, p.localSelected{
 	top: -13px;
 }
 
-div#theaterList{
+td.theaterList{
 	position: relative;
-	top: -55px;
+	top: -56px;
 }
 
 p.theater, p.theaterSelected{
 	font-size: 17px;
 	font-weight: bold;
 	background: rgba(255,204,102,0.9);
-	padding: 7px 0px 7px 23px;
+	padding: 7px 0px 7px 0px;
 	margin: 5px 5px 5px 0px;
 }
 
@@ -228,7 +228,9 @@ p#theaterNo{
 	font-size: 20px;
 	font-weight: bold;
 	padding: 7px 0px 7px 8px;
-	margin: 5px 5px 5px 0px;	
+	margin: 5px 5px 5px 0px;
+	position: relative;
+    top: -47px;	
 }
 
 p.movietime, p.timeSelected{
@@ -237,6 +239,8 @@ p.movietime, p.timeSelected{
 	background: rgba(255,204,102,0.9);
 	padding: 7px 0px 7px 5px;
 	margin: 5px 5px 5px 0px;
+	position: relative;
+    top: -47px;	
 }
 
 p.timeSelected, p.movieSelected, p.theaterSelected, 

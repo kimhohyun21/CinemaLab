@@ -54,24 +54,37 @@
 	</script>
 </head>
 <body>
-	<div>
-		<c:forEach var="vo" items="${theaterList}">
-			<form id="frm3_${vo.theater }">
-				<input type="hidden" name="checkedYear" value="${checkedYear }">
-				<input type="hidden" name="checkedMonth" value="${checkedMonth }">
-				<input type="hidden" name="checkedDay" value="${checkedDay }">
-				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-				<input type="hidden" name="local" value="${local }">
-				<input type="hidden" name="tname" value="${vo.theater }">
-				<input type="hidden" name="grade" value="${grade }">
-				<input type="hidden" name="title" value="${title }">
-				<input type="hidden" name="poster" value="${poster }">
-				<input type="hidden" name="rType" value="theatercheck">
-			</form>	
-			<a href="javascript:theaterSelect('${vo.theater }');">
-				<p id="theater${vo.theater }" class="theater">${vo.theater}</p>
-			</a>
-		</c:forEach>
+	<div align="center">
+		<table id="time_table" width="110px">
+			<tr>
+				<th align="left">장</th>
+			</tr>
+			<tr>
+				<td align="center" class="theaterList">
+					<c:forEach var="vo" items="${theaterList}">
+						<form id="frm3_${vo.theater }">
+							<input type="hidden" name="checkedYear" value="${checkedYear }">
+							<input type="hidden" name="checkedMonth" value="${checkedMonth }">
+							<input type="hidden" name="checkedDay" value="${checkedDay }">
+							<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+							<input type="hidden" name="local" value="${local }">
+							<input type="hidden" name="tname" value="${vo.theater }">
+							<input type="hidden" name="grade" value="${grade }">
+							<input type="hidden" name="title" value="${title }">
+							<input type="hidden" name="poster" value="${poster }">
+							<input type="hidden" name="rType" value="theatercheck">
+						</form>	
+						<a href="javascript:theaterSelect('${vo.theater }');">
+							<p id="theater${vo.theater }" class="theater">${vo.theater}</p>
+						</a>
+					</c:forEach>					
+				</td>
+			</tr>
+		</table>
+		<div id="movieList">
+			<!-- 영화리스트설정 -->
+			<jsp:include page="../reserve/reserve1_MovieList.jsp" />
+		</div>
 	</div>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>결제 완료</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<script type="text/javascript">
 		function reserveCancel(){
 			var cancelfrom=$.parseHTML('<form id="cancelfrm" action="reserve5_Cancel.do" method="post">'

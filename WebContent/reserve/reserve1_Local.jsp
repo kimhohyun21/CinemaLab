@@ -55,12 +55,12 @@
 </head>
 <body>
 	<div align="center">
-		<table id="time_table" width="220px">
+		<table id="time_table" width="110px">
 			<tr>
-				<th align="center" colspan="2">극장</th>
+				<th align="right" class="noborder">극</th>
 			</tr>
 			<tr>
-				<td align="center" width="50%" class="noborder">				
+				<td align="center" class="noborder">				
 					<!-- 지역 설정 -->
 					<c:forEach var="vo" items="${localList }">
 						<form id="frm2_${vo.local }">
@@ -69,11 +69,9 @@
 							<input type="hidden" name="checkedDay" value="${checkedDay }">
 							<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
 							<input type="hidden" name="local" value="${vo.local }">
-							<input type="hidden" name="tname" value="${tname }">
 							<input type="hidden" name="grade" value="${grade }">
 							<input type="hidden" name="title" value="${title }">
 							<input type="hidden" name="poster" value="${poster }">
-<%-- 							<input type="hidden" name="theaterNo" value="${theaterNo}"> --%>
 							<input type="hidden" name="rType" value="localcheck">
 						</form>	
 						<a	href="javascript:localSelect('${vo.local }');">
@@ -81,17 +79,11 @@
 						</a>
 					</c:forEach>
 				</td>	
-				<td align="left" width="50%">
-					<div id="theaterList">
-						<!-- 극장 리스트설정 -->
-						<jsp:include page="../reserve/reserve1_Theater.jsp" />
-					</div>
-				</td>
 			</tr>
 		</table>
-		<div id="movieList">
-			<!-- 영화리스트설정 -->
-			<jsp:include page="../reserve/reserve1_MovieList.jsp" />
+		<div id="theaterList">
+			<!-- 극장 리스트설정 -->
+			<jsp:include page="../reserve/reserve1_Theater.jsp" />
 		</div>
 	</div>
 </body>

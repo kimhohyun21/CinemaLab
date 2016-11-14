@@ -80,11 +80,7 @@ public class ReserveModel {
 		
 		//영화관 선택 값 받기
 		String tname=request.getParameter("tname");
-		if(local.equals("서울") && tname==null || tname==null) tname="신도림"; //선택이 없을 경우 초기값	
-		if(local.equals("경기") && tname==null) tname="용인";  //지역별 초기값	
-		if(local.equals("인천") && tname==null) tname="검단";  //지역별 초기값	
-		if(local.equals("대구") && tname==null) tname="율하";  //지역별 초기값	
-		if(local.equals("부산") && tname==null) tname="해운대"; //지역별 초기값	
+		if(tname==null) tname=theaterList.get(0).getTheater();	//선택이 없을 경우 초기값
 		//영화관 선택에 따른 영화 리스트 받기
 		List<ReserveVO> movieList=ReserveDAO.movieData(tname);
 		
@@ -125,7 +121,7 @@ public class ReserveModel {
 		}else if(rType.equals("timecheck")){
 			movePage="reserve/reserve1_Result.jsp";
 		}		
-		System.out.println(rType);
+		
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
 		request.setAttribute("day", day);

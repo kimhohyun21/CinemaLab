@@ -115,10 +115,10 @@
 		<table width="920px" class="btn_table">
 			<tr>
 				<td align="left">
-					<input type="button" value="◀ 처음으로" class="back_button" onclick="javascript:location.href='main.do';">
+					<input type="button" value="◀ 처음 으로" class="back_button" onclick="javascript:location.href='main.do';">
 				</td>
 				<td align="right">
-					<input type="button" value="다음페이지 ▶" class="next_button" onclick="send()">
+					<input type="button" value="다음 단계 ▶" class="next_button" onclick="send()">
 				</td>
 			</tr>
 		</table>

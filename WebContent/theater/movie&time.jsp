@@ -24,7 +24,7 @@
 						<td>
 							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}
 							&poster=${vo.poster }&local=${local }&tname=${theater }&grade=${grade }&title=${vo.title}&theaterNo=${vo.theaterNo}
-							&movietime=${vo2.movietime}#nav">
+							&movietime=${vo2.movietime}&cType=theater#nav">
 								${vo2.movietime} 
 							</a>
 						</td>
@@ -43,7 +43,7 @@
 						<td>
 							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}
 							&poster=${vo.poster }&local=${local }&tname=${theater }&grade=${grade }&title=${vo.title}&theaterNo=${vo.theaterNo}
-							&movietime=${vo2.movietime}#nav">
+							&movietime=${vo2.movietime}&cType=theater#nav">
 								${vo2.movietime}
 							</a>
 						</td>
@@ -62,7 +62,7 @@
 						<td>
 							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}
 							&poster=${vo.poster }&local=${local }&tname=${theater }&grade=${grade }&title=${vo.title}&theaterNo=${vo.theaterNo}
-							&movietime=${vo2.movietime}#nav">
+							&movietime=${vo2.movietime}&cType=theater#nav">
 								${vo2.movietime } 
 							</a>
 						</td>
@@ -81,7 +81,7 @@
 						<td>
 							<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}
 							&poster=${vo.poster }&local=${local }&tname=${theater }&grade=${grade }&title=${vo.title}&theaterNo=${vo.theaterNo}
-							&movietime=${vo2.movietime}#nav">
+							&movietime=${vo2.movietime}&cType=theater#nav">
 								${vo2.movietime} 
 							</a>
 						</td>

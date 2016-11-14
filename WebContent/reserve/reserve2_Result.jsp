@@ -21,7 +21,10 @@
 			f.submit();	
 		}; 
 		
-		
+		function reback(){
+			location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
+				+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";
+		}		
 	</script>
 </head>
 <body>
@@ -114,10 +117,15 @@
 			<table width="920px" class="btn_table">
 				<tr>
 					<td align="left">
-						<input type="button" value="◀ 이전페이지" class="back_button" onclick="javascript:location.href='${url}';">
+						<c:if test="${cType!=theater }">
+							<input type="button" value="◀ 이전 단계" class="back_button" onclick="reback()">
+						</c:if>
+						<c:if test="${cType==theater }">
+							<input type="button" value="◀ 이전 단계" class="back_button" onclick="javascript:location.href='${url}'">
+						</c:if>
 					</td>
 					<td align="right">
-						<input type="button" value="다음페이지 ▶" class="next_button" onclick="send()">
+						<input type="button" value="다음 단계 ▶" class="next_button" onclick="send()">
 					</td>
 				</tr>
 			</table>

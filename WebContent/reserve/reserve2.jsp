@@ -143,7 +143,7 @@
 			<span class="resetBtn">
 				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-				&poster=${poster }&theaterNo=${theaterNo2}&movietime=${movietime}">
+				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
 					선택초기화
 				</a>
 			</span>

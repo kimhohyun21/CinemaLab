@@ -90,14 +90,12 @@
 							<input type="hidden" name="checkedDay" value="${day7[z] }">
 							<input type="hidden" name="checkedDay2" value="${c }">
 							<input type="hidden" name="local" value="${local }">
-							<input type="hidden" name="tname" value="${tname }">
 							<input type="hidden" name="grade" value="${grade }">
 							<input type="hidden" name="title" value="${title }">
 							<input type="hidden" name="poster" value="${poster }">
-<%-- 							<input type="hidden" name="theaterNo" value="${theaterNo}"> --%>
 							<input type="hidden" name="rType" value="daycheck">
 						</form>	
-						<a href="javascript:daySelect('${day7[z]}');">						
+						<a href="javascript:daySelect('${day7[z]}');">									
 							<c:choose>
 								<c:when test="${c eq 'Åä'}">
 									<p id="day${day7[z] }" class="day" style="color: blue">
