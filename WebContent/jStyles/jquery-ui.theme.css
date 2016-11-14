@@ -29,7 +29,7 @@
 	font-size: 1em;
 }
 .ui-widget-content {
-	border: 1px solid #cccccc;
+	/* border: 1px solid #cccccc; */
 	background: #f9f9f9 url("images/ui-bg_highlight-hard_100_f9f9f9_1x100.png") 50% top repeat-x;
 	color: #222222;
 }
@@ -38,7 +38,8 @@
 }
 .ui-widget-header {
 	border: 1px solid #a3a3a3;
-	background: #333333 url("images/ui-bg_diagonals-thick_8_333333_40x40.png") 50% 50% repeat;
+	background: #333333 url("images/ui-bg_diagonals-thick_8_333333_40x40.png") 50% 50% no-repeat;
+	background-size: cover;
 	color: #eeeeee;
 	font-weight: bold;
 }
@@ -52,7 +53,9 @@
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
 	border: 1px solid #777777;
-	background: #111111 url("images/ui-bg_glass_40_111111_1x400.png") 50% 50% repeat-x;
+	background: #111111 url("images/ui-bg_diagonals-thick_8_333333_40x40.png") 50% 50% no-repeat;
+	/* images/ui-bg_glass_40_111111_1x400.png */
+	background-size: cover;
 	font-weight: normal;
 	color: #e3e3e3;
 }
@@ -69,7 +72,7 @@
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
 	border: 1px solid #000000;
-	background: #1c1c1c url("images/ui-bg_glass_55_1c1c1c_1x400.png") 50% 50% repeat-x;
+	/* background: #1c1c1c url("images/ui-bg_glass_55_1c1c1c_1x400.png") 50% 50% repeat-x; */
 	font-weight: normal;
 	color: #ffffff;
 }

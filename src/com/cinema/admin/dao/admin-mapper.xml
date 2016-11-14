@@ -3,21 +3,40 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cinema.admin.dao.admin-mapper"> 
-	<select id="adminMovieAllList" resultType="movie">
+	<select id="AMovieAllList" resultType="movie">
 	 	SELECT mno,title,opendate,type,rank,movielike FROM movielist
 	</select>
 	<select id="RList" parameterType="java.util.Map" resultType="reservelist">
-		SELECT rno,rtitle,name,rdate,cancel,refund
-		FROM (SELECT rno,rtitle,name,rdate,cancel,refund,Rownum as num
-		FROM(SELECT rno,rtitle,name,rdate,cancel,refund
-		FROM reservelist, member WHERE reservelist.no=member.no))
-		WHERE num BETWEEN #{start} AND #{end}
+	 <![CDATA[
+		SELECT rno,title,name,rdate,cancel,refund, num 
+		FROM (SELECT rno,title,name,rdate,cancel,refund, ROWNUM as num 
+		FROM (SELECT rno,title,name,rdate,cancel,refund 
+		FROM reservelist NATURAL JOIN member NATURAL JOIN THEATERLIST NATURAL JOIN MOVIELIST ORDER BY RNO DESC))
+		WHERE num BETWEEN #{start} AND #{end} 
+	]]>  
 	</select>
 	<select id="RTotal" resultType="int">
 		SELECT CEIL(COUNT(*)/10) FROM reservelist
 	</select>
-	<select id="adminMovieModify" parameterType="int" resultType="movie">
+	<select id="RContent" resultType="reservelist">
+		SELECT rno,title,name,rdate,cancel,refund,paymentid,seat,ticket,payment,paytype,serverpay,shopid,cardoknum,theater,theaterno,movietime 
+		FROM reservelist NATURAL JOIN THEATERLIST NATURAL JOIN member NATURAL JOIN MOVIELIST WHERE rno=#{no}
+	</select>
+	<select id="RContent" resultType="reservelist">
+		SELECT seat,ticket,payment,paytype,serverpay,shopid,cardoknum,theater,theaterno,movietime FROM reservelist NATURAL JOIN THEATERLIST WHERE rno=#{no}
+	</select>
+	<select id="AMovieData" parameterType="int" resultType="movie">
 		SELECT poster,title,opendate,grade,genre,runtime,director,cast,content,trailer,type 
 		FROM MOVIELIST WHERE mno=#{no}
 	</select>
+	<update id="AMovieModify" parameterType="movie">	
+		UPDATE movieList SET poster=#{poster},title=#{title},grade=#{grade},type=#{type},
+		runtime=#{runtime},content=#{content},director=#{director},genre=#{genre},
+		cast=#{cast},trailer=#{trailer},opendate=#{opendate} WHERE mNo=#{mNo}
+	</update>
+	<insert id="AMovieInsert" parameterType="movie">
+		INSERT INTO MOVIELIST(mno,poster,title,opendate,grade,genre,runtime,director,cast,content,trailer,type)
+		VALUES((SELECT max(mno)+1 FROM movieList),#{poster},#{title},#{opendate},
+		#{grade},#{genre},#{runtime},#{director},#{cast},#{content},#{trailer},#{type})
+	</insert>
 </mapper>
