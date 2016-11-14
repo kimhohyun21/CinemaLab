@@ -30,4 +30,9 @@
 		runtime=#{runtime},content=#{content},director=#{director},genre=#{genre},
 		cast=#{cast},trailer=#{trailer},opendate=#{opendate} WHERE mNo=#{mNo}
 	</update>
+	<insert id="AMovieInsert" parameterType="movie">
+		INSERT INTO MOVIELIST(mno,poster,title,opendate,grade,genre,runtime,director,cast,content,trailer,type)
+		VALUES((SELECT max(mno)+1 FROM movieList),#{poster},#{title},#{opendate},
+		#{grade},#{genre},#{runtime},#{director},#{cast},#{content},#{trailer},#{type})
+	</insert>
 </mapper>

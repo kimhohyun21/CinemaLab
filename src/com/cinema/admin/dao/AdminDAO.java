@@ -56,4 +56,11 @@ public class AdminDAO {
 		session.commit();
 		session.close();
 	}
+	
+	public static void adminMovieInsert(MovieVO vo){
+		SqlSession session= ssf.openSession();
+		session.insert("AMovieInsert",vo);
+		session.commit();
+		session.close();
+	}
 }

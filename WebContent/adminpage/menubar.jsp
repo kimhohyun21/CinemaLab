@@ -17,6 +17,7 @@
 				<button>∞Ì∞¥ºæ≈Õ</button>
 			</a>		
 		<div>
+		<br>
 			<jsp:include page="${jsp2 }"></jsp:include>
 		</div>
 	</center>

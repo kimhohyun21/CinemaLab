@@ -38,6 +38,7 @@ public class AModifyMovieListModel {
 		String runtime=vo.getRuntime().replaceAll("Ка", "");
 		vo.setRuntime(runtime);
 		
+		request.setAttribute("no", no);
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
 		request.setAttribute("day", day);

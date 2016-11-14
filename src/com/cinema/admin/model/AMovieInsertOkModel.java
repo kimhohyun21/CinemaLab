@@ -11,20 +11,16 @@ import com.cinema.controller.RequestMapping;
 import com.cinema.movieList.dao.MovieVO;
 
 @Controller
-public class AModifyOkModel {
-	@RequestMapping("Amodify_Ok.do")
-	public String modifyOk(HttpServletRequest request) {
+public class AMovieInsertOkModel {
+	@RequestMapping("AmovieInsert_ok.do")
+	public String movieInsert_ok(HttpServletRequest request) {
 		try {
-			// 정보가져오기
 			request.setCharacterEncoding("EUC-KR");
-			
-			String sno=request.getParameter("no");
-			int no=Integer.parseInt(sno);
-			System.out.println(no+"   1");
 			String title = request.getParameter("title");
 			String poster = request.getParameter("poster");
 			String grade = request.getParameter("grade");
-			String type = request.getParameter("type");
+			String stype = request.getParameter("type");
+			//int type=Integer.parseInt(stype);
 			String runtime = request.getParameter("runtime");
 			String year = request.getParameter("year");
 			String month = request.getParameter("month");
@@ -34,37 +30,31 @@ public class AModifyOkModel {
 			String genre = request.getParameter("genre");
 			String cast = request.getParameter("cast");
 			String trailer = request.getParameter("trailer");
-						
+			
 			// opendate만들기
 			String sopendate = year + "-" + month + "-" + day + " 00:00:00";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date opendate = sdf.parse(sopendate);
-			
+
 			// 저장
-			MovieVO vo=new MovieVO();
-			vo.setmNo(no);
+			MovieVO vo = new MovieVO();			
 			vo.setTitle(title);
 			vo.setPoster(poster);
 			vo.setGrade(grade);
-			vo.setType(Integer.parseInt(type));
-			vo.setRuntime(runtime+"분");
+			vo.setType(Integer.parseInt(stype));
+			vo.setRuntime(runtime + "분");
 			vo.setContent(content);
 			vo.setDirector(director);
 			vo.setGenre(genre);
 			vo.setCast(cast);
 			vo.setTrailer(trailer);
-			vo.setOpendate(opendate);			
-			AdminDAO.adminMovieModify(vo);			
+			vo.setOpendate(opendate);
 			
-			request.setAttribute("no", no);
+			AdminDAO.adminMovieInsert(vo);
 			
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
-		
-		
-			
 		return "adminpage/station.jsp";
 	}
 }
-
