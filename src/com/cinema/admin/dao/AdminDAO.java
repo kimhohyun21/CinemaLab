@@ -2,6 +2,7 @@ package com.cinema.admin.dao;
 
 import java.util.*;
 import com.cinema.reserve.dao.*;
+
 import org.apache.ibatis.session.*;
 import com.cinema.dao.*;
 import com.cinema.movieList.dao.*;
@@ -15,7 +16,7 @@ public class AdminDAO {
 	
 	public static List<MovieVO> adminMovieAllList(){
 		SqlSession session=ssf.openSession();		
-		List<MovieVO> list=session.selectList("adminMovieAllList");
+		List<MovieVO> list=session.selectList("AMovieAllList");
 		session.close();
 		
 		return list;
@@ -43,10 +44,24 @@ public class AdminDAO {
 		return vo;
 	}
 	
-	public static MovieVO adminMovieModify(int no){
+	public static MovieVO adminMovieData(int no){
 		SqlSession session = ssf.openSession();
-		MovieVO vo=session.selectOne("adminMovieModify",no);
+		MovieVO vo=session.selectOne("AMovieData",no);
 		session.close();
 		return vo;
+	}
+	
+	public static void adminMovieModify(MovieVO vo){
+		SqlSession session = ssf.openSession();
+		session.update("AMovieModify",vo);
+		session.commit();
+		session.close();
+	}
+	
+	public static void adminMovieInsert(MovieVO vo){
+		SqlSession session= ssf.openSession();
+		session.insert("AMovieInsert",vo);
+		session.commit();
+		session.close();
 	}
 }

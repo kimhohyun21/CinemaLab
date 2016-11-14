@@ -17,14 +17,18 @@
 			event.returnValue=false;
 		}
 	}
+	function re(){
+		top.document.location.reload();
+	}
 </script>
 </head>
 <body>
 	<div align="center">
-	<form action="main.do" name="frm">
+	<form action="Amodify_Ok.do" name="frm" method="post">
 		<table width="700" height="300" class="TT">
 			<tr>
 				<th align="right">
+					<input type="hidden" value="${no }"	name="no">
 					제목
 				</th>
 				<td align="left">
@@ -42,7 +46,7 @@
 							<option value="18">18</option>
 						</c:if>
 						<c:if test="${vo.grade eq '15' }">
-							<option value="12">12</option>
+							<option value="12">12</opticon>
 							<option value="15" selected="selected">15</option>
 							<option value="18">18</option>
 						</c:if>
@@ -70,9 +74,9 @@
 					상영일
 				</th>
 				<td align="left">					
-					<input type=text value="${year }" name="year" size="1" placeholder="년도" onkeydown="num()">
-					<b>- </b><input type="text" value="${month }" name="month" size="1" placeholder="월">
-					<b>- </b><input type="text" value="${day }" name="day" width="10" placeholder="일">
+					<input type=text value="${year }" name="year" size="1" placeholder="년도" onkeypress="num()">
+					<b>- </b><input type="text" value="${month }" name="month" size="1" placeholder="월" onkeypress="num()">
+					<b>- </b><input type="text" value="${day }" name="day" width="10"  size="1" placeholder="일" onkeypress="num()">
 				</td>
 				<th align="right">
 					상영종류
@@ -101,10 +105,40 @@
 			
 			<tr>
 				<th align="right">
+					감독
+				</th>
+				<td align="left">
+					<input type="text" value="${vo.director }" name="director">
+				</td>
+				<th align="right">
 					상영시간
 				</th>
 				<td align="left">
-					<input type="text" value="${vo.runtime }" size="1">분
+					<input type="text" value="${vo.runtime }" size="1" name="runtime" onkeypress="num()">분
+				</td>
+			</tr>
+			<tr>
+				<th align="right">
+					장르
+				</th>
+				<td colspan="2">
+					<input type="text" value="${vo.genre }" name="genre" style="width: 90%">
+				</td>
+			</tr>
+			<tr>
+				<th align="right">
+					예고편
+				</th>
+				<td align="left" colspan="3">
+					<input type="text" value="${vo.trailer }" name="trailer" style="width:90%">
+				</td>
+			</tr>
+			<tr>
+				<th align="right">
+					출연인물
+				</th>
+				<td align="left">
+					<pre><textarea style="width: 100%" cols="50" rows="10" name="cast">${vo.content }</textarea></pre>
 				</td>
 			</tr>
 			<tr>
@@ -112,16 +146,17 @@
 					줄거리
 				</th>
 				<td colspan="3">
-					<textarea style="width: 100%" cols="50" rows="10">
-${vo.content }
-					</textarea>
+					<pre><textarea style="width: 95%" cols="50" rows="10" name="content">${vo.content }</textarea></pre>
 				</td>
 			</tr>
 			<tr>
-				<td align="center" colspan="2">
+				<td align="right">
+					<input type="button" value="초기화" onclick="re()">
+				</td>
+				<td align="center">
 					<input type="button" value="전송" onclick="send()">
 				</td>
-				<td align="center" colspan="2">
+				<td align="left" colspan="2">
 					<input type="button" value="취소" onclick="javascript:history.back()">
 				</td>
 			</tr>
