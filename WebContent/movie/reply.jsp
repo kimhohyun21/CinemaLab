@@ -137,7 +137,11 @@
 			<c:forEach var="vo" items="${replyList }">
 				<li>
 					<div align="left" id="score">
-						∆Ú¡° : ${vo.score }
+						&nbsp;${vo.score }
+						<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(movie/img/icon_star2.gif) 0px 0px;	FLOAT: left;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+							<p style="WIDTH: ${vo.score*10}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(movie/img/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+							</p>
+						</div>
 					</div>
 					<div align="left" id="reContent">
 						${vo.reContent }
