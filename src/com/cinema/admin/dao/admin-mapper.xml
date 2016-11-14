@@ -19,7 +19,8 @@
 		SELECT CEIL(COUNT(*)/10) FROM reservelist
 	</select>
 	<select id="RContent" resultType="reservelist">
-		SELECT seat,ticket,payment,paytype,serverpay,shopid,cardoknum,theater,theaterno,movietime FROM reservelist NATURAL JOIN THEATERLIST WHERE rno=#{no}
+		SELECT rno,title,name,rdate,cancel,refund,paymentid,seat,ticket,payment,paytype,serverpay,shopid,cardoknum,theater,theaterno,movietime 
+		FROM reservelist NATURAL JOIN THEATERLIST NATURAL JOIN member NATURAL JOIN MOVIELIST WHERE rno=#{no}
 	</select>
 	<select id="RContent" resultType="reservelist">
 		SELECT seat,ticket,payment,paytype,serverpay,shopid,cardoknum,theater,theaterno,movietime FROM reservelist NATURAL JOIN THEATERLIST WHERE rno=#{no}
