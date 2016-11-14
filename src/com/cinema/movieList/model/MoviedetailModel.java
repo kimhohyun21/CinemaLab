@@ -24,18 +24,21 @@ public class MoviedetailModel {
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
 			
+			Map map=new HashMap();
+			int check=0;
+			
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
-			String id = vo1.getId();
-			int memberNo=vo1.getNo();
-			
-			//댓글 기록 확인
-			Map map=new HashMap();
-			map.put("mNo", b);
-			map.put("memberNo", memberNo);
-			int check=MovieDAO.replyRecordCheck(map);
-			request.setAttribute("check", check);
-			
+			if(vo1!=null){
+				int memberNo=vo1.getNo();
+				
+				//댓글 기록 확인
+				
+				map.put("mNo", b);
+				map.put("memberNo", memberNo);
+				check=MovieDAO.replyRecordCheck(map);
+				request.setAttribute("check", check);
+			}
 			
 			//영화 상세 내용
 			MovieVO vo=MovieDAO.getmoviedetail(b);
@@ -47,7 +50,6 @@ public class MoviedetailModel {
 			request.setAttribute("list", list);
 			request.setAttribute("vo", vo);
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
-			
 			
 			//페이지 설정
 			int mNo=Integer.parseInt(no);
