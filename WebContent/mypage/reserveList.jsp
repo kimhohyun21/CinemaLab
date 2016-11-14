@@ -4,14 +4,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="login/style3.css">
-<style type="text/css">
-	tr,td{
-		padding: 10px;
-	}
-</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="login/style3.css">
+	<style type="text/css">
+		tr,td{
+			padding: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function reserveCancel(){
+			$('#cancelfrm').submit();
+		}
+	</script>
 </head>
 <body>
 	<div class="mrList">
@@ -42,7 +47,11 @@
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
 					<c:if test="${vo.rdate > today}">	
 						<div align="right">
-							<input type="button" value="치소">
+							<form id="cancelfrm" action="reserve5_Cancel.do" method="post">
+								<input type="hidden" name="rNo" value="${vo.rNo}">
+								<input type="hidden" name="title" value="${vo.title}">					
+							</form>
+							<input type="button" value="예매취소" onclick="reserveCancel()">
 						</div>
 					</c:if>
 				</td>

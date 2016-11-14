@@ -18,7 +18,7 @@ public class MovieVO {
 	private String rank;
 	private String cname;
 	private String img;
-	private int movieLike;
+	private double movieLike;
 	
 	private int reNo;
 	private String reContent;
@@ -28,12 +28,6 @@ public class MovieVO {
 	private String id;
 	private String date;//리스트에 뽑아낼 날짜
 	
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
 	public int getmNo() {
 		return mNo;
 	}
@@ -124,10 +118,10 @@ public class MovieVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public int getMovieLike() {
+	public double getMovieLike() {
 		return movieLike;
 	}
-	public void setMovieLike(int movieLike) {
+	public void setMovieLike(double movieLike) {
 		this.movieLike = movieLike;
 	}
 	public int getReNo() {
@@ -166,6 +160,10 @@ public class MovieVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

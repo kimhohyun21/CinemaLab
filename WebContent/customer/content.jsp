@@ -12,7 +12,8 @@
 </head>
 <body>
 	<div align="center" class="bg">
-		<table id="table_content" width="500">
+		<h3>내용</h3>
+		<table id="content_table" width="500">
 			<tr>
 				<th width="20%" align="center">번호</th>
 				<td width="30%" align="center">${vo.qno}</td>

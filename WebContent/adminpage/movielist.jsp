@@ -9,7 +9,16 @@
 </head>
 <body>
 	<center>
+	<div class="bg">
+		
 		<table width="700">
+			<tr>
+				<td>
+					<a href="AmovieInsert.do">
+						<button>영화등록</button>
+					</a>
+				</td>
+			</tr>
 			<tr>
 				<th align="center">
 					제목
@@ -30,7 +39,9 @@
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td align="left">
-						${vo.title }						
+						<a href="moviedetail.do?no=${vo.mNo }">
+							${vo.title }
+						</a>						
 					</td>
 					<td align="center">
 						${vo.date }
@@ -50,6 +61,7 @@
 				<%-- <a href="moviedetail.do?no=${vo.mNo }"></a> --%>
 			</c:forEach>
 		</table>
+	</div>
 	</center>
 </body>
 </html>

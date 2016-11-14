@@ -12,6 +12,7 @@ public class TheaterVO {
    private int tNo;
    private String local;
    private String theater;
+   private String poster;
 
 	public int getmNo() {
 		return mNo;
@@ -79,5 +80,15 @@ public class TheaterVO {
 	public void setTheater(String theater) {
 		this.theater = theater;
 	}
+
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	
+	
 }
 

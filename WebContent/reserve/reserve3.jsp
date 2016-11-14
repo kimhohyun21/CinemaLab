@@ -6,8 +6,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>결제</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<title>Reserve3 Payment</title>
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 	<script type="text/javascript">	
 		/* 결제 모듈 사용을 위한 초기화 */
@@ -35,7 +35,7 @@
 			    pg : 'html5_inicis',
 			    pay_method : type,
 			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : '${title} 예매',
+			    name : 'Marvel Cinema ${title} 예매',
 			    amount : '${payment }',
 			    buyer_name : '${mvo.name }',
 			    buyer_email :''
@@ -49,13 +49,13 @@
 			        	카드 승인번호 : rsp.apply_num
 			        */
 			        $.jQueryAlert(msg);
-			        location.href="reserve4.do?"
-			        			+"year=${year }&month=${month }&checkedDay=${checkedDay }&checkedDay2=${checkedDay2 }"
-			        			+"&tname=${tname }&grade=${grade }&title=${title }&poster=${poster }&theaterNo=${theaterNo}"
-			        			+"&movietime=${movietime}&ticketAll=${ticketAll}&payment=${payment}&seatNo=${seatNo }"
-			        			+"&pid="+ rsp.imp_uid+"&sid="+ rsp.merchant_uid
-			        			+"&sp="+rsp.paid_amount+"&cokn="+rsp.apply_num;
-			      
+			        var $frmBox = $.parseHTML('<input type="hidden" name="pid" value='+rsp.imp_uid+'>'
+			        						+'<input type="hidden" name="sid" value='+rsp.merchant_uid+'>'
+			        						+'<input type="hidden" name="sp" value='+rsp.paid_amount+'>'
+			        						+'<input type="hidden" name="cokn" value='+rsp.apply_num+'>'
+			        						+'<input type="hidden" name="paytype" value='+type+'>');
+			        $('#paymentfrm').append($frmBox);
+			        $('#paymentfrm').submit();
 			    } else {
 			        var msg = '결제에 실패하였습니다.<br/>';
 			        msg += '에러내용 : ' + rsp.error_msg+'.';	
@@ -64,7 +64,7 @@
 			    
 			});
 		}	
-		
+
 		/* jQuery Alert 창 */
 		jQuery.jQueryAlert = function (msg) {
             var $messageBox = $.parseHTML('<div id="alertBox"></div>');
@@ -79,11 +79,18 @@
 				width: 400,
                 buttons: {
                     OK: function () {
-                        $(this).dialog("close");
+                        $('div #alertBox').dialog("close");
                     }
                 }
             });
         };
+        
+        function reback(){
+			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
+				+"&poster=${poster}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
+				+"&ticketAll=${ticketAll}&payment=${payment}&seatNo=${seatNo }";
+		}	
+        
 	</script>
 </head>
 <body>
@@ -169,6 +176,21 @@
 				<td align="center">
 					<input type="radio" name="pay" value="card" onclick="display1()" checked>신용카드
 					<input type="radio" name="pay" value="account" onclick="display2()">계좌이체
+					<form id="paymentfrm" action="reserve4.do" method="post">
+						<input type="hidden" name="year" value="${year }">
+						<input type="hidden" name="month" value="${month }">
+						<input type="hidden" name="checkedDay" value="${checkedDay }">
+						<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+						<input type="hidden" name="tname" value="${tname }">
+						<input type="hidden" name="grade" value="${grade }">
+						<input type="hidden" name="title" value="${title }">
+						<input type="hidden" name="poster" value="${poster }">					
+						<input type="hidden" name="theaterNo" value="${theaterNo}">
+						<input type="hidden" name="movietime" value="${movietime}">
+						<input type="hidden" name="ticketAll" value="${ticketAll}">
+						<input type="hidden" name="payment" value="${payment}">	
+						<input type="hidden" name="seatNo" value="${seatNo }">
+					</form>
 				</td>
 			</tr>
 		</table>
@@ -183,7 +205,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:location.href='${url }'">
+			<input type="button" value="취소" onclick="reback()">
 			<input type="button" value="결제" onclick="javascript:payment('card')">
 		</div>
 		<div id="account" style="display:none">
@@ -196,7 +218,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:location.href='${url }'">
+			<input type="button" value="취소" onclick="reback()">
 			<input type="button" value="결제" onclick="javascript:payment('trans')">
 		</div>
 	</div>	
