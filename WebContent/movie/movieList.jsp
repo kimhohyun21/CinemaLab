@@ -52,7 +52,7 @@
                      </td>
                   </tr>
                   <tr>   
-                     <td align="center" colspan="2" class="title" height="23">
+                     <td align="center" colspan="2" class="title" height="42">
                      <c:if test="${vo.grade=='0'}">
                      <img src="image/bg_grade_all.png" width="18px" class="grade_image">
                      </c:if>
@@ -69,7 +69,7 @@
                      </td>
                   </tr>
                   <tr>
-                     <td align="center" class="td">
+                     <td align="center" class="td" height="42">
                         øπ∏≈¿≤ ${vo.rank }%
                      </td>
                      <td align="center">
