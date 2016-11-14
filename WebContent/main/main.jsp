@@ -16,7 +16,7 @@
 	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
 
-	</script>	
+	</script>
 </head>
 <body>
 	<div align="center">
@@ -25,7 +25,7 @@
 				<ul>
 				<c:if test="${mvo.name==null }">
 					<li><a href="login.do">로그인</a></li>
-					<li><a href="join.do">회원가입</a></li>
+					<li><a href="join.do">회원가입</a></li>					
 				</c:if>
 				<c:if test="${mvo.name!=null }">
 					<li>${mvo.name }님 반갑습니다!</li>

@@ -84,17 +84,26 @@
         });
     };
     
-    function check(){
-    	if($('input:checkbox[name=star-input]').is(':checked')==false)
+    function replycheck(){
+    	var f=document.frm;
+    	if($(':input[name=star-input]:radio:checked').val()==null)
     		alert('평점을 체크해 주세요.');
+    	else{
+    		f.submit();
+    	}
+    }
+    
+    function replydelete(reNo){
+       	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
     }
 </script>
 </head>
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
-		<form action="replyInsert.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">
-			<table id="reply_table" width="1000">
+		<c:if test="${check=='0'}">
+		<form action="replyCheck.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">	
+				<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
 						평점<br>
@@ -115,31 +124,35 @@
 				  		</span>	
 					</td>
 					<td width="69%">
-						<textarea id="content" name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+						<textarea name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
 					</td>
 					<td width="11%">
-						<input type="button" value="입력" id="send" onclick="check()">
+						<input type="button" value="입력" id="send" onclick="replycheck()">
 					</td>
 				</tr>
-			</table>
+				</table>
 		</form>
+		</c:if>
 		<ul id="ul">
 			<c:forEach var="vo" items="${replyList }">
 				<li>
 					<div align="left" id="score">
-						평점 : ${vo.score }
+						&nbsp;${vo.score }
+						<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(movie/img/icon_star2.gif) 0px 0px;	FLOAT: left;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+							<p style="WIDTH: ${vo.score*10}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(movie/img/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+							</p>
+						</div>
 					</div>
 					<div align="left" id="reContent">
 						${vo.reContent }
 					</div>
 					<div align="left">
 						<fmt:formatDate value="${vo.regDATE }" pattern="yyyy-MM-dd"/> &nbsp;|&nbsp;&nbsp;<span>${vo.id }</span>
+						<c:if test="${mvo.id eq vo.id }">
+							<input class="replyDeleteBtn" type="button" value="댓글삭제" onclick="replydelete('${vo.reNo}')">	
+						</c:if>
 					</div>
-					<c:if test="${id eq vo.id }">
-						<div align="right">
-							<input type="button" value="댓글삭제" onclick="replydelete()">
-						</div>		
-					</c:if>
+					
 				</li>
 			</c:forEach>
 		</ul>

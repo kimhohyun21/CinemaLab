@@ -19,7 +19,6 @@ public class ListModel{
 		map.put("start", start);		
 		map.put("end", end);
 		
-		System.out.println("칭구를 만나느라");
 		List<customerVO> list = customerDAO.getcustomerList(map);
 		int totalpage = customerDAO.customerTotal();
 		

@@ -14,9 +14,9 @@
 	</select>
 	
 	<select id="getReplyData" parameterType="java.util.Map" resultType="movie">
-		SELECT score,reContent,regDATE,id,num 
-		FROM(SELECT score,reContent,regDATE,id,rownum as num
-  		FROM (SELECT score,reContent,regDATE,id
+		SELECT mNo,reNo,score,reContent,regDATE,id,num 
+		FROM(SELECT mNo,reNo,score,reContent,regDATE,id,rownum as num
+  		FROM (SELECT mNo,reNo,score,reContent,regDATE,id
   		FROM replyList NATURAL JOIN member NATURAL JOIN movieList WHERE mNo=#{mNo} ORDER BY reNo DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
@@ -29,6 +29,19 @@
 	</select>
 	<select id="replyCount" parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM replyList WHERE mNO=#{mNo}
+	</select>
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM replyList WHERE reNo=#{reNo}
+	</delete>
+	<select id="replyTotalScore" parameterType="int" resultType="int">
+		SELECT SUM(score) FROM replyList WHERE mNo=#{mNo}
+	</select>
+	<update id="movieLikeUpdate" parameterType="java.util.Map">
+		UPDATE movieList SET movieLike=#{movieLike} WHERE mNo=#{mNo}
+	</update>
+	
+	<select id="replyRecordCheck" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM replyList WHERE mNO=#{mNo} AND no=#{memberNo}
 	</select>
 </mapper>
 
