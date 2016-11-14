@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="timeData" parameterType="java.util.Map" resultType="Reserve">
-		SELECT movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
+		SELECT tNo, movietime FROM theaterList NATURAL JOIN movieList WHERE theater=#{tname} AND title=#{title}
 	</select>
 	
 	<select id="reserveData" parameterType="java.util.Map" resultType="Reserve">

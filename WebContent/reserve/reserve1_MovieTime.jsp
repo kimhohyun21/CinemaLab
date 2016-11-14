@@ -8,24 +8,31 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve1 MovieTime</title>
 	<!-- Ajax 실행 -->					
-	<script type="text/javascript">
-	 	function timeSelect(no){
-			$('p.movietime').css("background", "#fdedcc");
-			$('#movietime'+no).css("background", "#fad385");
+	<script type="text/javascript">	
+		$(document).ready(function(){
+			$('p.movietime').hover(function(){
+				$(this).css("background", "");
+				$(this).toggleClass("active").next().stop(true, true).slideToggle();
+			});
+		});
+	
+	 	function timeSelect(no){	 		
+			$('.timeSelected').attr("class", "movietime");
+	 		$('p.movietime').not('#movietime'+no).css("background", "rgba(255,204,102,0.9)");
+			$('#movietime'+no).attr("class", "timeSelected");
 			
 			$.ajax({
 				type: "POST",
 				url: "reserve.do",
 				data: $('#frm5_'+no).serialize(),
 				success:function(data){
-					alert(data);
 					$('#selectInfo').html(data);
 				},
 				error:function(data){
 					$.jQueryAlert("실패");
 				}
 			});
-		}; 
+		}; 		
 		
 		/* jQuery Alert 창 */
 		jQuery.jQueryAlert = function (msg) {
@@ -49,15 +56,15 @@
 </head>
 <body>
 	<div align="center">
-		<table width="150px" id="time_table">
+		<table width="153px" id="time_table">
 			<tr>
-				<th align="center" class="menu">시간</th>
+				<th align="center" class="menu noborder">시간</th>
 			</tr>
 			<tr>
-				<td>
+				<td align="center" class="noborder">
 					<p id="theaterNo">${theaterNo2 } 관</p>
 					<c:forEach var="vo" items="${timeList }">
-						<form id="frm5_${vo.movietime}">
+						<form id="frm5_${vo.tNo }">
 							<input type="hidden" name="checkedYear" value="${checkedYear }">
 							<input type="hidden" name="checkedMonth" value="${checkedMonth }">
 							<input type="hidden" name="checkedDay" value="${checkedDay }">
@@ -71,17 +78,17 @@
 							<input type="hidden" name="movietime" value="${vo.movietime }">
 							<input type="hidden" name="rType" value="timecheck">
 						</form>
-						<a href="javascript:timeSelect('${vo.movietime }');">
-							<p id="movietime${vo.movietime }" class="movietime">${vo.movietime }</p>
+						<a href="javascript:timeSelect('${vo.tNo }');">
+							<p id="movietime${vo.tNo }" class="movietime">${vo.movietime }</p>
 						</a>
 					</c:forEach>
 				</td>
 			</tr>
 		</table>
 		<!-- 상영 정보 선택 결과 -->
-		<p id="selectInfo">
-			<jsp:include page="${jsp6 }" />
-		</p>		
+		<div id="selectInfo">
+			<jsp:include page="../reserve/reserve1_Result.jsp" />
+		</div>		
 	</div>
 </body>
 </html>

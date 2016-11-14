@@ -9,11 +9,18 @@
 	<title>Reserve 1</title>
 	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<!-- Ajax 실행 -->					
-	<script type="text/javascript">		
+	<script type="text/javascript">	
+		$(document).ready(function(){
+			$('p.day').hover(function(){
+				$(this).css("background", "");
+				$(this).toggleClass("active").next().stop(true, true).slideToggle();
+			});
+		});
+		
 		function daySelect(no){
-			$('p.day').css("background", "#fdedcc");
-			$('#day'+no).css("background", "#fad385");
-			
+			$('.daySelected').attr("class", "day");
+	 		$('p.day').not('#day'+no).css("background", "#fdedcc");
+			$('#day'+no).attr("class", "daySelected");
 			$.ajax({
 				type: "POST",
 				url: "reserve.do",
@@ -49,7 +56,7 @@
 </head>
 <body>
 	<div align="center" class="reserve1">
-		<table id="time_table" width="150px">
+		<table id="time_table" width="153px">
 			<tr>
 				<th align="center">날짜</th>
 			</tr>
@@ -116,7 +123,7 @@
 		</table>
 		<div id="localList">
 			<!-- 지역 설정 -->
-			<jsp:include page="${jsp2 }" />
+			<jsp:include page="../reserve/reserve1_Local.jsp" />
 		</div>		
 	</div>		
 </body>	

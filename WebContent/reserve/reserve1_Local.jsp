@@ -8,11 +8,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve1 Local</title>
 	<!-- Ajax 실행 -->					
-	<script type="text/javascript">		
+	<script type="text/javascript">	
+		$(document).ready(function(){
+			$('p.local').hover(function(){
+				$(this).css("background", "");
+				$(this).toggleClass("active").next().stop(true, true).slideToggle();
+			});
+		});
+		
 	 	function localSelect(no){
-			$('p.local').css("background", "#fdedcc");
-			$('#local'+no).css("background", "#fad385");
-			
+			$('.localSelected').attr("class", "local");
+	 		$('p.local').not('#local'+no).css("background", "#fdedcc");
+			$('#local'+no).attr("class", "localSelected");
 			$.ajax({
 				type: "POST",
 				url: "reserve.do",
@@ -53,7 +60,7 @@
 				<th align="center" colspan="2">극장</th>
 			</tr>
 			<tr>
-				<td align="center" width="50%">				
+				<td align="center" width="50%" class="noborder">				
 					<!-- 지역 설정 -->
 					<c:forEach var="vo" items="${localList }">
 						<form id="frm2_${vo.local }">
@@ -77,14 +84,14 @@
 				<td align="left" width="50%">
 					<div id="theaterList">
 						<!-- 극장 리스트설정 -->
-						<jsp:include page="${jsp3 }" />
+						<jsp:include page="../reserve/reserve1_Theater.jsp" />
 					</div>
 				</td>
 			</tr>
 		</table>
 		<div id="movieList">
 			<!-- 영화리스트설정 -->
-			<jsp:include page="${jsp4 }" />
+			<jsp:include page="../reserve/reserve1_MovieList.jsp" />
 		</div>
 	</div>
 </body>

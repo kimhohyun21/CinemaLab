@@ -8,9 +8,17 @@
 	<title>Reserve1 Theater</title>
 	<!-- Ajax ½ÇÇà -->					
 	<script type="text/javascript">
+		$(document).ready(function(){
+			$('p.theater').hover(function(){
+				$(this).css("background", "");
+				$(this).toggleClass("active").next().stop(true, true).slideToggle();
+			});
+		});
+		
 	 	function theaterSelect(no){
-			$('p.theater').css("background", "#f0f0f0");
-			$('#theater'+no).css("background", "#fad385");
+			$('.theaterSelected').attr("class", "theater");
+	 		$('p.movietime').not('#movietime'+no).css("background", "rgba(255,204,102,0.9)");
+			$('#theater'+no).attr("class", "theaterSelected");
 			
 			$.ajax({
 				type: "POST",

@@ -6,13 +6,13 @@ div.reserve2, div.finalPaymentInfo, div.reserve1{
 	padding: 10px;
 }
 div.ticket{
-	background-color: rgba(255,204,102,0.9);
+	background-color: #fdedcc;
 	width: 900px;
 	padding: 10px;
 	margin-top:40px;
 }
 div.seatchoice{
-	background-color: rgba(255,204,102,0.9);
+	background-color: #fdedcc;
 	width: 900px;
 	margin-top: 10px;
 	padding: 10px;
@@ -150,18 +150,27 @@ table.paymentInfo td ul{
 	float: left;
 	position: relative;
 	left: 40px;
-	margin: 0px 3px 5px 0px;
+	margin: 0px 0px 3px 0px;
 	border-collapse: collapse;
 }
+
 #time_table th{
 	background-color: #ea0000;
 	color:white;
 	font-size: 18px;
 	font-weight: bold;
 	height: 40px;
+	border-bottom: 1px solid white;
+	border-right: 1px solid white;
 }
+
 #time_table td{
 	height: 440px;
+	border-right: 1px solid white;
+}
+
+#time_table .noborder{
+	border-right: 0px;
 }
 
 p.year{
@@ -173,7 +182,7 @@ p.month{
 	font-weight: bold;
 }
 
-p.day{
+p.day, p.daySelected{
 	font-size: 20px;
 	font-weight: bold;
 	margin: 5px;
@@ -185,11 +194,7 @@ p.day span{
 	font-weight: normal;
 }
 
-p.day:HOVER{
-	background: #fad385;
-}
-
-p.local{
+p.local, p.localSelected{
 	font-size: 20px;
 	font-weight: bold;
 	padding: 5px;
@@ -198,56 +203,54 @@ p.local{
 	top: -13px;
 }
 
-p.local:HOVER{
-	background: #fad385;
-}
-
 div#theaterList{
 	position: relative;
 	top: -55px;
 }
 
-p.theater{
+p.theater, p.theaterSelected{
 	font-size: 17px;
 	font-weight: bold;
-	background: #f0f0f0;
+	background: rgba(255,204,102,0.9);
 	padding: 7px 0px 7px 23px;
 	margin: 5px 5px 5px 0px;
 }
 
-p.theater:HOVER{
-	background: #fad385;
-}
-
-p.movie{
+p.movie, p.movieSelected{
 	font-size: 17px;
 	font-weight: bold;
 	background: #fdedcc;
 	padding: 7px 0px 7px 23px;
 	margin: 5px 5px 5px 0px;
-}
-
-p.movie:HOVER{
-	background: #fad385;
 }
 
 p#theaterNo{
 	font-size: 20px;
 	font-weight: bold;
-	padding: 7px 0px 7px 23px;
+	padding: 7px 0px 7px 8px;
 	margin: 5px 5px 5px 0px;	
 }
 
-p.movietime{
+p.movietime, p.timeSelected{
 	font-size: 17px;
 	font-weight: bold;
-	background: #fdedcc;
-	padding: 7px 0px 7px 23px;
+	background: rgba(255,204,102,0.9);
+	padding: 7px 0px 7px 5px;
 	margin: 5px 5px 5px 0px;
 }
 
-p.movietime:HOVER{
-	background: #fad385;
+p.timeSelected, p.movieSelected, p.theaterSelected, 
+p.localSelected, p.daySelected{
+	background: #ef7e23;	
+}
+
+p.day.active, p.local.active, p.theater.active, 
+div.movie.active, p.movie.active, p.movietime.active, 
+p.timeSelected:HOVER, p.movieSelected:HOVER, 
+p.theaterSelected:HOVER, p.localSelected:HOVER, 
+p.daySelected:HOVER{
+	background:black; 
+	color:white; 
 }
 
 table.btn_table{

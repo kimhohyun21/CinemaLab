@@ -111,7 +111,7 @@
 			<input type="hidden" name="ticketAll" value="${ticketAll}">
 			<input type="hidden" name="payment" value="${payment}">	
 			<input type="hidden" name="seatNo" value="${seatNo }">
-			<table width="780px">
+			<table width="920px" class="btn_table">
 				<tr>
 					<td align="left">
 						<input type="button" value="◀ 이전페이지" class="back_button" onclick="javascript:location.href='${url}';">

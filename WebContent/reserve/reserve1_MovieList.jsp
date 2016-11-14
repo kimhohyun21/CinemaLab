@@ -9,9 +9,17 @@
 	<title>Reserve1 MovieList</title>
 	<!-- Ajax 실행 -->					
 	<script type="text/javascript">
+		$(document).ready(function(){
+			$('p.movie').hover(function(){
+				$(this).css("background", "");
+				$(this).toggleClass("active").next().stop(true, true).slideToggle();
+			});
+		});
+		
 	 	function movieSelect(no){
-			$('p.movie').css("background", "#fdedcc");
-			$('#movie'+no).css("background", "#fad385");
+			$('.movieSelected').attr("class", "movie");
+	 		$('p.movietime').not('#movietime'+no).css("background", "#fdedcc");
+			$('#movie'+no).attr("class", "movieSelected");
 			
 			$.ajax({
 				type: "POST",
@@ -48,12 +56,12 @@
 </head>
 <body>
 	<div align="center" class="movieList">
-		<table width="391px" id="time_table">
+		<table width="394px" id="time_table">
 			<tr>
 				<th align="center" >영화</th>
 			</tr>
 			<tr>
-				<td>							
+				<td class="movie">							
 					<c:forEach var="vo" items="${movieList }">
 						<form id="frm4_${vo.mNo}">
 							<input type="hidden" name="checkedYear" value="${checkedYear }">
@@ -79,18 +87,18 @@
 						<c:if test="${vo.grade=='18'}">
 								<c:set var="imgUrl" value="image/bg_grade_18.png"/>
 						</c:if>
-						<p id="movie${vo.mNo}" class="movie">
-							<a href="javascript:movieSelect('${vo.mNo }');">
+						<a href="javascript:movieSelect('${vo.mNo }');">
+							<p id="movie${vo.mNo}" class="movie">
 								<img src="${imgUrl }" width="17px">&nbsp;${vo.title}
-							</a>
-						</p>
+							</p>
+						</a>						
 					</c:forEach>
 				</td>
 			</tr>
 		</table>
 		<div id="movieTime">
 			<!-- 상영시간설정 -->
-			<jsp:include page="${jsp5 }" />
+			<jsp:include page="../reserve/reserve1_MovieTime.jsp" />
 		</div>		
 	</div>
 </body>

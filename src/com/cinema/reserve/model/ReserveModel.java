@@ -151,11 +151,6 @@ public class ReserveModel {
 		request.setAttribute("movietime", movietime);
 		
 		request.setAttribute("jsp", "../reserve/reserve1.jsp");
-		request.setAttribute("jsp2", "../reserve/reserve1_Local.jsp");
-		request.setAttribute("jsp3", "../reserve/reserve1_Theater.jsp");
-		request.setAttribute("jsp4", "../reserve/reserve1_MovieList.jsp");
-		request.setAttribute("jsp5", "../reserve/reserve1_MovieTime.jsp");
-		request.setAttribute("jsp6", "../reserve/reserve1_Result.jsp");
 	
 		return movePage;
 	}
