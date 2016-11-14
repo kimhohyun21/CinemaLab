@@ -60,8 +60,8 @@
 			       Cancel: function() {
 			         $(this).dialog("close");
 			       }
-			     }
-			 });
+			    }
+			});
 		}		
 		
 		//로그인 창 값입력 체크
