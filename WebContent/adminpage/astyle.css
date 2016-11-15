@@ -1,35 +1,25 @@
 @CHARSET "EUC-KR";
-
-.TT{
-	background-color:gray;
-}
-.type01 {
+table.type01 {
+	background-color:#949dbc;
     border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
 
 }
-.type01 thead th {
+table.type01 thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
     color: #369;
     border-bottom: 3px solid #036;
 }
-.type01 tbody th {
-    width: 150px;
+table.type01 tbody th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #f3f6f7;
 }
-.type01 td {
-    width: 350px;
+table.type01 td {
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
-}
-.type01{
-	background-color: white;
 }

@@ -11,6 +11,7 @@
 <body>
 	<center>
 		<table width="700" class="type01">
+		<thead>
 			<tr>
 				<td>
 					<a href="AmovieInsert.do">
@@ -35,6 +36,7 @@
 					¡¡æ∆ø‰
 				</th>
 			</tr>
+			</thead>
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td align="left">
