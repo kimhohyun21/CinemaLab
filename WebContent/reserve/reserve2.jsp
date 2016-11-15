@@ -98,55 +98,75 @@
 	            }
 	        });
 	    };
+	    
+	    /*select 메뉴 UI*/
+	    jQuery(document).ready(function(){
+			var select = $('.selectBox select');
+			select.change(function(){
+				var select_name = $(this).children('option:selected').text();
+				$(this).siblings("label").text(select_name);
+			});		
+		});
 	</script>
 </head>
 <body>
 	<div align="center" class="reserve2">
 		<!-- 티켓 매수 선택 -->
 		<div class="ticket">
-			<form id="frm">
-				<input type="hidden" name="year" value="${year }">
-				<input type="hidden" name="month" value="${month }">
-				<input type="hidden" name="checkedDay" value="${checkedDay }">
-				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-				<input type="hidden" name="local" value="${local }">
-				<input type="hidden" name="tname" value="${tname }">
-				<input type="hidden" name="grade" value="${grade }">
-				<input type="hidden" name="title" value="${title }">
-				<input type="hidden" name="poster" value="${poster }">				
-				<input type="hidden" name="theaterNo" value="${theaterNo}">
-				<input type="hidden" name="movietime" value="${movietime}">
-				<input type="hidden" name="rType" value="seat">
-				<strong>어른</strong>
-				<select id="adult" name="adult" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-				<strong>청소년</strong>
-				<select id="junior" name="junior" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-				<strong>시니어</strong> 
-				<select id="senior" name="senior" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-			</form>
-			<!-- 선택 초기화 버튼 -->
-			<span class="resetBtn">
-				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
-					선택초기화
-				</a>
-			</span>
+			<div class="selectArea">
+				<form id="frm">
+					<input type="hidden" name="year" value="${year }">
+					<input type="hidden" name="month" value="${month }">
+					<input type="hidden" name="checkedDay" value="${checkedDay }">
+					<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+					<input type="hidden" name="local" value="${local }">
+					<input type="hidden" name="tname" value="${tname }">
+					<input type="hidden" name="grade" value="${grade }">
+					<input type="hidden" name="title" value="${title }">
+					<input type="hidden" name="poster" value="${poster }">				
+					<input type="hidden" name="theaterNo" value="${theaterNo}">
+					<input type="hidden" name="movietime" value="${movietime}">
+					<input type="hidden" name="rType" value="seat">				
+					<strong>어른</strong>
+					<div class="selectBox">					
+						<label for="adult">0</label>
+						<select id="adult" name="adult" onchange="select()">
+							<option selected="selected">0</option>
+						<c:forEach var="i" begin="1" end="8">
+							<option>${i}</option>
+						</c:forEach>					
+						</select>
+					</div>
+					<strong>청소년</strong>
+					<div class="selectBox">
+						<label for="junior">0</label>
+						<select id="junior" name="junior" onchange="select()">
+							<option selected="selected">0</option>
+						<c:forEach var="i" begin="1" end="8">
+							<option>${i}</option>
+						</c:forEach>					
+						</select>
+					</div>	
+					<strong>시니어</strong>
+					<div class="selectBox">
+						<label for="senior">0</label> 
+						<select id="senior" name="senior" onchange="select()">
+							<option selected="selected">0</option>
+						<c:forEach var="i" begin="1" end="8">
+							<option>${i}</option>
+						</c:forEach>					
+						</select>
+					</div>			
+				</form>
+				<!-- 선택 초기화 버튼 -->
+				<div class="resetBtn">
+					<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+					&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
+					&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
+						선택초기화
+					</a>
+				</div>
+			</div>
 		</div>
 		<!-- 자리 선택  include-->
 		<div id="result">
