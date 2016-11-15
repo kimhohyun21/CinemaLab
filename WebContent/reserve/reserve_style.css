@@ -169,7 +169,7 @@ input[type=checkbox] + label.btn:HOVER{
 }
 table.paymentInfo{
 	width: 920px;
-	margin: 5px 0px 30px 0px;	
+	margin: 5px 0px 1px 0px;	
 	background-color: rgba(18, 44, 90, 0.85);
 	border-collapse: collapse; 
 	vertical-align: middle;
