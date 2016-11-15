@@ -19,11 +19,11 @@ public class UpdateOkModel{
 			
 			System.out.println("얼굴값을 못한대");
 			
-			customerVO vo = new customerVO();
+			CustomerVO vo = new CustomerVO();
 			vo.setQcontent(content);
 			vo.setQsubject(subject);
 			vo.setQno(no);
-			customerDAO.customerUpdate_ok(vo);
+			CustomerDAO.customerUpdate_ok(vo);
 			request.setAttribute("page", strPage);
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());

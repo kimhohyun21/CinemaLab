@@ -1,6 +1,6 @@
 package com.cinema.customer.model;
 
-import com.cinema.customer.dao.customerVO;
+import com.cinema.customer.dao.CustomerVO;
 
 import java.io.UnsupportedEncodingException;
 
@@ -26,12 +26,12 @@ public class InsertOkModel{
 		String strno = request.getParameter("no");
 		int no=Integer.parseInt(strno);
 		System.out.println("»þ»þ»þ");
-		customerVO vo = new customerVO();
+		CustomerVO vo = new CustomerVO();
 		vo.setName(name);
 		vo.setNo(no);
 		vo.setQsubject(subject);
 		vo.setQcontent(content);
-		customerDAO.customerInsert(vo);
+		CustomerDAO.customerInsert(vo);
 		
 		return "customer/insert_ok.jsp";
 	

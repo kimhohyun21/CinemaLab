@@ -19,8 +19,8 @@ public class ListModel{
 		map.put("start", start);		
 		map.put("end", end);
 		
-		List<customerVO> list = customerDAO.getcustomerList(map);
-		int totalpage = customerDAO.customerTotal();
+		List<CustomerVO> list = CustomerDAO.getcustomerList(map);
+		int totalpage = CustomerDAO.customerTotal();
 		
 		request.setAttribute("list", list);
 		request.setAttribute("page", curpage);

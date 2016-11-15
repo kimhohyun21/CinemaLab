@@ -1,20 +1,16 @@
 package com.cinema.customer.model;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.cinema.controller.Controller;
-import com.cinema.controller.RequestMapping;
-import com.cinema.customer.dao.customerDAO;
-import com.cinema.customer.dao.customerVO;
+import java.util.*;
+import javax.servlet.http.*;
+import com.cinema.controller.*;
+import com.cinema.customer.dao.*;
 
 @Controller
 public class faqModel {
 	@RequestMapping("faq.do")
 	public String main(HttpServletRequest request){
 		
-		List<customerVO> list = customerDAO.getfaqList();
+		List<CustomerVO> list = CustomerDAO.getfaqList();
 		request.setAttribute("list", list);
 		request.setAttribute("jsp", "../customer/faq.jsp");
 		

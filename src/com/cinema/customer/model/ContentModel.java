@@ -10,9 +10,12 @@ public class ContentModel{
 
 	@RequestMapping("content.do")
 	public String handlerRequest(HttpServletRequest request){
+		//리스트에서 컨텐츠로 넘겨준 no값과 page값 불러오기
 		String no = request.getParameter("no");
 		String page= request.getParameter("page");
-		customerVO vo = customerDAO.customerContent(Integer.parseInt(no));
+		
+		//DAO에서 정리한 쿼리문 불러오기
+		CustomerVO vo = CustomerDAO.customerContent(Integer.parseInt(no));
 		request.setAttribute("no", no);
 		request.setAttribute("page", page);
 		request.setAttribute("vo", vo);
