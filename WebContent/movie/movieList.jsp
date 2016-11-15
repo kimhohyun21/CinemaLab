@@ -33,6 +33,8 @@
          </td>
       </tr>
    </table>
+   
+   <!-- 영화 리스트 4개씩 정렬 -->
    <c:set var="i" value="1"/>
    <c:set var="j" value="4" />
    <c:if test="${list!=null }">
@@ -70,10 +72,10 @@
                   </tr>
                   <tr>
                      <td align="center" class="td" height="42">
-                        예매율 ${vo.rank }%
+                        예매율<br>${vo.rank }%
                      </td>
                      <td align="center">
-                        관람 평점 ${vo.movieLike }
+                        관람 평점<br>${vo.movieLike }
                      </td>
                   </tr>
                </table>

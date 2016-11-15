@@ -86,7 +86,8 @@ public class ReserveModel {
 		
 		//영화 선택값 받기
 		String title=request.getParameter("title");
-		if(title==null) title=movieList.get(0).getTitle();  //선택이 없을 경우 초기값		
+		if(title==null) title=movieList.get(0).getTitle();  //선택이 없을 경우 초기값	
+		
 		//영화관 및 영화 선택에 따른 영화 상영관 및 상영시간 받기
 		Map map=new HashMap();
 		map.put("tname", tname);

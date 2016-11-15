@@ -15,8 +15,8 @@ public class MovieListModel {
 		String type=request.getParameter("type");
 		if(type==null)
 			type="1";
-		int a=Integer.parseInt(type);
-		List<MovieVO> list=MovieDAO.getmovieList(a);
+		int type2=Integer.parseInt(type);
+		List<MovieVO> list=MovieDAO.getmovieList(type2);
 		request.setAttribute("list", list);
 		String url3="http://www.lottecinema.co.kr//LCHS/Image/Bg/bg_grade_15.png";
 		request.setAttribute("jsp", "../movie/movieList.jsp");

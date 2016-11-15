@@ -11,28 +11,31 @@ public class MovieDAO {
 		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
-	public static List<MovieVO> getmovieList(int a){
+	//영화 리스트 불러오기
+	public static List<MovieVO> getmovieList(int type2){
 		SqlSession session = ssf.openSession();
-		System.out.println(a);
-		List<MovieVO> list = session.selectList("Mlist",a);
+		System.out.println(type2);
+		List<MovieVO> list = session.selectList("Mlist",type2);
 		session.close();
 		
 		return list;
 	}
 	
-	public static MovieVO getmoviedetail(int b){
+	//영화 상세 내용 불러오기
+	public static MovieVO getmoviedetail(int mNo){
 		SqlSession session = ssf.openSession();
-		System.out.println(b);
-		MovieVO vo = session.selectOne("Mdetail",b);
+		System.out.println(mNo);
+		MovieVO vo = session.selectOne("Mdetail",mNo);
 		session.close();
 		
 		return vo;
 	}
 	
-	public static List<MovieVO> getmoviecharacter(int b){
+	//영화 출연 배우 불러오기
+	public static List<MovieVO> getmoviecharacter(int mNo){
 		SqlSession session = ssf.openSession();
-		System.out.println(b);
-		List<MovieVO> list = session.selectList("Mcharacter",b);
+		System.out.println(mNo);
+		List<MovieVO> list = session.selectList("Mcharacter",mNo);
 		session.close();
 		
 		return list;
@@ -98,6 +101,7 @@ public class MovieDAO {
 		session.close();
 	}
 	
+	//댓글 기록 여부 확인
 	public static int replyRecordCheck(Map map){
 		SqlSession session=ssf.openSession();
 		//해당 영화에 댓글 작성한적 있으면
