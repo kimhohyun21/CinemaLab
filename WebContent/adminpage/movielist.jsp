@@ -9,7 +9,16 @@
 </head>
 <body>
 	<center>
+	<div class="bg">
+		
 		<table width="700">
+			<tr>
+				<td>
+					<a href="AmovieInsert.do">
+						<button>영화등록</button>
+					</a>
+				</td>
+			</tr>
 			<tr>
 				<th align="center">
 					제목
@@ -52,6 +61,7 @@
 				<%-- <a href="moviedetail.do?no=${vo.mNo }"></a> --%>
 			</c:forEach>
 		</table>
+	</div>
 	</center>
 </body>
 </html>

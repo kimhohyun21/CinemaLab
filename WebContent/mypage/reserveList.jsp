@@ -47,8 +47,9 @@
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
 					<c:if test="${vo.rdate > today}">	
 						<div align="right">
-							<form id="cancelfrm" action="reserveCancel.do" method="post">
-								<input type="hidden" name="rNo" value="${vo.rNo}">					
+							<form id="cancelfrm" action="reserve5_Cancel.do" method="post">
+								<input type="hidden" name="rNo" value="${vo.rNo}">
+								<input type="hidden" name="title" value="${vo.title}">					
 							</form>
 							<input type="button" value="예매취소" onclick="reserveCancel()">
 						</div>

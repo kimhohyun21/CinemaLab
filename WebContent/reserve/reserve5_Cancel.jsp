@@ -8,13 +8,13 @@
 	<title>Reserve Cancel</title>
 	<c:if test="${cancelCheck==true }">
 		<script type="text/javascript">
-			alert('예약이 취소되었습니다.');
+			alert('${cancelMsg }');
 			location.href="reserveList.do?no=${no }";
 		</script>
 	</c:if>
 	<c:if test="${cancelCheck==false }">
 		<script type="text/javascript">
-			alert('예약 취소에 실패하였습니다.');
+			alert('${cancelMsg }');
 			location.href="reserveList.do?no=${no }";
 		</script>
 	</c:if> 	

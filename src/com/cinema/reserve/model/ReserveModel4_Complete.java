@@ -16,7 +16,7 @@ import com.cinema.reserve.dao.ReserveDAO;
 import com.cinema.reserve.dao.ReserveVO;
 
 @Controller
-public class ReserveModel4 {
+public class ReserveModel4_Complete {
 	
 	@RequestMapping("reserve4.do")
 	public String Reserve4(HttpServletRequest request){
@@ -124,7 +124,7 @@ public class ReserveModel4 {
 			request.setAttribute("pid", paymentId);
 			request.setAttribute("sid", shopId);
 			
-			request.setAttribute("jsp", "../reserve/reserve4.jsp");		
+			request.setAttribute("jsp", "../reserve/reserve4_Complete.jsp");		
 		}catch(Exception e){
 			e.printStackTrace();
 		}		

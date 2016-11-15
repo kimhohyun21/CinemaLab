@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Reserve Seat</title>	
+	<title>Reserve2 Seat</title>	
 	<script type="text/javascript">		
 		$(document).ready(function(){
 			seat();			

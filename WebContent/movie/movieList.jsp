@@ -46,7 +46,7 @@
                <table border="0" id="movie">
                   <tr>
                      <td colspan="2">
-                        <a href="moviedetail.do?no=${vo.mNo }">
+                        <a href="moviedetail.do?no=${vo.mNo }&type=${vo.type}">
                            <img src="${vo.poster}" width="200" height="270">
                         </a>
                      </td>

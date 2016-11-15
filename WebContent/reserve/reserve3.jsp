@@ -6,8 +6,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>결제</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<title>Reserve3 Payment</title>
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 	<script type="text/javascript">	
 		/* 결제 모듈 사용을 위한 초기화 */
@@ -35,7 +35,7 @@
 			    pg : 'html5_inicis',
 			    pay_method : type,
 			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : '${title} 예매',
+			    name : 'Marvel Cinema ${title} 예매',
 			    amount : '${payment }',
 			    buyer_name : '${mvo.name }',
 			    buyer_email :''
@@ -84,6 +84,13 @@
                 }
             });
         };
+        
+        function reback(){
+			location.href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
+				+"&poster=${poster}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
+				+"&ticketAll=${ticketAll}&payment=${payment}&seatNo=${seatNo }";
+		}	
+        
 	</script>
 </head>
 <body>
@@ -198,7 +205,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:location.href='${url }'">
+			<input type="button" value="취소" onclick="reback()">
 			<input type="button" value="결제" onclick="javascript:payment('card')">
 		</div>
 		<div id="account" style="display:none">
@@ -211,7 +218,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="javascript:location.href='${url }'">
+			<input type="button" value="취소" onclick="reback()">
 			<input type="button" value="결제" onclick="javascript:payment('trans')">
 		</div>
 	</div>	

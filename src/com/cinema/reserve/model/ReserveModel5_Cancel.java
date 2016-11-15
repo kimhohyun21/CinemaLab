@@ -1,5 +1,8 @@
 package com.cinema.reserve.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,10 +17,10 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 @Controller
-public class ReserveCancelModel {
+public class ReserveModel5_Cancel {
 	
-	@RequestMapping("reserveCancel.do")
-	public String reserveCancel(HttpServletRequest request){
+	@RequestMapping("reserve5_Cancel.do")
+	public String reserve5_Cancel(HttpServletRequest request){
 		//요청정보 받아오기
 		String rno=request.getParameter("rNo");
 		System.out.println(rno);
@@ -28,7 +31,8 @@ public class ReserveCancelModel {
 			rNo=Integer.parseInt(rno);
 			ReserveVO vo=ReserveDAO.getReserveData(rNo);
 			pid=vo.getPaymentId();
-		}		
+		}
+		String title=request.getParameter("title");
 		
 		//취소를 위한 클라이언트 생성
 		IamportClient client;
@@ -47,11 +51,24 @@ public class ReserveCancelModel {
 			IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
 			/*if(payment_response.getResponse()!=null){*/ //개발자 모드에서 하루 지나면 자동 취소 되는 경우 때문에 주석처리
 				cancelCheck=true;
+				
+				//예매 내역 삭제 처리
 				ReserveDAO.updateCancel(rNo);
+				
+				//예매율 수정
+				int totalReserve=ReserveDAO.getTotalReserve();
+				int reserveNum=ReserveDAO.getReserveNum(title);
+				double reserveRate=((double)reserveNum/totalReserve)*100;	
+				double rank = Double.parseDouble(String.format("%.2f",reserveRate));
+
+				Map map=new HashMap();
+				map.put("title", title);
+				map.put("rank", rank);
+				ReserveDAO.updateRank(map);	
+				
 			/*}else{
 				cancelMsg=payment_response.getResponse().getFailReason();				
-			  }	
-			  
+			  }			  
 			 */				
 		}
 		
@@ -63,6 +80,6 @@ public class ReserveCancelModel {
 		request.setAttribute("cancelMsg", cancelMsg);
 		request.setAttribute("cancelCheck", cancelCheck);
 		
-		return "reserve/reserveCancel.jsp";
+		return "reserve/reserve5_Cancel.jsp";
 	}
 }

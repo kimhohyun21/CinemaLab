@@ -6,25 +6,37 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Reserve2 Result</title>
+	<title>Reserve Result</title>
 	<script type="text/javascript">
 		function send(){
 			var f=document.frm;
-			if(${ticketAll==0}){
-				$.jQueryAlert('티켓 매수를 선택해 주세요.');
+			if(${movietime==null || movietime==""}){
+				$.jQueryAlert('상영시간을 선택해 주세요.');
 				return;
 			}
-			if(${size!=ticketAll}){
-				$.jQueryAlert('좌석 선택을 확인해 주세요.');
-				return;
-			}
-			f.submit();	
-		}; 
+			location.href="reserve2.do?year=${checkedYear }&month=${checkedMonth }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
+			+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}"
+			+"#nav";
+		}
 		
-		function reback(){
-			location.href="reserve.do?year=${year }&month=${month }&checkedDay=${checkedDay}&checkedDay2=${checkedDay2}"
-				+"&poster=${poster}&local=${local}&tname=${tname }&grade=${grade }&title=${title}&theaterNo=${theaterNo}&movietime=${movietime}";
-		}		
+		/* jQuery Alert 창 */
+		jQuery.jQueryAlert = function (msg) {
+	        var $messageBox = $.parseHTML('<div id="alertBox"></div>');
+	        $("body").append($messageBox);
+	
+	        $($messageBox).dialog({
+	            open: $($messageBox).append(msg),
+	            autoOpen: true,
+	            modal: true,
+	            resizable:false, 
+				width: 400,
+	            buttons: {
+	                OK: function () {
+	                    $(this).dialog("close");
+	                }
+	            }
+	        });
+	    };		
 	</script>
 </head>
 <body>
@@ -59,7 +71,7 @@
 						<li>
 							<strong>상영일 :</strong> 
 							<span style="color:#f78824;">
-								${year }. ${month }. ${checkedDay } (${checkedDay2 })
+								${checkedYear }. ${checkedMonth }. ${checkedDay } (${checkedDay2 })
 							</span>
 						</li>
 						<li>
@@ -71,9 +83,9 @@
 						<li>
 							<strong>상영시간 :</strong> 
 							<span style="color:#f78824;">	
-								${movietime }
+								${movietime}
 							</span>	
-						</li>
+						</li>						
 						<li>
 							<strong>좌석 :</strong>
 							<span style="color:#f78824;">  
@@ -100,36 +112,16 @@
 				</td>
 			</tr>
 		</table>
-		<form action="reserve3.do" method="post" name="frm">
-			<input type="hidden" name="year" value="${year }">
-			<input type="hidden" name="month" value="${month }">
-			<input type="hidden" name="checkedDay" value="${checkedDay }">
-			<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-			<input type="hidden" name="tname" value="${tname }">
-			<input type="hidden" name="grade" value="${grade }">
-			<input type="hidden" name="title" value="${title }">
-			<input type="hidden" name="poster" value="${poster }">					
-			<input type="hidden" name="theaterNo" value="${theaterNo}">
-			<input type="hidden" name="movietime" value="${movietime}">
-			<input type="hidden" name="ticketAll" value="${ticketAll}">
-			<input type="hidden" name="payment" value="${payment}">	
-			<input type="hidden" name="seatNo" value="${seatNo }">
-			<table width="920px" class="btn_table">
-				<tr>
-					<td align="left">
-						<c:if test="${cType!=theater }">
-							<input type="button" value="◀ 이전 단계" class="back_button" onclick="reback()">
-						</c:if>
-						<c:if test="${cType==theater }">
-							<input type="button" value="◀ 이전 단계" class="back_button" onclick="javascript:location.href='${url}'">
-						</c:if>
-					</td>
-					<td align="right">
-						<input type="button" value="다음 단계 ▶" class="next_button" onclick="send()">
-					</td>
-				</tr>
-			</table>
-		</form>	
+		<table width="920px" class="btn_table">
+			<tr>
+				<td align="left">
+					<input type="button" value="◀ 처음 으로" class="back_button" onclick="javascript:location.href='main.do';">
+				</td>
+				<td align="right">
+					<input type="button" value="다음 단계 ▶" class="next_button" onclick="send()">
+				</td>
+			</tr>
+		</table>
 	</div>	 
 </body>
 </html>
