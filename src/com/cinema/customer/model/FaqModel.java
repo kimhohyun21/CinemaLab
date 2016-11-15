@@ -6,7 +6,7 @@ import com.cinema.controller.*;
 import com.cinema.customer.dao.*;
 
 @Controller
-public class faqModel {
+public class FaqModel {
 	@RequestMapping("faq.do")
 	public String main(HttpServletRequest request){
 		
