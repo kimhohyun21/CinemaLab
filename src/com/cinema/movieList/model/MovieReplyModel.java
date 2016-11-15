@@ -21,6 +21,9 @@ public class MovieReplyModel {
 		
 		try {
 			request.setCharacterEncoding("EUC-KR");
+			
+			Map map=new HashMap();
+			
 			String no=request.getParameter("no");
 			int mNo = Integer.parseInt(no);
 			
@@ -29,16 +32,14 @@ public class MovieReplyModel {
 			String id = vo1.getId();
 			int memberNo=vo1.getNo();
 			
-			Map map=new HashMap();
-			int check=0;
-			
 			//댓글삽입
 			String sco = request.getParameter("star-input");
-			int score=0;
-			String reContent = request.getParameter("content");
-		
+			String reContent = request.getParameter("content");	
 			Date regDATE = new Date();
-			if(sco!=null){
+			int score=0;
+			
+			//평점 값을 받아온 경우
+			if(sco!=null){ 
 				score = Integer.parseInt(sco);
 				MovieVO vo2 = new MovieVO();
 				vo2.setScore(score);
@@ -58,13 +59,14 @@ public class MovieReplyModel {
 			}
 			
 			//댓글 기록했었는지 체크
+			int check=0;
 			if(vo1!=null){
 				map.put("mNo", mNo);
 				map.put("memberNo", memberNo);
 				check=MovieDAO.replyRecordCheck(map);
 			}
 		
-			//영화내용
+			//영화 상세 내용
 			MovieVO vo=MovieDAO.getmoviedetail(mNo);
 			List<MovieVO> list = MovieDAO.getmoviecharacter(mNo);
 			String url=vo.getTrailer();
@@ -92,7 +94,7 @@ public class MovieReplyModel {
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
-			//영화 평점 구하기
+			//해당 영화 평균 평점 구하기
 			int totalScore=MovieDAO.replyTotalScore(mNo);
 			int count=MovieDAO.replyCount(mNo);
 			double result=(double)totalScore/count;
@@ -101,8 +103,7 @@ public class MovieReplyModel {
 			map.put("movieLike", movieLike);
 			map.put("mNo", mNo);
 			MovieDAO.movieLikeUpdate(map);
-			
-			
+					
 			request.setAttribute("url", url);
 			request.setAttribute("list", list);
 			request.setAttribute("vo", vo);

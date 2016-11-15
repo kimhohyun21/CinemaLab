@@ -19,19 +19,20 @@ public class MoviedetailModel {
 	public String HandlerRequest(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
-			String no=request.getParameter("no");
-			int mNo = Integer.parseInt(no);
 			
 			Map map=new HashMap();
-			int check=0;
+			
+			String no=request.getParameter("no");
+			int mNo = Integer.parseInt(no);	
 			
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
-			if(vo1!=null){
+			
+			int check=0;
+			if(vo1!=null){	//로그인이 됬을 경우
 				int memberNo=vo1.getNo();
 				
-				//댓글 기록 확인
-				
+				//댓글 기록 여부 확인
 				map.put("mNo", mNo);
 				map.put("memberNo", memberNo);
 				check=MovieDAO.replyRecordCheck(map);
@@ -42,11 +43,6 @@ public class MoviedetailModel {
 			List<MovieVO> list = MovieDAO.getmoviecharacter(mNo);
 			String url=vo.getTrailer();
 			url=url.substring(url.lastIndexOf("/")+1);
-			
-			request.setAttribute("url", url);
-			request.setAttribute("list", list);
-			request.setAttribute("vo", vo);
-			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 			
 			//페이지 설정
 			String page=request.getParameter("page");
@@ -62,6 +58,7 @@ public class MoviedetailModel {
 			map.put("end",end);
 			map.put("mNo", mNo);
 			
+			//디비에 있는 댓글 뿌려주기
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
 			
@@ -70,6 +67,10 @@ public class MoviedetailModel {
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
+			request.setAttribute("url", url);
+			request.setAttribute("list", list);
+			request.setAttribute("vo", vo);
+			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 			request.setAttribute("no", no);
 			request.setAttribute("check", check);
 			request.setAttribute("type", type);
