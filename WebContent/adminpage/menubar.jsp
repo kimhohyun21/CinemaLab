@@ -16,7 +16,7 @@
 			<a href="reservelist.do">
 				<button>∞Ì∞¥ºæ≈Õ</button>
 			</a>		
-		<div>
+		<div id="Ainclude">
 		<br>
 			<jsp:include page="${jsp2 }"></jsp:include>
 		</div>

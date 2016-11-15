@@ -6,12 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="adminpage/astyle.css">
 </head>
 <body>
 	<center>
-	<div class="bg">
-		
-		<table width="700">
+		<table width="700" class="type01">
 			<tr>
 				<td>
 					<a href="AmovieInsert.do">
@@ -61,7 +60,6 @@
 				<%-- <a href="moviedetail.do?no=${vo.mNo }"></a> --%>
 			</c:forEach>
 		</table>
-	</div>
 	</center>
 </body>
 </html>
