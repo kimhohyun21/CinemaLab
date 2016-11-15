@@ -22,9 +22,22 @@ public class MovieReplyModel {
 		try {
 			request.setCharacterEncoding("EUC-KR");
 			String no=request.getParameter("no");
-			int b=Integer.parseInt(no);
+			int b = Integer.parseInt(no);
+			
+			HttpSession session = request.getSession();
+			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
+			String id = vo1.getId();
+			int memberNo=vo1.getNo();
+			
+			//´ñ±Û ±â·Ï È®ÀÎ
+			Map map=new HashMap();
+	/*		map.put("mNo", b);
+			map.put("member_no", memberNo);
+			int check=MovieDAO.replyRecordCheck(map);
+		*/
 			
 			//´ñ±Û »èÁ¦
+			int mNo = Integer.parseInt(no);
 			String rno=request.getParameter("reNo");
 			int reNo=0;
 			if(rno != null){
@@ -43,13 +56,13 @@ public class MovieReplyModel {
 			request.setAttribute("vo", vo);
 			
 			//´ñ±Û»ðÀÔ
-			int mNo = Integer.parseInt(no);
+			
 			String sco = request.getParameter("star-input");
 			int score=0;
 			String reContent = request.getParameter("content");
-			HttpSession session = request.getSession();
+			/*HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
-			String id = vo1.getId();
+			String id = vo1.getId();*/
 			Date regDATE = new Date();
 			if(sco!=null){
 				score = Integer.parseInt(sco);
@@ -70,7 +83,7 @@ public class MovieReplyModel {
 			int start=(curpage*rowSize)-(rowSize-1);
 			int end=curpage*rowSize;
 			
-			Map map=new HashMap();
+			map=new HashMap();
 			map.put("start", start);
 			map.put("end",end);
 			map.put("mNo", mNo);
@@ -84,15 +97,16 @@ public class MovieReplyModel {
 			if(topage>totalpage) topage=totalpage;
 			
 			//¿µÈ­ ÆòÁ¡ ±¸ÇÏ±â
-			int totalScore=MovieDAO.replyTotalScore(b);
-			int count=MovieDAO.replyCount(b);
+			int totalScore=MovieDAO.replyTotalScore(mNo);
+			int count=MovieDAO.replyCount(mNo);
 			double result=(double)totalScore/count;
 			double movieLike=Double.parseDouble(String.format("%.2f", result));
-			Map map2=new HashMap();
-			map2.put("movieLike", movieLike);
-			map2.put("b", b);
-			MovieDAO.movieLikeUpdate(map2);
+			map=new HashMap();
+			map.put("movieLike", movieLike);
+			map.put("mNo", mNo);
+			MovieDAO.movieLikeUpdate(map);
 		
+	/*		request.setAttribute("check", check);*/
 			request.setAttribute("mNo", mNo);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);

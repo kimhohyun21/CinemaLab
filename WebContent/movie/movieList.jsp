@@ -46,13 +46,13 @@
                <table border="0" id="movie">
                   <tr>
                      <td colspan="2">
-                        <a href="moviedetail.do?no=${vo.mNo }">
+                        <a href="moviedetail.do?no=${vo.mNo }&type=${vo.type}">
                            <img src="${vo.poster}" width="200" height="270">
                         </a>
                      </td>
                   </tr>
                   <tr>   
-                     <td align="center" colspan="2" class="title" height="23">
+                     <td align="center" colspan="2" class="title" height="42">
                      <c:if test="${vo.grade=='0'}">
                      <img src="image/bg_grade_all.png" width="18px" class="grade_image">
                      </c:if>
@@ -69,7 +69,7 @@
                      </td>
                   </tr>
                   <tr>
-                     <td align="center" class="td">
+                     <td align="center" class="td" height="42">
                         øπ∏≈¿≤ ${vo.rank }%
                      </td>
                      <td align="center">

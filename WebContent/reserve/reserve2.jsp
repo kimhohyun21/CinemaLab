@@ -5,8 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>Ticket and Seat</title>
-	<link rel="stylesheet" type="text/css" href="reserve/style2.css">
+	<title>Reserve2 Ticket and Seat</title>
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<script type="text/javascript">
 		function select(){			
 			$.ajax({
@@ -60,8 +60,8 @@
 			       Cancel: function() {
 			         $(this).dialog("close");
 			       }
-			     }
-			 });
+			    }
+			});
 		}		
 		
 		//로그인 창 값입력 체크
@@ -143,7 +143,7 @@
 			<span class="resetBtn">
 				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-				&poster=${poster }&theaterNo=${theaterNo2}&movietime=${movietime}">
+				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
 					선택초기화
 				</a>
 			</span>
