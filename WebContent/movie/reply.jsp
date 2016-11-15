@@ -103,7 +103,7 @@
 		<h3 align="left">평점 및 영화 리뷰</h3>
 		<c:if test="${check=='0'}">
 		<form action="replyCheck.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">	
-				<table id="reply_table" width="1000">
+			<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
 						평점<br>
@@ -130,7 +130,7 @@
 						<input type="button" value="입력" id="send" onclick="replycheck()">
 					</td>
 				</tr>
-				</table>
+			</table>
 		</form>
 		</c:if>
 		<ul id="ul">

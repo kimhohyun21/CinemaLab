@@ -22,7 +22,7 @@ public class MoviedetailModel {
 		try{
 			request.setCharacterEncoding("EUC-KR");
 			String no=request.getParameter("no");
-			int b=Integer.parseInt(no);
+			int mNo = Integer.parseInt(no);
 			
 			Map map=new HashMap();
 			int check=0;
@@ -34,15 +34,14 @@ public class MoviedetailModel {
 				
 				//댓글 기록 확인
 				
-				map.put("mNo", b);
+				map.put("mNo", mNo);
 				map.put("memberNo", memberNo);
 				check=MovieDAO.replyRecordCheck(map);
-				request.setAttribute("check", check);
 			}
 			
 			//영화 상세 내용
-			MovieVO vo=MovieDAO.getmoviedetail(b);
-			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
+			MovieVO vo=MovieDAO.getmoviedetail(mNo);
+			List<MovieVO> list = MovieDAO.getmoviecharacter(mNo);
 			String url=vo.getTrailer();
 			url=url.substring(url.lastIndexOf("/")+1);
 			
@@ -52,7 +51,6 @@ public class MoviedetailModel {
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
 			
 			//페이지 설정
-			int mNo=Integer.parseInt(no);
 			String page=request.getParameter("page");
 			if(page==null) page="1";
 			int curpage=Integer.parseInt(page);

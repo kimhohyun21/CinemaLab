@@ -22,47 +22,21 @@ public class MovieReplyModel {
 		try {
 			request.setCharacterEncoding("EUC-KR");
 			String no=request.getParameter("no");
-			int b = Integer.parseInt(no);
+			int mNo = Integer.parseInt(no);
 			
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
 			String id = vo1.getId();
 			int memberNo=vo1.getNo();
 			
-			//댓글 기록 확인
 			Map map=new HashMap();
-	/*		map.put("mNo", b);
-			map.put("member_no", memberNo);
-			int check=MovieDAO.replyRecordCheck(map);
-		*/
-			
-			//댓글 삭제
-			int mNo = Integer.parseInt(no);
-			String rno=request.getParameter("reNo");
-			int reNo=0;
-			if(rno != null){
-				reNo=Integer.parseInt(rno);
-				MovieDAO.replyDelete(reNo);
-			}
-			
-			//영화내용
-			MovieVO vo=MovieDAO.getmoviedetail(b);
-			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
-			String url=vo.getTrailer();
-			url=url.substring(url.lastIndexOf("/")+1);
-			
-			request.setAttribute("url", url);
-			request.setAttribute("list", list);
-			request.setAttribute("vo", vo);
+			int check=0;
 			
 			//댓글삽입
-			
 			String sco = request.getParameter("star-input");
 			int score=0;
 			String reContent = request.getParameter("content");
-			/*HttpSession session = request.getSession();
-			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
-			String id = vo1.getId();*/
+		
 			Date regDATE = new Date();
 			if(sco!=null){
 				score = Integer.parseInt(sco);
@@ -75,7 +49,29 @@ public class MovieReplyModel {
 				MovieDAO.replyInsert(vo2);
 			}
 			
-			//페이지
+			//댓글 삭제
+			String rno=request.getParameter("reNo");
+			int reNo=0;
+			if(rno != null){
+				reNo=Integer.parseInt(rno);
+				MovieDAO.replyDelete(reNo);
+			}
+			
+			//댓글 기록했었는지 체크
+			if(vo1!=null){
+				map.put("mNo", mNo);
+				map.put("memberNo", memberNo);
+				check=MovieDAO.replyRecordCheck(map);
+			}
+		
+			//영화내용
+			MovieVO vo=MovieDAO.getmoviedetail(mNo);
+			List<MovieVO> list = MovieDAO.getmoviecharacter(mNo);
+			String url=vo.getTrailer();
+			url=url.substring(url.lastIndexOf("/")+1);
+		
+			
+			//페이지 설정
 			String page=request.getParameter("page");
 			if(page==null) page="1";
 			int curpage=Integer.parseInt(page);
@@ -105,8 +101,12 @@ public class MovieReplyModel {
 			map.put("movieLike", movieLike);
 			map.put("mNo", mNo);
 			MovieDAO.movieLikeUpdate(map);
-		
-	/*		request.setAttribute("check", check);*/
+			
+			
+			request.setAttribute("url", url);
+			request.setAttribute("list", list);
+			request.setAttribute("vo", vo);
+			request.setAttribute("check", check);
 			request.setAttribute("mNo", mNo);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);
