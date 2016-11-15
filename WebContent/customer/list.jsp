@@ -29,14 +29,16 @@
 				</td>
 			</tr>
 		</table>
-		<table border="0" width="700">
+		<div id="qna_title">QnA</div>
+		<hr>
+		<table border="0" width="800">
 			<tr align="left">
 				<td>
-					<a href="insert.do">글쓰기</a>
+					<button type="button" class="insert" onclick="location.href='insert.do'">글쓰기</button>
 				</td>
 			</tr>
 		</table>
-		<table class="tb" width="700">
+		<table class="list" width="800">
 			<tr>
 				<th width="10%" align="center">번호</th>
 				<th width="45%" align="center">제목</th>
@@ -47,7 +49,7 @@
 		<c:forEach var="vo" items="${list}">
 			<tr>
 				<td width="10%" align="center">${vo.qno}</td>
-				<td width="45%" align="left">
+				<td width="45%" align="left" class="subject">
 					
 					<c:if test="${vo.group_tab!=0}">
 						<c:forEach var="i" begin="1" end="${vo.group_tab}">
@@ -71,12 +73,12 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<table border="0" width="700">
+		<table width="800">
 			<tr>
 				<td align="right">
-					<a href="customer.do?page=${page>1?page-1:page}">이전</a>
+					<a href="customer.do?page=${page>1?page-1:page}" style="color: red">이전</a>
 					&nbsp;
-					<a href="customer.do?page=${page<totalpage?page+1:page}">다음</a>
+					<a href="customer.do?page=${page<totalpage?page+1:page}" style="color: blue">다음</a>
 					&nbsp;&nbsp;
 					${page} page / ${totalpage} pages
 				</td>

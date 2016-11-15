@@ -1,7 +1,5 @@
 package com.cinema.movieList.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +19,26 @@ public class MoviedetailModel {
 	public String HandlerRequest(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
-			
-			//영화 상세 내용
 			String no=request.getParameter("no");
 			int b=Integer.parseInt(no);
 			
+			Map map=new HashMap();
+			int check=0;
+			
+			HttpSession session = request.getSession();
+			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
+			if(vo1!=null){
+				int memberNo=vo1.getNo();
+				
+				//댓글 기록 확인
+				
+				map.put("mNo", b);
+				map.put("memberNo", memberNo);
+				check=MovieDAO.replyRecordCheck(map);
+				request.setAttribute("check", check);
+			}
+			
+			//영화 상세 내용
 			MovieVO vo=MovieDAO.getmoviedetail(b);
 			List<MovieVO> list = MovieDAO.getmoviecharacter(b);
 			String url=vo.getTrailer();
@@ -35,7 +48,6 @@ public class MoviedetailModel {
 			request.setAttribute("list", list);
 			request.setAttribute("vo", vo);
 			request.setAttribute("jsp", "../movie/moviedetail.jsp");
-			
 			
 			//페이지 설정
 			int mNo=Integer.parseInt(no);
@@ -47,7 +59,7 @@ public class MoviedetailModel {
 			int start=(curpage*rowSize)-(rowSize-1);
 			int end=curpage*rowSize;
 			
-			Map map=new HashMap();
+			map=new HashMap();
 			map.put("start", start);
 			map.put("end",end);
 			map.put("mNo", mNo);
@@ -60,6 +72,8 @@ public class MoviedetailModel {
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
 			
+			request.setAttribute("no", no);
+			request.setAttribute("check", check);
 			request.setAttribute("type", type);
 			request.setAttribute("block", block);
 			request.setAttribute("frompage", frompage);

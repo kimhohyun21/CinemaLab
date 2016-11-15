@@ -29,30 +29,32 @@
 	<div align="center" class="bg">
 		<h3>글쓰기</h3>
 		<form action="insert_ok.do" method="post" name="frm">
-			<table width="500" id="table_content">
+			<table width="500" id="insert_table">
 				<tr height="27">
-					<td width="20%" align="center">이름</td>
+					<td width="20%" align="center" class="insert_td">이름</td>
 					<td width="80%" align="left">
 						<input type="text" size="10" name="name" value="${mvo.name}">
 						<input type="hidden" size="10" name="no" value="${mvo.no}">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">제목</td>
+					<td width="20%" align="center" class="insert_td">제목</td>
 					<td width="80%" align="left">
 						<input type="text" size="45" name="subject">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">내용</td>
+					<td width="20%" align="center" class="insert_td">내용</td>
 					<td width="80%" align="left">
 						<textarea rows="8" cols="50" name="content"></textarea>
 					</td>
 				</tr>
+			</table>
+			<table width="500">
 				<tr>
 					<td colspan="2" align="center">
-						<input type="button" value="글쓰기" onclick="send()">
-						<input type="button" value="취소" onclick="javascript:history.back()">
+						<input type="button" value="글쓰기" onclick="send()" class="insert_btn">
+						<input type="button" value="취소" onclick="javascript:history.back()" class="cancel_btn">
 					</td>
 				</tr>
 			</table>

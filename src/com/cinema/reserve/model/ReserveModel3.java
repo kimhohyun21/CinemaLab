@@ -52,10 +52,6 @@ public class ReserveModel3 {
 			HttpSession session=request.getSession();
 			MemberVO mvo=(MemberVO) session.getAttribute("mvo");
 			
-			//ÀÌÀü ÆäÀÌÁö ÁÖ¼Ò È¹µæ
-			String url=request.getHeader("referer");
-			
-			request.setAttribute("url", url);
 			request.setAttribute("year", year);
 			request.setAttribute("month", month);
 			request.setAttribute("checkedDay", checkedDay);
