@@ -7,6 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve2 Ticket and Seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/easydropdown.css">
+	<script src="jStyles/jquery.easydropdown.js"></script>
 	<script type="text/javascript">
 		function select(){			
 			$.ajax({
@@ -23,7 +25,7 @@
 		};	
 	
 		$('document').ready(function(){
-			$('select').click(function(){
+			$('.dropdown').click(function(){
 				if(${mvo==null}){
 					$.jQueryLogin();
 					return;
@@ -129,8 +131,7 @@
 					<input type="hidden" name="rType" value="seat">				
 					<strong>어른</strong>
 					<div class="selectBox">					
-						<label for="adult">0</label>
-						<select id="adult" name="adult" onchange="select()">
+						<select id="adult" name="adult" onchange="select()" class="dropdown">
 							<option selected="selected">0</option>
 						<c:forEach var="i" begin="1" end="8">
 							<option>${i}</option>
@@ -139,8 +140,7 @@
 					</div>
 					<strong>청소년</strong>
 					<div class="selectBox">
-						<label for="junior">0</label>
-						<select id="junior" name="junior" onchange="select()">
+						<select id="junior" name="junior" onchange="select()" class="dropdown">
 							<option selected="selected">0</option>
 						<c:forEach var="i" begin="1" end="8">
 							<option>${i}</option>
@@ -149,8 +149,7 @@
 					</div>	
 					<strong>시니어</strong>
 					<div class="selectBox">
-						<label for="senior">0</label> 
-						<select id="senior" name="senior" onchange="select()">
+						<select id="senior" name="senior" onchange="select()" class="dropdown">
 							<option selected="selected">0</option>
 						<c:forEach var="i" begin="1" end="8">
 							<option>${i}</option>
