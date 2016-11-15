@@ -2,7 +2,6 @@ package com.cinema.admin.dao;
 
 import java.util.*;
 import com.cinema.reserve.dao.*;
-
 import org.apache.ibatis.session.*;
 import com.cinema.dao.*;
 import com.cinema.movieList.dao.*;
