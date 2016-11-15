@@ -19,7 +19,7 @@ public class AModifyMovieListModel {
 		
 		
 		//영화정보들 가져오기
-		MovieVO vo=AdminDAO.adminMovieModify(no);
+		MovieVO vo=AdminDAO.adminMovieData(no);
 		
 		SimpleDateFormat yearF=new SimpleDateFormat("yyyy");
 		SimpleDateFormat monthF=new SimpleDateFormat("MM");
@@ -38,6 +38,7 @@ public class AModifyMovieListModel {
 		String runtime=vo.getRuntime().replaceAll("분", "");
 		vo.setRuntime(runtime);
 		
+		request.setAttribute("no", no);
 		request.setAttribute("year", year);
 		request.setAttribute("month", month);
 		request.setAttribute("day", day);
