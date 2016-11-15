@@ -16,10 +16,10 @@ import com.cinema.reserve.dao.ReserveDAO;
 import com.cinema.reserve.dao.ReserveVO;
 
 @Controller
-public class ReserveModel3 {
+public class ReserveModel4_Complete {
 	
-	@RequestMapping("reserve3.do")
-	public String Reserve3(HttpServletRequest request){
+	@RequestMapping("reserve4.do")
+	public String Reserve4(HttpServletRequest request){
 		try{
 			request.setCharacterEncoding("EUC-KR");
 			
@@ -27,7 +27,7 @@ public class ReserveModel3 {
 			String year=request.getParameter("year");
 			String month=request.getParameter("month");
 			String checkedDay=request.getParameter("checkedDay");
-			String checkedDay2=request.getParameter("checkedDay2");
+			String checkedDay2=request.getParameter("checkedDay2");			
 			
 			//극장 관련
 			String tname=request.getParameter("tname");
@@ -52,6 +52,61 @@ public class ReserveModel3 {
 			HttpSession session=request.getSession();
 			MemberVO mvo=(MemberVO) session.getAttribute("mvo");
 			
+			//이전 페이지 주소 획득
+			String url=request.getHeader("referer");
+			
+			//결제정보 획득
+			String paymentId=request.getParameter("pid");
+			String shopId=request.getParameter("sid");
+			String serverPay=request.getParameter("sp");
+			String cardOkNum=request.getParameter("cokn");
+			String paytype=request.getParameter("paytype");
+			
+			
+			//예약 정보 설정			
+			String rDate=year+"-"+month+"-"+checkedDay+" "+movietime;
+			String strPayType=null;
+			if(paytype.equals("card"))strPayType="신용카드";
+			if(paytype.equals("trans"))strPayType="계좌이체";
+			int no=mvo.getNo();
+			
+			Map map=new HashMap();
+			map.put("theater", tname);
+			map.put("theaterNo", theaterNo);
+			map.put("movietime", movietime);
+			int tNo=ReserveDAO.getTno(map);
+			
+			//예약 정보 등록
+			map=new HashMap();
+			map.put("rDate", rDate);
+			map.put("seat", seatNo);
+			map.put("ticket", ticketAll);
+			map.put("payType", strPayType);
+			map.put("payment", payment);
+			map.put("paymentId", paymentId);
+			map.put("shopId", shopId);
+			map.put("serverPay", serverPay);
+			map.put("cardOkNum", cardOkNum);
+			map.put("no", no);
+			map.put("tNo", tNo);
+			ReserveDAO.regReserve(map);
+			
+			//예매율 삽입
+			int totalReserve=ReserveDAO.getTotalReserve();
+			System.out.println(totalReserve);
+			int reserveNum=ReserveDAO.getReserveNum(title);
+			System.out.println(reserveNum);
+			double reserveRate=((double)reserveNum/totalReserve)*100;	
+			System.out.println(reserveRate);
+			double rank = Double.parseDouble(String.format("%.2f",reserveRate));
+			System.out.println(rank);
+
+			map=new HashMap();
+			map.put("title", title);
+			map.put("rank", rank);
+			ReserveDAO.updateRank(map);			
+			
+			request.setAttribute("url", url);
 			request.setAttribute("year", year);
 			request.setAttribute("month", month);
 			request.setAttribute("checkedDay", checkedDay);
@@ -66,11 +121,15 @@ public class ReserveModel3 {
 			request.setAttribute("payment", payment);
 			request.setAttribute("seatNo", seatNo);
 			request.setAttribute("mvo", mvo);
+			request.setAttribute("pid", paymentId);
+			request.setAttribute("sid", shopId);
 			
-			request.setAttribute("jsp", "../reserve/reserve3.jsp");		
+			request.setAttribute("jsp", "../reserve/reserve4_Complete.jsp");		
 		}catch(Exception e){
 			e.printStackTrace();
 		}		
+		
 		return "main/main.jsp";
 	}
+
 }

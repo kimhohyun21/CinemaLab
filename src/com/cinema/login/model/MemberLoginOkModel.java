@@ -17,7 +17,7 @@ public class MemberLoginOkModel {
 		try{
 			request.setCharacterEncoding("EUC-KR");
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}		
 		
 		String check="";

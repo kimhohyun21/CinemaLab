@@ -29,7 +29,7 @@
 	<div align="center" class="bg">
 		<h3>답글쓰기</h3>
 		<form action="qreply_ok.do?page=${page }&no=${no }" method="post" name="frm">
-			<table width="500" id="table_content">
+			<table width="500" id="insert_table">
 				<tr height="27">
 					<th width="20%" align="center">이름</th>
 					<td width="80%" align="left">
@@ -48,10 +48,12 @@
 						<textarea rows="8" cols="50" name="content"></textarea>
 					</td>
 				</tr>
+			</table>
+			<table width="500">
 				<tr>
 					<td colspan="2" align="center">
-						<input type="button" value="글쓰기" onclick="send()">
-						<input type="button" value="취소" onclick="javascript:history.back()">
+						<input type="button" value="댓글달기" onclick="send()" class="insert_btn">
+						<input type="button" value="취소" onclick="javascript:history.back()" class="cancel_btn">
 					</td>
 				</tr>
 			</table>
