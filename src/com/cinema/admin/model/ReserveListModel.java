@@ -21,7 +21,6 @@ public class ReserveListModel{
 		map.put("start", start);
 		map.put("end", end);
 		
-		System.out.println("맨체스터 유나이티드");
 		List<ReserveListVO> list = AdminDAO.reserveList(map);
 		int totalpage = AdminDAO.reserveTotal();
 		

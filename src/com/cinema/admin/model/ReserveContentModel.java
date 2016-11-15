@@ -9,13 +9,10 @@ public class ReserveContentModel{
 
 	@RequestMapping("reservecontent.do")
 	public String handlerRequest(HttpServletRequest request){
+		//no값과 page값 받아오기
 		String no = request.getParameter("no");
 		String page= request.getParameter("page");
-		System.out.println(no+"@@@");
 		ReserveListVO vo = AdminDAO.reserveContent(Integer.parseInt(no));
-		System.out.println(vo);
-		System.out.println(vo.getSeat());
-		System.out.println(vo.getPayment());
 		request.setAttribute("no", no);
 		request.setAttribute("page", page);
 		request.setAttribute("vo", vo);
