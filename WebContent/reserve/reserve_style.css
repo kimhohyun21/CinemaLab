@@ -288,6 +288,10 @@ p.movie, p.movieSelected{
 	margin: 5px 5px 5px 0px;
 }
 
+p.movie img{
+	border: 0px;
+}
+
 p#theaterNo{
 	font-size: 20px;
 	font-weight: bold;

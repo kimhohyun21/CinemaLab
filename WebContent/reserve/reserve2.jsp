@@ -7,8 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve2 Ticket and Seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
-	<link rel="stylesheet" type="text/css" href="jStyles/easydropdown.css">
-	<script src="jStyles/jquery.easydropdown.js"></script>
+	<link rel="stylesheet" type="text/css" href="jStyles/easydropdown.css">	
 	<script type="text/javascript">
 		function select(){			
 			$.ajax({
@@ -100,16 +99,8 @@
 	            }
 	        });
 	    };
-	    
-	    /*select 메뉴 UI*/
-	    jQuery(document).ready(function(){
-			var select = $('.selectBox select');
-			select.change(function(){
-				var select_name = $(this).children('option:selected').text();
-				$(this).siblings("label").text(select_name);
-			});		
-		});
 	</script>
+	<script src="jStyles/jquery.easydropdown.js"></script>
 </head>
 <body>
 	<div align="center" class="reserve2">
@@ -131,7 +122,7 @@
 					<input type="hidden" name="rType" value="seat">				
 					<strong>어른</strong>
 					<div class="selectBox">					
-						<select id="adult" name="adult" onchange="select()" class="dropdown">
+						<select id="adult" class="dropdown" name="adult" onchange="select()">
 							<option selected="selected">0</option>
 						<c:forEach var="i" begin="1" end="8">
 							<option>${i}</option>
@@ -140,7 +131,7 @@
 					</div>
 					<strong>청소년</strong>
 					<div class="selectBox">
-						<select id="junior" name="junior" onchange="select()" class="dropdown">
+						<select id="junior" class="dropdown" name="junior" onchange="select()">
 							<option selected="selected">0</option>
 						<c:forEach var="i" begin="1" end="8">
 							<option>${i}</option>
@@ -149,7 +140,7 @@
 					</div>	
 					<strong>시니어</strong>
 					<div class="selectBox">
-						<select id="senior" name="senior" onchange="select()" class="dropdown">
+						<select id="senior" class="dropdown" name="senior" onchange="select()">
 							<option selected="selected">0</option>
 						<c:forEach var="i" begin="1" end="8">
 							<option>${i}</option>
@@ -158,13 +149,11 @@
 					</div>			
 				</form>
 				<!-- 선택 초기화 버튼 -->
-				<div class="resetBtn">
-					<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
-					&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-					&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
-						선택초기화
-					</a>
-				</div>
+				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
+				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
+				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
+					<div class="resetBtn">선택초기화</div>
+				</a>				
 			</div>
 		</div>
 		<!-- 자리 선택  include-->
