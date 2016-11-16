@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="customer/style.css">
-<script type="text/javascript">	
+<script type="text/javascript">		
 	function send(){
 		var f=document.frm;
 		
