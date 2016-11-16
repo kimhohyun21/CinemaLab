@@ -37,14 +37,14 @@
 			var $loginform = $.parseHTML('<div id="logindiv">'
 											+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
 											+'<div class="input">'
-											+'<label for="id">ID</label>'
-											+'<input type="text" placeholder="ID" name="id" id="id">'
+											+'<label class="idlabel" for="id">ID</label>'
+											+'<input type="text" placeholder="아이디를 입력하세요." name="id" id="id" onkeydown="enter()">'
 											+'</div>'+'<div class="input">'
-											+'<label for="pwd">PW</label>'
-											+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+											+'<label class="pwlabel" for="pwd">PW</label>'
+											+'<input type="password" placeholder="패스워드를 입력하세요." name="pwd" id="pwd" onkeydown="enter()">'
 											+'</div><input type="hidden" name="loginType" value="reserve">'
 											+'</form><div id="find">'
-											+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+											+'<a href="searchId.do">아이디 찾기</a>&nbsp;|&nbsp;'
 											+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
 			$("body").append($loginform);
 			
@@ -63,7 +63,14 @@
 			       }
 			    }
 			});
-		}		
+		}
+		
+		//엔터 로그인
+		function enter(){
+			if(window.event.keyCode == 13){
+				login();
+			}
+		}
 		
 		//로그인 창 값입력 체크
 		function login(){

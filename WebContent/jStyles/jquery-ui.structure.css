@@ -514,6 +514,10 @@ button.ui-button::-moz-focus-inner {
 	padding: .5em 1em;
 	background: none;
 	overflow: auto;
+	text-align: center;
+    position: relative;
+    top: 10px;
+    font-size: 12pt;
 }
 .ui-dialog .ui-dialog-buttonpane {
 	text-align: left;
