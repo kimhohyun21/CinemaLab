@@ -11,6 +11,7 @@ public class ReserveListModel{
 	@RequestMapping("reservelist.do")
 	public String qnaList(HttpServletRequest request){
 		String page= request.getParameter("page");
+		
 		if(page == null) page = "1";
 		int curpage = Integer.parseInt(page);
 		int rowSize = 10;
