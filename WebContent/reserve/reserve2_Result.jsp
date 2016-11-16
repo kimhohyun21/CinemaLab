@@ -117,10 +117,10 @@
 			<table width="920px" class="btn_table">
 				<tr>
 					<td align="left">
-						<c:if test="${cType!=theater }">
+						<c:if test="${cType==null }">
 							<input type="button" value="◀ 이전 단계" class="back_button" onclick="reback()">
 						</c:if>
-						<c:if test="${cType==theater }">
+						<c:if test="${cType!=null }">
 							<input type="button" value="◀ 이전 단계" class="back_button" onclick="javascript:location.href='${url}'">
 						</c:if>
 					</td>

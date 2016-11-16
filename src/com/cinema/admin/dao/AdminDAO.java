@@ -44,6 +44,7 @@ public class AdminDAO {
 		SqlSession session = ssf.openSession();
 		ReserveListVO vo = session.selectOne("RContent",no);
 		session.close();
+
 		return vo;
 	}
 	

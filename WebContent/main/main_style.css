@@ -120,3 +120,46 @@ img.logo{
 	position: relative;
 	top: 25px;
 }
+
+/**** 팝업 로그인 창   ***/
+label.idlabel{
+	margin: 5px;
+    padding: 0 0 0 10px;
+    font-weight: bold;
+}
+label.pwlabel{
+	margin: 7px;
+	font-weight: bold;
+}
+input[type=text]#id{
+	margin: 3px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+input[type=password]#pwd{
+	margin: 3px 3px 5px 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+::-webkit-input-placeholder { /* Webkit browsers */
+	font-size: 10pt;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	font-size: 10pt;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	font-size: 10pt;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+	font-size: 10pt;
+}
+div#find a{
+	font-size: 11pt;
+	font-weight: bold;
+	color: #393939;
+}
+div#find a:HOVER {
+	color: #ea4d00;
+}
