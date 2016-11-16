@@ -15,21 +15,47 @@
 			$.jQueryLogin();
 			return;
 		}
-	}		
+	}
+	
+	 /* 별점 체크 했는지 확인 */
+    function replycheck(){
+    	/* 로그인 먼저 체크 */
+		if(${mvo==null}){
+			$.jQueryLogin();
+			return;
+		} 
+    	/*평점체크*/    	
+    	var f=document.frm;
+    	if($(':input[name=star-input]:radio:checked').val()==null){
+    		$.jQueryAlert('평점을 체크해 주세요.');
+    		return;
+    	}
+    	if(f.content.value==""){
+    		$.jQueryAlert('내용을 입력해 주세요.');
+    		return;
+    	}
+    	console.log($('textarea.mcont').val());
+    	f.submit();
+    }
+    
+    /* 댓글 삭제 버튼 클릭 시 값 보내줌*/ 
+    function replydelete(reNo){
+       	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
+    }
 	
 	/*jQuery Login*/
 	jQuery.jQueryLogin = function (){
 		var $loginform = $.parseHTML('<div id="logindiv">'
 										+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
 										+'<div class="input">'
-										+'<label for="id">ID</label>'
-										+'<input type="text" placeholder="ID" name="id" id="id">'
+										+'<label class="idlabel" for="id">ID</label>'
+										+'<input type="text" placeholder="아이디를 입력하세요." name="id" id="id" onkeydown="enter()">'
 										+'</div>'+'<div class="input">'
-										+'<label for="pwd">PW</label>'
-										+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+										+'<label class="pwlabel" for="pwd">PW</label>'
+										+'<input type="password" placeholder="패스워드를 입력하세요." name="pwd" id="pwd" onkeydown="enter()">'
 										+'</div><input type="hidden" name="loginType" value="reserve">'
 										+'</form><div id="find">'
-										+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+										+'<a href="searchId.do">아이디 찾기</a>&nbsp;|&nbsp;'
 										+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
 		$("body").append($loginform);
 		
@@ -48,6 +74,13 @@
 		       }
 		     }
 		 });
+	}
+	
+	//엔터 로그인
+	function enter(){
+		if(window.event.keyCode == 13){
+			login();
+		}
 	}
 	
 	//로그인 창 값 입력 체크
@@ -83,22 +116,7 @@
                 }
             }
         });
-    };
-    
-    /* 별점 체크 했는지 확인 */
-    function replycheck(){
-    	var f=document.frm;
-    	if($(':input[name=star-input]:radio:checked').val()==null)
-    		alert('평점을 체크해 주세요.');
-    	else{
-    		f.submit();
-    	}
-    }
-    
-    /* 댓글 삭제 버튼 클릭 시 값 보내줌*/ 
-    function replydelete(reNo){
-       	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
-    }
+    }  
 </script>
 </head>
 <body>
@@ -128,7 +146,12 @@
 				  		</span>	
 					</td>
 					<td width="69%">
-						<textarea name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+					<c:if test="${mvo==null }">	
+						<textarea name="content" class="mcont" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+					</c:if>
+					<c:if test="${mvo!=null }">	
+						<textarea name="content" class="mcont" rows="6" cols="100" wrap="hard" required onclick="loginCheck();"></textarea>
+					</c:if>
 					</td>
 					<td width="11%">
 						<input type="button" value="입력" id="send" onclick="replycheck()">
