@@ -128,7 +128,7 @@ label.idlabel{
     font-weight: bold;
 }
 label.pwlabel{
-	margin: 7px;
+	margin: 5px;
 	font-weight: bold;
 }
 input[type=text]#id{
