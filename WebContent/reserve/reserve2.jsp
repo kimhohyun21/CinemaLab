@@ -24,7 +24,7 @@
 		};	
 	
 		$('document').ready(function(){
-			$('.dropdown').click(function(){
+			$('div.selectBox').click(function(){
 				if(${mvo==null}){
 					$.jQueryLogin();
 					return;
@@ -151,7 +151,7 @@
 				<!-- 선택 초기화 버튼 -->
 				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
+				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}#nav">
 					<div class="resetBtn">선택초기화</div>
 				</a>				
 			</div>
