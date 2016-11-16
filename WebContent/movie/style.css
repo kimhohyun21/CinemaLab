@@ -17,40 +17,7 @@
     border: 3px solid gray;
 }
 
-/* 수정 */
-#poster_div{
-   float: left;
-}
-
-#title{
-   position:relative;
-   float: left;
-   position: relative;
-   left: 25px;
-}
-
-.title_2{
-   font-size: 25px;
-}
-.detail2{
-   padding: 25px 55px 25px 55px;
-}
-
-#content{
-   position: relative;
-   top: 20px;
-   background-color: #d9d9d9;
-   width: 660px;
-   border-radius: 8px 8px 8px 8px;
-   padding: 8px 5px 14px 5px;
-}
-
-#content table tr{
-   height: 40px;   
-}
-
-
-
+/* 영화 리스트 */
 .list{
    font-size:17px;
    font-weight:bold;
@@ -135,6 +102,37 @@ pre{
 
 .td{
    border-right: 2px solid black;
+}
+
+#poster_div{
+   float: left;
+}
+
+#title{
+   position:relative;
+   float: left;
+   position: relative;
+   left: 25px;
+}
+
+.title_2{
+   font-size: 25px;
+}
+.detail2{
+   padding: 25px 55px 25px 55px;
+}
+
+#content{
+   position: relative;
+   top: 20px;
+   background-color: #d9d9d9;
+   width: 660px;
+   border-radius: 8px 8px 8px 8px;
+   padding: 8px 5px 14px 5px;
+}
+
+#content table tr{
+   height: 40px;   
 }
 
 /* 댓글부분 css */
@@ -360,3 +358,30 @@ div.detail{
 #star{
    border: 1px solid;
 }
+
+/* 관리자 수정하기 버튼 */
+.modify{
+	position: relative;
+	right: 460px;
+	top: 50px;
+	font-size: 20px;
+	color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
