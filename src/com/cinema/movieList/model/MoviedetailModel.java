@@ -61,6 +61,7 @@ public class MoviedetailModel {
 			//디비에 있는 댓글 뿌려주기
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
+			if(totalpage==0)curpage=0;
 			
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
