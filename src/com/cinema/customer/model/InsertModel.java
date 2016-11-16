@@ -11,7 +11,6 @@ public class InsertModel{
 	@RequestMapping("insert.do")
 	public String handlerRequest(HttpServletRequest request){
 		request.setAttribute("jsp", "../customer/insert.jsp");
-		System.out.println("´ÙºñÄ¡");
 		return "main/main.jsp";
 	}
 }

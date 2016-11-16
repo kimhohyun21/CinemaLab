@@ -99,6 +99,5 @@
          <jsp:include page="reply.jsp"></jsp:include>
       </div>
    </div>
->>>>>>> refs/remotes/origin/hohyun
 </body>
 </html>

@@ -17,14 +17,23 @@ public class ReserveListModel{
 		int rowSize = 10;
 		int start = (curpage*rowSize)-(rowSize-1);
 		int end = curpage*rowSize;
+		int block = 5;
+		int fromPage = ((curpage-1)/block*block)+1;
+		int toPage = ((curpage-1)/block*block) + block;
 		
 		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
-		
+
 		List<ReserveListVO> list = AdminDAO.reserveList(map);
 		int totalpage = AdminDAO.reserveTotal();
 		
+		if(toPage > totalpage)
+			toPage = totalpage;
+		
+		request.setAttribute("fromPage", fromPage);
+		request.setAttribute("toPage", toPage);
+		request.setAttribute("block", block);
 		request.setAttribute("list", list);
 		request.setAttribute("page", curpage);
 		request.setAttribute("totalpage", totalpage);
