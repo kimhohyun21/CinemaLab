@@ -20,7 +20,7 @@
 </script>
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="bg">
 	<form action="AmovieInsert_ok.do" name="frm" method="post">
 		<table width="700" height="300" class="TT">
 			<tr>

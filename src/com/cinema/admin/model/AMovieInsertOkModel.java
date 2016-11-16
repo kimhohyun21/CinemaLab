@@ -35,6 +35,8 @@ public class AMovieInsertOkModel {
 			String sopendate = year + "-" + month + "-" + day + " 00:00:00";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date opendate = sdf.parse(sopendate);
+			
+			
 
 			// ¿˙¿Â
 			MovieVO vo = new MovieVO();			

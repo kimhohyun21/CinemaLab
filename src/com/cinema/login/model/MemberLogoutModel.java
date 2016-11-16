@@ -13,11 +13,9 @@ import oracle.net.aso.h;
 public class MemberLogoutModel {
 	@RequestMapping("logout.do")
 	public String logout(HttpServletRequest request){
-		/*String overCheckId=(String) session.getAttribute("overCheckId");
-		String id=(String) session.getAttribute("ok");
-		String mvo=(String) session.getAttribute("mvo");*/
 		HttpSession session=request.getSession();		
 		if(session !=null){
+			//历厘等 技记力芭
 			session.invalidate();			
 		}
 		return "main.do";

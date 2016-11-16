@@ -22,14 +22,13 @@
 	}
 </style>
 <script type="text/javascript">
- window.onload=function(){	
-	var $ok="${ok}"
-	if($ok=="사용가능한 ID입니다 ^^" && first == 1){
-		document.frm.name.focus();
-		alert("사용가능한 ID입니다");
-	}
-}
-
+  window.onload=function(){	
+	 <%
+		HttpSession abc=request.getSession(); 
+		abc.removeAttribute("ok");
+		abc.removeAttribute("join");
+	%>
+} 
 function send(){
 	 var f=document.frm;
 	 var pwd=f.pwd.value;
@@ -44,7 +43,7 @@ function send(){
 		alert("ID를 입력하세요");
 		f.id.focus();
 		return;
-	}
+	}	 
 	 var kor=/^[a-z A-Z 가-힝]*$/;
 	 if (!kor.test(f.name.value) ){
 	     alert("이름에 특수문자,숫자는 입력 할 수 없습니다. \n ex) HoHyunMansae");
@@ -86,9 +85,9 @@ function send(){
 	        alert("전화번호를 제대로 입력해주세요. \n전화번호는 숫자만 입력하실 수 있습니다 \n ex)01015771577");
 	        f.phone.focus();
 	        return;
-	   }  	var $ok="${ok }";
-	   console.log($ok);
-	 if($ok != '사용가능한 ID입니다 ^^'){
+	   } 	
+	 var $vvvv="${vvvv }";	   
+	 if($vvvv == "체크완료"){
 	 		alert("중복체크를 해주세요") 
 	 		return;
 	  }
@@ -100,7 +99,8 @@ function checkID(){
 	var id=f.id.value;
 	var $ok="${ok}"
 	var eng=/^[0-9 a-z A-Z]*$/;
-	if(!eng.test(f.id.value)){
+	
+	 if(!eng.test(f.id.value)){
 	     alert("아이디는 영어만 입력 할 수 있습니다. \n ex) HoHyunMansae");
 	     f.id.focus();
 	     return;
@@ -110,7 +110,7 @@ function checkID(){
 		f.id.focus();
 		return;
 	}
-	location.href="idOverlab.do?id="+id;
+	location.href="idOverlab.do?id="+id; 
 }
 
 function enter(){
@@ -118,9 +118,10 @@ function enter(){
 		send();
 	}
 }
-function cc(){
-	if(window.event.keyCode == 13){
-		checkID();
+function NORTHFACE(){
+	if(window.event.keyCode == 32){
+		alert("공백은 사용이 불가능합니다");
+		event.returnValue=false;
 	}
 }
 </script>	
@@ -134,26 +135,20 @@ function cc(){
 						<b class="fc">ID : </b>
 					</td>
 					<td>
-						<c:if test="${ok eq null || ok eq ''}">
-							<input type="text" class="id" id="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }" size="30" onkeydown="cc()">
-						</c:if>
-						<c:if test="${ok eq '사용가능한 ID입니다 ^^' }">
-							<input type="text" class="id" id="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }" size="30" readonly="readonly">
-						</c:if>
+						<input type="text" class="id" id="id" placeholder="영어만 사용가능" name="id" value="${overCheckId }" size="30" onkeydown="NORTHFACE()">					
 					</td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-						<input type="button" value="중복확인" onclick="checkID()" class="btn" ><br/>
-						<b class="fc">${ok }</b>										
+						<input type="button" value="중복확인" onclick="checkID()" class="btn" >
 					</td>
-				</tr>				
+				</tr>
 				<tr>
 					<td align="right">
 						<b class="fc">이름 : </b>
 					</td>
 					<td>
-						<input type="text" placeholder="이름" name="name">										
+						<input type="text" placeholder="이름" name="name" onkeydown="NORTHFACE()">
 					</td>
 				</tr>
 				<tr>
@@ -161,7 +156,7 @@ function cc(){
 						<b class="fc">비밀번호 : </b>
 					</td>
 					<td>
-						<input type="password" placeholder="비밀번호" name="pwd">
+						<input type="password" placeholder="비밀번호" name="pwd" onkeydown="NORTHFACE()">
 					</td>
 				</tr>			
 				<tr>
@@ -177,7 +172,7 @@ function cc(){
 						<b class="fc">생년월일 : </b>
 					</td>
 					<td>
-						<input type="text" placeholder="생년월일" name="birth" onkeyup="enter()">				
+						<input type="text" placeholder="생년월일" name="birth">				
 					</td>
 				</tr>
 				<tr>
@@ -197,7 +192,7 @@ function cc(){
 				</tr>
 				<tr>
 					<td colspan="2" align="center">					
-						<input id="button" type="button" value="뒤로" onclick="javascript:history.back()" class="btn">
+						<input id="button" type="button" value="취소" onclick="javascript:location.href='main.do'" class="btn">
 					</td>
 				</tr>
 			</table>

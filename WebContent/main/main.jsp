@@ -11,11 +11,11 @@
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.structure.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.theme.css">
-	<link rel="stylesheet" type="text/css" href="main/style1.css">
+	<link rel="stylesheet" type="text/css" href="main/main_style.css">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-ico" />
 	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
-
+		
 	</script>
 </head>
 <body>
@@ -35,27 +35,31 @@
 					<li><a href="customer.do">고객센터</a></li>
 				</ul>
 			</div>
-			<br/>		
-
-				<a href="main.do">
-					<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
-				</a>
-
+			<br/>
+			<a href="main.do">
+				<img alt="logo" class="logo" src="image/marvel_cinema_logo.png">
+			</a>
 		</div>
 		<div id="nav">
 			<ul>
-				<li><a href="reserve.do">예매</a></li>
+				<li onclick="javascript:location.href='reserve.do'">
+					<a href="reserve.do">예매</a>
+				</li>
 				<li class="noeffect">|</li>
-				<li><a href="movieList.do">영화</a></li>
+				<li onclick="javascript:location.href='movieList.do'">
+					<a href="movieList.do">영화</a>
+				</li>
 				<li class="noeffect">|</li>
-				<li><a href="theater.do?local=서울&theater=신도림">영화관</a></li>
+				<li onclick="javascript:location.href='theater.do'">
+					<a href="theater.do">영화관</a>
+				</li>
 			</ul>
 		</div>
 		<div id="article">
 			<jsp:include page="${jsp }"></jsp:include>
 		</div>
 		<div id="footer">
-			<span>&copy;2016 Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan/</span>
+			<span>&copy;2016 Shin Eun Hye / Kim Ho Hyun / Jun Jin Tae / Choi Tae Soek / Park Jung Hwan</span>
 		</div>
 	</div>
 </body>

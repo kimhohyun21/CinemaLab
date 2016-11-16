@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>slider Page</title>
+	<title>Main Slider</title>
 	 <!-- Insert to your webpage before the </head> -->
     <script src="carouselengine/amazingcarousel.js"></script>
     <link rel="stylesheet" type="text/css" href="carouselengine/initcarousel-1.css">

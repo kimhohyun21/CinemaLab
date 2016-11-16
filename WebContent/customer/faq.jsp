@@ -30,32 +30,59 @@
 				</td>
 			</tr>
 		</table>
-		<h3>faq게시판</h3>
+		<div id="faq_title">FAQ</div>
 		<hr>
-		<table border="0" width="600">
-			<tr>
-				<td align="left">
-				<div id="mini_nav">
-					<c:if test="${mvo.id!=null }">
-						<a href="customer.do">글 관리</a>
-					</c:if>
-				</div>	
-				</td>
-			</tr>
-		</table>
-
-		<table border="1" width="800" align="center"  id="table_content">
+		<table width="800" align="center" class="faq" style="table-layout: fixed">
 			<c:forEach var="vo" items="${list}">
-				<tr class="dataTr1">
-					<td class="tdcenter">Q: ${vo.question}</td>
+				<tr class="question">
+					<td>
+						<a href="javascript:void(0);">
+							<span class="q">Q.</span>
+							<span class="qu">${vo.question}</span>
+						</a>
+					</td>
 				</tr>
-				<tr class="dataTr2">
-					<td class="tdcenter">A: ${vo.answer}</td>
-				</tr>
-				
+				<tr class="answer" style="display: none;">
+					<td style="word-break:break-all;">
+						<div class="answer_box">
+							<span class="a">A.</span>
+							<span class="an">${vo.answer}</span>
+						</div>
+					</td>
+				</tr>			
 			</c:forEach>
 		</table>
-
 	</div>
 </body>
+<script type="text/javascript">
+	$('.faq .question').off().on('click',function(){
+		if(!$(this).hasClass('on')){
+			$('.faq .question').removeClass('on');
+			$('.faq .question').next('.answer').hide();
+			$(this).addClass('on');
+			$(this).next('.answer').show();
+		}else{
+			$(this).removeClass('on');
+			$(this).next('.answer').hide();
+		}
+	});
+</script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

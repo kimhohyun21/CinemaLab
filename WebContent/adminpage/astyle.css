@@ -1,22 +1,39 @@
 @CHARSET "EUC-KR";
-table.type01 {
-	background-color:#949dbc;
-    border-collapse: collapse;
-
+.bg{
+	background-color: rgba(250,250,250,0.6);
+	width: 1000px;
+	margin: 10px;
+	padding: 10px;
 }
+.tb{
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-collapse: collapse;
+}
+.tb th, .tb td{
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+table.type01 {
+	background-color: #dcdcd1;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    margin: 20px 10px;
+}
+
 table.type01 thead th {
     padding: 10px;
     font-weight: bold;
-    vertical-align: top;
-    color: #369;
-    border-bottom: 3px solid #036;
+    border-bottom: 2px solid #c00;
+    background: #dcdcd1;
 }
 table.type01 tbody th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    background: #f3f6f7;
+    background: #ececec;
 }
 table.type01 td {
     padding: 10px;
