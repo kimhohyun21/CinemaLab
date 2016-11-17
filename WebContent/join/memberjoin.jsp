@@ -34,24 +34,24 @@ function send(){
 	 var pwd=f.pwd.value;
 	var pwdCheck=f.pwd_check.value;
  	var eng=/^[0-9 a-z A-Z]*$/;
-	 if (!eng.test(f.id.value) ){
+	  if (!eng.test(f.id.value) ){
 	     alert("아이디는 영어 및 숫자만 입력 할 수 있습니다. \n ex) HoHyunMansae");
 	     f.id.focus();
 	     return;
-	}	 
-	 if(f.id.value==""){
-		alert("ID를 입력하세요");
+	}
+	 if(f.id.value=="" || f.id.value.length<5){
+		alert("ID는 5자 이상 입력해 주세요");
 		f.id.focus();
 		return;
-	}	 
+	}
 	 var kor=/^[a-z A-Z 가-힝]*$/;
 	 if (!kor.test(f.name.value) ){
 	     alert("이름에 특수문자,숫자는 입력 할 수 없습니다. \n ex) HoHyunMansae");
 	     f.name.focus();
 	     return;
 	}
-	if(f.name.value==""){
-		alert("이름을 입력하세요");
+	if(f.name.value=="" || f.name.value.length<2){
+		alert("성과이름 모두 써주시기 바랍니다");
 		f.name.focus();
 		return;
 	}
@@ -60,14 +60,15 @@ function send(){
 		f.pwd.focus();
 		return;
 	}
+	var tp=/^[0-9a-zA-Z]*$/;
+	if(tp.test(f.pwd.value) || pwd.length<8){
+		alert("비밀번호는 숫자, 영문, 특수문자를 조합해서\n8자리이상 쓰셔야 가능합니다");
+		f.pwd.focus();
+		return;
+	} 
 	if(f.pwd_check.value==""){
 		alert("비밀번호를 한번 더 입력하세요");
 		f.pwd_check.focus();
-		return;
-	}
-	if(f.phone.value==""){
-		alert("전화번호를 입력하세요");
-		f.content.focus();
 		return;
 	}
 	if(pwd!=pwdCheck){

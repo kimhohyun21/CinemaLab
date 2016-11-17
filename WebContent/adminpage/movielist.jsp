@@ -15,7 +15,7 @@
 			<tr>
 				<td>
 					<a href="AmovieInsert.do">
-						<button>영화등록</button>
+						<button class="menu_insert">영화등록</button>						
 					</a>
 				</td>
 			</tr>
