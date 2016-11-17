@@ -26,7 +26,7 @@ public class MovieReplyModel {
 			
 			String no=request.getParameter("no");
 			int mNo = Integer.parseInt(no);
-			
+			System.out.println("영화 번호 : "+mNo);
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
 			String id = vo1.getId();
