@@ -10,16 +10,16 @@
    <link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
 <body>
-   <!-- 영화 상세 정보 불러오기 -->	
-   <div class="detail">
-   <!-- 관리자로 로그인했을 시 영화 정보 수정하기 버튼 띄우기 -->
-   <c:if test="${mvo.admin eq '1' }">
+	<!-- 관리자로 로그인했을 시 영화 정보 수정하기 버튼 띄우기 -->
+	<c:if test="${mvo.admin eq '1' }">
 		<div align="right">
 			<a href="Amodifymovielist.do?no=${no }">
 				<b class="modify">수정하기</b>
 			</a>
 		</div>
-	</c:if>
+	</c:if>	
+	<!-- 영화 상세 정보 불러오기 -->
+   <div class="detail">
       <div class="detail2">
          <div id="poster_div">
             <img align="left" src="${vo.poster}" width="200" height="270" id="poster"><br>
