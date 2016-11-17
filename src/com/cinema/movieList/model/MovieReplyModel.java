@@ -25,8 +25,7 @@ public class MovieReplyModel {
 			Map map=new HashMap();
 			
 			String no=request.getParameter("no");
-			int mNo = Integer.parseInt(no);
-			System.out.println("영화 번호 : "+mNo);
+			int mNo = Integer.parseInt(no);			
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
 			String id = vo1.getId();
@@ -58,6 +57,17 @@ public class MovieReplyModel {
 				MovieDAO.replyDelete(reNo);
 			}
 			
+			//해당 영화 평균 평점 구하기
+			int totalScore=MovieDAO.replyTotalScore(mNo);
+			int count=MovieDAO.replyCount(mNo);
+			double result=(double)totalScore/count;
+			double movieLike=Double.parseDouble(String.format("%.2f", result));
+			if(Double.isNaN(movieLike))movieLike=0;
+			map=new HashMap();
+			map.put("movieLike", movieLike);
+			map.put("mNo", mNo);
+			MovieDAO.movieLikeUpdate(map);
+			
 			//댓글 기록했었는지 체크
 			int check=0;
 			if(vo1!=null){
@@ -75,7 +85,7 @@ public class MovieReplyModel {
 			
 			//페이지 설정
 			String page=request.getParameter("page");
-			if(page==null) page="1";
+			if(page==null || page=="0") page="1";
 			int curpage=Integer.parseInt(page);
 			int rowSize=5;
 			int start=(curpage*rowSize)-(rowSize-1);
@@ -88,21 +98,12 @@ public class MovieReplyModel {
 			
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
-			
+			if(totalpage==0)curpage=0;
+				
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
-			
-			//해당 영화 평균 평점 구하기
-			int totalScore=MovieDAO.replyTotalScore(mNo);
-			int count=MovieDAO.replyCount(mNo);
-			double result=(double)totalScore/count;
-			double movieLike=Double.parseDouble(String.format("%.2f", result));
-			map=new HashMap();
-			map.put("movieLike", movieLike);
-			map.put("mNo", mNo);
-			MovieDAO.movieLikeUpdate(map);
 					
 			request.setAttribute("url", url);
 			request.setAttribute("list", list);
