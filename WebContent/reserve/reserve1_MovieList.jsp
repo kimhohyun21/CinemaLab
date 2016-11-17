@@ -85,7 +85,7 @@
 							<c:set var="imgUrl" value="image/bg_grade_15.png"/>
 						</c:if>
 						<c:if test="${vo.grade=='18'}">
-								<c:set var="imgUrl" value="image/bg_grade_18.png"/>
+							<c:set var="imgUrl" value="image/bg_grade_18.png"/>
 						</c:if>
 						<a href="javascript:movieSelect('${vo.mNo }');">
 							<p id="movie${vo.mNo}" class="movie">

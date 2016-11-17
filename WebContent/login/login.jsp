@@ -45,7 +45,7 @@ function enter(){
 	<div align="center">		
 		<form method="post" action="login_ok.do" name="frm">
 			<div class="input">
-				<input type="text" placeholder="ID" name="id">
+				<input type="text" placeholder="ID" name="id" onkeydown="enter()">
 			</div>
 			<div class="input">
 				<input type="password" placeholder="PW" name="pwd" id="pwd" onkeydown="enter()">				
