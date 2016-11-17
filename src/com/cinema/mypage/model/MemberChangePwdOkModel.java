@@ -25,17 +25,15 @@ public class MemberChangePwdOkModel {
 		String pwd = request.getParameter("pwd");
 		
 		// DB값 가져오기
-		String db_pwd = vo.getPwd();				
-		System.out.println(pwd+"@@@@"+db_pwd);
+		String db_pwd = vo.getPwd();
 		boolean pCheck = false;
 		
 		if (db_pwd.equals(pwd)) {
-			pCheck = true;			
-			// @@@@@@@@이거안된다 태식아
+			pCheck = true;
+			// 바꿀 비밀번호
 			String change_pwd=request.getParameter("change_pwd");
 			vo.setNo(no);
 			vo.setPwd(change_pwd);
-			System.out.println(vo.getPwd()+" ---- 모델입니다");
 			MemberDAO.memberChangePwd(vo);
 		} else {
 			pCheck = false;

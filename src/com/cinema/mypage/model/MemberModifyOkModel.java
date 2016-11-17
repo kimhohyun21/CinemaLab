@@ -20,12 +20,11 @@ public class MemberModifyOkModel {
 		
 		String strno=request.getParameter("no");
 		int no=Integer.parseInt(strno);		
-		MemberVO vo=MemberDAO.memberGetAllImfor(no);
-		
-		// DB에서 pwd가져오기
+		// DB값
+		MemberVO vo=MemberDAO.memberGetAllImfor(no);		
 		String db_pwd=vo.getPwd();
 		
-		//입력한 값 가져오기
+		//입력값
 		String pwd=request.getParameter("pwd");
 		String name=request.getParameter("name");
 		String phone=request.getParameter("phone");
@@ -44,11 +43,12 @@ public class MemberModifyOkModel {
 			vo.setBirth(birth);
 			vo.setNo(no);
 			MemberDAO.memberModify(vo);
+			//바뀐값 세션에 새로저장
 			HttpSession session=request.getSession();
+			session.removeAttribute("mvo");
 			session.setAttribute("mvo", vo);			
 		}else{
 			pCheck=false;
-			System.out.println("false!");
 		}
 		request.setAttribute("pCheck", pCheck);
 		

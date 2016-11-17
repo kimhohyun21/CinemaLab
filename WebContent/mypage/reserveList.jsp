@@ -40,16 +40,16 @@
 					</a>
 				</td>
 				<td>
-					<h3>${vo.title }</h3><br><br>					
+					<h3>${vo.title }</h3><br><br>
 					상영날짜: ${vo.listdate }<br>
 					상영정보: ${vo.movietime }&nbsp;${vo.local }&nbsp;${vo.theater }&nbsp;${vo.theaterno }관<br>
 					좌석: ${vo.seat }<br>
 					결제방식: ${vo.paytype } / 금액: ${vo.payment }원 
-					<c:if test="${vo.rdate > today}">	
+					<c:if test="${vo.rdate > today}">
 						<div align="right">
 							<form id="cancelfrm" action="reserve5_Cancel.do" method="post">
 								<input type="hidden" name="rNo" value="${vo.rNo}">
-								<input type="hidden" name="title" value="${vo.title}">					
+								<input type="hidden" name="title" value="${vo.title}">
 							</form>
 							<input type="button" value="예매취소" onclick="reserveCancel()">
 						</div>
@@ -64,23 +64,55 @@
 		<table>
 			<tr>
 				<td align="right">
-					<a href="reserveList.do?no=${mvo.no }&type=1&page=1">처음</a>&nbsp;
-					
-					<c:if test="${page > 1 }"> <!-- 1페이지가 아닐때 -->
-						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page -1 }">이전</a>&nbsp;&nbsp;
-					</c:if>
-					<c:if test="${page eq 1 }"> <!-- 1페이지 일때 -->
-						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page }">이전</a>&nbsp;&nbsp;
-					</c:if>
-					
-					<c:if test="${page != totalPage }">	<!-- 마지막페이지가 아닐때 -->
-						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page + 1}">다음</a>&nbsp;
-					</c:if>
-					<c:if test="${page eq totalPage }">	<!-- 마지막 페이지일때 -->
-						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page}">다음</a>&nbsp;
+					<c:if test="${page>block }">
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=1">
+							처음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${fromPage-1 }">
+							이전
+						</a>&nbsp;
 					</c:if>
 					
-					<a href="reserveList.do?no=${mvo.no }&type=1&page=${totalPage }">마지막</a>
+					<c:if test="${page<=block }">
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=1">
+							처음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page>1?page-1:page }">
+							이전
+						</a>&nbsp;
+					</c:if>
+					
+					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
+						[
+						<c:if test="${page==i }">
+							<span style="color:red">${i }</span>
+						</c:if>
+						<c:if test="${page!=i }">
+							<a href="reserveList.do?no=${mvo.no }&type=1&page=${i }">${i }</a>
+						</c:if>
+						]
+					</c:forEach>
+					
+					<c:if test="${toPage<totalPage }">
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${toPage+1 }">
+							다음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${totalPage }">
+							마지막
+						</a>
+					</c:if>
+					
+					<c:if test="${toPage>=totalPage }">
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${page<totalPage?page+1:page }">
+												<!-- A < B ? 만족시 : 불만족시 -->
+							다음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&type=1&page=${totalPage }">
+							마지막
+						</a>
+					</c:if>
+					&nbsp;&nbsp;
+					${page }page / ${totalPage }pages
 				</td>
 			</tr>
 		</table>
@@ -91,23 +123,55 @@
 		<table>
 			<tr>
 				<td align="right">
-					<a href="reserveList.do?no=${mvo.no }&page=1">처음</a>&nbsp;
-					
-					<c:if test="${page > 1 }"> <!-- 1페이지가 아닐때 -->
-						<a href="reserveList.do?no=${mvo.no }&page=${page -1 }">이전</a>&nbsp;&nbsp;
-					</c:if>
-					<c:if test="${page eq 1 }"> <!-- 1페이지 일때 -->
-						<a href="reserveList.do?no=${mvo.no }&page=${page }">이전</a>&nbsp;&nbsp;
-					</c:if>
-					
-					<c:if test="${page != totalPage }">	<!-- 마지막페이지가 아닐때 -->
-						<a href="reserveList.do?no=${mvo.no }&page=${page + 1}">다음</a>&nbsp;
-					</c:if>
-					<c:if test="${page eq totalPage }">	<!-- 마지막 페이지일때 -->
-						<a href="reserveList.do?no=${mvo.no }&page=${page}">다음</a>&nbsp;
+					<c:if test="${page>block }">
+						<a href="reserveList.do?no=${mvo.no }&page=1">
+							처음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&page=${fromPage-1 }">
+							이전
+						</a>&nbsp;
 					</c:if>
 					
-					<a href="reserveList.do?no=${mvo.no }&page=${totalPage }">마지막</a>
+					<c:if test="${page<=block }">
+						<a href="reserveList.do?no=${mvo.no }&page=1">
+							처음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&page=${page>1?page-1:page }">
+							이전
+						</a>&nbsp;
+					</c:if>
+					
+					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
+						[
+						<c:if test="${page==i }">
+							<span style="color:red">${i }</span>
+						</c:if>
+						<c:if test="${page!=i }">
+							<a href="reserveList.do?no=${mvo.no }&page=${i }">${i }</a>
+						</c:if>
+						]
+					</c:forEach>
+					
+					<c:if test="${toPage<totalPage }">
+						<a href="reserveList.do?no=${mvo.no }&page=${toPage+1 }">
+							다음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&page=${totalPage }">
+							마지막
+						</a>
+					</c:if>
+					
+					<c:if test="${toPage>=totalPage }">
+						<a href="reserveList.do?no=${mvo.no }&page=${page<totalPage?page+1:page }">
+												<!-- A < B ? 만족시 : 불만족시 -->
+							다음
+						</a>&nbsp;
+						<a href="reserveList.do?no=${mvo.no }&page=${totalPage }">
+							마지막
+						</a>
+					</c:if>										
+					&nbsp;&nbsp;
+					${page }page / ${totalPage }pages
 				</td>
 			</tr>
 		</table>

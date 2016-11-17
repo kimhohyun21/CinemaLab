@@ -36,4 +36,7 @@
 		VALUES((SELECT max(mno)+1 FROM movieList),#{poster},#{title},#{opendate},
 		#{grade},#{genre},#{runtime},#{director},#{cast},#{content},#{trailer},#{type})
 	</insert>
+	<select id="AMovieCount" resultType="int">
+		SELECT COUNT(*) FROM movieList
+	</select>
 </mapper>

@@ -9,15 +9,15 @@
    <title>영화 상세</title>
    <link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
-<body>
-	<c:if test="${mvo.admin eq '1' }">
+<body>	
+   <div class="detail">
+   <c:if test="${mvo.admin eq '1' }">
 		<div align="right">
 			<a href="Amodifymovielist.do?no=${no }">
 				<b style="color: red;">수정하기</b>
 			</a>
 		</div>
 	</c:if>
-   <div class="detail">
       <div class="detail2">
          <div id="poster_div">
             <img align="left" src="${vo.poster}" width="200" height="270" id="poster"><br>
