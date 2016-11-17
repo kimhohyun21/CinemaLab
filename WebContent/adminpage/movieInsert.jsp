@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="adminpage/test.css">
 <script type="text/javascript">
 	function send(){
 		var f=document.frm;
@@ -20,9 +21,16 @@
 </script>
 </head>
 <body>
-	<div align="center" class="bg">
+	<div align="center">
 	<form action="AmovieInsert_ok.do" name="frm" method="post">
-		<table width="700" height="300" class="TT">
+		<table width="700" height="300" class="type02">
+			<thead>
+				<tr>
+					<td align="center" colspan="4">
+						영화등록
+					</td>
+				</tr>
+			</thead>
 			<tr>
 				<th align="right">
 					<input type="hidden" name="no">
@@ -125,11 +133,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="center" colspan="2">
-					<input type="button" value="전송" onclick="send()">
-				</td>
-				<td align="left" colspan="2">
-					<input type="button" value="취소" onclick="javascript:history.back()">
+				<td align="center" colspan="4">
+					<input type="button" value="전송" onclick="send()" class="table_btn">
+					<input type="button" value="취소" onclick="javascript:history.back()" class="table_btn">
 				</td>
 			</tr>
 		</table>

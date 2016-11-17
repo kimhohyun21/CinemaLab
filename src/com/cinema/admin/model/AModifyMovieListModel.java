@@ -21,18 +21,13 @@ public class AModifyMovieListModel {
 		//영화정보들 가져오기
 		MovieVO vo=AdminDAO.adminMovieData(no);
 		
+		//년도,월,일 분리
 		SimpleDateFormat yearF=new SimpleDateFormat("yyyy");
 		SimpleDateFormat monthF=new SimpleDateFormat("MM");
 		SimpleDateFormat dayF=new SimpleDateFormat("dd");
 		String year = yearF.format(vo.getOpendate());
 		String month = monthF.format(vo.getOpendate());
 		String day = dayF.format(vo.getOpendate());
-		
-		/*// 줄거리 공백조정
-		String content=vo.getContent();
-		content.replaceAll("\r\n", "<br>");
-		content.replaceAll("\u0020", " ");
-		vo.setContent(content);*/
 		
 		// 상영시간 '분'빼기
 		String runtime=vo.getRuntime().replaceAll("분", "");
