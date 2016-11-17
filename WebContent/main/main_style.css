@@ -165,4 +165,5 @@ div#find a:HOVER {
 }
 textarea {
     resize: none;
+    width: 100%;
 }

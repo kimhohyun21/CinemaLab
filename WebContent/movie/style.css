@@ -1,12 +1,12 @@
 @CHARSET "EUC-KR";
 .list_btn{
-   width: 143px;
+    width: 143px;
     height: 42px;
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
 }
 .reserve_btn{
-   width: 210px;
+    width: 210px;
     height: 42px;
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
@@ -86,13 +86,13 @@ pre{
 
 /* 영화 리스트 */
 #movie{
-   border: 2px solid black;
+   border: 1px solid #9E9E9E;
    border-collapse: collapse;
    max-width: 200px;
 }
 .title{
-   border-bottom: 2px solid black;
-   border-top: 2px solid black;
+   border-bottom: 1px solid #9E9E9E;
+   border-top: 1px solid #9E9E9E;
    border-collapse: collapse;
 }
 
@@ -102,7 +102,7 @@ pre{
 }
 
 .td{
-   border-right: 2px solid black;
+   border-right: 1px solid #9E9E9E;
 }
 
 #poster_div{
@@ -138,12 +138,12 @@ pre{
 
 /* 댓글부분 css */
 #reply_table{
-   border: 1px solid #002266;
+   border: 1px solid #9E9E9E;
    border-collapse: collapse;
 }
 
 #reply_table td{
-   border-left: 1px solid #002266;
+   border-left: 1px solid #9E9E9E;
    border-collapse: collapse;
 }
 #reply{

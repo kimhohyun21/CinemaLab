@@ -85,7 +85,7 @@ public class MovieReplyModel {
 			
 			//페이지 설정
 			String page=request.getParameter("page");
-			if(page==null || page=="0") page="1";
+			if(page==null || page.equals("0")) page="1";
 			int curpage=Integer.parseInt(page);
 			int rowSize=5;
 			int start=(curpage*rowSize)-(rowSize-1);
@@ -104,7 +104,7 @@ public class MovieReplyModel {
 			int frompage=((curpage-1)/block*block)+1;
 			int topage=((curpage-1)/block*block)+block;
 			if(topage>totalpage) topage=totalpage;
-					
+				
 			request.setAttribute("url", url);
 			request.setAttribute("list", list);
 			request.setAttribute("vo", vo);

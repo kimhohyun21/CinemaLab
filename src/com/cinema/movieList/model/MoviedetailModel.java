@@ -43,7 +43,7 @@ public class MoviedetailModel {
 			//페이지 설정
 			String page=request.getParameter("page");
 			String type=request.getParameter("type");
-			if(page==null || page=="0") page="1";
+			if(page==null || page.equals("0")) page="1";
 			int curpage=Integer.parseInt(page);
 			int rowSize=5;
 			int start=(curpage*rowSize)-(rowSize-1);
