@@ -44,39 +44,34 @@ public class MemberReserveListModel {
 		if (type == null)
 			type = "0";
 		
-		if (type.equals("1")) {
-			// 관람내역 가져오기
+		if (type.equals("1")) {	// 관람내역			
 			list = MemberDAO.memberWhatchData(no);
 			//마지막페이지
-			rowCount=MemberDAO.ReserveCount(no);			
-		} else {
-			// 예매내역
-			list = MemberDAO.memberReserveList(no);
-			//request.setAttribute("check", "ok");
+			rowCount=MemberDAO.ReserveCount(no);
 			
+		} else {		//예매내역
+			list = MemberDAO.memberReserveList(no);
 			//마지막페이지
 			rowCount=MemberDAO.ReserveCount2(no);
 		}
 		
-		//리스트에서  쓸날짜구하기
+		//날짜형식 바꾸기 )yyyy-MM-dd HH:mm:ss -> yyyy.MM.dd
 		try {
 			for (MemberReserveListVO vo : list) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 				String sDate = sdf.format(vo.getRdate());
-				System.out.println(vo.getRdate());
 				vo.setListdate(sDate);
-			}
-			
+			}			
 		} catch (Exception e) {
 				System.out.println(e.getMessage());
 		}
 		
-		// 페이지 구하기	
-		start = (page*row)-(row-1); // 1, 4, 7...
-		end = (page*row); // 3, 6, 9				
+		//페이지 구하기	
+		start = (page*row)-(row); // 0, 3, 6...
+		end = (page*row)-1; // 2, 5, 8
 		totalPage=(rowCount/row)+1;
 		
-		// 페이지 넘버링
+		//페이지 넘버링
 		block=5;
 		fromPage=((page-1)/block*block)+1;
 		toPage=((page-1)/block*block)+block;
@@ -94,7 +89,7 @@ public class MemberReserveListModel {
 		request.setAttribute("end", end);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("page", page);		
-		request.setAttribute("today", today);		
+		request.setAttribute("today", today);	
 		request.setAttribute("type", type);
 		request.setAttribute("list", list);
 		request.setAttribute("jsp", "../mypage/mypage.jsp");
