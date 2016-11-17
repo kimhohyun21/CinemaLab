@@ -10,12 +10,13 @@ public class ReplyModel{
 
 	@RequestMapping("reply.do")
 	public String handlerRequest(HttpServletRequest request){
+		//no,page 불러오기
 		String no = request.getParameter("no");
 		String page = request.getParameter("page");
+		//no,page값 저장
 		request.setAttribute("page", page);
 		request.setAttribute("no", no);
 		request.setAttribute("jsp", "../customer/reply.jsp");
-		System.out.println("갓선빈");
 		return "main/main.jsp";
 	}
 }

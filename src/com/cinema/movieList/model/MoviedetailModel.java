@@ -18,13 +18,9 @@ public class MoviedetailModel {
 	@RequestMapping("moviedetail.do")
 	public String HandlerRequest(HttpServletRequest request){
 		try{
-			request.setCharacterEncoding("EUC-KR");
-			
 			Map map=new HashMap();
-			
 			String no=request.getParameter("no");
-			int mNo = Integer.parseInt(no);	
-			
+			int mNo = Integer.parseInt(no);
 			HttpSession session = request.getSession();
 			MemberVO vo1 = (MemberVO) session.getAttribute("mvo");
 			
@@ -62,6 +58,7 @@ public class MoviedetailModel {
 			List<MovieVO> replyList = MovieDAO.getReplyData(map);
 			int totalpage=MovieDAO.replyTotalPage(mNo);
 			if(totalpage==0)curpage=0;
+			
 			
 			int block=5;
 			int frompage=((curpage-1)/block*block)+1;
