@@ -9,15 +9,17 @@
    <title>영화 상세</title>
    <link rel="stylesheet" type="text/css" href="movie/style.css">
 </head>
-<body>	
-   <div class="detail">
-   <c:if test="${mvo.admin eq '1' }">
+<body>
+	<!-- 관리자로 로그인했을 시 영화 정보 수정하기 버튼 띄우기 -->
+	<c:if test="${mvo.admin eq '1' }">
 		<div align="right">
 			<a href="Amodifymovielist.do?no=${no }">
-				<b style="color: red;">수정하기</b>
+				<b class="modify">수정하기</b>
 			</a>
 		</div>
-	</c:if>
+	</c:if>	
+	<!-- 영화 상세 정보 불러오기 -->
+   <div class="detail">
       <div class="detail2">
          <div id="poster_div">
             <img align="left" src="${vo.poster}" width="200" height="270" id="poster"><br>
@@ -37,10 +39,10 @@
                <table width="650">
                   <tr>
                      <td width="30%">
-                        <strong>예매율 : </strong><span>${vo.rank }</span>
+                        <strong>예매율 : </strong><span>${vo.rank } %</span>
                      </td>
                      <td width="36%">
-                        <strong>관람 평점 :</strong><span>${vo.movieLike }</span>
+                        <strong>관람 평점 : </strong><span>${vo.movieLike }</span>
                      </td >
                      <td width="33%">
                         <strong>등급 : </strong><span>${vo.grade }세이상 관람가능</span>
@@ -101,13 +103,13 @@
             </tr>
          </table>
       </div>
-      <iframe width="900" height="360" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen id="youtube">
+      <iframe width="900" height="400" src="http://www.youtube.com/embed/${url }" frameborder="0" allowfullscreen id="youtube">
          해당 브라우저는 iframe을 지원하지 않습니다. IE9 이상, 크롬, 파이어폭스를 이용해주세요.
       </iframe>
+      <!-- 댓글 페이지 --> 
       <div align="center">
          <jsp:include page="reply.jsp"></jsp:include>
       </div>
    </div>
->>>>>>> refs/remotes/origin/hohyun
 </body>
 </html>

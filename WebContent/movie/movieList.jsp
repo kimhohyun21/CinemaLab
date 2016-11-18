@@ -12,7 +12,8 @@
    </script>
 </head>
 <body>
-   <table style="margin:10px 0px 10px 0px">
+   <div class="movielist">	
+   <table class="btnArea">
       <tr>
          <td class="movieBtn">
             <a href="movieList.do?type=0">
@@ -32,11 +33,11 @@
             </a>
          </td>
       </tr>
-   </table>
+   </table>   
+   <!-- 영화 리스트 4개씩 정렬 -->
    <c:set var="i" value="1"/>
    <c:set var="j" value="4" />
-   <c:if test="${list!=null }">
-   <div class="movielist">
+   <c:if test="${list!=null }">   
       <table class="tb">
       <c:forEach var="vo" items="${list }">
       <c:if test="${i==1}">
@@ -70,10 +71,10 @@
                   </tr>
                   <tr>
                      <td align="center" class="td" height="42">
-                        예매율 ${vo.rank }%
+                        예매율<br>${vo.rank }%
                      </td>
                      <td align="center">
-                        관람 평점 ${vo.movieLike }
+                        관람 평점<br>${vo.movieLike }
                      </td>
                   </tr>
                </table>

@@ -13,7 +13,7 @@
 		FROM (SELECT rno,title,name,rdate,cancel,refund 
 		FROM reservelist NATURAL JOIN member NATURAL JOIN THEATERLIST NATURAL JOIN MOVIELIST ORDER BY RNO DESC))
 		WHERE num BETWEEN #{start} AND #{end} 
-	]]>  
+	]]>
 	</select>
 	<select id="RTotal" resultType="int">
 		SELECT CEIL(COUNT(*)/10) FROM reservelist

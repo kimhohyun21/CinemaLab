@@ -167,13 +167,13 @@
 				</td>
 			</tr>
 		</table>		
-		<h2>결제</h2>
-		<table width="700" border="1">
+		<h2 class="payment_title">결제</h2>
+		<table width="700">
 			<tr>
-				<td align="center">결제정보 입력</td>
+				<td align="center" id="td1">결제정보 입력</td>
 			</tr>
 			<tr>
-				<td align="center">
+				<td align="center" id="td2">
 					<input type="radio" name="pay" value="card" onclick="display1()" checked>신용카드
 					<input type="radio" name="pay" value="account" onclick="display2()">계좌이체
 					<form id="paymentfrm" action="reserve4.do" method="post">
@@ -195,7 +195,7 @@
 			</tr>
 		</table>
 		<div id="card">
-			<table width="700" border="1">
+			<table width="700" class="payment_table">
 				<tr>
 					<td>
 						신용카드 결제 안내<br>
@@ -205,21 +205,21 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="reback()">
-			<input type="button" value="결제" onclick="javascript:payment('card')">
+			<input type="button" value="취소" onclick="reback()" class="back_button2">
+			<input type="button" value="결제" onclick="javascript:payment('card')" class="next_button2">
 		</div>
 		<div id="account" style="display:none">
-			<table width="700" border="1">
+			<table width="700" class="payment_table">
 				<tr>
-					<td width="700">
+					<td>
 						실시간 계좌이체 안내<br>
 						1.결제내역 확인 후 결제하기 버튼을 클릭시, 팝업창이 나타납니다.<br>
 						2.해당 팝업에서 원하는 은행을 선택 후 계좌이체 정보를 입력하시면 됩니다.
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="취소" onclick="reback()">
-			<input type="button" value="결제" onclick="javascript:payment('trans')">
+			<input type="button" value="취소" onclick="reback()" class="back_button2">
+			<input type="button" value="결제" onclick="javascript:payment('trans')" class="next_button2">
 		</div>
 	</div>	
 </body>

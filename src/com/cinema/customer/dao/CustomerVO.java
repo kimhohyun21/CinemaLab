@@ -2,7 +2,7 @@ package com.cinema.customer.dao;
 
 import java.util.*;
 
-public class customerVO {
+public class CustomerVO {
 	private int qno;		
 	private String qsubject;
 	private String qcontent;

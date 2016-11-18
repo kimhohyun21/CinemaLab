@@ -61,7 +61,7 @@
 				<th align="center">날짜</th>
 			</tr>
 			<tr>
-				<td align="center" class="time_table_td">
+				<td align="center">
 					<!-- 년, 월 표시 -->
 					<p class="year">${year }</p>
 					<p class="month">${month }</p>

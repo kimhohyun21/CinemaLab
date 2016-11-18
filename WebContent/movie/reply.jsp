@@ -9,26 +9,53 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="movie/style.css">
 <script type="text/javascript">
+	//댓글 내용 입력할 때 로그인 했는지 체크 
 	function loginCheck(){
 		if(${mvo==null}){
 			$.jQueryLogin();
 			return;
 		}
-	}		
+	}
+	
+	 /* 별점 체크 했는지 확인 */
+    function replycheck(){
+    	/* 로그인 먼저 체크 */
+		if(${mvo==null}){
+			$.jQueryLogin();
+			return;
+		} 
+    	/*평점체크*/    	
+    	var f=document.frm;
+    	if($(':input[name=star-input]:radio:checked').val()==null){
+    		$.jQueryAlert('평점을 체크해 주세요.');
+    		return;
+    	}
+    	if(f.content.value==""){
+    		$.jQueryAlert('내용을 입력해 주세요.');
+    		return;
+    	}
+    	console.log($('textarea.mcont').val());
+    	f.submit();
+    }
+    
+    /* 댓글 삭제 버튼 클릭 시 값 보내줌*/ 
+    function replydelete(reNo){
+       	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
+    }
 	
 	/*jQuery Login*/
 	jQuery.jQueryLogin = function (){
 		var $loginform = $.parseHTML('<div id="logindiv">'
 										+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
 										+'<div class="input">'
-										+'<label for="id">ID</label>'
-										+'<input type="text" placeholder="ID" name="id" id="id">'
+										+'<label class="idlabel" for="id">ID</label>'
+										+'<input type="text" placeholder="아이디를 입력하세요." name="id" id="id" onkeydown="enter()">'
 										+'</div>'+'<div class="input">'
-										+'<label for="pwd">PW</label>'
-										+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+										+'<label class="pwlabel" for="pwd">PW</label>'
+										+'<input type="password" placeholder="패스워드를 입력하세요." name="pwd" id="pwd" onkeydown="enter()">'
 										+'</div><input type="hidden" name="loginType" value="reserve">'
 										+'</form><div id="find">'
-										+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+										+'<a href="searchId.do">아이디 찾기</a>&nbsp;|&nbsp;'
 										+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
 		$("body").append($loginform);
 		
@@ -47,6 +74,13 @@
 		       }
 		     }
 		 });
+	}
+	
+	//엔터 로그인
+	function enter(){
+		if(window.event.keyCode == 13){
+			login();
+		}
 	}
 	
 	//로그인 창 값 입력 체크
@@ -82,28 +116,16 @@
                 }
             }
         });
-    };
-    
-    function replycheck(){
-    	var f=document.frm;
-    	if($(':input[name=star-input]:radio:checked').val()==null)
-    		alert('평점을 체크해 주세요.');
-    	else{
-    		f.submit();
-    	}
-    }
-    
-    function replydelete(reNo){
-       	location.href="replyCheck.do?no=${vo.mNo}&reNo="+reNo;
-    }
+    }  
 </script>
 </head>
 <body>
 	<div id="reply">
 		<h3 align="left">평점 및 영화 리뷰</h3>
+		<!-- 댓글을 한번도 입력하지 않았던 사람에게만 입력창을 띄어줌. -->
 		<c:if test="${check=='0'}">
 		<form action="replyCheck.do?no=${vo.mNo }&page=${curpage}" method="post" name="frm">	
-				<table id="reply_table" width="1000">
+			<table id="reply_table" width="1000">
 				<tr>
 					<td width="20%" align="center">
 						평점<br>
@@ -124,23 +146,29 @@
 				  		</span>	
 					</td>
 					<td width="69%">
-						<textarea name="content" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+					<c:if test="${mvo==null }">	
+						<textarea name="content" class="mcont" rows="6" cols="100" placeholder="영화 리뷰는 로그인 후에 작성하실 수 있습니다" wrap="hard" required onclick="loginCheck();"></textarea>
+					</c:if>
+					<c:if test="${mvo!=null }">	
+						<textarea name="content" class="mcont" rows="6" cols="100" wrap="hard" required onclick="loginCheck();"></textarea>
+					</c:if>
 					</td>
 					<td width="11%">
 						<input type="button" value="입력" id="send" onclick="replycheck()">
 					</td>
 				</tr>
-				</table>
+			</table>
 		</form>
 		</c:if>
+		
 		<ul id="ul">
 			<c:forEach var="vo" items="${replyList }">
 				<li>
 					<div align="left" id="score">
 						&nbsp;${vo.score }
+						<!-- 달린 댓글에 별점 표시 -->
 						<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(movie/img/icon_star2.gif) 0px 0px;	FLOAT: left;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
-							<p style="WIDTH: ${vo.score*10}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(movie/img/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
-							</p>
+							<p style="WIDTH: ${vo.score*10}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(movie/img/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;"></p>
 						</div>
 					</div>
 					<div align="left" id="reContent">
@@ -148,14 +176,15 @@
 					</div>
 					<div align="left">
 						<fmt:formatDate value="${vo.regDATE }" pattern="yyyy-MM-dd"/> &nbsp;|&nbsp;&nbsp;<span>${vo.id }</span>
-						<c:if test="${mvo.id eq vo.id }">
+						<c:if test="${mvo.id eq vo.id }"> <!-- 로그인한 아이디랑 댓글 아이디랑 같을 경우 댓글 삭제 버튼 보여줌 -->
 							<input class="replyDeleteBtn" type="button" value="댓글삭제" onclick="replydelete('${vo.reNo}')">	
 						</c:if>
 					</div>
-					
 				</li>
 			</c:forEach>
 		</ul>
+		
+		<!-- 댓글 페이지 -->
 		<table width="1000">
 			<tr>
 				<td align="right">
@@ -199,33 +228,35 @@
 			</tr>
 		</table>
 	</div>
-<script type="text/javascript">	
-	var starRating = function() {
-		var $star = $(".star-input"), $result = $star.find("output>b");
-		$(document).on("focusin", ".star-input>.input", function() {
-			$(this).addClass("focus");
-		}).on("focusout", ".star-input>.input", function() {
-			var $this = $(this);
-			setTimeout(function() {
-				if ($this.find(":focus").length === 0) {
-					$this.removeClass("focus");
+	
+	<!-- 별점 -->
+	<script type="text/javascript">	
+		var starRating = function() {
+			var $star = $(".star-input"), $result = $star.find("output>b");
+			$(document).on("focusin", ".star-input>.input", function() {
+				$(this).addClass("focus");
+			}).on("focusout", ".star-input>.input", function() {
+				var $this = $(this);
+				setTimeout(function() {
+					if ($this.find(":focus").length === 0) {
+						$this.removeClass("focus");
+					}
+				}, 100);
+			}).on("change", ".star-input :radio", function() {
+				$result.text($(this).next().text());
+			}).on("mouseover", ".star-input label", function() {
+				$result.text($(this).text());
+			}).on("mouseleave", ".star-input>.input", function() {
+				var $checked = $star.find(":checked");
+				if ($checked.length === 0) {
+					$result.text("0");
+				} else {
+					$result.text($checked.next().text());
 				}
-			}, 100);
-		}).on("change", ".star-input :radio", function() {
-			$result.text($(this).next().text());
-		}).on("mouseover", ".star-input label", function() {
-			$result.text($(this).text());
-		}).on("mouseleave", ".star-input>.input", function() {
-			var $checked = $star.find(":checked");
-			if ($checked.length === 0) {
-				$result.text("0");
-			} else {
-				$result.text($checked.next().text());
-			}
-		});
-	};
-	starRating();
-</script>
+			});
+		};
+		starRating();
+	</script>
 </body>
 </html>
 						
