@@ -69,4 +69,11 @@ public class AdminDAO {
 		session.commit();
 		session.close();
 	}
+	
+	public static int adminMovieCount(){
+		SqlSession session = ssf.openSession();
+		int count=session.selectOne("AMovieCount");
+		session.close();
+		return count;
+	}
 }
