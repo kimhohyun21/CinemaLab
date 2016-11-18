@@ -128,7 +128,7 @@ label.idlabel{
     font-weight: bold;
 }
 label.pwlabel{
-	margin: 7px;
+	margin: 5px;
 	font-weight: bold;
 }
 input[type=text]#id{
@@ -162,4 +162,8 @@ div#find a{
 }
 div#find a:HOVER {
 	color: #ea4d00;
+}
+textarea {
+    resize: none;
+    width: 100%;
 }

@@ -11,12 +11,12 @@
 	<center>
 		<br>
 			<a href="Amovielist.do">
-				<button>영화리스트</button>
+				<button class="menubar">영화리스트</button>
 			</a>			
 			<a href="reservelist.do">
-				<button>고객센터</button>
+				<button class="menubar">고객센터</button>
 			</a>		
-		<div>
+		<div id="Ainclude">
 		<br>
 			<jsp:include page="${jsp2 }"></jsp:include>
 		</div>

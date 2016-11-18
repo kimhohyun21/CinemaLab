@@ -12,7 +12,9 @@ public class ReserveContentModel{
 		//no값과 page값 받아오기
 		String no = request.getParameter("no");
 		String page= request.getParameter("page");
+		
 		ReserveListVO vo = AdminDAO.reserveContent(Integer.parseInt(no));
+
 		request.setAttribute("no", no);
 		request.setAttribute("page", page);
 		request.setAttribute("vo", vo);

@@ -12,7 +12,7 @@
 <body>
 	<div align="center" class="bg">
 		<h3>예매 내역</h3>
-		<table class="tb" width="700">
+		<table class="list" width="700">
 			<tr>
 				<th width="10%" align="center">번호</th>
 				<th width="15%" align="center">이름</th>
@@ -45,9 +45,20 @@
 		<table border="0" width="700">
 			<tr>
 				<td align="right">
-					<a href="reservelist.do?page=${page>1?page-1:page}">이전</a>
+					<a href="reservelist.do?page=${page>1?page-1:page}" style="color: red">이전</a>
 					&nbsp;
-					<a href="reservelist.do?page=${page<totalpage?page+1:page}">다음</a>
+					<c:forEach var="i" begin="${fromPage}" end="${toPage}">
+						&nbsp;[
+					 	<c:if test="${Page == i}">
+					 		<span style="color:red">${i}</span>
+					 	</c:if>
+					 	<c:if test="${Page != i}">
+					 		<a href="reservelist.do?page=${i}">${i}</a>
+					 	</c:if>
+					 	]&nbsp;
+					</c:forEach>
+				 	&nbsp;&nbsp;
+					<a href="reservelist.do?page=${page<totalpage?page+1:page}" style="color: blue">다음</a>
 					&nbsp;&nbsp;
 					${page} page / ${totalpage} pages
 				</td>

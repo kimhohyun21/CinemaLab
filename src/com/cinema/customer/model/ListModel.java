@@ -8,9 +8,11 @@ import com.cinema.customer.dao.*;
 public class ListModel{
 	@RequestMapping("customer.do")
 	public String qnaList(HttpServletRequest request){
+		//page값 불러오기
 		String page= request.getParameter("page");
 		if(page == null) page = "1";
 		int curpage = Integer.parseInt(page);
+		//한 페이지에 출력할 컨텐츠 수
 		int rowSize = 10;
 		int start = (curpage*rowSize)-(rowSize-1);
 		int end = curpage*rowSize;

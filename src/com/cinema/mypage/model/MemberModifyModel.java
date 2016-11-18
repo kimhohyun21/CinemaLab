@@ -19,6 +19,8 @@ public class MemberModifyModel {
 		String birth=vo.getBirth();
 		String phone=vo.getPhone();
 		String name=vo.getName();
+		
+		// 입력폼 맞추기  )1998-11-11 => 19981111
 		birth=birth.replace("-", "");
 		phone=phone.replace("-", "");
 		
