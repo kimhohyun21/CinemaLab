@@ -125,12 +125,6 @@ button.menu_insert:active {
 }
 table.type01 tr:HOVER{
 	background-color:#d8d3d8;
-<<<<<<< HEAD
-}
-=======
-}
-.TT{
-	background-color:gray;
 }
 .list th{
 	height: 30px;
@@ -149,4 +143,3 @@ table.type01 tr:HOVER{
 	border-top: 2px solid gray;
 	border-bottom: 1px solid gray;
 }
->>>>>>> branch 'cTS' of https://github.com/kimhohyun21/CinemaLab.git
