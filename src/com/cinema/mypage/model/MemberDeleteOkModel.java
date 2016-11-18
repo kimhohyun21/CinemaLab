@@ -18,9 +18,9 @@ public class MemberDeleteOkModel {
 			String strno=request.getParameter("no");
 			int no=Integer.parseInt(strno);
 			MemberVO vo=MemberDAO.memberGetAllImfor(no);
-			String db_pwd=vo.getPwd();
-			
-			
+			//DB값
+			String db_pwd=vo.getPwd();			
+			//입력값
 			String pwd=request.getParameter("pwd");
 			
 			int check=3;
@@ -28,6 +28,7 @@ public class MemberDeleteOkModel {
 			if(db_pwd.equals(pwd)){
 				MemberDAO.memberDelete(vo);
 				HttpSession session=request.getSession();
+				//저장됬던 세션날리기
 				session.invalidate();
 				check=1;
 			}else{

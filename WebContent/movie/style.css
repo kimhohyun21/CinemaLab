@@ -1,12 +1,12 @@
 @CHARSET "EUC-KR";
 .list_btn{
-   width: 143px;
+    width: 143px;
     height: 42px;
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
 }
 .reserve_btn{
-   width: 210px;
+    width: 210px;
     height: 42px;
     background: url(../image/list_btn.gif) no-repeat center center;
     background-size: cover;
@@ -17,40 +17,7 @@
     border: 3px solid gray;
 }
 
-/* 수정 */
-#poster_div{
-   float: left;
-}
-
-#title{
-   position:relative;
-   float: left;
-   position: relative;
-   left: 25px;
-}
-
-.title_2{
-   font-size: 25px;
-}
-.detail2{
-   padding: 25px 55px 25px 55px;
-}
-
-#content{
-   position: relative;
-   top: 20px;
-   background-color: #d9d9d9;
-   width: 660px;
-   border-radius: 8px 8px 8px 8px;
-   padding: 8px 5px 14px 5px;
-}
-
-#content table tr{
-   height: 40px;   
-}
-
-
-
+/* 영화 리스트 */
 .list{
    font-size:17px;
    font-weight:bold;
@@ -59,10 +26,11 @@
 .movielist{
    background-color: rgba(250,250,250,0.9);
    width: 1000px;
+   margin: 10px;
 }
 .tb{
    border-collapse: separate;
-    border-spacing: 35px;
+   border-spacing: 35px;
 }
 
 #cont td{
@@ -118,13 +86,13 @@ pre{
 
 /* 영화 리스트 */
 #movie{
-   border: 2px solid black;
+   border: 1px solid #9E9E9E;
    border-collapse: collapse;
    max-width: 200px;
 }
 .title{
-   border-bottom: 2px solid black;
-   border-top: 2px solid black;
+   border-bottom: 1px solid #9E9E9E;
+   border-top: 1px solid #9E9E9E;
    border-collapse: collapse;
 }
 
@@ -134,17 +102,48 @@ pre{
 }
 
 .td{
-   border-right: 2px solid black;
+   border-right: 1px solid #9E9E9E;
+}
+
+#poster_div{
+   float: left;
+}
+
+#title{
+   position:relative;
+   float: left;
+   position: relative;
+   left: 25px;
+}
+
+.title_2{
+   font-size: 25px;
+}
+.detail2{
+   padding: 25px 55px 25px 55px;
+}
+
+#content{
+   position: relative;
+   top: 20px;
+   background-color: #d9d9d9;
+   width: 660px;
+   border-radius: 8px 8px 8px 8px;
+   padding: 8px 5px 14px 5px;
+}
+
+#content table tr{
+   height: 40px;   
 }
 
 /* 댓글부분 css */
 #reply_table{
-   border: 1px solid #002266;
+   border: 1px solid #9E9E9E;
    border-collapse: collapse;
 }
 
 #reply_table td{
-   border-left: 1px solid #002266;
+   border-left: 1px solid #9E9E9E;
    border-collapse: collapse;
 }
 #reply{
@@ -360,3 +359,33 @@ div.detail{
 #star{
    border: 1px solid;
 }
+
+/* 관리자 수정하기 버튼 */
+.modify{
+	position: relative;
+	right: 460px;
+	top: 50px;
+	font-size: 20px;
+	color: red;
+}
+table.btnArea{
+	position: relative;
+    top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

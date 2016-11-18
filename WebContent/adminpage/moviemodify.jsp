@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="adminpage/test.css">
 <script type="text/javascript">
 	function send(){
 		var f=document.frm;
@@ -25,14 +26,21 @@
 <body>
 	<div align="center">
 	<form action="Amodify_Ok.do" name="frm" method="post">
-		<table width="700" height="300" class="TT">
-			<tr>
+		<table width="700" height="280" class="type02">
+			<thead>
+				<tr>
+					<td align="center" colspan="4">
+						영화수정
+					</td>
+				</tr>
+			</thead>
+			<tr class="br">
 				<th align="right">
 					<input type="hidden" value="${no }"	name="no">
 					제목
 				</th>
 				<td align="left">
-					<input type="text" value="${vo.title }" name="title" size="30">					
+					<input type="text" value="${vo.title }" name="title" style="width: 60%">					
 				</td>
 				<th align="right">
 					시청연령
@@ -65,7 +73,7 @@
 					포스터 URL
 				</th>
 				<td align="left" colspan="3">
-					<input type="text" value="${vo.poster }" name="poster" style="width:100%">
+					<input type="text" value="${vo.poster }" name="poster" style="width:90%">
 				</td>
 			</tr>
 			
@@ -108,7 +116,7 @@
 					감독
 				</th>
 				<td align="left">
-					<input type="text" value="${vo.director }" name="director">
+					<input type="text" value="${vo.director }" name="director" style="width: 60%">
 				</td>
 				<th align="right">
 					상영시간
@@ -121,7 +129,7 @@
 				<th align="right">
 					장르
 				</th>
-				<td colspan="2">
+				<td colspan="3">
 					<input type="text" value="${vo.genre }" name="genre" style="width: 90%">
 				</td>
 			</tr>
@@ -137,12 +145,12 @@
 				<th align="right">
 					출연인물
 				</th>
-				<td align="left">
-					<pre><textarea style="width: 100%" cols="50" rows="10" name="cast">${vo.content }</textarea></pre>
+				<td align="left" colspan="3">
+					<pre><textarea style="width: 95%" cols="50" rows="10" name="cast">${vo.cast }</textarea></pre>
 				</td>
 			</tr>
 			<tr>
-				<th>
+				<th align="right">
 					줄거리
 				</th>
 				<td colspan="3">
@@ -150,14 +158,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right">
-					<input type="button" value="초기화" onclick="re()">
-				</td>
-				<td align="center">
-					<input type="button" value="전송" onclick="send()">
-				</td>
-				<td align="left" colspan="2">
-					<input type="button" value="취소" onclick="javascript:history.back()">
+				<td align="center" colspan="4">
+					<input type="button" value="초기화" onclick="re()" class="table_btn">
+					<input type="button" value="전송" onclick="send()" class="table_btn">	
+					<input type="button" value="취소" onclick="javascript:history.back()" class="table_btn">
 				</td>
 			</tr>
 		</table>

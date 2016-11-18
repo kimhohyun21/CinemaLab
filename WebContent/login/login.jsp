@@ -7,9 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="login/style3.css">
-	<c:if test="${join == '가입성공' }">
+	<c:if test="${join eq '가입성공' }">
 		<script type="text/javascript">
 			alert("회원가입이 완료되었습니다");
+		</script>
+	</c:if>
+	<c:if test="${join eq '중복' }">
+		<script type="text/javascript">
+			alert("중복된 아이디입니다");
+			history.back();
 		</script>
 	</c:if>
 <script type="text/javascript">
@@ -39,7 +45,7 @@ function enter(){
 	<div align="center">		
 		<form method="post" action="login_ok.do" name="frm">
 			<div class="input">
-				<input type="text" placeholder="ID" name="id">
+				<input type="text" placeholder="ID" name="id" onkeydown="enter()">
 			</div>
 			<div class="input">
 				<input type="password" placeholder="PW" name="pwd" id="pwd" onkeydown="enter()">				

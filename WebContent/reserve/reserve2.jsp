@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve2 Ticket and Seat</title>
 	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
+	<link rel="stylesheet" type="text/css" href="jStyles/easydropdown.css">	
 	<script type="text/javascript">
 		function select(){			
 			$.ajax({
@@ -23,7 +24,7 @@
 		};	
 	
 		$('document').ready(function(){
-			$('select').click(function(){
+			$('div.selectBox').click(function(){
 				if(${mvo==null}){
 					$.jQueryLogin();
 					return;
@@ -36,14 +37,14 @@
 			var $loginform = $.parseHTML('<div id="logindiv">'
 											+'<form name="loginfrm" action="login_ok.do" method="post" "id="loginfrm">'
 											+'<div class="input">'
-											+'<label for="id">ID</label>'
-											+'<input type="text" placeholder="ID" name="id" id="id">'
+											+'<label class="idlabel" for="id">ID</label>'
+											+'<input type="text" placeholder="아이디를 입력하세요." name="id" id="id" onkeydown="enter()">'
 											+'</div>'+'<div class="input">'
-											+'<label for="pwd">PW</label>'
-											+'<input type="password" placeholder="PW" name="pwd" id="pwd">'
+											+'<label class="pwlabel" for="pwd">PW</label>'
+											+'<input type="password" placeholder="패스워드를 입력하세요." name="pwd" id="pwd" onkeydown="enter()">'
 											+'</div><input type="hidden" name="loginType" value="reserve">'
 											+'</form><div id="find">'
-											+'<a href="searchId.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;'
+											+'<a href="searchId.do">아이디 찾기</a>&nbsp;|&nbsp;'
 											+'<a href="searchPwd.do">비밀번호 찾기</a></div>');
 			$("body").append($loginform);
 			
@@ -62,7 +63,14 @@
 			       }
 			    }
 			});
-		}		
+		}
+		
+		//엔터 로그인
+		function enter(){
+			if(window.event.keyCode == 13){
+				login();
+			}
+		}
 		
 		//로그인 창 값입력 체크
 		function login(){
@@ -99,54 +107,61 @@
 	        });
 	    };
 	</script>
+	<script src="jStyles/jquery.easydropdown.js"></script>
 </head>
 <body>
 	<div align="center" class="reserve2">
 		<!-- 티켓 매수 선택 -->
 		<div class="ticket">
-			<form id="frm">
-				<input type="hidden" name="year" value="${year }">
-				<input type="hidden" name="month" value="${month }">
-				<input type="hidden" name="checkedDay" value="${checkedDay }">
-				<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
-				<input type="hidden" name="local" value="${local }">
-				<input type="hidden" name="tname" value="${tname }">
-				<input type="hidden" name="grade" value="${grade }">
-				<input type="hidden" name="title" value="${title }">
-				<input type="hidden" name="poster" value="${poster }">				
-				<input type="hidden" name="theaterNo" value="${theaterNo}">
-				<input type="hidden" name="movietime" value="${movietime}">
-				<input type="hidden" name="rType" value="seat">
-				<strong>어른</strong>
-				<select id="adult" name="adult" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-				<strong>청소년</strong>
-				<select id="junior" name="junior" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-				<strong>시니어</strong> 
-				<select id="senior" name="senior" onchange="select()">
-					<option selected="selected">0</option>
-				<c:forEach var="i" begin="1" end="8">
-					<option>${i}</option>
-				</c:forEach>					
-				</select>
-			</form>
-			<!-- 선택 초기화 버튼 -->
-			<span class="resetBtn">
+			<div class="selectArea">
+				<form id="frm">
+					<input type="hidden" name="year" value="${year }">
+					<input type="hidden" name="month" value="${month }">
+					<input type="hidden" name="checkedDay" value="${checkedDay }">
+					<input type="hidden" name="checkedDay2" value="${checkedDay2 }">
+					<input type="hidden" name="local" value="${local }">
+					<input type="hidden" name="tname" value="${tname }">
+					<input type="hidden" name="grade" value="${grade }">
+					<input type="hidden" name="title" value="${title }">
+					<input type="hidden" name="poster" value="${poster }">				
+					<input type="hidden" name="theaterNo" value="${theaterNo}">
+					<input type="hidden" name="movietime" value="${movietime}">
+					<input type="hidden" name="rType" value="seat">				
+					<strong>어른</strong>
+					<div class="selectBox">					
+						<select id="adult" class="dropdown" name="adult" onchange="select()">
+							<option selected="selected">0</option>
+						<c:forEach var="i" begin="1" end="8">
+							<option>${i}</option>
+						</c:forEach>					
+						</select>
+					</div>
+					<strong>청소년</strong>
+					<div class="selectBox">
+						<select id="junior" class="dropdown" name="junior" onchange="select()">
+							<option selected="selected">0</option>
+						<c:forEach var="i" begin="1" end="8">
+							<option>${i}</option>
+						</c:forEach>					
+						</select>
+					</div>	
+					<strong>시니어</strong>
+					<div class="selectBox">
+						<select id="senior" class="dropdown" name="senior" onchange="select()">
+							<option selected="selected">0</option>
+						<c:forEach var="i" begin="1" end="8">
+							<option>${i}</option>
+						</c:forEach>					
+						</select>
+					</div>			
+				</form>
+				<!-- 선택 초기화 버튼 -->
 				<a href="reserve2.do?year=${year }&month=${month }&checkedDay=${checkedDay}
 				&checkedDay2=${checkedDay2}&local=${local }&tname=${tname }&grade=${grade }&title=${title}
-				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}">
-					선택초기화
-				</a>
-			</span>
+				&poster=${poster }&theaterNo=${theaterNo}&movietime=${movietime}#nav">
+					<div class="resetBtn">선택초기화</div>
+				</a>				
+			</div>
 		</div>
 		<!-- 자리 선택  include-->
 		<div id="result">

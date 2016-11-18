@@ -21,6 +21,8 @@ public class AdminDAO {
 		return list;
 	}
 	
+	
+	//예매 리스트 불러오기
 	public static List<ReserveListVO> reserveList(Map map){
 		SqlSession session = ssf.openSession();
 		List<ReserveListVO> list = session.selectList("RList", map);
@@ -28,6 +30,7 @@ public class AdminDAO {
 		return list;
 	}
 	
+	//총 페이지 수 불러오기
 	public static int reserveTotal() {
 		SqlSession session = ssf.openSession();
 		int total = session.selectOne("RTotal");
@@ -36,6 +39,7 @@ public class AdminDAO {
 		return total;
 	}
 	
+	//예매 내역 컨텐츠 불러오기
 	public static ReserveListVO reserveContent(int no){
 		SqlSession session = ssf.openSession();
 		ReserveListVO vo = session.selectOne("RContent",no);
@@ -43,6 +47,7 @@ public class AdminDAO {
 
 		return vo;
 	}
+	
 	
 	public static MovieVO adminMovieData(int no){
 		SqlSession session = ssf.openSession();
@@ -63,5 +68,12 @@ public class AdminDAO {
 		session.insert("AMovieInsert",vo);
 		session.commit();
 		session.close();
+	}
+	
+	public static int adminMovieCount(){
+		SqlSession session = ssf.openSession();
+		int count=session.selectOne("AMovieCount");
+		session.close();
+		return count;
 	}
 }

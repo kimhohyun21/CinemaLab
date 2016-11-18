@@ -22,6 +22,7 @@ public class MemberReserveListModel {
 	public String reserveList(HttpServletRequest request) {
 
 		String strno = request.getParameter("no");
+		//예매내역,관람내역 구분
 		String type = request.getParameter("type");
 		int no = Integer.parseInt(strno);
 		List<MemberReserveListVO> list;
@@ -30,60 +31,66 @@ public class MemberReserveListModel {
 		String sPage=request.getParameter("page");
 		if(sPage==null) sPage="1";
 		
-		int page=Integer.parseInt(sPage);
-		int start;
-		int end;
-		int row=3;
-		int rowCount;
-		int totalPage=1;
+		int page=Integer.parseInt(sPage);	// 현재페이지
+		int start;							// 처음번호
+		int end;							// 마지막번호
+		int row=3;							// 컬럼 사이즈
+		int rowCount;						// 총 내역
+		int totalPage=1;					// 총 페이지
+		int block;
+		int fromPage;
+		int toPage;
 		
 		if (type == null)
 			type = "0";
 		
-		if (type.equals("1")) {
-			// 관람내역 가져오기
+		if (type.equals("1")) {	// 관람내역			
 			list = MemberDAO.memberWhatchData(no);
 			//마지막페이지
-			rowCount=MemberDAO.ReserveCount(no);			
-		} else {
-			// 예매내역
-			list = MemberDAO.memberReserveList(no);
-			//request.setAttribute("check", "ok");
+			rowCount=MemberDAO.ReserveCount(no);
 			
+		} else {		//예매내역
+			list = MemberDAO.memberReserveList(no);
 			//마지막페이지
 			rowCount=MemberDAO.ReserveCount2(no);
 		}
 		
-		//리스트에서  쓸날짜구하기
+		//날짜형식 바꾸기 )yyyy-MM-dd HH:mm:ss -> yyyy.MM.dd
 		try {
 			for (MemberReserveListVO vo : list) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 				String sDate = sdf.format(vo.getRdate());
-				System.out.println(vo.getRdate());
 				vo.setListdate(sDate);
-			}
-			
+			}			
 		} catch (Exception e) {
 				System.out.println(e.getMessage());
 		}
 		
-		// 페이지 구하기	
-		start = (page*row)-row;
-		end = start + row;
-				
+		//페이지 구하기	
+		start = (page*row)-(row); // 0, 3, 6...
+		end = (page*row)-1; // 2, 5, 8
 		totalPage=(rowCount/row)+1;
-		//startPage=
+		
+		//페이지 넘버링
+		block=5;
+		fromPage=((page-1)/block*block)+1;
+		toPage=((page-1)/block*block)+block;
+		
+		if(toPage>totalPage)
+			toPage=totalPage;
 		
 		//예매취소 비교용
 		Date today=new Date();
 		
-		
-		request.setAttribute("today", today);		
+		request.setAttribute("fromPage", fromPage);
+		request.setAttribute("toPage", toPage);
+		request.setAttribute("block", block);
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("page", page);		
-		request.setAttribute("type", type);	// 페이지넘길때 구분
+		request.setAttribute("today", today);	
+		request.setAttribute("type", type);
 		request.setAttribute("list", list);
 		request.setAttribute("jsp", "../mypage/mypage.jsp");
 		request.setAttribute("jsp2", "../mypage/reserveList.jsp");

@@ -4,7 +4,6 @@
 <c:if test="${pCheck == true }">
 	<script type="text/javascript">
 		alert('수정이 완료되었습니다.');
-		/* history.back(); */
 	</script>
 	<c:redirect url="reserveList.do?no=${mvo.no }"/>
 </c:if>
