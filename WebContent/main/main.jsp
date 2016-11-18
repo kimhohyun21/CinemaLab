@@ -5,6 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta content="BlendTrans(Duration=0.2)" http-equiv="Page-Enter">
+	<meta content="BlendTrans(Duration=0.2)" http-equiv="Page-exit">
 	<title>Marvel Cinema</title>
 	<script type="text/javascript" src="sliderengine/jquery.js"></script>
 	<script type="text/javascript" src="jStyles/jquery-ui.min.js"></script>	
