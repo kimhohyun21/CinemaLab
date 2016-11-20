@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Login</title>
 <link rel="stylesheet" type="text/css" href="login/style3.css">
 	<c:if test="${join eq '가입성공' }">
 		<script type="text/javascript">
@@ -43,7 +43,7 @@ function enter(){
 </head>
 <body>
 	<div align="center">		
-		<form method="post" action="login_ok.do" name="frm">
+		<form method="post" action="login_ok.do" name="frm" id="frm">
 			<div class="input">
 				<input type="text" placeholder="ID" name="id" onkeydown="enter()">
 			</div>

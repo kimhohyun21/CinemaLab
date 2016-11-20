@@ -1,7 +1,5 @@
 package com.cinema.login.model;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -43,11 +41,11 @@ public class MemberLoginOkModel {
 			}
 		}
 		// 로그인하기 이전 URL
-		String url=request.getHeader("referer");		
+		String url=request.getHeader("referer");
+		
 		request.setAttribute("url", url);
 		request.setAttribute("loginType", loginType);
-		request.setAttribute("check", check);		
-		
+		request.setAttribute("check", check);	
 		
 		return "login/login_ok.jsp";		
 	}
