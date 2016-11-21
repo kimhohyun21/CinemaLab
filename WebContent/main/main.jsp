@@ -30,14 +30,14 @@
 		
 	 	//세션 시간 관리
 		var minute = 00;
-		var second = 58;
+		var second = 59;
 		var end=0;
-		var counter=9;
+		var counter=10;
 		var timer;
 		var timer2;
 		function sessionCheck(){			
 			timeclock();
-			timer=setTimeout("outMove()", 48000);
+			timer=setTimeout("outMove()", 49000);
 		}	
 		
 		//접속 시간 표시
@@ -66,7 +66,10 @@
 		
 		//10초 남았을 때 연장 혹은 자동 로그 아웃
 		function outMove(){					
-			$.jQueryTimer();			
+			$.jQueryTimer();
+			var startTime=counter;
+			$('#tchecker').html(startTime);
+			shutDown();
 		}		
 		
 		/* jQuery Timer 창 */
@@ -79,9 +82,7 @@
             
             $($messageBox).dialog({
             	open:function(){
-            		var startTime=counter;
-        			$('#tchecker').html(startTime);
-        			shutDown();
+            		timer2=setTimeout("shutDown()", 1000);             		
             	},
                 autoOpen: true,
                 modal: true,
@@ -89,7 +90,8 @@
 				width: 400,
                 buttons: {
                 	연장:function(){
-                		reloadTime();                		
+                		reloadTime();
+                		clearInterval(timer2);
                 		$(this).dialog('close');
                 	}
                 }
@@ -102,11 +104,15 @@
    			
    			if(counter==0){
    				$('#alertBox').html('접속을 종료합니다.');
+   				$.ajax({
+   					url: "logout.do",
+   					async: true
+   				});
    				window.location="main.do";
    			}else{
    				$('#tchecker').html(counter);
    			}
-   			setTimeout("shutDown()", 1000); 
+   			timer2=setTimeout("shutDown()", 1000); 
    		}
       	
 		//시간 연장
