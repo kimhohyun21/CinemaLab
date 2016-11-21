@@ -9,7 +9,8 @@
 	<meta content="BlendTrans(Duration=0.2)" http-equiv="Page-exit">
 	<title>Marvel Cinema</title>
 	<script type="text/javascript" src="sliderengine/jquery.js"></script>
-	<script type="text/javascript" src="jStyles/jquery-ui.min.js"></script>	
+	<script type="text/javascript" src="jStyles/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>	
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.structure.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/jquery-ui.theme.css">
@@ -17,7 +18,109 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-ico" />
 	<link rel="icon" href="favicon.ico" type="image/x-ico" />	
 	<script type="text/javascript">
+		/* 결제 모듈 사용을 위한 초기화 및 세션 시간관리 메서드 호출*/
+	 	window.onload=function(){
+	 		var IMP = window.IMP;
+			IMP.init('imp74690571');
+			if(${mvo.name != null}){
+	 			sessionCheck();
+				return;
+			}	
+	 	}		
 		
+	 	//세션 시간 관리
+		var minute = 00;
+		var second = 58;
+		var end=0;
+		var counter=9;
+		var timer;
+		var timer2;
+		function sessionCheck(){			
+			timeclock();
+			timer=setTimeout("outMove()", 48000);
+		}	
+		
+		//접속 시간 표시
+		function timeclock() {
+			if (second == 00) {
+				minute = minute - 1;
+				second = 59 ;
+			} else {
+				second = second - 1;
+			}
+			if (minute < 10 && minute >= 0) {
+				$('#txtMins').val(0 +minute.toString());
+			} else {
+				$('#txtMins').val(minute);
+			}			
+			if (second < 10) {
+				$('#txtSecs').val(0 + second.toString());
+			} else {
+				$('#txtSecs').val(second);
+			}
+			if(minute<0 && second <0){     
+				return;
+			}
+			setTimeout("timeclock()", 1000);
+		}
+		
+		//10초 남았을 때 연장 혹은 자동 로그 아웃
+		function outMove(){					
+			$.jQueryTimer();			
+		}		
+		
+		/* jQuery Timer 창 */
+		jQuery.jQueryTimer = function () {
+            var $messageBox = $.parseHTML('<div id="alertBox">'
+            								+'<span id="tchecker"></span>&nbsp;초 후 '	
+            								+'접속시간이 만료될 예정입니다...'
+						            		+'</div>');
+            $("body").append($messageBox);         
+            
+            $($messageBox).dialog({
+            	open:function(){
+            		var startTime=counter;
+        			$('#tchecker').html(startTime);
+        			shutDown();
+            	},
+                autoOpen: true,
+                modal: true,
+                resizable:false,
+				width: 400,
+                buttons: {
+                	연장:function(){
+                		reloadTime();                		
+                		$(this).dialog('close');
+                	}
+                }
+            });
+        };
+        
+      	//세션 종료 카운트 다운
+   		function shutDown(){
+   			counter-=1;
+   			
+   			if(counter==0){
+   				$('#alertBox').html('접속을 종료합니다.');
+   				window.location="main.do";
+   			}else{
+   				$('#tchecker').html(counter);
+   			}
+   			setTimeout("shutDown()", 1000); 
+   		}
+      	
+		//시간 연장
+		function reloadTime(){
+			clearInterval(timer);
+			minute = 1;
+			second = 00;
+			counter=9;
+			$.ajax({
+				url: "main.do",
+				async: false
+			});
+			timer=setTimeout("outMove()", 51000);
+		}		
 	</script>
 </head>
 <body>
@@ -31,6 +134,15 @@
 				</c:if>
 				<c:if test="${mvo.name!=null }">
 					<li>${mvo.name }님 반갑습니다!</li>
+					<li>
+						<font class="conn">접속중</font> 
+						<span class="timezone">
+						<input id="txtMins" placeholder="00" readonly="readonly"> 
+						<font>:</font> 
+						<input id="txtSecs" placeholder="00" readonly="readonly">
+						</span>
+						<button class="refresh" onclick="reloadTime()">연장</button> 
+					</li>
 					<li><a href="logout.do">로그아웃</a></li>
 					<li><a href="reserveList.do?no=${mvo.no }">마이페이지</a></li>
 				</c:if>					

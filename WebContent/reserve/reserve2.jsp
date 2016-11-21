@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
 	<link rel="stylesheet" type="text/css" href="jStyles/easydropdown.css">	
 	<script type="text/javascript">
-		function select(){			
+		function select(){
 			$.ajax({
 				type: "POST",
 				url: "reserve2.do",

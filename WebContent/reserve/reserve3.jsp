@@ -7,15 +7,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>Reserve3 Payment</title>
-	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">
-	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
-	<script type="text/javascript">	
-		/* 결제 모듈 사용을 위한 초기화 */
-		window.onload=function(){
-			var IMP = window.IMP;
-			IMP.init('imp74690571'); 
-		}
-		
+	<link rel="stylesheet" type="text/css" href="reserve/reserve_style.css">	
+	<script type="text/javascript">			
 		/* 결제 방법 선택에 따라 결제 방법 값 변경 및 화면 표시 전환*/
 		function display1() {
 			card.style.display='block';
