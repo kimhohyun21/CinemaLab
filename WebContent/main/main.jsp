@@ -69,8 +69,7 @@
 			$.jQueryTimer();
 			var startTime=counter;
 			$('#tchecker').html(startTime);
-			shutDown();
-		}		
+		}
 		
 		/* jQuery Timer 창 */
 		jQuery.jQueryTimer = function () {
@@ -81,38 +80,35 @@
             $("body").append($messageBox);         
             
             $($messageBox).dialog({
-            	open:function(){
-            		timer2=setTimeout("shutDown()", 1000);             		
-            	},
+            	open: function(){timer2=setInterval("shutDown();", 1000);},
                 autoOpen: true,
                 modal: true,
                 resizable:false,
 				width: 400,
+				close: function(){clearInterval(timer2);},
                 buttons: {
-                	연장:function(){
-                		reloadTime();
-                		clearInterval(timer2);
+                	연장:function(){                		
+                		reloadTime();                		
                 		$(this).dialog('close');
                 	}
                 }
             });
         };
         
-      	//세션 종료 카운트 다운
+		//세션 종료 카운트 다운
    		function shutDown(){
    			counter-=1;
    			
    			if(counter==0){
    				$('#alertBox').html('접속을 종료합니다.');
    				$.ajax({
-   					url: "logout.do",
+   					url: "logout.do",   				
    					async: true
    				});
    				window.location="main.do";
    			}else{
    				$('#tchecker').html(counter);
    			}
-   			timer2=setTimeout("shutDown()", 1000); 
    		}
       	
 		//시간 연장
@@ -120,13 +116,17 @@
 			clearInterval(timer);
 			minute = 1;
 			second = 00;
-			counter=9;
+			counter=10;
 			$.ajax({
 				url: "main.do",
-				async: false
+				async: true
 			});
-			timer=setTimeout("outMove()", 51000);
-		}		
+			timer=setTimeout("outMove()", 49000);
+		}				
+		
+		 
+        
+      		
 	</script>
 </head>
 <body>
