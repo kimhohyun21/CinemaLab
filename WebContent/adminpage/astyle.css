@@ -126,9 +126,6 @@ button.menu_insert:active {
 table.type01 tr:HOVER{
 	background-color:#d8d3d8;
 }
-.TT{
-	background-color:gray;
-}
 .list th{
 	height: 30px;
 	background-color: #bfbfbf;

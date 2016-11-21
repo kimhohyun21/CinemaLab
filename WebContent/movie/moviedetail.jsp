@@ -83,6 +83,15 @@
          <table width="1000">
             <tr>
                <td><span >출연진</span></td>
+               <td colspan="10">
+               		<c:if test="${mvo.admin eq '1' }">
+						<div align="right">
+							<a href="Amodifymovielist.do?no=${no }">
+								<b style="color: red;">출연진 수정하기</b>
+							</a>
+						</div>
+					</c:if>
+               </td>
             </tr>
             <tr>
                <c:forEach items="${list }" var="cvo">
