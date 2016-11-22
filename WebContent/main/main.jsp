@@ -29,15 +29,15 @@
 	 	}		
 		
 	 	//세션 시간 관리
-		var minute = 00;
+		var minute = 0;
 		var second = 59;
-		var end=0;
-		var counter=10;
+		var counter= 9;
 		var timer;
-		var timer2;
+		var timer1;
+		var timer2;	
 		function sessionCheck(){			
-			timeclock();
-			timer=setTimeout("outMove()", 49000);
+			timer=setInterval("timeclock()", 1000);
+			timer1=setTimeout("outMove()", 49000);
 		}	
 		
 		//접속 시간 표시
@@ -60,19 +60,16 @@
 			}
 			if(minute<0 && second <0){     
 				return;
-			}
-			setTimeout("timeclock()", 1000);
+			}			
 		}
 		
 		//10초 남았을 때 연장 혹은 자동 로그 아웃
-		function outMove(){					
-			$.jQueryTimer();
-			var startTime=counter;
-			$('#tchecker').html(startTime);
+		function outMove(){			
+			$.jQueryTimer();			
 		}
 		
 		/* jQuery Timer 창 */
-		jQuery.jQueryTimer = function () {
+		jQuery.jQueryTimer = function () {			
             var $messageBox = $.parseHTML('<div id="alertBox">'
             								+'<span id="tchecker"></span>&nbsp;초 후 '	
             								+'접속시간이 만료될 예정입니다...'
@@ -80,53 +77,55 @@
             $("body").append($messageBox);         
             
             $($messageBox).dialog({
-            	open: function(){timer2=setInterval("shutDown();", 1000);},
+            	open:function(){
+            		if(counter==9){
+            			shutDown();
+           				timer2=setInterval("shutDown()", 1000);	
+            		}       				
+            	},
                 autoOpen: true,
                 modal: true,
                 resizable:false,
 				width: 400,
-				close: function(){clearInterval(timer2);},
+				close: function(){
+					clearInterval(timer2);
+					reloadTime();
+				},
                 buttons: {
-                	연장:function(){                		
-                		reloadTime();                		
+                	연장:function(){    		               		
                 		$(this).dialog('close');
                 	}
-                }
+                },
             });
         };
         
 		//세션 종료 카운트 다운
    		function shutDown(){
-   			counter-=1;
-   			
-   			if(counter==0){
-   				$('#alertBox').html('접속을 종료합니다.');
+			if(counter!=0){
+				$('span#tchecker').html(counter);
+			}else if(counter==0){
+				$('div#alertBox').html('접속을 종료합니다.');
    				$.ajax({
    					url: "logout.do",   				
    					async: true
    				});
    				window.location="main.do";
-   			}else{
-   				$('#tchecker').html(counter);
    			}
+   			counter-=1;
    		}
-      	
+		
 		//시간 연장
 		function reloadTime(){
-			clearInterval(timer);
-			minute = 1;
-			second = 00;
-			counter=10;
+			clearInterval(timer1);
+			minute = 0;
+			second = 59;
+			counter= 9;
 			$.ajax({
 				url: "main.do",
 				async: true
 			});
-			timer=setTimeout("outMove()", 49000);
-		}				
-		
-		 
-        
-      		
+			timer1=setTimeout("outMove()", 49000);
+		}      		
 	</script>
 </head>
 <body>
@@ -138,7 +137,7 @@
 					<li><a href="login.do">로그인</a></li>
 					<li><a href="join.do">회원가입</a></li>					
 				</c:if>
-				<c:if test="${mvo.name!=null }">
+				<c:if test="${mvo.name!=null }">					
 					<li>${mvo.name }님 반갑습니다!</li>
 					<li>
 						<font class="conn">접속중</font> 
@@ -148,7 +147,7 @@
 						<input id="txtSecs" placeholder="00" readonly="readonly">
 						</span>
 						<button class="refresh" onclick="reloadTime()">연장</button> 
-					</li>
+					</li>					
 					<li><a href="logout.do">로그아웃</a></li>
 					<li><a href="reserveList.do?no=${mvo.no }">마이페이지</a></li>
 				</c:if>					
